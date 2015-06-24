@@ -1,0 +1,130 @@
+body {
+    margin-bottom: 50px;
+}
+
+/*
+Menu
+*/
+#menu.navbar-default .navbar-brand {
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+
+#menu.navbar-default {
+    font-size: 15px;
+    background-color: rgba(51, 51, 51, 1);
+    border-bottom-width: 0px;
+}
+
+#menu.navbar-default .navbar-nav>li>a {
+    color: rgba(181, 181, 181, 1);
+    background-color: rgba(51, 51, 51, 1);
+}
+
+#menu.navbar-default .navbar-nav>li>a:hover,
+#menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(55, 192, 251, 1);
+}
+
+#menu.navbar-default .navbar-nav>.active>a,
+#menu.navbar-default .navbar-nav>.active>a:hover,
+#menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(55, 192, 251, 1);
+}
+
+#menu.navbar-default .navbar-toggle {
+    border-color: #37c0fb;
+}
+
+#menu.navbar-default .navbar-toggle:hover,
+#menu.navbar-default .navbar-toggle:focus {
+    background-color: #37c0fb;
+}
+
+#menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #37c0fb;
+}
+
+#menu.navbar-default .navbar-toggle:hover .icon-bar,
+#menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #333333;
+}
+
+.header-line {
+	height: 10px;
+	width: 100%;
+	background-color: #37c0fb;
+	margin-top: -20px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+  .navbar-nav > li {
+    float: none;
+    display: inline-block;
+  }
+  .navbar-nav > li.navbar-right {
+    float: right !important;
+  }
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  		margin-left: -400px;
+	}
+}
+
+.active {
+	font-weight: bold;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: -1px;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ccc;
+    }
+}
+
+/*
+Footer
+*/
+.footer {
+    position: fixed;
+    bottom: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    height: 50px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 16px;
+}
+
+/*
+Content
+*/
+.fa-center {
+    text-align: center;
+}
