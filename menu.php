@@ -1,3 +1,4 @@
+<div id="menuHeader"><a href="index.php">Welkom bij EKC 2000</a></div>
 <div id="menu" class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header"><a class="navbar-brand" href="../index.php">EKC 2000</a>

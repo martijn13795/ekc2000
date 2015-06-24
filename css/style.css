@@ -102,6 +102,10 @@ Menu
     }
 }
 
+.menuHeader {
+    height: 75px;
+}
+
 /*
 Footer
 */
