@@ -6,6 +6,7 @@
   <body>
   <?php include 'nav.php';?>
 	 <?php include 'menu.php';?>
+    <div><img class="headerImage" src="images/banner.png" alt="club foto"/></div>
 	    <div class="container">
             <div class="col-xs-12 col-md-12"><h1>Welkom bij <strong>EKC 2000</strong></h1><hr></div>
             <div class="row">

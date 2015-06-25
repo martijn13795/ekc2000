@@ -111,8 +111,8 @@ Menu
     text-align: center;
 }
 
-#menuHeader h2 {
-    padding-top: 10px;
+#menuHeader h3 {
+    padding-top: 14px;
 }
 
 .logo {
@@ -170,4 +170,8 @@ Content
 */
 .fa-center {
     text-align: center;
+}
+
+.headerImage {
+    width: 100%;
 }

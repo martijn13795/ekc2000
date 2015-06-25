@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="../index.php"><img class="logo" src="/images/logo.png" alt="Logo"/></a>
-                <a href="../index.php"><h2>Welkom bij <strong>EKC 2000</strong></h2></a>
+                <a href="../index.php"><h3>Welkom bij <strong>EKC 2000</strong></h3></a>
             </div>
         </div>
     </div>
