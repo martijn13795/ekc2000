@@ -12,13 +12,13 @@
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="col-xs-12 col-md-4 well infoDiv">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4">
                             <i class="icon major fa-newspaper-o"></i>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-xs-8">
                             <h3>Laatste nieuws</h3>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-xs-12">
                             <p>07-03-15 Programma EKC 2000-dag</br></br>
                             07-03-15 EKC 2000 B2 is zaalkampioen!</br></br>
                             07-03-15 Paasspelen 2015!</br></br>
@@ -32,13 +32,13 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-4 well infoDiv">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4">
                             <i class="icon major fa-camera"></i>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-xs-8">
                             <h3>Laaste foto albums</h3>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-xs-12">
                         <p>17-05-14 EKC 2000 1 - Elko 1</br></br>
                             17-05-14 EKC 2000 1 - Elko 1</br></br>
                             17-05-14 EKC 2000 2 - Elko 2</br></br>
@@ -52,13 +52,13 @@
                             </div>
                     </div>
                     <div class="col-xs-12 col-md-4 well infoDiv1">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-xs-4">
                             <i class="icon major fa-users"></i>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-xs-8">
                             <h3>Komende activiteiten</h3>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-xs-12">
                         <p>12-03-15 EKC 2000-dag</br></br>
                             12-03-15 EKC 2000-dag</br></br>
                             12-03-15 EKC 2000-dag</br></br>
