@@ -148,6 +148,45 @@ Menu
 }
 
 /*
+Icon
+*/
+.icon {
+    position: relative;
+    text-decoration: none;
+}
+
+.icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+}
+
+.icon > .label {
+    display: none;
+}
+
+.icon.major {
+    text-align: center;
+    cursor: default;
+    background-color: #37c0fb;
+    color: white;
+    border-radius: 100%;
+    display: inline-block;
+    width: 6em;
+    height: 6em;
+    line-height: 6em;
+    box-shadow: 0 0 0 7px white, 0 0 0 8px #e0e0e0;
+    margin: 0 0 2em 0;
+}
+
+.icon.major:before {
+    font-size: 36px;
+}
+
+/*
 Footer
 */
 .footer {
@@ -180,4 +219,12 @@ Content
 
 h1 {
     font-size: 30px;
+}
+
+.infoDiv {
+    margin-right: 5px;
+}
+
+.infoDiv1 {
+    margin-right: -10px;
 }
