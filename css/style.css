@@ -1,4 +1,6 @@
 html {
+    position: relative;
+    min-height: 100%;
     overflow-y: scroll;
 }
 
@@ -149,7 +151,7 @@ Menu
 Footer
 */
 .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     margin-right: auto;
     margin-left: auto;
@@ -174,4 +176,8 @@ Content
 
 .headerImage {
     width: 100%;
+}
+
+h1 {
+    font-size: 30px;
 }
