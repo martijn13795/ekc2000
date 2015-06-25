@@ -1,3 +1,7 @@
+html {
+    overflow-y: scroll;
+}
+
 body {
     margin-bottom: 50px;
 }
@@ -102,8 +106,43 @@ Menu
     }
 }
 
-.menuHeader {
-    margin-top: 100px;
+#menuHeader {
+    height: 100px;
+    text-align: center;
+}
+
+#menuHeader h2 {
+    padding-top: 10px;
+}
+
+.logo {
+    float: left;
+    margin-right: -134px;
+    margin-top: 10px;
+    max-height: 80px;
+}
+
+#menuHeader a {
+    moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    text-decoration: none;
+    font-size: 1.5em;
+    letter-spacing: -0.025em;
+    border: 0;
+    color: inherit;
+}
+
+#menuHeader a:hover {
+    moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    color: #37c0fb;
+    text-decoration: none;
 }
 
 /*

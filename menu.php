@@ -1,7 +1,19 @@
-<div id="menuHeader"><a href="index.php">Welkom bij EKC 2000</a></div>
+<head>
+    <?php include 'head.php';?>
+</head>
+<div id="menuHeader" class="hidden-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="../index.php"><img class="logo" src="/images/logo.png" alt="Logo"/></a>
+                <a href="../index.php"><h2>Welkom bij <strong>EKC 2000</strong></h2></a>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="menu" class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand" href="../index.php">EKC 2000</a>
+        <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
             </button>
         </div>
