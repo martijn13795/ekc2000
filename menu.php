@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=echoActiveClassIfRequestMatches("index")?><?=echoActiveClassIfRequestMatches("")?>><a href="../index.php">Home</a></li>
 
-                <li class="dropdown" <?=echoActiveClassIfRequestMatches("vereniging")?>>
+                <li class="dropdown" <?=echoActiveClassIfRequestMatches("Vereniging")?>>
                     <a href="../sub-pagina/vereniging.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="../sub-pagina/vereniging.php">Over de club</a></li>
