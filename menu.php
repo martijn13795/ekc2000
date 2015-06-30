@@ -40,7 +40,18 @@
 
                 <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="../sub-pagina/sponsoren.php">Sponsoren</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("competitie")?>><a href="../sub-pagina/competitie.php">Competitie</a></li>
+                <li <?=echoActiveClassIfRequestMatches("competitie")?>>
+                    <a href="../sub-pagina/competitie.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="../sub-pagina/competitie.php">Teams</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Wedstrijdschema</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Standen</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Uitslagen</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Wedstrijd verslagen</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Trainingstijden</a></li>
+                        <li><a href="../sub-pagina/competitie.php">Kantinedienst</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
