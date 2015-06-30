@@ -52,6 +52,7 @@
                         <li><a href="../sub-pagina/competitie.php">Kantinedienst</a></li>
                     </ul>
                 </li>
+                <li><a href="../sub-pagina/inloggen.php"><i class="fa fa-sign-in"></i> Inloggen</a></li>
             </ul>
         </div>
     </div>
