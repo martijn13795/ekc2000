@@ -224,3 +224,12 @@ h1 {
 .infoDiv1 {
     margin-right: -10px;
 }
+
+.inloggenDiv {
+    margin-top: 20px;
+}
+
+.inloggenDiv h1 {
+    margin-bottom: 50px;
+    text-align: center;
+}
