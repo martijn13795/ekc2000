@@ -6,3 +6,9 @@ RewriteEngine on
 
 # Rewrite for index.php
 RewriteRule ^home index.php [NC,L]
+
+# Rewrite for inloggen.php
+RewriteRule ^inloggen sub-pagina/inloggen.php [NC,L]
+
+# Rewrite for activiteiten.php
+RewriteRule ^activiteiten sub-pagina/activiteiten.php [NC,L]
