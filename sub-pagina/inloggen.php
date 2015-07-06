@@ -8,7 +8,6 @@
 <?php include '../menu.php';?>
 <div class="container">
     <div class="row-fluid inloggenDiv">
-        <h1>Leden van EKC 2000 kunnen hier inloggen.</h1>
         <div class="col-md-4 col-md-offset-4 well">
             <legend>Inloggen</legend>
             <div class="form-group">
