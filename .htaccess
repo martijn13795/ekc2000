@@ -1,0 +1,8 @@
+# Turn Rewrite Engine On
+RewriteEngine on
+
+# NC makes the rule non case sensitive
+# L makes this the last rule that this specific condition will match
+
+# Rewrite for index.php
+RewriteRule ^home index.php [NC,L]
