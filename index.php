@@ -81,7 +81,7 @@
             </div>
             <div class="row">
                 <div class="col-md-8 col-xs-12">
-                    <h1>Snel bezoeken</h1>
+                    <h1>Shoutbox</h1>
                     <form action="index.php" method="post">
                         <input type="text" name="user_shout" id="text" maxlength="140">
                         <input type="submit" value="Post shout">
