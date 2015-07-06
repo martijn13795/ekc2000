@@ -7,7 +7,13 @@
 <?php include 'nav.php';?>
 <?php include 'menu.php';?>
 <div class="container">
-<h1>404 - Page not found</h1>
+    <div class="col-md-12 col-xs-12">
+        <h1>Oeps! - De pagina is niet gevonden</h1>
+    </div>
+    <div class="col-md-12 col-xs-12">
+        <img class="img-responsive errorImg" src="images/404Error.png" alt="404 Error"/>
+        <a onclick="history.back()" class="btn btn-large btn-primary"><i class="icon-home icon-white"></i> Ga terug</a>
+    </div>
 </div>
 <?php include 'footer.php';?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
