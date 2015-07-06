@@ -6,6 +6,7 @@
   <body>
   <?php include 'nav.php';?>
 	 <?php include 'menu.php';?>
+  <?php include 'shoutbox.php';?>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
@@ -72,6 +73,23 @@
                             12-03-15 EKC 2000-dag</p>
                             </div>
                     </div>
+                </div>
+            </div>
+            <div class="sponsorenDiv col-md-12 col-xs-12">
+                <h1>Onze sponsoren</h1><hr>
+                <img class="img-responsive" src="images/sponsoren.png" alt="Onze sponsoren"/><hr>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <h1>Snel bezoeken</h1>
+                    <form action="index.php" method="post">
+                        <input type="text" name="user_shout" id="text" maxlength="140">
+                        <input type="submit" value="Post shout">
+                    </form>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
             </div>
 	    </div>
