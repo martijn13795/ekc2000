@@ -10,8 +10,17 @@ ErrorDocument 404 /404.php
 # Rewrite for index.php
 RewriteRule ^home index.php [NC,L]
 
-# Rewrite for inloggen.php
+# Rewrite for sub-pagina's
+RewriteRule ^activiteiten sub-pagina/activiteiten.php [NC,L]
+
+RewriteRule ^competitie sub-pagina/competitie.php [NC,L]
+
+RewriteRule ^documenten sub-pagina/documenten.php [NC,L]
+
 RewriteRule ^inloggen sub-pagina/inloggen.php [NC,L]
 
-# Rewrite for activiteiten.php
-RewriteRule ^activiteiten sub-pagina/activiteiten.php [NC,L]
+RewriteRule ^nieuws sub-pagina/nieuws.php [NC,L]
+
+RewriteRule ^sponsoren sub-pagina/sponsoren.php [NC,L]
+
+RewriteRule ^vereniging sub-pagina/vereniging.php [NC,L]
