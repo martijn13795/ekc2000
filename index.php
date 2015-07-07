@@ -6,7 +6,6 @@
   <body>
   <?php include 'nav.php';?>
 	 <?php include 'menu.php';?>
-  <?php include 'shoutbox.php';?>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
