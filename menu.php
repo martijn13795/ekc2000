@@ -19,7 +19,7 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li <?=echoActiveClassIfRequestMatches("home")?><?=echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
+                <li <?=echoActiveClassIfRequestMatches("home")?><?=echoActiveClassIfRequestMatches("index")?><?=echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
 
                 <li <?=echoActiveClassIfRequestMatches("vereniging")?>>
                     <a href="/vereniging" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
