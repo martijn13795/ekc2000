@@ -4,6 +4,9 @@ RewriteEngine on
 # custom 404 page
 ErrorDocument 404 /404.php
 
+# custom 403 page
+ErrorDocument 403 /403.php
+
 # NC makes the rule non case sensitive
 # L makes this the last rule that this specific condition will match
 
