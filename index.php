@@ -71,15 +71,7 @@
                 <h1>Onze sponsoren</h1><hr>
                 <img class="img-responsive" src="images/sponsoren.png" alt="Onze sponsoren"/><hr>
             </div>
-            <div class="row">
-                <div class="col-md-8 col-xs-12">
-                    <h4>Kom in contact en deel wat je denkt in deze shoutbox</h4>
-                    <textarea class="col-md-12 col-xs-12" id="styled" rows="27">Hallo!</textarea>
-                    <form action="/home" method="post">
-                        <input type="text" name="user_shout" id="text" maxlength="140">
-                        <input type="submit" class="btn btn-primary" value="Post shout">
-                    </form>
-                </div>
+            <?php include 'chatbox.php';?>
                 <div class="col-md-4 col-xs-12">
                     <h4>Bekijk de tweets van EKC 2000 live!</h4>
                     <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
