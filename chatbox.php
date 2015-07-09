@@ -68,7 +68,7 @@
                         <div class="chat-body clearfix">
                             <div class="header">
                                 <strong class="primary-font">Cas van Dinter</strong> <small class="pull-right text-muted">
-                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                    <span class="glyphicon glyphicon-time"></span>16 mins ago</small>
                             </div>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
@@ -81,7 +81,7 @@
                         </span>
                         <div class="chat-body clearfix">
                             <div class="header">
-                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>16 mins ago</small>
                                 <strong class="pull-right primary-font">Martijn Posthuma</strong>
                             </div>
                             <p>
@@ -96,7 +96,7 @@
                         <div class="chat-body clearfix">
                             <div class="header">
                                 <strong class="primary-font">Cas van Dinter</strong> <small class="pull-right text-muted">
-                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                                    <span class="glyphicon glyphicon-time"></span>20 mins ago</small>
                             </div>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
@@ -109,7 +109,7 @@
                         </span>
                         <div class="chat-body clearfix">
                             <div class="header">
-                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>1 day ago</small>
                                 <strong class="pull-right primary-font">Martijn Posthuma</strong>
                             </div>
                             <p>
