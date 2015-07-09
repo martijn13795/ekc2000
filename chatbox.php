@@ -62,6 +62,62 @@
                             </p>
                         </div>
                     </li>
+                    <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font">Cas van Dinter</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                <strong class="pull-right primary-font">Martijn Posthuma</strong>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <strong class="primary-font">Cas van Dinter</strong> <small class="pull-right text-muted">
+                                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
+                                <strong class="pull-right primary-font">Martijn Posthuma</strong>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                dolor, quis ullamcorper ligula sodales.
+                            </p>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="panel-footer">

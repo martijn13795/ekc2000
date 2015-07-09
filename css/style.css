@@ -254,6 +254,10 @@ Chatbox
 {
     overflow-y: scroll;
     height: 545px;
+    background-image: url("/images/logoChatbox.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
 }
 
 ::-webkit-scrollbar-track
