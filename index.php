@@ -72,7 +72,7 @@
                 <div class="container">
                     <div class="sponsorenDiv col-md-12 col-xs-12">
                         <h1>Onze sponsoren</h1></br>
-                        <img class="img-responsive" src="images/sponsorenT.png" alt="Onze sponsoren"/><hr>
+                        <img class="img-responsive" src="images/sponsorenGrayBar.png" alt="Onze sponsoren"/><hr>
                     </div>
                 </div>
             </div>
