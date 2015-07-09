@@ -1,4 +1,4 @@
-<?php include 'html.php';?>
+<?php include 'includes/html.php';?>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
@@ -71,7 +71,7 @@
                 <h1>Onze sponsoren</h1><hr>
                 <img class="img-responsive" src="images/sponsoren.png" alt="Onze sponsoren"/><hr>
             </div>
-            <?php include 'chatbox.php';?>
+            <?php include 'includes/chatbox.php';?>
                 <div class="col-md-4 col-xs-12">
                     <h4>Bekijk de tweets van EKC 2000 live!</h4>
                     <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>

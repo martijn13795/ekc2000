@@ -1,4 +1,4 @@
-<?php include '../html.php';?>
+<?php include '../includes/html.php';?>
     <div class="container">
         <div class="row-fluid inloggenDiv">
             <div class="col-md-4 col-md-offset-4 well">
