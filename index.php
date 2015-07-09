@@ -74,10 +74,10 @@
             <div class="row">
                 <div class="col-md-8 col-xs-12">
                     <h4>Kom in contact en deel wat je denkt in deze shoutbox</h4>
-                    <textarea class="col-md-12 col-xs-12" rows="30">Hallo!</textarea>
-                    <form action="index.php" method="post">
+                    <textarea class="col-md-12 col-xs-12" id="styled" rows="27">Hallo!</textarea>
+                    <form action="/home" method="post">
                         <input type="text" name="user_shout" id="text" maxlength="140">
-                        <input type="submit" value="Post shout">
+                        <input type="submit" class="btn btn-primary" value="Post shout">
                     </form>
                 </div>
                 <div class="col-md-4 col-xs-12">
