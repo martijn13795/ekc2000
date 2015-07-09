@@ -67,10 +67,16 @@
                     </div>
                 </div>
             </div>
-            <div class="sponsorenDiv col-md-12 col-xs-12">
-                <h1>Onze sponsoren</h1><hr>
-                <img class="img-responsive" src="images/sponsoren.png" alt="Onze sponsoren"/><hr>
+        </div>
+            <div class="grayBar">
+                <div class="container">
+                    <div class="sponsorenDiv col-md-12 col-xs-12">
+                        <h1>Onze sponsoren</h1></br>
+                        <img class="img-responsive" src="images/sponsorenT.png" alt="Onze sponsoren"/><hr>
+                    </div>
+                </div>
             </div>
+        <div class="container">
             <?php include 'includes/chatbox.php';?>
                 <div class="col-md-4 col-xs-12">
                     <h4>Bekijk de tweets van EKC 2000 live!</h4>
