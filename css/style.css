@@ -283,6 +283,15 @@ Chatbox
     width: 50px;
 }
 
+.panel-primary {
+    border-color: #37C0FB;
+}
+
+.panel-heading {
+    background-color: #37C0FB;
+    border-color: #37C0FB;
+}
+
 /*
 Content
 */
