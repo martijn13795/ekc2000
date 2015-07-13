@@ -2,8 +2,8 @@
     <div class="container">
         <?php
         $servername = "ekc2000.party";
-        $username = "ekc2000";
-        $password = "xH2b8C5PnajhnXJ5";
+        $username = "root";
+        $password = "Yqu7tuprqxch";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password);
