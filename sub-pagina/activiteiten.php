@@ -2,11 +2,11 @@
     <div class="container">
         <?php
         $servername = "ekc2000.party";
-        $username = "root";
-        $password = "Yqu7tuprqxch";
+        $username = "ekc2000";
+        $password = "xH2b8C5PnajhnXJ5";
 
         // Create connection
-        $conn = new mysqli($servername, $username, $password, 80);
+        $conn = new mysqli($servername, $username, $password);
 
         // Check connection
         if ($conn->connect_error) {
