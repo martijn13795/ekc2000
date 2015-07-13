@@ -121,13 +121,14 @@
                 </ul>
             </div>
             <div class="panel-footer">
-                <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="type je bericht hier..." />
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary btn-sm" id="btn-chat">
-                                Send</button>
-                        </span>
-                </div>
+                <form action="/home" method="post">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="type je bericht hier..." />
+                            <span class="input-group-btn">
+                                <input id="btn-chat" type="submit" class="btn btn-primary btn-sm" value="Verstuur">
+                            </span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

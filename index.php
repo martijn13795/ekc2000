@@ -77,6 +77,7 @@
                 </div>
             </div>
         <div class="container">
+            <?php include 'includes/db.php';?>
             <?php include 'includes/chatbox.php';?>
                 <div class="col-md-4 col-xs-12">
                     <h4>Bekijk de tweets van EKC 2000 live!</h4>
