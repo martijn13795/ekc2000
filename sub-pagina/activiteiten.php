@@ -1,7 +1,7 @@
 <?php include '../includes/html.php';?>
     <div class="container">
         <?php
-        $servername = "ekc2000.party";
+        $servername = "94.213.96.73";
         $username = "ekc2000";
         $password = "xH2b8C5PnajhnXJ5";
 
