@@ -121,9 +121,9 @@
                 </ul>
             </div>
             <div class="panel-footer">
-                <form action="/home" method="post">
+                <form action="../includes/db.php" method="post">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="type je bericht hier..." />
+                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
                             <span class="input-group-btn">
                                 <input id="btn-chat" type="submit" class="btn btn-primary btn-sm" value="Verstuur">
                             </span>
