@@ -229,7 +229,7 @@ Chatbox
 }
 
 .panel-body #chat {
-    height:650px;
+    height:640px;
     width:600px;
     overflow-y: scroll;
     margin:40px auto;
