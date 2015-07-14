@@ -83,46 +83,16 @@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
                         </div>
-                        <?php include_once('db.php'); ?>
                         <div id="panel-body" class="panel-body">
-                            <ul class="chat">
-                                <?php
-                                $servername = "192.168.1.145";
-                                $username = "ekc2000";
-                                $password = "xH2b8C5PnajhnXJ5";
-                                $dbName = "ekc2000";
-
-                                $conn = mysql_connect($servername, $username, $password);
-
-                                if (!$conn) {
-                                    die("connection failed: " .mysql_error());
-                                }
-
-                                $db_selected = mysql_select_db("ekc2000", $conn);
-
-                                if (!$db_selected) {
-                                    die('kan de database niet vinden' . mysql_error());
-                                }
-
-                                $select = mysql_query('SELECT * FROM chatbox') or die(mysql_error());
-
-                                    while ($selecting = mysql_fetch_array($select)) {
-                                        echo '<li class="right clearfix">
-                                                <span class="chat-img pull-right">
-                                                    <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
-                                                </span>
-                                                <div class="chat-body clearfix">
-                                                    <div class="header">
-                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $selecting['dateTime'] . '</small>
-                                                        <strong class="pull-right primary-font">' . $selecting['userID'] . '</strong>
-                                                </div>
-                                                    <p>
-                                                        ' . $selecting['message'] . '
-                                                    </p>
-                                                </div>
-                                              </li>';
-                                    }
-                                ?>
+                            <ul id="chaat" class="chat">
+                                <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        setInterval(function chatRefresh() {
+                                            $('#chaat').load('/includes/chatRefresh.php')
+                                        }, 1000);
+                                    });
+                                </script>
+                                <span id="results"></span>
                                 <span id="result"></span>
                             </ul>
                         </div>
@@ -155,9 +125,9 @@
                         } else if (scrollHeight >= ActualscrollHeight) {
                             down = false;
                         }
-                        scrollHeight = (!down) ? scrollHeight + 4 : scrollHeight + 4;
+                        scrollHeight = (!down) ? scrollHeight + 4000 : scrollHeight + 4000;
                         document.getElementById("panel-body").scrollTop = scrollHeight;
-                    }, 3);
+                    }, 5);
                 }
                 chat();
             </script>
