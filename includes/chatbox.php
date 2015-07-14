@@ -2,12 +2,13 @@
     include_once('db.php');
 
     $message = $_POST['message'];
+    $date = $mysql_date_now = date("Y-m-d H:i:s");
 
 if ($_POST['message'] == null || $_POST['message'] == ""){
     echo "voer een bericht in";
 }else {
 
-    if(mysql_query("INSERT INTO chatbox (message) VALUES ('$message')")) {
+    if(mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
         $select = mysql_query('SELECT * FROM chatbox ORDER BY messageID DESC') or die(mysql_error());
 
         while ($selecting = mysql_fetch_array($select)) {
