@@ -89,7 +89,7 @@
                                     $(document).ready(function() {
                                         setInterval(function chatRefresh() {
                                             $('#chaat').load('/includes/chatRefresh.php')
-                                        }, 1000);
+                                        }, 5000);
                                     });
                                 </script>
                                 <span id="results"></span>
