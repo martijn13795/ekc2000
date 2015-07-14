@@ -84,8 +84,8 @@
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
                         </div>
                         <?php include_once('db.php'); ?>
-                        <div class="panel-body">
-                            <ul id="chat" class="chat">
+                        <div id="panel-body" class="panel-body">
+                            <ul class="chat">
                                 <?php
                                 $servername = "192.168.1.145";
                                 $username = "ekc2000";
@@ -146,17 +146,17 @@
         </div>
             <script type="text/javascript">
                 function chat() {
-                    var ActualscrollHeight = document.getElementById("chat").clientHeight;
+                    var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
                     var down = true;
                     setInterval(function () {
-                        var scrollHeight = document.getElementById("chat").scrollTop;
+                        var scrollHeight = document.getElementById("panel-body").scrollTop;
                         if (scrollHeight == 0) {
                             down = true;
                         } else if (scrollHeight >= ActualscrollHeight) {
                             down = false;
                         }
-                        scrollHeight = (!down) ? scrollHeight + 1 : scrollHeight + 1;
-                        document.getElementById("chat").scrollTop = scrollHeight;
+                        scrollHeight = (!down) ? scrollHeight + 4 : scrollHeight + 4;
+                        document.getElementById("panel-body").scrollTop = scrollHeight;
                     }, 3);
                 }
                 chat();

@@ -228,18 +228,6 @@ Chatbox
     border-bottom: 1px dotted #B3A9A9;
 }
 
-.panel-body #chat {
-    height:640px;
-    width:600px;
-    overflow-y: scroll;
-    margin:40px auto;
-}
-#chat li {
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
-}
-
 .chat li.left .chat-body
 {
     margin-left: 60px;
@@ -262,7 +250,7 @@ Chatbox
     margin-right: 5px;
 }
 
-.panel-body
+#panel-body
 {
     overflow-y: scroll;
     height: 545px;
@@ -272,19 +260,19 @@ Chatbox
     background-size: 60%;
 }
 
-.panel-body::-webkit-scrollbar-track
+#panel-body::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F1F1F1;
 }
 
-.panel-body::-webkit-scrollbar
+#panel-body::-webkit-scrollbar
 {
     width: 12px;
     background-color: #F1F1F1;
 }
 
-.panel-body::-webkit-scrollbar-thumb
+#panel-body::-webkit-scrollbar-thumb
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #BCBCBC;
