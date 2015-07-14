@@ -84,13 +84,14 @@
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
                         </div>
                         <div id="panel-body" class="panel-body">
-                            <ul id="chaat" class="chat">
+                            <ul id="chatRefresh" class="chat">
                                 <script type="text/javascript">
                                     $(document).ready(function() {
                                         setInterval(function chatRefresh() {
-                                            $('#chaat').load('/includes/chatRefresh.php')
+                                            $('#chatRefresh').load('/includes/chatRefresh.php')
                                         }, 5000);
                                     });
+                                    $("#input").ForceAlphaNumericOnly();
                                 </script>
                                 <span id="results"></span>
                                 <span id="result"></span>
