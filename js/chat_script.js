@@ -14,10 +14,18 @@ $("#chat").submit( function() {
 });
 
 $(document).ready(function(){
-    $('#chat').keypress(function(e){
-        if(e.keyCode==13)
-            $('#sub').click();
-        return false;
+    $("input").keypress(function (e) {
+        var k = e.keyCode || e.which;
+        if (k == 13) {
+
+            $.post($("#chat").attr("action"),
+                $("#chat :input").serializeArray(),
+                function (info) {
+                    $("#result").html(info);
+                });
+            clearInput();
+            return false;
+        }
     });
 });
 
