@@ -24,5 +24,11 @@ if (!mysql_query($sql)){
     die(mysql_error());
 }
 
+$select = mysql_query('SELECT * FROM chatbox');
+
+while($selecting = mysql_fetch_array($select)){
+    echo $selecting['message'];
+}
+
 mysql_close();
 ?>
