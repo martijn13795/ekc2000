@@ -77,46 +77,46 @@
                 </div>
             </div>
         <div class="container">
-            <?php include 'includes/chatbox.php';?>
+            <div class="row">
+                <div class="col-md-8 col-xs-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
+                        </div>
+                        <div class="panel-body">
+                            <ul class="chat">
+                                <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                        </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>1 day ago</small>
+                                            <strong class="pull-right primary-font">Martijn Posthuma</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                            dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <form id="chat" action="/includes/chatbox.php" method="post">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
+                            <span class="input-group-btn">
+                                <button id="sub" type="submit" class="btn btn-primary btn-sm">Verstuur</button
+                            </span>
+                            </div>
+                            </form>
+                        </div>
+                        <span id="result"></span>
+                    </div>
+                </div>
                 <div class="col-md-4 col-xs-12">
                     <h4>Bekijk de tweets van EKC 2000 live!</h4>
                     <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
         </div>
-
-<?php
-$servername = "192.168.1.145";
-$username = "ekc2000";
-$password = "xH2b8C5PnajhnXJ5";
-$dbName = "ekc2000";
-
-$conn = mysql_connect($servername, $username, $password);
-
-if (!$conn) {
-    die("connection failed: " .mysql_error());
-}
-
-$db_selected = mysql_select_db("ekc2000", $conn);
-
-if (!$db_selected) {
-    die('kan de database niet vinden' . mysql_error());
-}
-
-$value = $_POST['message'];
-
-$sql = "INSERT INTO chatbox (message) VALUES ('$value')";
-
-if (!mysql_query($sql)){
-    die(mysql_error());
-}
-
-$select = mysql_query('SELECT * FROM chatbox');
-
-while($selecting = mysql_fetch_array($select)){
-    echo $selecting['message'];
-    echo "</br>";
-}
-
-mysql_close();
-?>

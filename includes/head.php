@@ -35,9 +35,5 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-<!-- Voor subpagina's -->
-<link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
-<!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
+<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="js/chat_script.js" type="text/javascript"></script>
