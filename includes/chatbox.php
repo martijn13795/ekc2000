@@ -9,16 +9,17 @@ if ($_POST['message'] == null || $_POST['message'] == ""){
 
     if(mysql_query("INSERT INTO chatbox (message) VALUES ('$message')")) {
         echo "Successfully";
+        $select = mysql_query('SELECT * FROM chatbox');
+
+        while ($selecting = mysql_fetch_array($select)) {
+            echo $selecting['message'];
+            echo "</br>";
+        }
     }else {
         echo "insertion failed";
     }
 
-//    $select = mysql_query('SELECT * FROM chatbox');
-//
-//    while ($selecting = mysql_fetch_array($select)) {
-//        echo $selecting['message'];
-//        echo "</br>";
-//    }
+
 }
 
 mysql_close();

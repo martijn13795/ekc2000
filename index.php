@@ -106,7 +106,7 @@
                             <div class="input-group">
                                 <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
                             <span class="input-group-btn">
-                                <button id="sub" type="submit" class="btn btn-primary btn-sm">Verstuur</button
+                                <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button
                             </span>
                             </div>
                             </form>

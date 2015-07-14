@@ -1,9 +1,12 @@
-$("#sub").click( function() {
-    $.post( $("#chat").attr("action"),
-        $("#chat :input").serializeArray(),
-        function(info){ $("#result").html(info);
-        });
-    clearInput();
+$(document).ready(function() {
+    $("#sub").click(function () {
+        $.post($("#chat").attr("action"),
+            $("#chat :input").serializeArray(),
+            function (info) {
+                $("#result").html(info);
+            });
+        clearInput();
+    });
 });
 
 $("#chat").submit( function() {
