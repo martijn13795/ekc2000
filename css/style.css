@@ -228,6 +228,18 @@ Chatbox
     border-bottom: 1px dotted #B3A9A9;
 }
 
+.panel-body #chat {
+    height:650px;
+    width:600px;
+    overflow-y: scroll;
+    margin:40px auto;
+}
+#chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
 .chat li.left .chat-body
 {
     margin-left: 60px;
@@ -331,15 +343,6 @@ h1 {
 .footer .fa {
     margin-top: -15px;
     font-size: 30px;
-}
-
-textarea#styled {
-    background-image: url(/images/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-    opacity: 0.4;
-    margin-bottom: 15px;
 }
 
 .grayBar {

@@ -83,35 +83,59 @@
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
                         </div>
+                        <?php include_once('db.php'); ?>
                         <div class="panel-body">
-                            <ul class="chat">
-                                <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
-                        </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>1 day ago</small>
-                                            <strong class="pull-right primary-font">Martijn Posthuma</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                            dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
+                            <ul id="chat" class="chat">
+                                <?php
+                                $servername = "192.168.1.145";
+                                $username = "ekc2000";
+                                $password = "xH2b8C5PnajhnXJ5";
+                                $dbName = "ekc2000";
+
+                                $conn = mysql_connect($servername, $username, $password);
+
+                                if (!$conn) {
+                                    die("connection failed: " .mysql_error());
+                                }
+
+                                $db_selected = mysql_select_db("ekc2000", $conn);
+
+                                if (!$db_selected) {
+                                    die('kan de database niet vinden' . mysql_error());
+                                }
+
+                                $select = mysql_query('SELECT * FROM chatbox') or die(mysql_error());
+
+                                    while ($selecting = mysql_fetch_array($select)) {
+                                        echo '<li class="right clearfix">
+                                                <span class="chat-img pull-right">
+                                                    <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
+                                                </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $selecting['dateTime'] . '</small>
+                                                        <strong class="pull-right primary-font">' . $selecting['userID'] . '</strong>
+                                                </div>
+                                                    <p>
+                                                        ' . $selecting['message'] . '
+                                                    </p>
+                                                </div>
+                                              </li>';
+                                    }
+                                ?>
+                                <span id="result"></span>
                             </ul>
                         </div>
                         <div class="panel-footer">
                             <form id="chat" action="/includes/chatbox.php" method="post">
-                            <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
-                            <span class="input-group-btn">
-                                <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button
-                            </span>
-                            </div>
+                                <div class="input-group">
+                                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
+                                    <span class="input-group-btn">
+                                        <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button
+                                    </span>
+                                </div>
                             </form>
                         </div>
-                        <span id="result"></span>
                     </div>
                 </div>
                 <div class="col-md-4 col-xs-12">
@@ -120,3 +144,20 @@
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
         </div>
+            <script type="text/javascript">
+                function chat() {
+                    var ActualscrollHeight = document.getElementById("chat").clientHeight;
+                    var down = true;
+                    setInterval(function () {
+                        var scrollHeight = document.getElementById("chat").scrollTop;
+                        if (scrollHeight == 0) {
+                            down = true;
+                        } else if (scrollHeight >= ActualscrollHeight) {
+                            down = false;
+                        }
+                        scrollHeight = (!down) ? scrollHeight + 1 : scrollHeight + 1;
+                        document.getElementById("chat").scrollTop = scrollHeight;
+                    }, 3);
+                }
+                chat();
+            </script>
