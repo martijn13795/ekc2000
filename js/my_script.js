@@ -53,6 +53,7 @@ function clearInput() {
 
 //Refresh function
 $(document).ready(function() {
+    $('#chatRefresh').load('/includes/chatRefresh.php');
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php')
     }, 5000);
@@ -61,6 +62,7 @@ $(document).ready(function() {
 //Omlaag scroll functtie
 $(document).ready(function() {
     function chat() {
+        document.getElementById("panel-body").delay(1000).scrollTop = 8000000;
         var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
         var down = true;
         setInterval(function () {
@@ -70,9 +72,9 @@ $(document).ready(function() {
             } else if (scrollHeight >= ActualscrollHeight) {
                 down = false;
             }
-            scrollHeight = (!down) ? scrollHeight + 4000 : scrollHeight + 4000;
+            scrollHeight = (!down) ? scrollHeight + 20 : scrollHeight + 20;
             document.getElementById("panel-body").scrollTop = scrollHeight;
-        }, 5);
+        }, 5000);
     }
     chat();
 });

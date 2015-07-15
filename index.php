@@ -84,6 +84,22 @@
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
                         </div>
                         <div id="panel-body" class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix" class="chat">
+                                                    <span class="chat-img pull-left">
+                                                        <img src="/images/logoChat.png" alt="User Avatar" class="img-circle avatar" />
+                                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">EKC 2000</strong> <small class="pull-right text-muted">
+                                                <span class="glyphicon glyphicon-time"></span>2015-07-14 16:11:15</small>
+                                        </div>
+                                        <h1>
+                                            Welkom bij de chatbox van EKC 2000
+                                        </h1>
+                                    </div>
+                                </li>
+                            </ul>
                             <ul id="chatRefresh" class="chat">
                                 <!--Wordt ingeladen-->
                             </ul>
