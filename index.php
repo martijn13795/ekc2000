@@ -86,12 +86,8 @@
                         <div id="panel-body" class="panel-body">
                             <ul id="chatRefresh" class="chat">
                                 <script type="text/javascript">
-                                    $(document).ready(function() {
-                                        setInterval(function chatRefresh() {
-                                            $('#chatRefresh').load('/includes/chatRefresh.php')
-                                        }, 5000);
-                                    });
-                                    $("#input").ForceAlphaNumericOnly();
+
+                                    $('#chatRefresh').refresh();
                                 </script>
                                 <span id="results"></span>
                                 <span id="result"></span>

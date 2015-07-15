@@ -34,3 +34,10 @@ function clearInput() {
         $(this).val('');
     });
 }
+
+$(document).ready(function() {
+    function refresh{
+    setInterval(function chatRefresh() {
+        $('#chatRefresh').load('/includes/chatRefresh.php')
+    }, 5000);
+})};
