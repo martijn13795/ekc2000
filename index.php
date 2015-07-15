@@ -86,7 +86,7 @@
                         <div id="panel-body" class="panel-body">
                             <ul id="chatRefresh" class="chat">
                                 <script type="text/javascript">
-                                    setInterval(function chatRefresh();
+                                    setInterval(function chatRefresh()
                                 </script>
                                 <span id="results"></span>
                                 <span id="result"></span>
