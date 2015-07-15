@@ -18,7 +18,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=echoActiveClassIfRequestMatches("home"); echoActiveClassIfRequestMatches("index"); echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("vereniging"); echoActiveClassIfRequestMatches("sponsoren")?>>
+                <li class="closed" <?=echoActiveClassIfRequestMatches("vereniging"); echoActiveClassIfRequestMatches("sponsoren")?>>
                     <a href="/vereniging" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/vereniging">Over de club</a></li>
@@ -36,7 +36,7 @@
 
                 <li <?=echoActiveClassIfRequestMatches("documenten")?>><a href="/documenten">Documenten</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("competitie")?>>
+                <li class="closed" <?=echoActiveClassIfRequestMatches("competitie")?>>
                     <a href="/competitie" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/competitie">Teams</a></li>
