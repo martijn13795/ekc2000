@@ -14,10 +14,17 @@ if($_POST['message'] == null || $_POST['message'] == "" || $_POST['message'] == 
     } else {
 
         if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
-
+            ?>
+            <script type="text/javascript">
+                $("input").prop('disabled', true);
+                function disabledFalse(){$("input").prop('disabled', false);}
+                setTimeout(disabledFalse,4500);
+            </script>
+                <?php
         } else {
             echo "Er ging iets mis";
         }
     }
 }
 mysql_close();
+?>

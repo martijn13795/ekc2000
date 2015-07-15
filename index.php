@@ -85,7 +85,7 @@
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
-                                <li class="left clearfix" class="chat">
+                                <li class="left clearfix">
                                                     <span class="chat-img pull-left">
                                                         <img src="/images/logoChat.png" alt="User Avatar" class="img-circle avatar" />
                                                     </span>

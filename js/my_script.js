@@ -17,6 +17,7 @@ $(document).ready(function() {
             $("#chat :input").serializeArray(),
             function (info) {
                 $("#result").html(info);
+                document.getElementById("panel-body").scrollTop = 80000000;
             });
         clearInput();
     });
@@ -32,11 +33,11 @@ $(document).ready(function(){
     $("input").keypress(function (e) {
         var k = e.keyCode || e.which;
         if (k == 13) {
-
             $.post($("#chat").attr("action"),
                 $("#chat :input").serializeArray(),
                 function (info) {
                     $("#result").html(info);
+                    document.getElementById("panel-body").scrollTop = 80000000;
                 });
             clearInput();
             return false;
@@ -51,30 +52,25 @@ function clearInput() {
     });
 }
 
-//Refresh function
+//Refresh function met scroll down functie
 $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
-    setInterval(function chatRefresh() {
-        $('#chatRefresh').load('/includes/chatRefresh.php')
-    }, 5000);
-});
-
-//Omlaag scroll functtie
-$(document).ready(function() {
+    function scrollToBottom(){document.getElementById("panel-body").scrollTop = 80000000;}
+    setTimeout(scrollToBottom,100);
     function chat() {
-        document.getElementById("panel-body").delay(1000).scrollTop = 8000000;
         var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
         var down = true;
-        setInterval(function () {
             var scrollHeight = document.getElementById("panel-body").scrollTop;
             if (scrollHeight == 0) {
                 down = true;
             } else if (scrollHeight >= ActualscrollHeight) {
                 down = false;
             }
-            scrollHeight = (!down) ? scrollHeight + 20 : scrollHeight + 20;
+            scrollHeight = (!down) ? scrollHeight + 200 : scrollHeight + 200;
             document.getElementById("panel-body").scrollTop = scrollHeight;
-        }, 5000);
     }
-    chat();
+    setInterval(function chatRefresh() {
+        $('#chatRefresh').load('/includes/chatRefresh.php');
+        setTimeout(chat,100)
+    }, 5000);
 });
