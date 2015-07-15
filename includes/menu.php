@@ -1,6 +1,3 @@
-<head>
-    <?php include 'head.php';?>
-</head>
 <div id="menuHeader" class="hidden-xs">
     <div class="container">
         <div class="row">
@@ -19,12 +16,13 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li <?=echoActiveClassIfRequestMatches("home")?><?=echoActiveClassIfRequestMatches("index")?><?=echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
+                <li <?=echoActiveClassIfRequestMatches("home"); echoActiveClassIfRequestMatches("index"); echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("vereniging")?>>
+                <li <?=echoActiveClassIfRequestMatches("vereniging"); echoActiveClassIfRequestMatches("sponsoren")?>>
                     <a href="/vereniging" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="/vereniging">Over de club</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
                         <li><a href="/vereniging">Bestuur</a></li>
                         <li><a href="/vereniging">Commissies</a></li>
                         <li><a href="/vereniging">lid worden</a></li>
@@ -37,8 +35,6 @@
                 <li <?=echoActiveClassIfRequestMatches("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
 
                 <li <?=echoActiveClassIfRequestMatches("documenten")?>><a href="/documenten">Documenten</a></li>
-
-                <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
 
                 <li <?=echoActiveClassIfRequestMatches("competitie")?>>
                     <a href="/competitie" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
