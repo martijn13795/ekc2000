@@ -32,4 +32,3 @@ if ($_POST['message'] == null || $_POST['message'] == ""){
     }
 }
 mysql_close();
-?>
