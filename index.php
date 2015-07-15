@@ -85,9 +85,9 @@
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul id="chatRefresh" class="chat">
-                                <span id="results"></span>
-                                <span id="result"></span>
+                                <!--Wordt ingeladen-->
                             </ul>
+                            <span id="result"></span>
                         </div>
                         <div class="panel-footer">
                             <form id="chat" action="/includes/chatbox.php" method="post">

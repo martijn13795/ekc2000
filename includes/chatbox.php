@@ -4,31 +4,20 @@
     $message = $_POST['message'];
     $date = $mysql_date_now = date("Y-m-d H:i:s");
 
-if ($_POST['message'] == null || $_POST['message'] == ""){
-    echo "voer een bericht in";
+if($_POST['message'] == null || $_POST['message'] == "" || $_POST['message'] == " ") {
+    echo "<h3>Voer een bericht in</h3>";
 }else {
+    if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_']+$#", $message)) {
+        $message = null;
+        echo "<h3>Voer een geldig bericht in</h3></br>";
+        echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) / : - _ @ % &";
+    } else {
 
-    if(mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
-        $select = mysql_query('SELECT * FROM chatbox ORDER BY messageID DESC') or die(mysql_error());
+        if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
 
-        while ($selecting = mysql_fetch_array($select)) {
-            echo '<li class="right clearfix">
-                                                <span class="chat-img pull-right">
-                                                    <img src="/images/user.jpg" alt="User Avatar" class="img-circle avatar" />
-                                                </span>
-                                                <div class="chat-body clearfix">
-                                                    <div class="header">
-                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $selecting['dateTime'] . '</small>
-                                                        <strong class="pull-right primary-font">' . $selecting['userID'] . '</strong>
-                                                </div>
-                                                    <p>
-                                                        ' . $selecting['message'] . '
-                                                    </p>
-                                                </div>
-                                              </li>';break;
+        } else {
+            echo "Er ging iets mis";
         }
-    }else {
-        echo "insertion failed";
     }
 }
 mysql_close();
