@@ -85,10 +85,6 @@
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul id="chatRefresh" class="chat">
-                                <script type="text/javascript">
-
-                                    $('#chatRefresh').refresh();
-                                </script>
                                 <span id="results"></span>
                                 <span id="result"></span>
                             </ul>
@@ -111,20 +107,3 @@
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
         </div>
-            <script type="text/javascript">
-                function chat() {
-                    var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
-                    var down = true;
-                    setInterval(function () {
-                        var scrollHeight = document.getElementById("panel-body").scrollTop;
-                        if (scrollHeight == 0) {
-                            down = true;
-                        } else if (scrollHeight >= ActualscrollHeight) {
-                            down = false;
-                        }
-                        scrollHeight = (!down) ? scrollHeight + 4000 : scrollHeight + 4000;
-                        document.getElementById("panel-body").scrollTop = scrollHeight;
-                    }, 5);
-                }
-                chat();
-            </script>

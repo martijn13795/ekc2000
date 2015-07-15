@@ -36,8 +36,25 @@ function clearInput() {
 }
 
 $(document).ready(function() {
-    function refresh{
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php')
     }, 5000);
-})};
+});
+
+$(document).ready(function() {
+    function chat() {
+        var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
+        var down = true;
+        setInterval(function () {
+            var scrollHeight = document.getElementById("panel-body").scrollTop;
+            if (scrollHeight == 0) {
+                down = true;
+            } else if (scrollHeight >= ActualscrollHeight) {
+                down = false;
+            }
+            scrollHeight = (!down) ? scrollHeight + 4000 : scrollHeight + 4000;
+            document.getElementById("panel-body").scrollTop = scrollHeight;
+        }, 5);
+    }
+    chat();
+})
