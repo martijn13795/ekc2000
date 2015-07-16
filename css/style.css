@@ -367,3 +367,11 @@ h1 {
 .bestuurDiv h3 {
     margin-top: -10px;
 }
+
+.commissieDiv h3 {
+    margin-top: -10px;
+}
+
+.commissieDiv {
+    min-height: 200px;
+}
