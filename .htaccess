@@ -24,6 +24,14 @@ RewriteRule ^inloggen sub-pagina/inloggen.php [NC,L]
 
 RewriteRule ^nieuws sub-pagina/nieuws.php [NC,L]
 
+RewriteRule ^over-de-club sub-pagina/over-de-club.php [NC,L]
+
 RewriteRule ^sponsoren sub-pagina/sponsoren.php [NC,L]
 
-RewriteRule ^vereniging sub-pagina/vereniging.php [NC,L]
+RewriteRule ^bestuur sub-pagina/bestuur.php [NC,L]
+
+RewriteRule ^commissies sub-pagina/commissies.php [NC,L]
+
+RewriteRule ^contact sub-pagina/contact.php [NC,L]
+
+RewriteRule ^lid-worden sub-pagina/lid-worden.php [NC,L]

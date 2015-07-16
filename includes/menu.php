@@ -16,17 +16,17 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li <?=echoActiveClassIfRequestMatches("home"), echoActiveClassIfRequestMatches("index"), echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
+                <li <?=echoActiveClassIfRequestMatches("home"),echoActiveClassIfRequestMatches("index"),echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("vereniging"), echoActiveClassIfRequestMatches("sponsoren")?> class="closed">
+                <li <?=echoActiveClassIfRequestMatches("over-de-club"),echoActiveClassIfRequestMatches("sponsoren"),echoActiveClassIfRequestMatches("bestuur"),echoActiveClassIfRequestMatches("commissies"),echoActiveClassIfRequestMatches("lid-worden"),echoActiveClassIfRequestMatches("contact")?> class="closed">
                     <a href="/vereniging" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/vereniging">Over de club</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
                         <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
-                        <li><a href="/vereniging">Bestuur</a></li>
-                        <li><a href="/vereniging">Commissies</a></li>
-                        <li><a href="/vereniging">lid worden</a></li>
-                        <li><a href="/vereniging">Contact</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("bestuur")?>><a href="/bestuur">Bestuur</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("commissies")?>><a href="/commissies">Commissies</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("lid-worden")?>><a href="/lid-worden">lid worden</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
                 </li>
 
