@@ -14,6 +14,7 @@ $(document).ready(function() {
             $("#chat :input").serializeArray(),
             function (info) {
                 $("#result").html(info);
+                jQuery('#remaining').html("");
                 document.getElementById("panel-body").scrollTop = 80000000;
             });
         clearInput();
