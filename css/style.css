@@ -349,4 +349,7 @@ h1 {
 #timer {
    text-align: right;
     display: block;
+    margin-top: -20px;
+    margin-bottom: 5px;
+    word-spacing: -11px;
 }

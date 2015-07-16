@@ -78,17 +78,16 @@ $(document).ready(function() {
 $(document).ready(function() {
     var count=5;
 
-    setInterval(timer, 1000); //1000 will  run it every 1 second
+    setInterval(timer, 800); //1000 will  run it every 1 second
 
     function timer()
     {
+        document.getElementById("timer").innerHTML=" Refresh in: " + count;
         count=count-1;
-        if (count <= 0)
+        if (count <= -1)
         {
             count = 5;
             return;
         }
-
-        document.getElementById("timer").innerHTML="Refresh in " + count;
     }timer();
 });
