@@ -74,3 +74,21 @@ $(document).ready(function() {
         setTimeout(chat,100)
     }, 5000);
 });
+
+$(document).ready(function() {
+    var count=6;
+
+    setInterval(timer, 900); //1000 will  run it every 1 second
+
+    function timer()
+    {
+        count=count-1;
+        if (count <= -1)
+        {
+            count = 6;
+            return;
+        }
+
+        document.getElementById("timer").innerHTML="Refresh in " + count;
+    }timer();
+});

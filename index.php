@@ -82,6 +82,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
+                            <span id="timer" class="glyphicon glyphicon-time"></span>
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
