@@ -81,8 +81,10 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox
-                            <span id="timer" class="glyphicon glyphicon-time"></span>
+                            <div class="row">
+                                <div class="col-md-8 col-xs-8"><span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox</div>
+                                <div class="col-md-4 col-xs-4"><span id="timer" class="glyphicon glyphicon-time"></span></div>
+                            </div>
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
