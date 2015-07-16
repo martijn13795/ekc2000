@@ -16,9 +16,11 @@ if($_POST['message'] == null || $_POST['message'] == "" || $_POST['message'] == 
         if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
             ?>
             <script type="text/javascript">
+                function scrollToBottom(){document.getElementById("panel-body").scrollTop = 80000000;}
                 $("input").prop('disabled', true);
                 function disabledFalse(){$("input").prop('disabled', false);}
                 setTimeout(disabledFalse,4500);
+                setTimeout(scrollToBottom,5100);
             </script>
                 <?php
         } else {
