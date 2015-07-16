@@ -56,7 +56,7 @@ function clearInput() {
 $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
     function scrollToBottom(){document.getElementById("panel-body").scrollTop = 80000000;}
-    setTimeout(scrollToBottom,100);
+    setTimeout(scrollToBottom,200);
     function chat() {
         var ActualscrollHeight = document.getElementById("panel-body").clientHeight;
         var down = true;
@@ -71,7 +71,7 @@ $(document).ready(function() {
     }
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php');
-        setTimeout(chat,100)
+        setTimeout(chat,200)
     }, 5000);
 });
 
