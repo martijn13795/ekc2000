@@ -95,7 +95,7 @@
                                     <div class="chat-body clearfix">
                                         <div class="header">
                                             <strong class="primary-font">EKC 2000</strong> <small class="pull-right text-muted">
-                                                <span class="glyphicon glyphicon-time"></span>2015-07-14 16:11:15</small>
+                                                <span class="glyphicon glyphicon-time"></span>2015-07-10 13:13:00</small>
                                         </div>
                                         <h1>
                                             Welkom bij de chatbox van EKC 2000
