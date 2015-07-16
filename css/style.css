@@ -223,6 +223,7 @@ Chatbox
 
 .chat li
 {
+    word-wrap: break-word;
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #B3A9A9;
