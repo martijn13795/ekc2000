@@ -356,3 +356,14 @@ h1 {
     margin-top: 15px;
     margin-bottom: 0px;
 }
+
+.bestuurDiv img {
+    float: left;
+    margin-right: 10px;
+    max-width: 125px;
+    height: 150px;
+}
+
+.bestuurDiv h3 {
+    margin-top: -10px;
+}
