@@ -76,7 +76,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    var count=6;
+    var count=5;
 
     setInterval(timer, 1000); //1000 will  run it every 1 second
 
@@ -85,7 +85,7 @@ $(document).ready(function() {
         count=count-1;
         if (count <= 0)
         {
-            count = 6;
+            count = 5;
             return;
         }
 
