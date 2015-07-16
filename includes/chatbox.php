@@ -22,6 +22,7 @@ if($_POST['message'] == null || $_POST['message'] == "" || $_POST['message'] == 
                 setTimeout(disabledFalse,4500);
                 $('#chatRefresh').load('/includes/chatRefresh.php');
                 setTimeout(scrollToBottom,100);
+                jQuery('#remaining').html("");
             </script>
                 <?php
         } else {
