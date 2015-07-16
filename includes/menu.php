@@ -19,7 +19,7 @@
                 <li <?=echoActiveClassIfRequestMatches("home"),echoActiveClassIfRequestMatches("index"),echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
 
                 <li <?=echoActiveClassIfRequestMatches("over-de-club"),echoActiveClassIfRequestMatches("sponsoren"),echoActiveClassIfRequestMatches("bestuur"),echoActiveClassIfRequestMatches("commissies"),echoActiveClassIfRequestMatches("lid-worden"),echoActiveClassIfRequestMatches("contact")?> class="closed">
-                    <a href="/vereniging" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=echoActiveClassIfRequestMatches("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
                         <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
@@ -36,16 +36,16 @@
 
                 <li <?=echoActiveClassIfRequestMatches("documenten")?>><a href="/documenten">Documenten</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("competitie")?> class="closed">
-                    <a href="/competitie" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
+                <li <?=echoActiveClassIfRequestMatches("teams"),echoActiveClassIfRequestMatches("wedstrijdschema"),echoActiveClassIfRequestMatches("standen"),echoActiveClassIfRequestMatches("uitslagen"),echoActiveClassIfRequestMatches("webstrijd-verslagen"),echoActiveClassIfRequestMatches("trainingstijden"),echoActiveClassIfRequestMatches("kantinedienst")?> class="closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/competitie">Teams</a></li>
-                        <li><a href="/competitie">Wedstrijdschema</a></li>
-                        <li><a href="/competitie">Standen</a></li>
-                        <li><a href="/competitie">Uitslagen</a></li>
-                        <li><a href="/competitie">Wedstrijd verslagen</a></li>
-                        <li><a href="/competitie">Trainingstijden</a></li>
-                        <li><a href="/competitie">Kantinedienst</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("teams")?>><a href="/teams">Teams</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("wedstrijdschema")?>><a href="/wedstrijdschema">Wedstrijdschema</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("standen")?>><a href="/standen">Standen</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("wedstrijd-verslagen")?>><a href="/wedstrijd-verslagen">Wedstrijd verslagen</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
+                        <li <?=echoActiveClassIfRequestMatches("kantinedienst")?>><a href="/kantinedienst">Kantinedienst</a></li>
                     </ul>
                 </li>
                 <li <?=echoActiveClassIfRequestMatches("inloggen")?>><a href="/inloggen"><i class="fa fa-sign-in"></i> Inloggen</a></li>
