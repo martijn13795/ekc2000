@@ -84,7 +84,7 @@ $(document).ready(function() {
     {
         document.getElementById("timer").innerHTML=" Refresh in: " + count;
         count=count-1;
-        if (count <= -1)
+        if (count <= 0)
         {
             count = 5;
             return;
