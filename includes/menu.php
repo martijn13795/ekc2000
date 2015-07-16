@@ -16,39 +16,39 @@
         </div>
         <div class="collapse navbar-collapse navbar-menubuilder">
             <ul class="nav navbar-nav navbar-left">
-                <li <?=echoActiveClassIfRequestMatches("home"),echoActiveClassIfRequestMatches("index"),echoActiveClassIfRequestMatches("")?>><a href="/home">Home</a></li>
+                <li <?=activeClass("home"),activeClass("index"),activeClass("")?>><a href="/home">Home</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("over-de-club"),echoActiveClassIfRequestMatches("sponsoren"),echoActiveClassIfRequestMatches("bestuur"),echoActiveClassIfRequestMatches("commissies"),echoActiveClassIfRequestMatches("lid-worden"),echoActiveClassIfRequestMatches("contact")?> class="closed">
+                <li <?=activeClass("over-de-club"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("lid-worden"),activeClass("contact")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li <?=echoActiveClassIfRequestMatches("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("bestuur")?>><a href="/bestuur">Bestuur</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("commissies")?>><a href="/commissies">Commissies</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("lid-worden")?>><a href="/lid-worden">lid worden</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("contact")?>><a href="/contact">Contact</a></li>
+                        <li <?=activeClass("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
+                        <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
+                        <li <?=activeClass("bestuur")?>><a href="/bestuur">Bestuur</a></li>
+                        <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
+                        <li <?=activeClass("lid-worden")?>><a href="/lid-worden">lid worden</a></li>
+                        <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
                 </li>
 
-                <li <?=echoActiveClassIfRequestMatches("nieuws")?>><a href="/nieuws">Nieuws</a></li>
+                <li <?=activeClass("nieuws")?>><a href="/nieuws">Nieuws</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
+                <li <?=activeClass("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("documenten")?>><a href="/documenten">Documenten</a></li>
+                <li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("teams"),echoActiveClassIfRequestMatches("wedstrijdschema"),echoActiveClassIfRequestMatches("standen"),echoActiveClassIfRequestMatches("uitslagen"),echoActiveClassIfRequestMatches("wedstrijd-verslagen"),echoActiveClassIfRequestMatches("trainingstijden"),echoActiveClassIfRequestMatches("kantinedienst")?> class="closed">
+                <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("wedstrijd-verslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li <?=echoActiveClassIfRequestMatches("teams")?>><a href="/teams">Teams</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("wedstrijdschema")?>><a href="/wedstrijdschema">Wedstrijdschema</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("standen")?>><a href="/standen">Standen</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("wedstrijd-verslagen")?>><a href="/wedstrijd-verslagen">Wedstrijd verslagen</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
-                        <li <?=echoActiveClassIfRequestMatches("kantinedienst")?>><a href="/kantinedienst">Kantinedienst</a></li>
+                        <li <?=activeClass("teams")?>><a href="/teams">Teams</a></li>
+                        <li <?=activeClass("wedstrijdschema")?>><a href="/wedstrijdschema">Wedstrijdschema</a></li>
+                        <li <?=activeClass("standen")?>><a href="/standen">Standen</a></li>
+                        <li <?=activeClass("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
+                        <li <?=activeClass("wedstrijd-verslagen")?>><a href="/wedstrijd-verslagen">Wedstrijd verslagen</a></li>
+                        <li <?=activeClass("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
+                        <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Kantinedienst</a></li>
                     </ul>
                 </li>
-                <li <?=echoActiveClassIfRequestMatches("inloggen")?>><a href="/inloggen"><i class="fa fa-sign-in"></i> Inloggen</a></li>
+                <li <?=activeClass("inloggen")?>><a href="/inloggen"><i class="fa fa-sign-in"></i> Inloggen</a></li>
             </ul>
         </div>
     </div>

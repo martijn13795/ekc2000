@@ -1,6 +1,6 @@
 <?php
 
-function echoActiveClassIfRequestMatches($requestUri)
+function activeClass($requestUri)
 {
     $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
 
