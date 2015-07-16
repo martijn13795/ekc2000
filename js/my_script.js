@@ -78,7 +78,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     var count=5;
 
-    setInterval(timer, 800); //1000 will  run it every 1 second
+    setInterval(timer, 1000); //1000 will  run it every 1 second
 
     function timer()
     {
