@@ -78,12 +78,12 @@ $(document).ready(function() {
 $(document).ready(function() {
     var count=6;
 
-    setInterval(timer, 800); //1000 will  run it every 1 second
+    setInterval(timer, 1000); //1000 will  run it every 1 second
 
     function timer()
     {
         count=count-1;
-        if (count <= -1)
+        if (count <= 0)
         {
             count = 6;
             return;
