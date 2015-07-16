@@ -20,7 +20,8 @@ if($_POST['message'] == null || $_POST['message'] == "" || $_POST['message'] == 
                 $("input").prop('disabled', true);
                 function disabledFalse(){$("input").prop('disabled', false);}
                 setTimeout(disabledFalse,4500);
-                setTimeout(scrollToBottom,5100);
+                $('#chatRefresh').load('/includes/chatRefresh.php');
+                setTimeout(scrollToBottom,100);
             </script>
                 <?php
         } else {
