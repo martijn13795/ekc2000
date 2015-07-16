@@ -107,11 +107,12 @@
                                 <!--Wordt ingeladen-->
                             </ul>
                             <span id="result"></span>
+                            <span id="remaining"></span>
                         </div>
                         <div class="panel-footer">
                             <form id="chat" action="/includes/chatbox.php" method="post">
                                 <div class="input-group">
-                                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
+                                    <input id="message btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="type je bericht hier..." />
                                     <span class="input-group-btn">
                                         <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button
                                     </span>

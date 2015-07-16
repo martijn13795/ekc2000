@@ -351,3 +351,8 @@ h1 {
     display: block;
     word-spacing: -11px;
 }
+
+#remaining p {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}

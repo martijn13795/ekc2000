@@ -75,3 +75,15 @@ $(document).ready(function() {
         }
     }timer();
 });
+
+function updateCountdown() {
+    // 140 is the max message length
+    var remaining = 140 - jQuery('input').val().length;
+    jQuery('#remaining').html("<p>"+remaining+" characters over</p>");
+    document.getElementById("panel-body").scrollTop = 80000000;
+}
+
+jQuery(document).ready(function($) {
+    $('input').change(updateCountdown);
+    $('input').keyup(updateCountdown);
+});
