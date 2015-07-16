@@ -36,7 +36,7 @@
 
                 <li <?=echoActiveClassIfRequestMatches("documenten")?>><a href="/documenten">Documenten</a></li>
 
-                <li <?=echoActiveClassIfRequestMatches("teams"),echoActiveClassIfRequestMatches("wedstrijdschema"),echoActiveClassIfRequestMatches("standen"),echoActiveClassIfRequestMatches("uitslagen"),echoActiveClassIfRequestMatches("webstrijd-verslagen"),echoActiveClassIfRequestMatches("trainingstijden"),echoActiveClassIfRequestMatches("kantinedienst")?> class="closed">
+                <li <?=echoActiveClassIfRequestMatches("teams"),echoActiveClassIfRequestMatches("wedstrijdschema"),echoActiveClassIfRequestMatches("standen"),echoActiveClassIfRequestMatches("uitslagen"),echoActiveClassIfRequestMatches("wedstrijd-verslagen"),echoActiveClassIfRequestMatches("trainingstijden"),echoActiveClassIfRequestMatches("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=echoActiveClassIfRequestMatches("teams")?>><a href="/teams">Teams</a></li>
