@@ -21,6 +21,11 @@
 <link rel="icon" type="image/png" href="/images/favicon/favicon-16x16.png" sizes="16x16">
 <link rel="manifest" href="/images/favicon/manifest.json">
 <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+
+<!--dit is voor de fotogalerij-->
+<link rel="stylesheet" href="../css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="../css/bootstrap-image-gallery.css">
+
 <meta name="msapplication-TileColor" content="#2b5797">
 <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
 <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">

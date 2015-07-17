@@ -375,3 +375,26 @@ h1 {
 .commissieDiv {
     min-height: 200px;
 }
+
+.modal {
+    overflow: auto;
+    color: #333;
+}
+
+.galerijImg {
+    float: left;
+    width: 200px;
+    height: 200px;
+}
+
+#links {
+    float: left;
+}
+
+.fa-chevron-left {
+    font-size: 25px;
+}
+
+.blueimp-gallery>.slides>.slide>.slide-content {
+    width: null;
+}
