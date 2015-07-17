@@ -22,7 +22,7 @@
             </div>
         </form>
         </br>
-        <div id="links">
+        <div id="links" class="hidden-xs">
             <div class="galerijImg">
                 <a href="../images/fotogalerij/Club%20foto.jpg" title="Club foto" data-gallery>
                     <img src="../images/fotogalerij/Club%20foto.jpg" alt="Club foto" class="img-responsive">
