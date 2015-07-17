@@ -2,7 +2,7 @@
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
-        <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive" srcset="../images/fotogalerij/clubFoto.jpg 1919w, ../images/fotogalerij/clubFoto-medium.jpg 1080w" sizes="(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw">
+        <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive" srcset="../images/fotogalerij/clubFoto.jpg 1919w, ../images/fotogalerij/clubFoto-medium.jpg 10w" sizes="(min-width: 1919px) 300px, (min-width: 10px) 50vw, 100vw">
         <hr>
         <form class="form-inline">
             <div class="form-group">
