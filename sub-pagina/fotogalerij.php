@@ -3,10 +3,10 @@
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
 
-        <img src="../images/fotogalerij/ballonen-medium.jpg"
-             data-src-960px="../images/fotogalerij/clubFoto.jpg"
-             data-src-1260px="../images/fotogalerij/clubFotoJuigen.jpg"
-             alt="ballonen" class="change img-responsive"/>
+<!--        <img src="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--             data-src-320px="../images/fotogalerij/clubFoto.jpg"-->
+<!--             data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg"-->
+<!--             alt="ballonen" class="change img-responsive"/>-->
 
         <hr>
         <form class="form-inline">
@@ -29,34 +29,34 @@
         </form>
         </br>
         <div id="links">
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
-                    <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive">
+                    <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive"/>
                 </a>
             </div>
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>
-                    <img src="../images/fotogalerij/clubFotoGroot.jpg" alt="Club foto groot" class="img-responsive">
+                    <img src="../images/fotogalerij/clubFotoGroot.jpg" alt="Club foto groot" class="img-responsive"/>
                 </a>
             </div>
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>
-                    <img src="../images/fotogalerij/clubFotoJuigen.jpg" alt="Club foto juigen" class="img-responsive">
+                    <img src="../images/fotogalerij/clubFotoJuigen.jpg" alt="Club foto juigen" class="img-responsive"/>
                 </a>
             </div>
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>
-                    <img src="../images/fotogalerij/speech.jpg" alt="Speech" class="img-responsive">
+                    <img src="../images/fotogalerij/speech.jpg" alt="Speech" class="img-responsive"/>
                 </a>
             </div>
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>
-                    <img src="../images/fotogalerij/speech2.jpg" alt="Speech2" class="img-responsive">
+                    <img src="../images/fotogalerij/speech2.jpg" alt="Speech2" class="img-responsive"/>
                 </a>
             </div>
-            <div class="galerijImg">
+            <div class="col-md-3 galerijImg">
                 <a href="../images/fotogalerij/Ballonen.jpg" title="Ballonen" data-gallery>
-                    <img src="../images/fotogalerij/Ballonen.jpg" alt="Ballonen" class="img-responsive">
+                    <img src="../images/fotogalerij/Ballonen.jpg" alt="Ballonen" class="img-responsive"/>
                 </a>
             </div>
         </div>

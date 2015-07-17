@@ -382,9 +382,15 @@ h1 {
 }
 
 .galerijImg {
-    float: left;
-    width: 200px;
+    overflow: hidden;
+    padding-right: 0px;
+    padding-left: 0px;
     height: 200px;
+    /*width: 25%;*/
+}
+
+.galerijImg img {
+    /*display:none;*/
 }
 
 #links {
