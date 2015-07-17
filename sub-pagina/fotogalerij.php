@@ -2,6 +2,7 @@
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
+        <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive" srcset="../images/fotogalerij/clubFoto.jpg 1919w, ../images/fotogalerij/clubFoto-medium.jpg 1080w" sizes="(min-width: 1080px) 300px, (min-width: 640px) 50vw, 100vw">
         <hr>
         <form class="form-inline">
             <div class="form-group">
@@ -24,18 +25,18 @@
         </br>
         <div id="links">
             <div class="galerijImg">
-                <a href="../images/fotogalerij/Club%20foto.jpg" title="Club foto" data-gallery>
-                    <img src="../images/fotogalerij/Club%20foto.jpg" alt="Club foto" class="img-responsive">
+                <a href="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
+                    <img src="../images/fotogalerij/clubFoto.jpg" alt="Club foto" class="img-responsive">
                 </a>
             </div>
             <div class="galerijImg">
-                <a href="../images/fotogalerij/Club%20foto%20groot.jpg" title="Club foto groot" data-gallery>
-                    <img src="../images/fotogalerij/Club%20foto%20groot.jpg" alt="Club foto groot" class="img-responsive">
+                <a href="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>
+                    <img src="../images/fotogalerij/clubFotoGroot.jpg" alt="Club foto groot" class="img-responsive">
                 </a>
             </div>
             <div class="galerijImg">
-                <a href="../images/fotogalerij/Club%20foto%20juigen.jpg" title="Club foto juigen" data-gallery>
-                    <img src="../images/fotogalerij/Club%20foto%20juigen.jpg" alt="Club foto juigen" class="img-responsive">
+                <a href="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>
+                    <img src="../images/fotogalerij/clubFotoJuigen.jpg" alt="Club foto juigen" class="img-responsive">
                 </a>
             </div>
             <div class="galerijImg">
