@@ -28,3 +28,26 @@ $(document).ready(function () {
 
     });
 });
+
+$(document).ready(function() {
+    var mqsmall = "(min-device-width:320px)";
+    var mqbig   = "(min-device-width:900px)";
+    function imageresize() {
+        if(window.matchMedia(mqbig).matches) {
+            $('img[data-src-1260px]').each(function () {
+                $(this).attr('src',$(this).attr('data-src-1260px'));
+            });
+        }
+        else {
+            $('img[data-src-960px]').each(function () {
+                $(this).attr('src',$(this).attr('data-src-960px'));
+            });
+        }
+    }
+
+    imageresize();
+
+    $(window).bind("resize", function() {
+        imageresize();
+    });
+});

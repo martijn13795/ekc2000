@@ -2,7 +2,12 @@
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
-        <img src="../images/fotogalerij/ballonen-medium.jpg" alt="Club foto" class="img-responsive" srcset="../images/fotogalerij/clubFoto.jpg 1x, ../images/fotogalerij/clubFotoGroot-medium.jpg 2x, ../images/fotogalerij/clubFotoJuigen-medium.jpg 3x, ../images/fotogalerij/speech.jpg 4x"/>
+
+        <img src="../images/fotogalerij/ballonen-medium.jpg"
+             data-src-960px="../images/fotogalerij/clubFoto.jpg"
+             data-src-1260px="../images/fotogalerij/clubFotoJuigen.jpg"
+             alt="ballonen" class="change img-responsive"/>
+
         <hr>
         <form class="form-inline">
             <div class="form-group">
