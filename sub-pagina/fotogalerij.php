@@ -39,7 +39,8 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>
+                <a href="../images/fotogalerij/clubFotoGroot-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"
+                   data-src-960px="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>
                     <img src="../images/fotogalerij/clubFotoGroot-medium.jpg"
                          data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFotoGroot.jpg"
@@ -47,7 +48,8 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>
+                <a href="../images/fotogalerij/clubFotoJuigen-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
+                   data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>
                     <img src="../images/fotogalerij/clubFotoJuigen-medium.jpg"
                          data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg"
@@ -55,7 +57,8 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>
+                <a href="../images/fotogalerij/speech-medium.jpg" data-src-320px="../images/fotogalerij/speech-medium.jpg"
+                   data-src-960px="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>
                     <img src="../images/fotogalerij/speech-medium.jpg"
                          data-src-320px="../images/fotogalerij/speech-medium.jpg"
                          data-src-960px="../images/fotogalerij/speech.jpg"
@@ -63,7 +66,8 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>
+                <a href="../images/fotogalerij/speech2-medium.jpg" data-src-320px="../images/fotogalerij/speech2-medium.jpg"
+                   data-src-960px="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>
                     <img src="../images/fotogalerij/speech2-medium.jpg"
                          data-src-320px="../images/fotogalerij/speech2-medium.jpg"
                          data-src-960px="../images/fotogalerij/speech2.jpg"
@@ -71,7 +75,8 @@
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>
+                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
+                   data-src-960px="../images/fotogalerij/ballonen-medium.jpg" title="Ballonen" data-gallery>
                     <img src="../images/fotogalerij/ballonen-medium.jpg"
                          data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
                          data-src-960px="../images/fotogalerij/ballonen-medium.jpg"
