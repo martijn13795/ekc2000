@@ -90,7 +90,7 @@
 
 //controleerd of knoppen zijn ingedrukt
 $(document).ready(function () {
-    
+
         $('#blueimp-gallery').data('useBootstrapModal', $('#blueimp-gallery').is(':checked'));
         $('#blueimp-gallery').addClass('blueimp-gallery-controls');
 
