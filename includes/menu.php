@@ -18,7 +18,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=activeClass("home"),activeClass("index"),activeClass("")?>><a href="/home">Home</a></li>
 
-                <li <?=activeClass("over-de-club"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("lid-worden"),activeClass("contact")?> class="closed">
+                <li <?=activeClass("over-de-club"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("lid-worden"),activeClass("contact"),activeClass("documenten")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
@@ -26,6 +26,7 @@
                         <li <?=activeClass("bestuur")?>><a href="/bestuur">Bestuur</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
                         <li <?=activeClass("lid-worden")?>><a href="/lid-worden">lid worden</a></li>
+                        <li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li>
                         <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
                 </li>
@@ -34,7 +35,7 @@
 
                 <li <?=activeClass("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
 
-                <li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li>
+                <li <?=activeClass("fotogalerij")?>><a href="/fotogalerij">Fotogalerij</a></li>
 
                 <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("wedstrijd-verslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
