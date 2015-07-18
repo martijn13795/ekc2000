@@ -17,9 +17,9 @@
                 </button>
             </div>
             <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-success btn-lg">
+                <label class="btn btn-success btn-lg active">
                     <i class="glyphicon glyphicon-leaf"></i>
-                    <input id="borderless-checkbox" type="checkbox"> Borderless
+                    <input id="borderless-checkbox" type="checkbox" checked> Borderless
                 </label>
                 <label class="btn btn-primary btn-lg">
                     <i class="glyphicon glyphicon-fullscreen"></i>
