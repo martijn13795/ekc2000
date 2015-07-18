@@ -7,6 +7,10 @@
              data-src-320px="../images/fotogalerij/clubFoto.jpg"
              data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg"
              alt="ballonen" class="change img-responsive"/>
+        <img src="../images/fotogalerij/clubFoto-medium.jpg"
+             data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
+             data-src-960px="../images/fotogalerij/clubFoto.jpg"
+             alt="Club foto" class="change img-responsive"/>
 
         <hr>
         <form class="form-inline">
