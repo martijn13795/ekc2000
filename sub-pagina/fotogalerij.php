@@ -76,10 +76,10 @@
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
                 <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                   data-src-960px="../images/fotogalerij/ballonen-medium.jpg" title="Ballonen" data-gallery>
+                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>
                     <img src="../images/fotogalerij/ballonen-medium.jpg"
                          data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                         data-src-960px="../images/fotogalerij/ballonen-medium.jpg"
+                         data-src-960px="../images/fotogalerij/ballonen.jpg"
                          alt="Ballonen" class="change img-responsive"/>
                 </a>
             </div>
