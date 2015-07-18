@@ -312,6 +312,14 @@ h1 {
     margin-right: -10px;
 }
 
+.infoDiv a {
+    text-decoration: none; color: #000
+}
+
+.infpDiv1 a {
+    text-decoration: none; color: #000
+}
+
 .inloggenDiv {
     margin-top: 20px;
 }

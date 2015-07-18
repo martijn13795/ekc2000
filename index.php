@@ -10,7 +10,7 @@
                             <i class="icon major fa-newspaper-o"></i>
                         </div>
                         <div class="col-md-8 col-xs-8">
-                            <h3>Laatste nieuws</h3>
+                            <a href="/nieuws"><h3>Laatste nieuws</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
                             <p>07-03-15 Programma EKC 2000-dag</br></br>
@@ -30,7 +30,7 @@
                             <i class="icon major fa-camera"></i>
                         </div>
                         <div class="col-md-8 col-xs-8">
-                            <h3>Laaste foto albums</h3>
+                            <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
                         <p>17-05-14 EKC 2000 1 - Elko 1</br></br>
@@ -50,7 +50,7 @@
                             <i class="icon major fa-users"></i>
                         </div>
                         <div class="col-md-8 col-xs-8">
-                            <h3>Komende activiteiten</h3>
+                            <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
                         <p>12-03-15 EKC 2000-dag</br></br>
