@@ -36,7 +36,7 @@ $(document).ready(function() {
     var mqbig   = "(min-device-width:960px)";
     function imageresize() {
         if(window.matchMedia(mqbig).matches) {
-            $('img[data-src-960px]').each(function () {
+            $('.change, img[data-src-960px]').each(function () {
                 $(this).attr('src',$(this).attr('data-src-960px'));
             });
         }
