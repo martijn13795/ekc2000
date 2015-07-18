@@ -2,15 +2,11 @@
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
-
-        <img src="../images/fotogalerij/ballonen-medium.jpg"
-             data-src-320px="../images/fotogalerij/clubFoto.jpg"
-             data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg"
-             alt="ballonen" class="change img-responsive"/>
-        <img src="../images/fotogalerij/clubFoto-medium.jpg"
-             data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
-             data-src-960px="../images/fotogalerij/clubFoto.jpg"
-             alt="Club foto" class="change img-responsive"/>
+<!---->
+<!--        <img src="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--             data-src-320px="../images/fotogalerij/clubFoto.jpg"-->
+<!--             data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg"-->
+<!--             alt="ballonen" class="change img-responsive"/>-->
 
         <hr>
         <form class="form-inline">
@@ -34,7 +30,8 @@
         </br>
         <div id="links">
             <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
+                <a href="../images/fotogalerij/clubFoto-medium.jpg" data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
+                   data-src-960px="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
                     <img src="../images/fotogalerij/clubFoto-medium.jpg"
                          data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFoto.jpg"
