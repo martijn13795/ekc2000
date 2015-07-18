@@ -41,7 +41,7 @@ $(document).ready(function() {
             });
         }
         else {
-            $('img[data-src-320px]').each(function () {
+            $('.galerijImg, img[data-src-320px]').each(function () {
                 $(this).attr('src',$(this).attr('data-src-320px'));
             });
         }
