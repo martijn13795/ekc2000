@@ -30,7 +30,7 @@ if($message == null || $message == "" || $message == " ") {
                         ?>
                         <script type="text/javascript">
                             function scrollToBottom() {
-                                document.getElementById("panel-body").scrollTop = 80000000;
+                                document.getElementById("panel-body").scrollTop = -80000000;
                             }
                             $("input").prop('disabled', true);
                             function disabledFalse() {
