@@ -9,10 +9,7 @@ include_once('db.php');
 foreach($badWords as $badword) {
     if (stripos($message, $badword) !== false) {
         echo "<h3>Voer een geldig bericht in</h3></br>";
-        echo "Het gebruik van scheldwoorden is niet toegestaan</br></br>";
-        echo "<s>";
-        echo $message;
-        echo "</s>";
+        echo "Het gebruik van scheldwoorden is niet toegestaan";
         $message = null;
         return true;
     }
@@ -33,7 +30,7 @@ if($message == null || $message == "" || $message == " ") {
                         ?>
                         <script type="text/javascript">
                             function scrollToBottom() {
-                                document.getElementById("panel-body").scrollHeight = 80000000;
+                                document.getElementById("panel-body").scrollTop = 80000000;
                             }
                             $("input").prop('disabled', true);
                             function disabledFalse() {
