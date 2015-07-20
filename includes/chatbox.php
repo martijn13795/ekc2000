@@ -28,6 +28,22 @@ if($message == null || $message == "" || $message == " ") {
                 } else {
                     if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
                         ?>
+                        <!--[if !IE]>
+                        <script type="text/javascript">
+                            function scrollToBottom() {
+                                document.getElementById("panel-body").scrollTop = 80000000;
+                            }
+                            $("input").prop('disabled', true);
+                            function disabledFalse() {
+                                $("input").prop('disabled', false);
+                            }
+                            setTimeout(disabledFalse, 4500);
+                            $('#chatRefresh').load('/includes/chatRefresh.php');
+                            setTimeout(scrollToBottom, 100);
+                            jQuery('#remaining').html("");
+                        </script>
+                        <![endif]-->
+                        !--[if IE]>
                         <script type="text/javascript">
                             function scrollToBottom() {
                                 document.getElementById("panel-body").scrollTop = -80000000;
@@ -41,6 +57,7 @@ if($message == null || $message == "" || $message == " ") {
                             setTimeout(scrollToBottom, 100);
                             jQuery('#remaining').html("");
                         </script>
+                        <![endif]-->
                         <?php
                         return true;
                     } else {
