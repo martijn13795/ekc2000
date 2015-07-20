@@ -22,10 +22,10 @@ if($message == null || $message == "" || $message == " ") {
     echo "<h3>Voer een bericht in</h3>";
 }else {
     if(strpos($message, $badword) !== true){
-                if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_']+$#", $message)) {
+                if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_' '=']+$#", $message)) {
                     $message = null;
                     echo "<h3>Voer een geldig bericht in</h3></br>";
-                    echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) / : - _ @ % &";
+                    echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) / : = - _ @ % &";
                     return true;
                 } else {
                     if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
