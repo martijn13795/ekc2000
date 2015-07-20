@@ -43,7 +43,7 @@ if($message == null || $message == "" || $message == " ") {
                             jQuery('#remaining').html("");
                         </script>
                         <![endif]-->
-                        !--[if IE]>
+                        <!--[if IE]>
                         <script type="text/javascript">
                             function scrollToBottom() {
                                 document.getElementById("panel-body").scrollTop = -80000000;
