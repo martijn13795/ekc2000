@@ -1,3 +1,11 @@
+var scroll = 80000000;
+var ua = window.navigator.userAgent;
+var msie = ua.indexOf("MSIE ");
+
+if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+    var scroll = -80000000;
+}
+
 //Chat functie
 $(document).ready(function() {
     $("#sub").click(function () {
@@ -6,7 +14,7 @@ $(document).ready(function() {
             function (info) {
                 $("#result").html(info);
                 jQuery('#remaining').html("");
-                document.getElementById("panel-body").scrollTop = 80000000;
+                document.getElementById("panel-body").scrollTop = scroll;
             });
         clearInput();
     });
@@ -26,7 +34,7 @@ $(document).ready(function(){
                 $("#chat :input").serializeArray(),
                 function (info) {
                     $("#result").html(info);
-                    document.getElementById("panel-body").scrollTop = 80000000;
+                    document.getElementById("panel-body").scrollTop = scroll;
                 });
             clearInput();
             return false;
@@ -44,7 +52,7 @@ function clearInput() {
 //Refresh function met scroll down functie
 $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
-    function scrollToBottom(){document.getElementById("panel-body").scrollTop = 80000000;}
+    function scrollToBottom(){document.getElementById("panel-body").scrollTop = scroll;}
     setTimeout(scrollToBottom,250);
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php');
@@ -72,7 +80,7 @@ function updateCountdown() {
     // 140 is the max message length
     var remaining = 140 - jQuery('input').val().length;
     jQuery('#remaining').html("<p>"+remaining+" characters over</p>");
-    document.getElementById("panel-body").scrollTop = 80000000;
+    document.getElementById("panel-body").scrollTop = scroll;
 }
 
 jQuery(document).ready(function($) {

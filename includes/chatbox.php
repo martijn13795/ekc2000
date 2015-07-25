@@ -29,8 +29,15 @@ if($message == null || $message == "" || $message == " ") {
                     if (mysql_query("INSERT INTO chatbox (message, dateTime) VALUES ('$message', '$date')")) {
                         ?>
                         <script type="text/javascript">
+                            var scroll = 80000000;
+                            var ua = window.navigator.userAgent;
+                            var msie = ua.indexOf("MSIE ");
+
+                            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+                                var scroll = -80000000;
+                            }
                             function scrollToBottom() {
-                                document.getElementById("panel-body").scrollTop = 80000000;
+                                document.getElementById("panel-body").scrollTop = scroll;
                             }
                             $("input").prop('disabled', true);
                             function disabledFalse() {
