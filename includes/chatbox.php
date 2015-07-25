@@ -33,7 +33,7 @@ if($message == null || $message == "" || $message == " ") {
                             var ua = window.navigator.userAgent;
                             var msie = ua.indexOf("MSIE ");
 
-                            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)){
+                            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./) || !!navigator.userAgent.match(Edge/XX)){
                                 var scroll = -80000000;
                             }
                             function scrollToBottom() {
