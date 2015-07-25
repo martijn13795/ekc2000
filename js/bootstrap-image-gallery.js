@@ -120,16 +120,16 @@ $(document).ready(function() {
     var mqbig   = "(min-device-width:960px)";
     function imageresize() {
         if(window.matchMedia(mqbig).matches) {
-            $('img[data-src-960px]').each(function () {
-                $(this).attr('src',$(this).attr('data-src-960px'));
+            $('div[data-src-960px]').each(function () {
+                $(this).attr('url',$(this).attr('data-src-960px'));
             });
             $('a[data-src-960px]').each(function () {
                 $(this).attr('href',$(this).attr('data-src-960px'));
             });
         }
         else if(window.matchMedia (mqsmall).matches) {
-            $('img[data-src-320px]').each(function () {
-                $(this).attr('src',$(this).attr('data-src-320px'));
+            $('div[data-src-320px]').each(function () {
+                $(this).attr('url',$(this).attr('data-src-320px'));
             });
             $('a[data-src-320px]').each(function () {
                 $(this).attr('href',$(this).attr('data-src-320px'));

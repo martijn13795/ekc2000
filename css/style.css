@@ -396,10 +396,11 @@ h1 {
     max-height: 200px;
 }
 
-.galerijImg img {
-    object-fit: cover;
-    width: 100%;
+.galerijBackImg {
+    background-position: center center;
+    background-size: cover;
     height: 200px;
+    width: 100%;
 }
 
 #links {

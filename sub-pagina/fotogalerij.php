@@ -32,10 +32,15 @@
             <div class="col-md-4 col-xs-4 galerijImg">
                 <a href="../images/fotogalerij/clubFoto-medium.jpg" data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
                    data-src-960px="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
-                    <img src="../images/fotogalerij/clubFoto-medium.jpg"
+                    <div class="galerijBackImg" style="background-image: url('../images/fotogalerij/clubFoto-medium.jpg')"
                          data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFoto.jpg"
-                         alt="Club foto" class="change img-responsive"/>
+                         alt="Club foto" class="change">
+<!--                        <img src="../images/fotogalerij/clubFoto-medium.jpg"-->
+<!--                         data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/clubFoto.jpg"-->
+<!--                         alt="Club foto" class="change img-responsive"/>-->
+                    </div>
                 </a>
             </div>
             <div class="col-md-4 col-xs-4 galerijImg">
