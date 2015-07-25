@@ -24,7 +24,7 @@
 
 <!--dit is voor de fotogalerij-->
 <link rel="stylesheet" href="../css/blueimp-gallery.min.css">
-<link rel="stylesheet" href="../css/bootstrap-image-gallery.css">
+<link rel="stylesheet" href="../css/bootstrap-image-gallery.min.css">
 
 <meta name="msapplication-TileColor" content="#2b5797">
 <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
