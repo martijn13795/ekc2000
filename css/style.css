@@ -415,3 +415,10 @@ h1 {
 .blueimp-gallery>.slides>.slide>.slide-content {
     width: null;
 }
+
+.blueimp-gallery>.indicator>li {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-size: cover;
+}

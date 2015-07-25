@@ -29,7 +29,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFoto-medium.jpg')"
                          data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFoto.jpg"
-                         alt="Club foto">
+                         alt="Club foto"><img src="../images/fotogalerij/clubFoto-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
@@ -39,7 +39,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoGroot-medium.jpg')"
                          data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFotoGroot.jpg"
-                         alt="Club foto groot">
+                         alt="Club foto groot"><img src="../images/fotogalerij/clubFotoGroot-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
@@ -49,7 +49,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoJuigen-medium.jpg')"
                          data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
                          data-src-960px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
-                         alt="Club foto juigen">
+                         alt="Club foto juigen"><img src="../images/fotogalerij/clubFotoJuigen-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
@@ -59,7 +59,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech-medium.jpg')"
                          data-src-320px="../images/fotogalerij/speech-medium.jpg"
                          data-src-960px="../images/fotogalerij/speech.jpg"
-                         alt="Speech">
+                         alt="Speech"><img src="../images/fotogalerij/speech-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
@@ -69,7 +69,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech2-medium.jpg')"
                          data-src-320px="../images/fotogalerij/speech2-medium.jpg"
                          data-src-960px="../images/fotogalerij/speech2.jpg"
-                         alt="Speech2">
+                         alt="Speech2"><img src="../images/fotogalerij/speech2-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
@@ -79,7 +79,7 @@
                     <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"
                          data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
                          data-src-960px="../images/fotogalerij/ballonen.jpg"
-                         alt="Ballonen">
+                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>
                     </div>
                 </a>
             </div>
