@@ -423,3 +423,7 @@ h1 {
     border-radius: 15px;
     background-size: cover;
 }
+
+.link:hover {
+    cursor: pointer;
+}

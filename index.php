@@ -7,7 +7,7 @@
                 <div class="col-xs-12 col-md-12">
                     <div class="col-xs-12 col-md-4 well infoDiv">
                         <div class="col-md-4 col-xs-4">
-                            <a href="/nieuws"><i class="icon major fa-newspaper-o"></i></a>
+                            <a href="/nieuws"><i class="icon major fa-newspaper-o link"></i></a>
                         </div>
                         <div class="col-md-8 col-xs-8">
                             <a href="/nieuws"><h3>Laatste nieuws</h3></a>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-xs-12 col-md-4 well infoDiv">
                         <div class="col-md-4 col-xs-4">
-                            <a href="/fotogalerij"><i class="icon major fa-camera"></i></a>
+                            <a href="/fotogalerij"><i class="icon major fa-camera link"></i></a>
                         </div>
                         <div class="col-md-8 col-xs-8">
                             <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-xs-12 col-md-4 well infoDiv1">
                         <div class="col-md-4 col-xs-4">
-                            <a href="/activiteiten"><i class="icon major fa-users"></i></a>
+                            <a href="/activiteiten"><i class="icon major fa-users link"></i></a>
                         </div>
                         <div class="col-md-8 col-xs-8">
                             <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
