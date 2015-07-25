@@ -2,7 +2,7 @@ var scroll = 80000000;
 var ua = window.navigator.userAgent;
 var msie = ua.indexOf("MSIE ");
 
-if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./) || !!navigator.userAgent.match(Edge/XX)){
+if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./) || !!navigator.userAgent.match(/Edge/)){
     var scroll = -80000000;
 }
 
