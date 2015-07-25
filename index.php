@@ -13,15 +13,15 @@
                             <a href="/nieuws"><h3>Laatste nieuws</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
-                            <p>07-03-15 Programma EKC 2000-dag</br></br>
-                            07-03-15 EKC 2000 B2 is zaalkampioen!</br></br>
-                            07-03-15 Paasspelen 2015!</br></br>
-                            22-02-15 Word donateur en steun EKC 2000</br></br>
-                            16-02-15 Interview met Riejander Deen</br></br>
-                            19-05-15 Selectietrainingen jeugd.</br></br>
-                            19-05-15 Oproep nieuwe senioren werven</br></br>
-                            19-05-15 Sponsorkleding inleveren.</br></br>
-                            14-05-15 Bekerwedstrijd halve finale S1 19 mei</br></br>
+                            <p>07-03-15 Programma EKC 2000-dag<br><br>
+                            07-03-15 EKC 2000 B2 is zaalkampioen!<br><br>
+                            07-03-15 Paasspelen 2015!<br><br>
+                            22-02-15 Word donateur en steun EKC 2000<br><br>
+                            16-02-15 Interview met Riejander Deen<br><br>
+                            19-05-15 Selectietrainingen jeugd.<br><br>
+                            19-05-15 Oproep nieuwe senioren werven<br><br>
+                            19-05-15 Sponsorkleding inleveren.<br><br>
+                            14-05-15 Bekerwedstrijd halve finale S1 19 mei<br><br>
                             14-05-15 Geen training tijdens schoolkorfbal</p>
                         </div>
                     </div>
@@ -33,15 +33,15 @@
                             <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
-                        <p>17-05-14 EKC 2000 1 - Elko 1</br></br>
-                            17-05-14 EKC 2000 1 - Elko 1</br></br>
-                            17-05-14 EKC 2000 2 - Elko 2</br></br>
-                            10-05-14 Flamingo's 1 - EKC 2000 1</br></br>
-                            19-04-14 EKC 2000 1 - Pallas'08 1</br></br>
-                            19-04-14 EKC 2000 2 - Pallas'08 2</br></br>
-                            12-04-14 Lintjo 1 EKC 2000 1</br></br>
-                            12-04-14 Lintjo 2 - EKC 2000 2</br></br>
-                            31-03-14 EKC 2000 1 - De Granaet 1</br></br>
+                        <p>17-05-14 EKC 2000 1 - Elko 1<br><br>
+                            17-05-14 EKC 2000 1 - Elko 1<br><br>
+                            17-05-14 EKC 2000 2 - Elko 2<br><br>
+                            10-05-14 Flamingo's 1 - EKC 2000 1<br><br>
+                            19-04-14 EKC 2000 1 - Pallas'08 1<br><br>
+                            19-04-14 EKC 2000 2 - Pallas'08 2<br><br>
+                            12-04-14 Lintjo 1 EKC 2000 1<br><br>
+                            12-04-14 Lintjo 2 - EKC 2000 2<br><br>
+                            31-03-14 EKC 2000 1 - De Granaet 1<br><br>
                             31-03-14 EKC 2000 2 - De Granaet 2</p>
                             </div>
                     </div>
@@ -53,15 +53,15 @@
                             <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
-                        <p>12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
-                            12-03-15 EKC 2000-dag</br></br>
+                        <p>12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
+                            12-03-15 EKC 2000-dag<br><br>
                             12-03-15 EKC 2000-dag</p>
                             </div>
                     </div>
@@ -71,7 +71,7 @@
             <div class="grayBar">
                 <div class="container">
                     <div class="sponsorenDiv col-md-12 col-xs-12">
-                        <h1>Onze sponsoren</h1></br>
+                        <h1>Onze sponsoren</h1><br>
                         <img class="img-responsive" src="images/sponsorenGrayBar.png" alt="Onze sponsoren"/><hr>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                                 <div class="input-group">
                                     <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." />
                                     <span class="input-group-btn">
-                                        <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button
+                                        <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button>
                                     </span>
                                 </div>
                             </form>

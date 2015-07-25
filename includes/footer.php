@@ -8,7 +8,7 @@
         </a>
         <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank" onClick="window.open('https://nl.linkedin.com/in/casvandinter')">
             <i class="fa fa-linkedin"></i>
-        </a></br>
+        </a><br>
         &copy; EKC 2000
     </div>
 </footer>
