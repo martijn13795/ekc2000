@@ -397,6 +397,7 @@ h1 {
 }
 
 .galerijBackImg {
+    padding: 100px;
     background-position: center center;
     background-size: cover;
     height: 200px;
