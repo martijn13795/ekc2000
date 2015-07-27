@@ -1,4 +1,4 @@
-<?php include 'http://eck2000.party/includes/html.php';?>
+<?php include($_SERVER["DOCUMENT_ROOT"] . "/includes/html.php");?>
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Oeps! - U heeft niet het rechten om deze pagina te bezoeken</h1>
