@@ -1,33 +1,23 @@
 <?php include '../includes/html.php';?>
     <div class="container">
-        <form class="form-horizontal" role="form" method="post" action="index.php">
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Naam</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
-                </div>
+        <h1>Contact</h1><hr>
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <form action="" method="post">
+                    <label>Naam: </label><input type="text" class="form-control contactMargin" name="name" placeholder="Naam" REQUIRED><br>
+                    <label>Email: </label><input type="email" class="form-control contactMargin" name="email" placeholder="Email" REQUIRED><br>
+                    <label>Bericht: </label><textarea rows="6" class="form-control contactMargin" placeholder="Type hier uw bericht..." REQUIRED></textarea><br>
+                    <input type="submit" name="submit" value="Verstuur" class="btn btn-primary pull-right">
+                </form>
             </div>
-            <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
-                </div>
+            <div class="col-md-4 col-xs-12 well">
+                <h3>Contact informatie <strong>EKC 2000</strong></h3><hr>
+                <p class="lead">
+                    Straat: zwanenveld 5<br>
+                    Postcode: 7827 XA<br>
+                    Plaats: Emmen<br>
+                    Telefoonnummer: 0591-617979<br>
+                    Email: ekc2000.emmen@knkv.nl</p>
             </div>
-            <div class="form-group">
-                <label for="message" class="col-sm-2 control-label">Bericht</label>
-                <div class="col-sm-10">
-                    <textarea class="form-control" rows="4" name="message"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                    <input id="submit" name="submit" type="submit" value="Verstuur" class="btn btn-primary">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10 col-sm-offset-2">
-                    <! Will be used to display an alert to the user>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
