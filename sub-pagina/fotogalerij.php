@@ -5,11 +5,11 @@
         <h1>Fotogalerij</h1>
         <hr>
         <script>
+            $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
             if($_POST['name'] == "" || $_POST['name'] == " " || $_POST['name'] == null){
-                
+
             }
             else {
-                $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
 
                 $(function () {
 
