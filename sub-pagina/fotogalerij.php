@@ -6,39 +6,33 @@
         <hr>
         <script>
             $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
-            if($('#name').val() == '' || $('#name').val() == " " || $('#name').val() == null){
-                $(".result").html("Voer een album naam in");
-            }
-            else {
 
-                $(function () {
+            $(function(){
 
-                    $('#myForm').ajaxForm({
-                        beforeSend: function () {
-                            $(".progress").show();
-                        },
-                        uploadProgress: function (event, position, total, percentComplete) {
-                            $(".progress-bar").width(percentComplete + '%');
-                            $(".sr-only").html(percentComplete + '%');
-                        },
-                        success: function () {
-                            $(':input', '#myForm')
-                                .not(':button, :submit, :reset, :hidden')
-                                .val('')
-                                .removeAttr('checked')
-                                .removeAttr('selected');
-                            $(".progress").hide();
-                        }
-                    });
-                    $(".progress").hide();
+                $('#myForm').ajaxForm({
+                    beforeSend:function(){
+                        $(".progress").show();
+                    },
+                    uploadProgress:function(event,position,total,percentComplete){
+                        $(".progress-bar").width(percentComplete+'%');
+                        $(".sr-only").html(percentComplete+'%');
+                    },
+                    success:function(){
+                        $(':input','#myForm')
+                            .not(':button, :submit, :reset, :hidden')
+                            .val('')
+                            .removeAttr('checked')
+                            .removeAttr('selected');
+                        $(".progress").hide();
+                    }
                 });
-            }
+                $(".progress").hide();
+            });
         </script>
 
         <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
             <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
             <input type="file" name="files[]" multiple REQUIRED><br>
-            <div class="result"></div>
             <input class="btn btn-success" type="submit" value="upload">
         </form><br>
 
