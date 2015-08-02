@@ -5,29 +5,34 @@
         <h1>Fotogalerij</h1>
         <hr>
         <script>
-            $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
+            if($_POST['name'] == "" || $_POST['name'] == " " || $_POST['name'] == null){
+                
+            }
+            else {
+                $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
 
-            $(function(){
+                $(function () {
 
-                $('#myForm').ajaxForm({
-                    beforeSend:function(){
-                        $(".progress").show();
-                    },
-                    uploadProgress:function(event,position,total,percentComplete){
-                        $(".progress-bar").width(percentComplete+'%');
-                        $(".sr-only").html(percentComplete+'%');
-                    },
-                    success:function(){
-                        $(':input','#myForm')
-                            .not(':button, :submit, :reset, :hidden')
-                            .val('')
-                            .removeAttr('checked')
-                            .removeAttr('selected');
-                        $(".progress").hide();
-                    }
+                    $('#myForm').ajaxForm({
+                        beforeSend: function () {
+                            $(".progress").show();
+                        },
+                        uploadProgress: function (event, position, total, percentComplete) {
+                            $(".progress-bar").width(percentComplete + '%');
+                            $(".sr-only").html(percentComplete + '%');
+                        },
+                        success: function () {
+                            $(':input', '#myForm')
+                                .not(':button, :submit, :reset, :hidden')
+                                .val('')
+                                .removeAttr('checked')
+                                .removeAttr('selected');
+                            $(".progress").hide();
+                        }
+                    });
+                    $(".progress").hide();
                 });
-                $(".progress").hide();
-            });
+            }
         </script>
 
         <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
