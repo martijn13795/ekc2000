@@ -7,7 +7,7 @@
         <script>
             $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
             if($('#name').val() == '' || $('#name').val() == " " || $('#name').val() == null){
-                $(".result").text("Voer een album naam in");
+                $(".result").html("Voer een album naam in");
             }
             else {
 
