@@ -21,7 +21,7 @@ if(!empty($_FILES['files']['name'][0])) {
 
             if($file_error === 0) {
 
-                if($file_size <= 209715200) {
+                if($file_size <= 2097152) {
 
                     $file_name_new = $file_name;
                     $albumName = $_POST['name'];
