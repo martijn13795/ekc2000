@@ -6,9 +6,8 @@
         <hr>
         <script>
             $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
-            $(".progress").hide();
-            if($_POST['name'] == "" || $_POST['name'] == " " || $_POST['name'] == null){
-                $(".result").html("Voer een album naam in");
+            if($('#name').val() == '' || $('#name').val() == " " || $('#name').val() == null){
+                $(".result").text("Voer een album naam in");
             }
             else {
 
@@ -43,7 +42,7 @@
             <input class="btn btn-success" type="submit" value="upload">
         </form><br>
 
-        <div class="progress progress-striped active">
+        <div class="progress progress-striped active hide">
             <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
                  aria-valuemax="100" style="width: 0%">
                 <span class="sr-only">0% Complete</span>
