@@ -306,10 +306,12 @@ h1 {
 }
 
 .infoDiv {
+    min-height: 500px;
     margin-right: 5px;
 }
 
 .infoDiv1 {
+    min-height: 500px;
     margin-right: -10px;
 }
 

@@ -33,16 +33,16 @@
                             <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
                         </div>
                         <div class="col-md-12 col-xs-12">
-                        <p>17-05-14 EKC 2000 1 - Elko 1<br><br>
-                            17-05-14 EKC 2000 1 - Elko 1<br><br>
-                            17-05-14 EKC 2000 2 - Elko 2<br><br>
-                            10-05-14 Flamingo's 1 - EKC 2000 1<br><br>
-                            19-04-14 EKC 2000 1 - Pallas'08 1<br><br>
-                            19-04-14 EKC 2000 2 - Pallas'08 2<br><br>
-                            12-04-14 Lintjo 1 EKC 2000 1<br><br>
-                            12-04-14 Lintjo 2 - EKC 2000 2<br><br>
-                            31-03-14 EKC 2000 1 - De Granaet 1<br><br>
-                            31-03-14 EKC 2000 2 - De Granaet 2</p>
+                        <p>
+                            <?php
+                            include_once('includes/db.php');
+                            $select = mysql_query('SELECT date, albumName FROM fotogalerij') or die(mysql_error());
+                            while ($selecting = mysql_fetch_array($select)) {
+                                echo '<p>' . $selecting['date'] . ' ' . $selecting['albumName'] . '</p>';
+                            }
+                            mysql_close();
+                            ?>
+                        </p>
                             </div>
                     </div>
                     <div class="col-xs-12 col-md-4 well infoDiv1">

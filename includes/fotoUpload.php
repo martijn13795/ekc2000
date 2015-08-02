@@ -1,4 +1,11 @@
 <?php
+include_once('db.php');
+
+$albumName = $_POST['name'];
+$date = $mysql_date_now = date("Y-m-d");
+
+$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+
 if(!empty($_FILES['files']['name'][0])) {
 
     $files = $_FILES['files'];
@@ -24,12 +31,13 @@ if(!empty($_FILES['files']['name'][0])) {
                 if($file_size <= 2097152) {
 
                     $file_name_new = $file_name;
-                    $albumName = $_POST['name'];
                     if (file_exists("../images/fotogalerij/" . $albumName . "/")){}
                     else {
                         mkdir("../images/fotogalerij/" . $albumName, 0777);
                     }
                     $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
+
+                    $sql = mysql_query("update fotogalerij set imgPath='$file_destination' WHERE albumName='$albumName';");
 
                     if(move_uploaded_file($file_tmp, $file_destination)) {
                         $uploaded[$position] = $file_destination;
@@ -58,3 +66,4 @@ if(!empty($_FILES['files']['name'][0])) {
         print_r($failed);
     }
 }
+mysql_close();

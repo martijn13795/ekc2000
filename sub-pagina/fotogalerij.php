@@ -65,66 +65,85 @@
         </form>
         </br>
         <div id="links">
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFoto-medium.jpg" data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
-                   data-src-960px="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFoto-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"
-                         data-src-960px="../images/fotogalerij/clubFoto.jpg"
-                         alt="Club foto"><img src="../images/fotogalerij/clubFoto-medium.jpg" style="width: 0px"/>
+            <?php
+            include_once('../includes/db.php');
+            $selectt = mysql_query('SELECT albumID FROM fotogalerij') or die(mysql_error());
+            $select = mysql_query('SELECT * FROM fotogalerij') or die(mysql_error());
+            while ($selecting = mysql_fetch_array($select)) {
+                echo '
+                <div class="col-md-4 col-xs-4 galerijImg">
+                <a href="' . $selecting['imgPath'] . '"
+                   data-src-960px="'. $selecting['imgPath'] .'" title="Club foto" data-gallery>
+                    <div class="change galerijBackImg" style="background-image: url('. $selecting['imgPath'] .')"
+                         data-src-320px="'. $selecting['imgPath'] .'"
+                         data-src-960px="'. $selecting['imgPath'] .'"
+                         alt="Club foto"><img src="'. $selecting['imgPath'] .'" style="width: 0px"/>
                     </div>
                 </a>
-            </div>
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFotoGroot-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"
-                   data-src-960px="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoGroot-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"
-                         data-src-960px="../images/fotogalerij/clubFotoGroot.jpg"
-                         alt="Club foto groot"><img src="../images/fotogalerij/clubFotoGroot-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/clubFotoJuigen-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
-                   data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoJuigen-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
-                         data-src-960px="../images/fotogalerij/clubFotoJuigen-medium.jpg"
-                         alt="Club foto juigen"><img src="../images/fotogalerij/clubFotoJuigen-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/speech-medium.jpg" data-src-320px="../images/fotogalerij/speech-medium.jpg"
-                   data-src-960px="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/speech-medium.jpg"
-                         data-src-960px="../images/fotogalerij/speech.jpg"
-                         alt="Speech"><img src="../images/fotogalerij/speech-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/speech2-medium.jpg" data-src-320px="../images/fotogalerij/speech2-medium.jpg"
-                   data-src-960px="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech2-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/speech2-medium.jpg"
-                         data-src-960px="../images/fotogalerij/speech2.jpg"
-                         alt="Speech2"><img src="../images/fotogalerij/speech2-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                         data-src-960px="../images/fotogalerij/ballonen.jpg"
-                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
+            </div>';
+            }
+            mysql_close();
+            ?>
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/clubFoto-medium.jpg" data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFoto-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/clubFoto.jpg"-->
+<!--                         alt="Club foto"><img src="../images/fotogalerij/clubFoto-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/clubFotoGroot-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoGroot-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/clubFotoGroot.jpg"-->
+<!--                         alt="Club foto groot"><img src="../images/fotogalerij/clubFotoGroot-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/clubFotoJuigen-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoJuigen-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
+<!--                         alt="Club foto juigen"><img src="../images/fotogalerij/clubFotoJuigen-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/speech-medium.jpg" data-src-320px="../images/fotogalerij/speech-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/speech-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/speech.jpg"-->
+<!--                         alt="Speech"><img src="../images/fotogalerij/speech-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/speech2-medium.jpg" data-src-320px="../images/fotogalerij/speech2-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech2-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/speech2-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/speech2.jpg"-->
+<!--                         alt="Speech2"><img src="../images/fotogalerij/speech2-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/ballonen.jpg"-->
+<!--                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
         </div>
         </br>
     </div>
