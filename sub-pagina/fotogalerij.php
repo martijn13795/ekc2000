@@ -6,8 +6,9 @@
         <hr>
         <script>
             $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
+            $(".progress").hide();
             if($_POST['name'] == "" || $_POST['name'] == " " || $_POST['name'] == null){
-
+                $(".result").html("Voer een album naam in");
             }
             else {
 
@@ -38,6 +39,7 @@
         <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
             <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
             <input type="file" name="files[]" multiple REQUIRED><br>
+            <div class="result"></div>
             <input class="btn btn-success" type="submit" value="upload">
         </form><br>
 
