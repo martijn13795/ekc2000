@@ -36,7 +36,7 @@
             <input class="btn btn-success" type="submit" value="upload">
         </form><br>
 
-        <div class="progress progress-striped active hide">
+        <div class="progress progress-striped active">
             <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
                  aria-valuemax="100" style="width: 0%">
                 <span class="sr-only">0% Complete</span>
