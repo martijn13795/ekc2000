@@ -134,16 +134,16 @@
 <!--                    </div>-->
 <!--                </a>-->
 <!--            </div>-->
-            <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"
-                         data-src-320px="../images/fotogalerij/ballonen-medium.jpg"
-                         data-src-960px="../images/fotogalerij/ballonen.jpg"
-                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>
+<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
+<!--                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>-->
+<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"-->
+<!--                         data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
+<!--                         data-src-960px="../images/fotogalerij/ballonen.jpg"-->
+<!--                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
         </div>
         </br>
     </div>
