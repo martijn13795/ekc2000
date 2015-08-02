@@ -30,16 +30,18 @@
             });
         </script>
 
-        <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
-            <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
-            <input type="file" name="files[]" multiple REQUIRED><br>
-            <input class="btn btn-success" type="submit" value="upload">
-        </form><br>
+        <div class="hidden-xs">
+            <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
+                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
+                <input type="file" name="files[]" multiple REQUIRED><br>
+                <input class="btn btn-success" type="submit" value="upload">
+            </form><br>
 
-        <div class="progress progress-striped active">
-            <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                 aria-valuemax="100" style="width: 0%">
-                <span class="sr-only">0% Complete</span>
+            <div class="progress progress-striped active">
+                <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                     aria-valuemax="100" style="width: 0%">
+                    <span class="sr-only">0% Complete</span>
+                </div>
             </div>
         </div>
 
