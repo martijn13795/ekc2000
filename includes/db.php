@@ -1,5 +1,5 @@
 <?php
-        $servername = "94.213.96.73"; //192.168.1.145 original
+        $servername = "94.213.96.73";
         $username = "ekc2000";
         $password = "xH2b8C5PnajhnXJ5";
         $dbName = "ekc2000";
@@ -15,4 +15,3 @@
         if (!$db_selected) {
             die('kan de database niet vinden' . mysql_error());
         }
-?>
