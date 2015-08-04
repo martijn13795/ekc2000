@@ -67,20 +67,26 @@
         <div id="links">
             <?php
             include_once('../includes/db.php');
-            $selectt = mysql_query('SELECT albumID FROM fotogalerij') or die(mysql_error());
-            $select = mysql_query('SELECT * FROM fotogalerij') or die(mysql_error());
+            $selected = mysql_query('SELECT albumID FROM fotogalerij') or die(mysql_error());
+            $select = mysql_query('SELECT imgPath FROM fotogalerij') or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
-                echo '
+
+                $imgPaths = explode('  ',$selecting['imgPath']);
+
+                foreach($imgPaths as $imgPath) {
+                    echo '
                 <div class="col-md-4 col-xs-4 galerijImg">
-                <a href="' . $selecting['imgPath'] . '"
-                   data-src-960px="'. $selecting['imgPath'] .'" title="Club foto" data-gallery>
-                    <div class="change galerijBackImg" style="background-image: url('. $selecting['imgPath'] .')"
-                         data-src-320px="'. $selecting['imgPath'] .'"
-                         data-src-960px="'. $selecting['imgPath'] .'"
-                         alt="Club foto"><img src="'. $selecting['imgPath'] .'" style="width: 0px"/>
-                    </div>
-                </a>
-            </div>';
+                    <a href="' . $imgPath . '"
+                       data-src-960px="'. $imgPath .'" title="Club foto" data-gallery>
+                        <div class="change galerijBackImg" style="background-image: url('. $imgPath .')"
+                             data-src-320px="'. $imgPath .'"
+                             data-src-960px="'. $imgPath .'"
+                             alt="Club foto"><img src="'. $imgPath .'" style="width: 0px"/>
+                        </div>
+                    </a>
+                </div>
+                ';
+                }
             }
             mysql_close();
             ?>

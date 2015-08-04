@@ -37,7 +37,12 @@ if(!empty($_FILES['files']['name'][0])) {
                     }
                     $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
 
-                    $sql = mysql_query("update fotogalerij set imgPath='$file_destination' WHERE albumName='$albumName';");
+                    $select = mysql_query('SELECT imgPath FROM fotogalerij');
+                    while ($selecting = mysql_fetch_array($select)) {
+                        $fileLocation = $selecting['imgPath'];
+                    }
+
+                    $sql = mysql_query("update fotogalerij set imgPath='$fileLocation $file_destination ' WHERE albumName='$albumName';");
 
                     if(move_uploaded_file($file_tmp, $file_destination)) {
                         $uploaded[$position] = $file_destination;
