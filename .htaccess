@@ -53,3 +53,5 @@ RewriteRule ^wedstrijd-verslagen sub-pagina/wedstrijd-verslagen.php [NC,L]
 RewriteRule ^wedstrijdschema sub-pagina/wedstrijdschema.php [NC,L]
 
 RewriteRule ^fotogalerij sub-pagina/fotogalerij.php [NC,L]
+
+RewriteRule ^album/([0-9a-zA-Z_-]+.*) sub-pagina/album.php?name=$1 [NC,L]
