@@ -3,6 +3,7 @@ include_once('db.php');
 
 $albumName = $_POST['name'];
 $date = $mysql_date_now = date("Y-m-d");
+$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
 
 if(!empty($_FILES['files']['name'][0])) {
 
@@ -60,8 +61,6 @@ if(!empty($_FILES['files']['name'][0])) {
             $failed[$position] = $file_name . "kies een ander bestand type" . $file_ext;
         }
     }
-
-    $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
 
     if(!empty($uploaded)) {
         print_r($uploaded);
