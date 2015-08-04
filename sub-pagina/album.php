@@ -25,7 +25,6 @@
         <div id="links">
             <?php
             include_once('../includes/db.php');
-            print_r($_GET);
             $name = $_GET['name'];
             rawurldecode($name);
             $select = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName = '".$name."'") or die(mysql_error());
