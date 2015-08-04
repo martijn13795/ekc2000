@@ -4,8 +4,6 @@ include_once('db.php');
 $albumName = $_POST['name'];
 $date = $mysql_date_now = date("Y-m-d");
 
-$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
-
 if(!empty($_FILES['files']['name'][0])) {
 
     $files = $_FILES['files'];
@@ -28,7 +26,9 @@ if(!empty($_FILES['files']['name'][0])) {
 
             if($file_error === 0) {
 
-                if($file_size <= 2097152) {
+                if($file_size <= 3397152) {
+
+                    $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
 
                     $file_name_new = $file_name;
                     if (file_exists("../images/fotogalerij/" . $albumName . "/")){}
