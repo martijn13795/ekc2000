@@ -12,7 +12,6 @@
                     $.post($("myForm").attr("action"),
                         $("#myForm :input").serializeArray(),
                         function (info) {
-                            return false;
                             $(".error").html(info);
                         });
                 });
@@ -32,7 +31,6 @@
             });
 
             $(function(){
-
                 $('#myForm').ajaxForm({
                     beforeSend:function(){
                         $(".progress").show();

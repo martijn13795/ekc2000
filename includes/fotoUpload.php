@@ -68,6 +68,6 @@ if(!empty($_FILES['files']['name'][0])) {
         }
     }
 }else {
-    echo "voer iets in";
+    echo "Voer iets in";
 }
 mysql_close();
