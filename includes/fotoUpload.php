@@ -27,6 +27,10 @@ if(!empty($_FILES['files']['name'][0])) {
             if($file_error === 0) {
 
                 if($file_size <= 4097152) {
+                    $result = mysql_query("SELECT albumName FROM fotogalerij WHERE albumName='$albumName';");
+                    if(mysql_num_rows($result) == 0) {
+                        $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+                    }
                     $file_name_new = $file_name;
                     if (file_exists("../images/fotogalerij/" . $albumName . "/")){}
                     else {
@@ -62,7 +66,7 @@ if(!empty($_FILES['files']['name'][0])) {
             echo $failed[$position] = $file_name . "<br>Kies een ander bestand type " . $file_ext . "<br>";
             return;
         }
-    }$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+    }
 }else {
     echo "voer iets in";
 }

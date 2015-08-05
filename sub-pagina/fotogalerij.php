@@ -9,14 +9,13 @@
             $(document).ready(function() {
                 $("myForm").submit(function () {
                     $(".error").empty();
-                    $.post($("#myForm").attr("action"),
+                    $.post($("myForm").attr("action"),
                         $("#myForm :input").serializeArray(),
                         function (info) {
                             return false;
                             $(".error").html(info);
                         });
-                    return false;
-                });return false;
+                });
             });
 
             //submit het form
