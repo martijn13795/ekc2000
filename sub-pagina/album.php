@@ -1,7 +1,7 @@
 <?php include '../includes/html.php';?>
 <div class="container">
     <div class="col-md-12 col-xs-12">
-        <h1>Album</h1>
+        <h1>Album - <?php $name = $_GET['name']; echo $name; ?></h1>
         <hr>
         <form class="form-inline">
             <div class="form-group">
