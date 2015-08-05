@@ -28,7 +28,6 @@ if(!empty($_FILES['files']['name'][0])) {
             if($file_error === 0) {
 
                 if($file_size <= 4097152) {
-
                     $file_name_new = $file_name;
                     if (file_exists("../images/fotogalerij/" . $albumName . "/")){}
                     else {
@@ -58,12 +57,10 @@ if(!empty($_FILES['files']['name'][0])) {
             }
 
         } else {
-            echo $failed[$position] = $file_name . "kies een ander bestand type" . $file_ext;
+            echo $failed[$position] = $file_name . "<br>Kies een ander bestand type " . $file_ext;
         }
     }
-
-    if (!empty($failed)) {
-        print_r($failed);
-    }
+}else {
+    echo "voer iets in";
 }
 mysql_close();

@@ -5,6 +5,21 @@
         <h1>Fotogalerij</h1>
         <hr>
         <script>
+            //laat de echo's uit de php file zien
+            $(document).ready(function() {
+                $("myForm").submit(function () {
+                    $(".error").empty();
+                    $.post($("#myForm").attr("action"),
+                        $("#myForm :input").serializeArray(),
+                        function (info) {
+                            return false;
+                            $(".error").html(info);
+                        });
+                    return false;
+                });return false;
+            });
+
+            //submit het form
             $(document).ready( function () {
                 $('myForm').submit( function () {
                     var formdata = $(this).serialize();
@@ -19,7 +34,7 @@
 
             $(function(){
 
-                $('#myForm').ajaxForm({
+                $('myForm').ajaxForm({
                     beforeSend:function(){
                         $(".progress").show();
                     },
@@ -41,11 +56,13 @@
         </script>
 
         <div class="hidden-xs">
-            <form action="../includes/fotoUpload.php" method="post" id="myForm" enctype="multipart/form-data">
-                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
-                <input type="file" name="files[]" multiple REQUIRED><br>
+            <form action="../includes/fotoUpload.php" method="post" id="myForm" name="myForm" enctype="multipart/form-data">
+                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam"><br>
+                <input type="file" name="files[]" multiple><br>
                 <input class="btn btn-success" type="submit" value="upload">
             </form><br>
+
+            <span class="error"></span><br><br>
 
             <div class="progress progress-striped active">
                 <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
