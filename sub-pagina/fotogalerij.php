@@ -5,6 +5,27 @@
         <h1>Fotogalerij</h1>
         <hr>
         <script>
+            $(function(){
+                $('#myForm').ajaxForm({
+                    beforeSend:function(){
+                        $(".progress").show();
+                    },
+                    uploadProgress:function(event,position,total,percentComplete){
+                        $(".progress-bar").width(percentComplete+'%');
+                        $(".sr-only").html(percentComplete+'%');
+                    },
+                    success:function(){
+                        $(':input','#myForm')
+                            .not(':button, :submit, :reset, :hidden')
+                            .val('')
+                            .removeAttr('checked')
+                            .removeAttr('selected');
+                        $(".progress").hide();
+                    }
+                });
+                $(".progress").hide();
+            });
+
             //laat de echo's uit de php file zien
             $(document).ready(function() {
                 $("myForm").submit(function () {
@@ -30,28 +51,6 @@
                     });
                     return false;
                 });
-            });
-
-            $(function(){
-
-                $('myForm').ajaxForm({
-                    beforeSend:function(){
-                        $(".progress").show();
-                    },
-                    uploadProgress:function(event,position,total,percentComplete){
-                        $(".progress-bar").width(percentComplete+'%');
-                        $(".sr-only").html(percentComplete+'%');
-                    },
-                    success:function(){
-                        $(':input','#myForm')
-                            .not(':button, :submit, :reset, :hidden')
-                            .val('')
-                            .removeAttr('checked')
-                            .removeAttr('selected');
-                        $(".progress").hide();
-                    }
-                });
-                $(".progress").hide();
             });
         </script>
 
