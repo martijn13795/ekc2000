@@ -5,7 +5,17 @@
         <h1>Fotogalerij</h1>
         <hr>
         <script>
-            $("#myForm").ajaxForm({url: '../includes/fotoUpload.php', type: 'post'});
+            $(document).ready( function () {
+                $('myForm').submit( function () {
+                    var formdata = $(this).serialize();
+                    $.ajax({
+                        type: "POST",
+                        url: "../includes/fotoUpload.php",
+                        data: formdata
+                    });
+                    return false;
+                });
+            });
 
             $(function(){
 
