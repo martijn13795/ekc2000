@@ -45,19 +45,19 @@ if(!empty($_FILES['files']['name'][0])) {
                     if(move_uploaded_file($file_tmp, $file_destination)) {
                         $uploaded[$position] = $file_destination;
                     } else {
-                        echo $failed[$position] = $file_name . ", uploaden mislukt";
+                        echo $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
                     }
 
                 } else {
-                    echo $failed[$position] = $file_name . "is te groot";
+                    echo $failed[$position] = $file_name . " is te groot" . "<br>";
                 }
 
             } else {
-                echo $failed[$position] = $file_name . "error" . $file_error;
+                echo $failed[$position] = $file_name . " error " . $file_error . "<br>";
             }
 
         } else {
-            echo $failed[$position] = $file_name . "<br>Kies een ander bestand type " . $file_ext;
+            echo $failed[$position] = $file_name . "<br>Kies een ander bestand type " . $file_ext . "<br>";
         }
     }
 }else {
