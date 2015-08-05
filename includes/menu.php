@@ -35,7 +35,7 @@
 
                 <li <?=activeClass("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
 
-                <li <?=activeClass("fotogalerij")?>><a href="/fotogalerij">Fotogalerij</a></li>
+                <li <?php activeClass("fotogalerij"); if (empty($_GET)) {} else {activeClass($_GET['name']);}?>><a href="/fotogalerij">Fotogalerij</a></li>
 
                 <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("wedstrijd-verslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
