@@ -3,7 +3,6 @@ include_once('db.php');
 
 $albumName = $_POST['name'];
 $date = $mysql_date_now = date("Y-m-d");
-$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
 
 if(!empty($_FILES['files']['name'][0])) {
 
@@ -63,4 +62,36 @@ if(!empty($_FILES['files']['name'][0])) {
 }else {
     echo "voer iets in";
 }
+
+if(!empty($_FILES['files']['name'][0])) {
+
+    $files = $_FILES['files'];
+
+    $uploaded = array();
+    $failed = array();
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    foreach($files['name'] as $position => $file_name) {
+
+        $file_tmp = $files['tmp_name'][$position];
+        $file_size = $files['size'][$position];
+        $file_error = $files['error'][$position];
+
+        $file_ext = explode('.', $file_name);
+        $file_ext = strtolower(end($file_ext));
+
+        if(!in_array($file_ext, $allowed)) {
+            return false;
+            if(!$file_error === 0) {
+                return false;
+                if(!$file_size <= 4097152) {
+                    return false;
+                }
+            }
+        }
+    }
+    $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+}
+
 mysql_close();
