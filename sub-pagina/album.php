@@ -36,11 +36,11 @@
                     echo '
                     <div class="col-md-4 col-xs-4 galerijImg">
                         <a href="' . $imgPath . '"
-                           data-src-960px="'. $imgPath .'" title="Club foto" data-gallery>
+                           data-src-960px="'. $imgPath .'" title="'. $imgPath .'" data-gallery>
                             <div class="change galerijBackImg" style="background-image: url('. $imgPath .')"
                                  data-src-320px="'. $imgPath .'"
                                  data-src-960px="'. $imgPath .'"
-                                 alt="Club foto"><img src="'. $imgPath .'" style="width: 0px"/>
+                                 ><img src="'. $imgPath .'" alt="'. $imgPath .'"/>
                             </div>
                         </a>
                     </div>
