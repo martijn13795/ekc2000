@@ -34,7 +34,7 @@
 
             $(function(){
 
-                $('myForm').ajaxForm({
+                $('#myForm').ajaxForm({
                     beforeSend:function(){
                         $(".progress").show();
                     },
@@ -57,8 +57,8 @@
 
         <div class="hidden-xs">
             <form action="../includes/fotoUpload.php" method="post" id="myForm" name="myForm" enctype="multipart/form-data">
-                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam"><br>
-                <input type="file" name="files[]" multiple><br>
+                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
+                <input type="file" name="files[]" multiple REQUIRED><br>
                 <input class="btn btn-success" type="submit" value="upload">
             </form><br>
 
