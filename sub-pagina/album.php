@@ -40,7 +40,7 @@
                             <div class="change galerijBackImg" style="background-image: url('. $imgPath .')"
                                  data-src-320px="'. $imgPath .'"
                                  data-src-960px="'. $imgPath .'"
-                                 ><img src="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'"/>
+                                 ><img src="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
                             </div>
                         </a>
                     </div>
