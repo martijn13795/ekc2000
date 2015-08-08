@@ -1,8 +1,8 @@
 <?php
 include_once('db.php');
 
-$albumName = $_POST['name'];
-$date = $mysql_date_now = date("Y-m-d");
+    $albumName = $_POST['name'];
+    $date = $mysql_date_now = date("Y-m-d");
 
 if(!empty($_FILES['files']['name'][0])) {
 

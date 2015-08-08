@@ -4,62 +4,15 @@
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
         <hr>
-        <script>
-            //laat de echo's uit de php file zien
-            $(document).ready(function() {
-                $("myForm").submit(function () {
-                    $(".error").empty();
-                    $.post($("myForm").attr("action"),
-                        $("#myForm :input").serializeArray(),
-                        function (info) {
-                            $(".error").html(info);
-                        });
-                });
-            });
-
-            //submit het form
-            $(document).ready( function () {
-                $('myForm').submit( function () {
-                    var formdata = $(this).serialize();
-                    $.ajax({
-                        type: "POST",
-                        url: "../includes/fotoUpload.php",
-                        data: formdata
-                    });
-                    return false;
-                });
-            });
-
-            $(function(){
-                $('#myForm').ajaxForm({
-                    beforeSend:function(){
-                        $(".progress").show();
-                    },
-                    uploadProgress:function(event,position,total,percentComplete){
-                        $(".progress-bar").width(percentComplete+'%');
-                        $(".sr-only").html(percentComplete+'%');
-                    },
-                    success:function(){
-                        $(':input','#myForm')
-                            .not(':button, :submit, :reset, :hidden')
-                            .val('')
-                            .removeAttr('checked')
-                            .removeAttr('selected');
-                        $(".progress").hide();
-                    }
-                });
-                $(".progress").hide();
-            });
-        </script>
-
         <div class="hidden-xs">
-            <form action="../includes/fotoUpload.php" method="post" id="myForm" name="myForm" enctype="multipart/form-data">
-                <label>Naam van album:</label><input type="text" class="form-control" id="name" name="name" placeholder="Naam" REQUIRED><br>
+
+            <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
+                <label>Naam van album:</label><input type="text" class="form-control" name="name" placeholder="Naam" REQUIRED><br>
                 <input type="file" name="files[]" multiple REQUIRED><br>
                 <input class="btn btn-success" type="submit" value="upload">
             </form><br>
 
-            <span class="error"></span><br><br>
+            <div id="error"></div><br><br>
 
             <div class="progress progress-striped active">
                 <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0"
@@ -77,4 +30,95 @@
             mysql_close();
             ?>
     </div>
+    <script>
+//        laat de echo's uit de php file zien
+//                    $(document).ready(function() {
+//                        $("myForm").submit(function () {
+//                            $(".error").empty();
+//                            $.post($("myForm").attr("action"),
+//                                $("#myForm :input").serializeArray(),
+//                                function (info) {
+//                                    $(".error").html(info);
+//                                });
+//                        });
+//                    });
+//
+//        submit het form
+//                    $(document).ready( function () {
+//                        $('myForm').submit( function () {
+//                            var formdata = $(this).serialize();
+//                            $.ajax({
+//                                type: "POST",
+//                                url: "../includes/fotoUpload.php",
+//                                data: formdata
+//                            });
+//                            return false;
+//                        });
+//                    });
+//
+//        $(function () {
+//            $('#myForm').submit(function (e) {
+//                $.ajax({
+//                    url: '../includes/fotoUpload.php',
+//                    type: 'POST',
+//                    data: {},
+//                    success: function() {alert("Success");},
+//                    complete: function() {alert("Completed");}
+//                });
+//                return false;
+//            });
+//        });
+//
+$(document).ready( function () {
+    $('form.myForm').on('submit', function () {
+        var that = $(this),
+            url = that.attr('action'),
+            type = that.attr('method'),
+            data = [];
+
+        that.find('[name]').each(function (index, value) {
+            var that = $(this),
+                name = that.attr('name'),
+                value = that.val();
+
+            data[name] = value;
+
+        });
+
+        $.ajax({
+            url: url,
+            type: type,
+            data: data,
+            success: function (response) {
+                $("#error").empty();
+                $("#error").html(response);
+            }
+        });
+
+        return false;
+    });
+});
+
+        //De progressbar
+        $(function(){
+            $('#myForm').ajaxForm({
+                beforeSend:function(){
+                    $(".progress").show();
+                },
+                uploadProgress:function(event,position,total,percentComplete){
+                    $(".progress-bar").width(percentComplete+'%');
+                    $(".sr-only").html(percentComplete+'%');
+                },
+                success:function(){
+                    $(':input','#myForm')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+                    $(".progress").hide();
+                }
+            });
+            $(".progress").hide();
+        });
+    </script>
 </div>
