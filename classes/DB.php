@@ -43,6 +43,18 @@ class DB {
                     . "joined DATETIME, "
                     . "IconPath VARCHAR(60), "
                     . "group_id INT)");
+            //Create user on first setup
+            $salt = Hash::salt(32);
+            $this->insert('users', array(
+                'username' => 'cassshh',
+                'password' => Hash::make('admin', $salt),
+                'mail' => 'casvd@hotmail.com',
+                'salt' => $salt,
+                'name' => 'Cas van Dinter',
+                'joined' => date('Y-m-d H:i:s'),
+                'IconPath' => 'icons/default.png',
+                'group_id' => 1
+            ));
         }
         if($this->query("DESCRIBE users_session")->error()){
             $this->query("CREATE TABLE users_session ("

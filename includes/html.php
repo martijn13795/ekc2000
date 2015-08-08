@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';?>
 <head>
 <?php include 'head.php';?>
 </head>
