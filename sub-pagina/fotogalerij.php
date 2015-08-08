@@ -33,7 +33,7 @@
     <script>
 //        laat de echo's uit de php file zien
 //                    $(document).ready(function() {
-//                        $("myForm").submit(function () {
+//                        $("form").submit(function () {
 //                            $(".error").empty();
 //                            $.post($("myForm").attr("action"),
 //                                $("#myForm :input").serializeArray(),
@@ -42,20 +42,24 @@
 //                                });
 //                        });
 //                    });
-//
+
 //        submit het form
 //                    $(document).ready( function () {
-//                        $('myForm').submit( function () {
+//                        $('form').submit( function () {
 //                            var formdata = $(this).serialize();
 //                            $.ajax({
 //                                type: "POST",
 //                                url: "../includes/fotoUpload.php",
-//                                data: formdata
+//                                data: formdata,
+//                                success: function (response) {
+//                                    $("#error").empty();
+//                                    $("#error").html(response);
+//                                }
 //                            });
 //                            return false;
 //                        });
 //                    });
-//
+
 //        $(function () {
 //            $('#myForm').submit(function (e) {
 //                $.ajax({
@@ -69,35 +73,36 @@
 //            });
 //        });
 //
-$(document).ready( function () {
-    $('form.myForm').on('submit', function () {
-        var that = $(this),
-            url = that.attr('action'),
-            type = that.attr('method'),
-            data = [];
-
-        that.find('name[]').each(function (index, value) {
-            var that = $(this),
-                name = that.attr('name'),
-                value = that.val();
-
-            data[name] = value;
-
-        });
-
-        $.ajax({
-            url: url,
-            type: type,
-            data: data,
-            success: function (response) {
-                $("#error").empty();
-                $("#error").html(response);
-            }
-        });
-
-        return false;
-    });
-});
+//        $(document).ready( function () {
+//            $('form.myForm').on('submit', function (event) {
+//                event.preventDefault();
+//                console.log( $( this ).serialize() );
+//                var that = $(this),
+//                    url = that.attr('action'),
+//                    type = that.attr('method'),
+//                    data = [];
+//
+//                that.find('[name]').each(function (index, value) {
+//                    var that = $(this),
+//                        name = that.attr('name'),
+//                        value = that.val();
+//
+//                    data[name] = value;
+//
+//                });
+//
+//                $.ajax({
+//                    url: url,
+//                    type: type,
+//                    data: data,
+//                    success: function (response) {
+//                        $("#error").empty();
+//                        $("#error").html(response);
+//                    }
+//                });
+//                return false;
+//            });
+//        });
 
         //De progressbar
         $(function(){
