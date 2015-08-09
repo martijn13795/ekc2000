@@ -106,10 +106,25 @@
                             <ul id="chatRefresh" class="chat">
                                 <!--Wordt ingeladen-->
                             </ul>
+                            <?php
+                            $user = new User();
+                            if ($user->isLoggedIn()) {
+                            ?>
                             <span id="result"></span>
+                                <?php
+                            } else {
+                            ?>
+                            <span id="result"><h3>Login om te kunnen chatten</h3>Klik <a href='/inloggen'>hier</a> om in te loggen</span>
+                                <?php
+                            }
+                            ?>
                             <span id="remaining"></span>
                         </div>
                         <div class="panel-footer">
+                            <?php
+                            $user = new User();
+                            if ($user->isLoggedIn()) {
+                                ?>
                                 <form id="chat" action="/includes/chatbox.php" method="post">
                                     <div class="input-group">
                                         <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." />
@@ -118,6 +133,18 @@
                                     </span>
                                     </div>
                                 </form>
+                                <?php
+                            } else {
+                                ?>
+                                    <div class="input-group">
+                                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." disabled/>
+                                    <span class="input-group-btn">
+                                        <button id="sub" type="button" class="btn btn-primary btn-sm" disabled>Verstuur</button>
+                                    </span>
+                                    </div>
+                                <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
