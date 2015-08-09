@@ -110,10 +110,6 @@
                             <span id="remaining"></span>
                         </div>
                         <div class="panel-footer">
-                            <?php
-                            $user = new User();
-                            if ($user->isLoggedIn()) {
-                                ?>
                                 <form id="chat" action="/includes/chatbox.php" method="post">
                                     <div class="input-group">
                                         <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." />
@@ -122,17 +118,6 @@
                                     </span>
                                     </div>
                                 </form>
-                                <?php
-                            } else {
-                                ?>
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-md-7 col-xs-7"><span class="glyphicon glyphicon-comment"></span> Log in om te kunnen chatten</div>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
                         </div>
                     </div>
                 </div>
