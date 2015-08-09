@@ -7,8 +7,8 @@
         <div class="hidden-xs">
 
             <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
-                <label>Naam van album:</label><input type="text" class="form-control" name="name" placeholder="Naam" REQUIRED><br>
-                <input type="file" name="files[]" multiple REQUIRED><br>
+                <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" REQUIRED><br>
+                <input type="file" id="file" name="files[]" multiple REQUIRED><br>
                 <input class="btn btn-success" type="submit" value="upload">
             </form><br>
 
@@ -31,78 +31,31 @@
             ?>
     </div>
     <script>
-//        laat de echo's uit de php file zien
-//                    $(document).ready(function() {
-//                        $("form").submit(function () {
-//                            $(".error").empty();
-//                            $.post($("myForm").attr("action"),
-//                                $("#myForm :input").serializeArray(),
-//                                function (info) {
-//                                    $(".error").html(info);
-//                                });
-//                        });
-//                    });
+        var fileCollection = new Array();
+        $('#images').on('change',function(e){
+            var files = e.target.files;
+            $.each(files, function(i, file){
+                fileCollection.push(file);
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(e){
+                    $('#images-to-upload').append(template);
+                };
+            });
+        });
 
-//        submit het form
-//                    $(document).ready( function () {
-//                        $('form').submit( function () {
-//                            var formdata = $(this).serialize();
-//                            $.ajax({
-//                                type: "POST",
-//                                url: "../includes/fotoUpload.php",
-//                                data: formdata,
-//                                success: function (response) {
-//                                    $("#error").empty();
-//                                    $("#error").html(response);
-//                                }
-//                            });
-//                            return false;
-//                        });
-//                    });
+        $(document).on('submit','form',function(e){
+            e.preventDefault();
+            var index = $(this).index();
+            var formdata = new FormData($(this)[0]);
 
-//        $(function () {
-//            $('#myForm').submit(function (e) {
-//                $.ajax({
-//                    url: '../includes/fotoUpload.php',
-//                    type: 'POST',
-//                    data: {},
-//                    success: function() {alert("Success");},
-//                    complete: function() {alert("Completed");}
-//                });
-//                return false;
-//            });
-//        });
-//
-//        $(document).ready( function () {
-//            $('form.myForm').on('submit', function (event) {
-//                event.preventDefault();
-//                console.log( $( this ).serialize() );
-//                var that = $(this),
-//                    url = that.attr('action'),
-//                    type = that.attr('method'),
-//                    data = [];
-//
-//                that.find('[name]').each(function (index, value) {
-//                    var that = $(this),
-//                        name = that.attr('name'),
-//                        value = that.val();
-//
-//                    data[name] = value;
-//
-//                });
-//
-//                $.ajax({
-//                    url: url,
-//                    type: type,
-//                    data: data,
-//                    success: function (response) {
-//                        $("#error").empty();
-//                        $("#error").html(response);
-//                    }
-//                });
-//                return false;
-//            });
-//        });
+            formdata.append('image',fileCollection[index]);
+            var request = new XMLHttpRequest();
+            request.open('post', '../includes/fotoUpload.php', true);
+            request.send(formdata);
+            $("#name").val('');
+            $("#file").val('');
+        });
 
         //De progressbar
         $(function(){
