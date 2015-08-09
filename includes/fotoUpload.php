@@ -48,26 +48,41 @@ if(!empty($_FILES['files']['name'][0])) {
                     if(move_uploaded_file($file_tmp, $file_destination)) {
                         $uploaded[$position] = $file_destination;
                     } else {
-                        echo $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
-                        return;
+                        $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
+                        //return;
                     }
 
                 } else {
-                    echo $failed[$position] = $file_name . " is te groot" . "<br>";
-                    return;
+                    $failed[$position] = $file_name . " is te groot" . "<br>";
+                    //return;
                 }
 
             } else {
-                echo $failed[$position] = $file_name . " error " . $file_error . "<br>";
-                return;
+                $failed[$position] = $file_name . " error " . $file_error . "<br>";
+                //return;
             }
 
         } else {
-            echo $failed[$position] = $file_name . "<br>Kies een ander bestand type " . $file_ext . "<br>";
-            return;
+            $failed[$position] = $file_name . "<br>Kies een ander bestand type dan " . $file_ext . "<br>";
+            //return;
         }
     }
 }else {
     echo "Voer iets in";
 }
+
+if (!$uploaded == 0) {
+    echo "<h3>Deze bestanden zijn geupload</h3>";
+    foreach($uploaded as $upload) {
+        echo $upload . "<br>";
+    }
+}
+
+if (!$failed == 0) {
+    echo "<h3>Deze bestanden zijn niet geupload</h3>";
+    foreach($failed as $fail) {
+        echo $fail . "<br>";
+    }
+}
+
 mysql_close();
