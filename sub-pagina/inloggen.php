@@ -20,7 +20,7 @@
                 $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
                 if ($login) {
-                    Redirect::to('index.php');
+                    Redirect::to('/home');
                 } else {
                     echo "<div class='error'>Loggin in failed</div>";
                 }

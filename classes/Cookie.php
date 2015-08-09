@@ -3,7 +3,7 @@ Cas van Dinter
 384755
 -->
 <?php
-
+ob_start();
 class Cookie {
     public static function exists($name) {
         return (isset($_COOKIE[$name])) ? true : false ;

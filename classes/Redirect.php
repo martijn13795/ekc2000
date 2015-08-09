@@ -3,7 +3,7 @@ Cas van Dinter
 384755
 -->
 <?php
-
+ob_start();
 class Redirect {
 
     public static function to($location = null) {
