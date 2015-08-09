@@ -6,6 +6,7 @@ Cas van Dinter
 include '../includes/html.php';
 
 $user = new User();
-$user->logout();
-
+if($user->isLoggedIn()) {
+    $user->logout();
+}
 Redirect::to('/home');
