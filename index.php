@@ -137,9 +137,9 @@
                             } else {
                                 ?>
                                     <div class="input-group">
-                                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." disabled/>
+                                        <input id="btn-input" class="form-control input-sm" maxlength="140" placeholder="Type je bericht hier..." disabled/>
                                     <span class="input-group-btn">
-                                        <button id="sub" type="button" class="btn btn-primary btn-sm" disabled>Verstuur</button>
+                                        <button type="button" class="btn btn-primary btn-sm" disabled>Verstuur</button>
                                     </span>
                                     </div>
                                 <?php
