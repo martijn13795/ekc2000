@@ -6,17 +6,17 @@
         <hr>
         <div class="hidden-xs">
 
-            <form action="../includes/fotoUpload.php" method="post" class="myForm" id="myForm" name="myForm" enctype="multipart/form-data">
+            <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
                 <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
                 <input type="file" id="file" name="files[]" multiple REQUIRED><br>
                 <input class="btn btn-success" type="submit" value="upload">
             </form><br>
 
-            <div id="error"></div><br><br>
+            <div id="error"></div><br>
 
             <div class="progress progress-striped active">
                 <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                    <span class="sr-only">0% Complete</span>
+                    
                 </div>
             </div>
         </div>
@@ -30,28 +30,6 @@
             ?>
     </div>
     <script>
-        //De progressbar
-        $(function(){
-            $('#myForm').ajaxForm({
-                beforeSend:function(){
-                    $(".progress").show();
-                },
-                uploadProgress:function(event,position,total,percentComplete){
-                    $(".progress-bar").width(percentComplete+'%');
-                    $(".sr-only").html(percentComplete+'%');
-                },
-                success:function(){
-                    $(':input','#myForm')
-                        .not(':button, :submit, :reset, :hidden')
-                        .val('')
-                        .removeAttr('checked')
-                        .removeAttr('selected');
-                    $(".progress").hide();
-                }
-            });
-            $(".progress").hide();
-        });
-
         var fileCollection = new Array();
         $('#images').on('change',function(e){
             var files = e.target.files;
@@ -76,6 +54,23 @@
             request.send(formdata);
             $("#name").val('');
             $("#file").val('');
+        });
+
+        //De progressbar
+        $(function(){
+            $('.myForm').ajaxForm({
+                beforeSend:function(){
+                    $(".progress").show();
+                },
+                uploadProgress:function(event,position,total,percentComplete){
+                        $(".progress-bar").width(percentComplete + '%');
+                        $(".progress-bar").html('<p>'+ percentComplete + ' %'+'</p>');
+                },
+                success:function(){
+                    $(".progress-bar").addClass('progress-bar-success');
+                }
+            });
+            $(".progress").hide();
         });
     </script>
 </div>
