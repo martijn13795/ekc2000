@@ -62,19 +62,19 @@ include '../includes/html.php';
         ?>
 
 <script>
-        $('.alert').remove();
-        var tmpl = '<div class="alert alert-success alert-dismissable">'+
-            '<button class="close" data-dismiss="alert">&times;</button>'+
-            'U bent ingelogt'+
-            '</div>';
-        $('.row-fluid').append(tmpl);
+    $('.alert').remove();
+    var tmpl = '<div class="alert alert-success alert-dismissable">'+
+        '<button class="close" data-dismiss="alert">&times;</button>'+
+        'U bent ingelogt'+
+        '</div>';
+    $('.row-fluid').append(tmpl);
+    setTimeout(function(){
+        $('.alert').addClass('on');
         setTimeout(function(){
-            $('.alert').addClass('on');
+            $('.alert').removeClass('on');
             setTimeout(function(){
-                $('.alert').removeClass('on');
-                setTimeout(function(){
-                    $('.alert').remove();
-                },1000);
-            },3000);
-        },10);
+                $('.alert').remove();
+            },1000);
+        },3000);
+    },10);
 </script>
