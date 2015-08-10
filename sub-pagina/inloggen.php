@@ -65,7 +65,7 @@ include '../includes/html.php';
     $('.alert').remove();
     var tmpl = '<div class="alert alert-success alert-dismissable">'+
         '<button class="close" data-dismiss="alert">&times;</button>'+
-        'U bent ingelogt'+
+        'U bent ingelogd'+
         '</div>';
     $('.row-fluid').append(tmpl);
     setTimeout(function(){
@@ -75,6 +75,6 @@ include '../includes/html.php';
             setTimeout(function(){
                 $('.alert').remove();
             },1000);
-        },3000);
+        },5000);
     },10);
 </script>
