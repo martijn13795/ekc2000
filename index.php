@@ -38,7 +38,7 @@
                             include_once('includes/db.php');
                             $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
                             while ($selecting = mysql_fetch_array($select)) {
-                                echo '<p class="fotoLink"><a href="/album/'.$selecting['albumName'].'">'  . $selecting['date'] . ' ' . $selecting['albumName'] . '</a></p>';
+                                echo '<p class="fotoLink"><a href="/album/'.$selecting['albumName'].'">'  . $selecting['date'] . ' ' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</a></p>';
                             }
                             mysql_close();
                             ?>
