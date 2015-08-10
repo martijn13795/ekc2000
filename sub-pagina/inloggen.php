@@ -38,7 +38,7 @@ include '../includes/html.php';
                 <div class="col-md-4 col-md-offset-4 well">
                     <legend>Inloggen</legend>
                     <div class="form-group">
-                        <form method="POST" action="/inloggen" accept-charset="UTF-8">
+                        <form method="POST" action="/inloggen" id="inloggen" accept-charset="UTF-8">
                             <input type="text" id="username" class="form-control" name="username"
                                    placeholder="Gebruikersnaam"><br/>
                             <input type="password" id="password" class="form-control" name="password"
@@ -60,3 +60,21 @@ include '../includes/html.php';
     }
 
         ?>
+
+<script>
+        $('.alert').remove();
+        var tmpl = '<div class="alert alert-success alert-dismissable">'+
+            '<button class="close" data-dismiss="alert">&times;</button>'+
+            'U bent ingelogt'+
+            '</div>';
+        $('.row-fluid').append(tmpl);
+        setTimeout(function(){
+            $('.alert').addClass('on');
+            setTimeout(function(){
+                $('.alert').removeClass('on');
+                setTimeout(function(){
+                    $('.alert').remove();
+                },1000);
+            },3000);
+        },10);
+</script>
