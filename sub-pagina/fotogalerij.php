@@ -9,8 +9,10 @@
             <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
                 <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
                 <input type="file" id="file" name="files[]" multiple REQUIRED><br>
-                <input class="btn btn-success" type="submit" value="upload">
-            </form><br>
+                <input class="btn btn-success" id="submit" type="submit" value="Upload">
+            </form>
+            <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+            <br>
 
             <div id="error"></div><br>
 
@@ -34,6 +36,8 @@
             $('.myForm').ajaxForm({
                 beforeSend:function(){
                     $(".progress").show();
+                    $("#submit").hide();
+                    $("#refresh").show();
                 },
                 uploadProgress:function(event,position,total,percentComplete){
                         $(".progress-bar").width(percentComplete + '%');
@@ -48,6 +52,7 @@
                 }
             });
             $(".progress").hide();
+            $("#refresh").hide();
             $("#error").hide();
         });
     </script>

@@ -38,6 +38,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                             $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
                         }
                         $file_name_new = $file_name;
+                        $file_name_new = str_replace(' ', '-', $file_name_new);
                         if (file_exists("../images/fotogalerij/" . $albumName . "/")) {
                         } else {
                             mkdir("../images/fotogalerij/" . $albumName, 0777);
