@@ -436,14 +436,14 @@ h1 {
 
 .alert{
     position: fixed;
-    top: 80px;
+    top: 0px;
     right: 20px;
     transition:all 1s ease;
     opacity:0;
     min-width: 300px;
 }
 .alert.on{
-    top: 180px;
+    top: 20px;
     right: 20px;
     opacity:1;
 }
