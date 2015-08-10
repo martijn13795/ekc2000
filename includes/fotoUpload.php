@@ -10,7 +10,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
     echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ! ( ) - _ + *";
 }else {
     $albumName = str_replace(' ', '-', $albumName);
-    if (!empty($_FILES['files']['name'][0])) {
+    if (!empty($_FILES['files']['name'][0]) || !empty($albumName)) {
 
         $files = $_FILES['files'];
 
@@ -72,6 +72,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
     } else {
         echo "Voer iets in";
     }
+}
 
     if (!$uploaded == 0) {
         echo "<h3>Deze bestanden zijn geupload</h3>";
@@ -86,6 +87,5 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
             echo $fail . "<br>";
         }
     }
-}
 
 mysql_close();
