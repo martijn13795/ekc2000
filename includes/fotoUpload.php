@@ -77,6 +77,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
     if (!$uploaded == 0) {
         echo "<h3>Deze bestanden zijn geupload</h3>";
         foreach ($uploaded as $upload) {
+            $upload = end(explode('/',$upload));
             echo $upload . "<br>";
         }
     }
