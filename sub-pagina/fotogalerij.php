@@ -30,34 +30,7 @@
             ?>
     </div>
     <script>
-        var fileCollection = new Array();
-        $('#images').on('change',function(e){
-            var files = e.target.files;
-            $.each(files, function(i, file){
-                fileCollection.push(file);
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function(e){
-                    $('#images-to-upload').append(template);
-                };
-            });
-        });
-
-        $(document).on('submit','form',function(e){
-            e.preventDefault();
-            var index = $(this).index();
-            var formdata = new FormData($(this)[0]);
-
-            formdata.append('image',fileCollection[index]);
-            var request = new XMLHttpRequest();
-            request.open('post', '../includes/fotoUpload.php', true);
-            request.send(formdata);
-            $("#name").val('');
-            $("#file").val('');
-        });
-
-        //De progressbar
-        $(function(){
+        $(document).ready(function() {
             $('.myForm').ajaxForm({
                 beforeSend:function(){
                     $(".progress").show();
@@ -66,11 +39,16 @@
                         $(".progress-bar").width(percentComplete + '%');
                         $(".progress-bar").html('<p>'+ percentComplete + ' %'+'</p>');
                 },
-                success:function(){
+                success:function(response){
                     $(".progress-bar").addClass('progress-bar-success');
+                    $("#error").show();
+                    $("#error").html(response);
+                    $("#name").val('');
+                    $("#file").val('');
                 }
             });
             $(".progress").hide();
+            $("#error").hide();
         });
     </script>
 </div>
