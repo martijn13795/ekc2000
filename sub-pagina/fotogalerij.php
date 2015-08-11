@@ -49,6 +49,7 @@
                 },
                 success:function(response){
                     $(".progress-bar").addClass('progress-bar-success');
+                    $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
                     $("#error").show();
                     $("#error").html(response);
                     $("#name").val('');
