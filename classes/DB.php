@@ -68,6 +68,17 @@ class DB {
                     . "user_id INT, "
                     . "message VARCHAR(250))");
         }
+        if($this->query("DESCRIBE groups")->error()){
+            $this->query("CREATE TABLE groups ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(20), "
+                . "permissions TEXT)");
+            $this->insert('groups', array(
+                'id' => '1',
+                'name' => 'developers',
+                'permissions' => '{"dev": 1, "admin": 1}'
+            ));
+        }
     }
 
     public function query($sql, $params = array()) {

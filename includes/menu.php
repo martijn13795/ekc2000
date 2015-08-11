@@ -52,9 +52,17 @@
                 <?php
                     $user = new User();
                     if ($user->isLoggedIn()) {
-                        ?>
-                        <li <?=activeClass("uitloggen")?>><a href="/uitloggen"><i class="fa fa-sign-in"></i> Uitloggen</a></li>
-                        <?php
+                        if($user->hasPermission("dev")){
+                            ?>
+                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
+                                    Uitloggen Developer</a></li>
+                            <?php
+                        } else {
+                            ?>
+                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
+                                    Uitloggen</a></li>
+                            <?php
+                        }
                     } else {
                         ?>
                         <li <?=activeClass("inloggen")?>><a href="/inloggen"><i class="fa fa-sign-in"></i> Inloggen</a></li>
