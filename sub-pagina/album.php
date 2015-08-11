@@ -3,6 +3,9 @@
     <div class="col-md-12 col-xs-12">
         <h1>Album - <?php $name = $_GET['name']; echo $name = str_replace('-', ' ', $name); ?></h1>
         <hr>
+        <button onclick="history.go(-1)" type="button" class="btn btn-info">
+            Ga terug
+        </button><br><br>
         <form class="form-inline">
             <div class="form-group">
                 <button id="image-gallery-button" type="button" class="btn btn-primary btn-lg">
