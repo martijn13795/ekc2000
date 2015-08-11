@@ -4,11 +4,7 @@
     <div class="col-md-12 col-xs-12">
         <h1>Fotogalerij</h1>
         <hr>
-        <?php
-        $user = new User();
-        if ($user->isLoggedIn()) {
-        ?>
-        <div class="hidden-xs">
+
             <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
                 <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
                 <input type="file" id="file" name="files[]" multiple REQUIRED><br>
@@ -26,7 +22,7 @@
             </div>
         </div>
             <?php
-        }
+        
             include_once('../includes/db.php');
             $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
