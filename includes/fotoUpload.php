@@ -1,7 +1,7 @@
 <?php
 include_once('db.php');
 
-function ak_img_resize($target, $newcopy, $w, $h, $ext) {
+function imgResize($target, $newcopy, $w, $h, $ext) {
     list($w_orig, $h_orig) = getimagesize($target);
     $scale_ratio = $w_orig / $h_orig;
     if (($w / $h) > $scale_ratio) {
@@ -17,7 +17,6 @@ function ak_img_resize($target, $newcopy, $w, $h, $ext) {
         $img = imagecreatefromjpeg($target);
     }
     $tci = imagecreatetruecolor($w, $h);
-    // imagecopyresampled(dst_img, src_img, dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h)
     imagecopyresampled($tci, $img, 0, 0, 0, 0, $w, $h, $w_orig, $h_orig);
     imagejpeg($tci, $newcopy, 80);
 }
@@ -78,9 +77,9 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                             $target_file = "../images/fotogalerij/" . $albumName . "/" . $file_name_new;
                             $resized_file = "../images/fotogalerij/" . $albumName . "/mobile_" . $file_name_new;
-                            $wmax = 200;
-                            $hmax = 150;
-                            ak_img_resize($target_file, $resized_file, $wmax, $hmax, $file_ext);
+                            $wmax = 1024;
+                            $hmax = 1080;
+                            imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
 
                             $select = mysql_query('SELECT imgPathMobile FROM fotogalerij');
                                 while ($selecting = mysql_fetch_array($select)) {
