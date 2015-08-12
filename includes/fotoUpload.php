@@ -52,7 +52,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                 if ($file_error === 0) {
 
-                    if ($file_size <= 4097152) {
+                    if ($file_size <= 5242880) {
                         $result = mysql_query("SELECT albumName FROM fotogalerij WHERE albumName='$albumName';");
                         if (mysql_num_rows($result) == 0) {
                             $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
