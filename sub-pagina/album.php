@@ -30,20 +30,23 @@
             include_once('../includes/db.php');
             $name = $_GET['name'];
             rawurldecode($name);
-            $select = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName = '".$name."'") or die(mysql_error());
+            $select = mysql_query("SELECT imgPath, imgPathMobile FROM fotogalerij WHERE albumName = '".$name."'") or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
 
                 $imgPaths = explode('  ',$selecting['imgPath']);
+                $imgPathsMobile = explode('  ',$selecting['imgPathMobile']);
 
-                foreach($imgPaths as $imgPath) {
+                //foreach($imgPaths as $imgPath) {
+                    foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
                     echo '
                     <div class="col-md-4 col-xs-4 galerijImg">
-                        <a href="' . $imgPath . '"
+                        <a href="' . $imgPath . '" data-src-320px="'. $imgPathMobile .'"
                            data-src-960px="'. $imgPath .'" title="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" data-gallery>
                             <div class="change galerijBackImg col-md-12" style="background-image: url('. $imgPath .')"
-                                 data-src-320px="'. $imgPath .'"
+                                 data-src-320px="'. $imgPathMobile .'"
                                  data-src-960px="'. $imgPath .'"
-                                 ><img src="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
+                                 alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'">
+                                 <img src="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
                             </div>
                         </a>
                     </div>

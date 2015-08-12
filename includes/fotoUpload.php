@@ -1,6 +1,27 @@
 <?php
 include_once('db.php');
 
+function ak_img_resize($target, $newcopy, $w, $h, $ext) {
+    list($w_orig, $h_orig) = getimagesize($target);
+    $scale_ratio = $w_orig / $h_orig;
+    if (($w / $h) > $scale_ratio) {
+        $w = $h * $scale_ratio;
+    } else {
+        $h = $w / $scale_ratio;
+    }
+    $img = "";
+    $ext = strtolower($ext);
+    if($ext =="png"){
+        $img = imagecreatefrompng($target);
+    } else {
+        $img = imagecreatefromjpeg($target);
+    }
+    $tci = imagecreatetruecolor($w, $h);
+    // imagecopyresampled(dst_img, src_img, dst_x, dst_y, src_x, src_y, dst_w, dst_h, src_w, src_h)
+    imagecopyresampled($tci, $img, 0, 0, 0, 0, $w, $h, $w_orig, $h_orig);
+    imagejpeg($tci, $newcopy, 80);
+}
+
     $albumName = $_POST['name'];
     $date = $mysql_date_now = date("Y-m-d");
 
@@ -54,6 +75,20 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                         if (move_uploaded_file($file_tmp, $file_destination)) {
                             $uploaded[$position] = $file_destination;
+
+                            $target_file = "../images/fotogalerij/" . $albumName . "/" . $file_name_new;
+                            $resized_file = "../images/fotogalerij/" . $albumName . "/mobile_" . $file_name_new;
+                            $wmax = 200;
+                            $hmax = 150;
+                            ak_img_resize($target_file, $resized_file, $wmax, $hmax, $file_ext);
+
+                            $select = mysql_query('SELECT imgPathMobile FROM fotogalerij');
+                                while ($selecting = mysql_fetch_array($select)) {
+                                    $fileLocation = $selecting['imgPathMobile'];
+                                }
+
+                            $sql = mysql_query("update fotogalerij set imgPathMobile='$fileLocation $resized_file ' WHERE albumName='$albumName';");
+
                         } else {
                             $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
                         }
