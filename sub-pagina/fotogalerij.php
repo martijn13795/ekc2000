@@ -28,9 +28,10 @@
             <?php
         }
             include_once('../includes/db.php');
-            $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
+            $select = mysql_query('SELECT albumID, date, albumName, imgPathMobile FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
-                echo '<div class="well"><a href="/album/'.$selecting['albumName'].'">' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . ' </a>' . $selecting['date'] . '</div>';
+                $imgPathsMobile = explode('  ',$selecting['imgPathMobile']);
+                echo '<div class="well"><img class="roundImg" src="'.$imgPathsMobile[0].'"/><a href="/album/'.$selecting['albumName'].'">' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . ' </a>' . $selecting['date'] . '</div>';
             }
             mysql_close();
             ?>
