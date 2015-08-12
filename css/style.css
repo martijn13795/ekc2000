@@ -468,14 +468,27 @@ h1 {
 }
 
 .roundImg {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 100%;
-    margin: -5px;
-    margin-right: 18px;
-    float: left;
+    margin-top: -11px;
+    margin-left: -11px;
+    margin-right: 15px;
+    position: absolute;
 }
 
 .albumsDiv h3 {
-    margin-top: -8px;
+    margin-top: -9px;
+    margin-left: -15px;
+
+    padding: 0 0 0 85px;
+    position: relative;
+}
+
+.albumsDiv p {
+    margin-top: -9px;
+    margin-left: -15px;
+
+    padding: 0 0 0 85px;
+    position: relative;
 }

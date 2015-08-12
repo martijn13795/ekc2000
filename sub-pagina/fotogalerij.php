@@ -31,7 +31,7 @@
             $select = mysql_query('SELECT albumID, date, albumName, imgPathMobile FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
                 $imgPathsMobile = explode('  ',$selecting['imgPathMobile']);
-                echo '<div class="well albumsDiv"><a href="/album/'.$selecting['albumName'].'"><img class="roundImg" src="'.$imgPathsMobile[0].'"/><h3>' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</h3></a> Upload datum: ' . $selecting['date'] . '</div>';
+                echo '<div class="well albumsDiv"><a href="/album/'.$selecting['albumName'].'"><img class="roundImg" src="'.$imgPathsMobile[0].'"/><h3>' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</h3></a><p>Upload datum: ' . $selecting['date'] . '</p></div>';
             }
             mysql_close();
             ?>
