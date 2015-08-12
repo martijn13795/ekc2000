@@ -472,5 +472,10 @@ h1 {
     height: 60px;
     border-radius: 100%;
     margin: -5px;
-    margin-right: 15px;
+    margin-right: 18px;
+    float: left;
+}
+
+.albumsDiv h3 {
+    margin-top: -8px;
 }
