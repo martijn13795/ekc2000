@@ -40,13 +40,13 @@
                     foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
                     echo '
                     <div class="col-md-4 col-xs-4 galerijImg">
-                        <a href="' . $imgPath . '" data-src-320px="'. $imgPathMobile .'"
+                        <a href="' . $imgPathMobile . '" data-src-320px="'. $imgPathMobile .'"
                            data-src-960px="'. $imgPath .'" title="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" data-gallery>
-                            <div class="change galerijBackImg col-md-12" style="background-image: url('. $imgPath .')"
+                            <div class="change galerijBackImg col-md-12" style="background-image: url('. $imgPathMobile .')"
                                  data-src-320px="'. $imgPathMobile .'"
                                  data-src-960px="'. $imgPath .'"
                                  alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'">
-                                 <img src="'. $imgPath .'" data-src-320px="'. $imgPathMobile .'"
+                                 <img src="'. $imgPathMobile .'" data-src-320px="'. $imgPathMobile .'"
                                     data-src-960px="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
                             </div>
                         </a>
