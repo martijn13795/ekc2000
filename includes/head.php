@@ -40,5 +40,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="js/my_script.js" type="text/javascript"></script>
+<script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
+<script src="../js/my_script.js" type="text/javascript"></script>
+<script src="../js/bootstrap-image-gallery.js" type="text/javascript"></script>
