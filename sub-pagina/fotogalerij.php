@@ -42,7 +42,8 @@
                 beforeSend:function(){
                     $(".progress").show();
                     $("#submit").hide();
-                    $("#refresh").show();
+                    $("#error").show();
+                    $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
                 },
                 uploadProgress:function(event,position,total,percentComplete){
                         $(".progress-bar").width(percentComplete + '%');
@@ -51,6 +52,7 @@
                 success:function(response){
                     $(".progress-bar").addClass('progress-bar-success');
                     $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
+                    $("#refresh").show();
                     $("#error").show();
                     $("#error").html(response);
                     $("#name").val('');

@@ -46,7 +46,8 @@
                                  data-src-320px="'. $imgPathMobile .'"
                                  data-src-960px="'. $imgPath .'"
                                  alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'">
-                                 <img src="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
+                                 <img src="'. $imgPath .'" data-src-320px="'. $imgPathMobile .'"
+                                    data-src-960px="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
                             </div>
                         </a>
                     </div>
