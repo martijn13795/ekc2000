@@ -57,21 +57,24 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                         if (mysql_num_rows($result) == 0) {
                             $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
                         }
+
                         $file_name_new = $file_name;
                         $file_name_new = str_replace(' ', '-', $file_name_new);
-                        if (file_exists("../images/fotogalerij/" . $albumName . "/")) {
-                        } else {
-                            mkdir("../images/fotogalerij/" . $albumName, 0777);
-                        }
-                        $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
-
-                        $select = mysql_query('SELECT imgPath FROM fotogalerij');
-                        while ($selecting = mysql_fetch_array($select)) {
-                            $fileLocation = $selecting['imgPath'];
-                        }
 
                         $result = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName='$albumName' AND imgPath LIKE '%{$file_name_new}%'");
                         if(mysql_num_rows($result) == 0) {
+
+                            if (file_exists("../images/fotogalerij/" . $albumName . "/")) {
+                                } else {
+                                    mkdir("../images/fotogalerij/" . $albumName, 0777);
+                                }
+
+                            $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
+
+                            $select = mysql_query('SELECT imgPath FROM fotogalerij');
+                            while ($selecting = mysql_fetch_array($select)) {
+                                $fileLocation = $selecting['imgPath'];
+                            }
 
                             $sql = mysql_query("update fotogalerij set imgPath='$fileLocation $file_destination ' WHERE albumName='$albumName';");
 
