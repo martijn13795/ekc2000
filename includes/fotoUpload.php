@@ -70,28 +70,33 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                             $fileLocation = $selecting['imgPath'];
                         }
 
-                        $sql = mysql_query("update fotogalerij set imgPath='$fileLocation $file_destination ' WHERE albumName='$albumName';");
+                        $result = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName='$albumName' AND imgPath LIKE '%{$file_name_new}%'");
+                        if(mysql_num_rows($result) == 0) {
 
-                        if (move_uploaded_file($file_tmp, $file_destination)) {
-                            $uploaded[$position] = $file_destination;
+                            $sql = mysql_query("update fotogalerij set imgPath='$fileLocation $file_destination ' WHERE albumName='$albumName';");
 
-                            $target_file = "../images/fotogalerij/" . $albumName . "/" . $file_name_new;
-                            $resized_file = "../images/fotogalerij/" . $albumName . "/mobile_" . $file_name_new;
-                            $wmax = 1024;
-                            $hmax = 1080;
-                            imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
+                            if (move_uploaded_file($file_tmp, $file_destination)) {
+                                $uploaded[$position] = $file_destination;
 
-                            $select = mysql_query('SELECT imgPathMobile FROM fotogalerij');
+                                $target_file = "../images/fotogalerij/" . $albumName . "/" . $file_name_new;
+                                $resized_file = "../images/fotogalerij/" . $albumName . "/mobile_" . $file_name_new;
+                                $wmax = 1024;
+                                $hmax = 1080;
+                                imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
+
+                                $select = mysql_query('SELECT imgPathMobile FROM fotogalerij');
                                 while ($selecting = mysql_fetch_array($select)) {
                                     $fileLocation = $selecting['imgPathMobile'];
                                 }
 
-                            $sql = mysql_query("update fotogalerij set imgPathMobile='$fileLocation $resized_file ' WHERE albumName='$albumName';");
+                                $sql = mysql_query("update fotogalerij set imgPathMobile='$fileLocation $resized_file ' WHERE albumName='$albumName';");
 
+                            } else {
+                                $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
+                            }
                         } else {
-                            $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
+                            $failed[$position] = $file_name . " bestaat al" . "<br>";
                         }
-
                     } else {
                         $failed[$position] = $file_name . " is te groot" . "<br>";
                     }
