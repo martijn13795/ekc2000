@@ -5,6 +5,27 @@
 <?php include 'head.php';?>
 </head>
 <body>
+<?php
+include_once('includes/db.php');
+$user_ip = getenv('REMOTE_ADDR');
+$date = $mysql_date_now = date("Y-m-d");
+
+if ($user_ip != '127.0.0.1') {
+    $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+    $city = $geo["geoplugin_city"];
+    $region = $geo["geoplugin_regionName"];
+    $country = $geo["geoplugin_countryName"];
+} else {
+    $city = "LocalHost";
+    $region = "LocalHost";
+    $country = "LocalHost";
+}
+$result = mysql_query("SELECT IP FROM Visitors WHERE date > NOW() - INTERVAL 1 DAY;");
+if (mysql_num_rows($result) == 0) {
+    mysql_query("INSERT INTO Visitors (IP, City, Region, Country, date) VALUES ('$user_ip', '$city', '$region', '$country', '$date')");
+}
+mysql_close();
+?>
 <?php include 'nav.php';?>
 <?php include 'menu.php';?>
 <?php include 'footer.php';?>
