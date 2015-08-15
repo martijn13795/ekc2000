@@ -8,7 +8,7 @@
 <?php
 include_once('includes/db.php');
 $user_ip = getenv('REMOTE_ADDR');
-$date = $mysql_date_now = date("Y-m-d");
+$date = $mysql_date_now = date("Y-m-d H:i:s");
 
 if ($user_ip != '127.0.0.1') {
     $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
