@@ -8,6 +8,7 @@
 <?php
 include_once('includes/db.php');
 $user_ip = getenv('REMOTE_ADDR');
+$info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 $date = $mysql_date_now = date("Y-m-d H:i:s");
 
 if ($user_ip != '127.0.0.1') {
@@ -22,7 +23,7 @@ if ($user_ip != '127.0.0.1') {
 }
 $result = mysql_query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND IP='$user_ip'");
 if (mysql_num_rows($result) == 0) {
-    mysql_query("INSERT INTO visitors (IP, city, region, country, date) VALUES ('$user_ip', '$city', '$region', '$country', '$date')");
+    mysql_query("INSERT INTO visitors (IP, city, region, country, date, info) VALUES ('$user_ip', '$city', '$region', '$country', '$date', '$info')");
 }
 ?>
 <?php include 'nav.php';?>
