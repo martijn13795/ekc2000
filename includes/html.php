@@ -6,7 +6,23 @@
 </head>
 <body>
 <?php
-include_once('includes/db.php');
+$servername = "94.213.96.73";
+$username = "ekc2000";
+$password = "xH2b8C5PnajhnXJ5";
+$dbName = "ekc2000";
+
+$conn = mysql_connect($servername, $username, $password);
+
+if (!$conn) {
+    die("connection failed: " .mysql_error());
+}
+
+$db_selected = mysql_select_db("ekc2000", $conn);
+
+if (!$db_selected) {
+    die('kan de database niet vinden' . mysql_error());
+}
+
 $user_ip = getenv('REMOTE_ADDR');
 $info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 $date = $mysql_date_now = date("Y-m-d H:i:s");
