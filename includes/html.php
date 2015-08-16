@@ -21,7 +21,7 @@ if ($user_ip != '127.0.0.1') {
     $region = "LocalHost";
     $country = "LocalHost";
 }
-$result = mysql_query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND info='$info'");
+$result = mysql_query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND IP='$user_ip' AND info='$info'");
 if (mysql_num_rows($result) == 0) {
     mysql_query("INSERT INTO visitors (IP, city, region, country, date, info) VALUES ('$user_ip', '$city', '$region', '$country', '$date', '$info')");
 }
