@@ -52,7 +52,17 @@ class DB {
                 'salt' => $salt,
                 'name' => 'Cas van Dinter',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'icons/default.png',
+                'IconPath' => 'images/icons/cassshh.png',
+                'group_id' => 1
+            ));
+            $this->insert('users', array(
+                'username' => 'martijn13795',
+                'password' => Hash::make('admin', $salt),
+                'mail' => 'martijn13795@hotmail.com',
+                'salt' => $salt,
+                'name' => 'Martijn Posthuma',
+                'joined' => date('Y-m-d H:i:s'),
+                'IconPath' => 'images/icons/default.png',
                 'group_id' => 1
             ));
         }
@@ -66,7 +76,8 @@ class DB {
             $this->query("CREATE TABLE messages ("
                     . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                     . "user_id INT, "
-                    . "message VARCHAR(250))");
+                    . "message VARCHAR(250), "
+                    . "date DATETIME)");
         }
         if($this->query("DESCRIBE groups")->error()){
             $this->query("CREATE TABLE groups ("

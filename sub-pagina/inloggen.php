@@ -45,7 +45,7 @@ include '../includes/html.php';
                                    placeholder="Wachtwoord"><br/>
                             <label for="remember">
                                 <input type="checkbox" name="remember" id="remember"/>
-                                Remember me
+                                Ingelogd blijven
                             </label><br/>
                             <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
                             <button type="submit" name="submit" class="btn btn-primary btn-block">Inloggen</button>
