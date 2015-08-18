@@ -4,16 +4,18 @@ Cas van Dinter
 -->
 <?php
 
-class DB {
+class DB
+{
 
     private static $_instance = null;
     private $_pdo,
-            $_query,
-            $_error = false,
-            $_results,
-            $_count = 0;
+        $_query,
+        $_error = false,
+        $_results,
+        $_count = 0;
 
-    private function __construct() {
+    private function __construct()
+    {
         try {
             $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
             $this->checkTables();
@@ -24,25 +26,27 @@ class DB {
         }
     }
 
-    public static function getInstance() {
+    public static function getInstance()
+    {
         if (!isset(self::$_instance)) {
             self::$_instance = new DB();
         }
         return self::$_instance;
     }
-    
-    private function checkTables(){
-        if($this->query("DESCRIBE users")->error()){
+
+    private function checkTables()
+    {
+        if ($this->query("DESCRIBE users")->error()) {
             $this->query("CREATE TABLE users ("
-                    . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                    . "username VARCHAR(20), "
-                    . "password VARCHAR(64), "
-                    . "mail VARCHAR(50), "
-                    . "salt VARCHAR(32), "
-                    . "name VARCHAR(50), "
-                    . "joined DATETIME, "
-                    . "IconPath VARCHAR(60), "
-                    . "group_id INT)");
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "username VARCHAR(20), "
+                . "password VARCHAR(64), "
+                . "mail VARCHAR(50), "
+                . "salt VARCHAR(32), "
+                . "name VARCHAR(50), "
+                . "joined DATETIME, "
+                . "IconPath VARCHAR(60), "
+                . "group_id INT)");
             //Create user on first setup
             $salt = Hash::salt(32);
             $this->insert('users', array(
@@ -66,20 +70,20 @@ class DB {
                 'group_id' => 1
             ));
         }
-        if($this->query("DESCRIBE users_session")->error()){
+        if ($this->query("DESCRIBE users_session")->error()) {
             $this->query("CREATE TABLE users_session ("
-                    . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                    . "user_id INT, "
-                    . "hash VARCHAR(64))");
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "hash VARCHAR(64))");
         }
-        if($this->query("DESCRIBE messages")->error()){
+        if ($this->query("DESCRIBE messages")->error()) {
             $this->query("CREATE TABLE messages ("
-                    . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                    . "user_id INT, "
-                    . "message VARCHAR(250), "
-                    . "date DATETIME)");
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "message VARCHAR(250), "
+                . "date DATETIME)");
         }
-        if($this->query("DESCRIBE groups")->error()){
+        if ($this->query("DESCRIBE groups")->error()) {
             $this->query("CREATE TABLE groups ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "name VARCHAR(20), "
@@ -90,7 +94,7 @@ class DB {
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
         }
-        if($this->query("DESCRIBE galleries")->error()){
+        if ($this->query("DESCRIBE galleries")->error()) {
             $this->query("CREATE TABLE galleries ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "name VARCHAR(255), "
@@ -100,7 +104,8 @@ class DB {
         }
     }
 
-    public function query($sql, $params = array()) {
+    public function query($sql, $params = array())
+    {
         $this->_error = false;
         if ($this->_query = $this->_pdo->prepare($sql)) {
             if (count($params)) {
@@ -121,7 +126,8 @@ class DB {
         return $this;
     }
 
-    public function insert($table, $fields = array()) {
+    public function insert($table, $fields = array())
+    {
         $keys = array_keys($fields);
         $values = '';
         $x = 1;
@@ -141,8 +147,9 @@ class DB {
         }
         return false;
     }
-    
-    public function update($table, $id, $fields) {
+
+    public function update($table, $id, $fields)
+    {
         $set = '';
         $x = 1;
 
@@ -162,19 +169,23 @@ class DB {
         return false;
     }
 
-    public function results() {
+    public function results()
+    {
         return $this->_results;
     }
 
-    public function first() {
+    public function first()
+    {
         return $this->results()[0];
     }
 
-    public function error() {
+    public function error()
+    {
         return $this->_error;
     }
 
-    public function count() {
+    public function count()
+    {
         return $this->_count;
     }
 

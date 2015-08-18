@@ -1,11 +1,14 @@
-<?php include '../includes/html.php';?>
+<?php include '../includes/html.php'; ?>
 <div class="container">
     <div class="col-md-12 col-xs-12">
-        <h1>Album - <?php $name = $_GET['name']; echo $name = str_replace('-', ' ', $name); ?></h1>
+        <h1>Album - <?php $name = $_GET['name'];
+            echo $name = str_replace('-', ' ', $name); ?></h1>
         <hr>
         <button onclick="history.go(-1)" type="button" class="btn btn-info">
             Ga terug
-        </button><br><br>
+        </button>
+        <br><br>
+
         <form class="form-inline">
             <div class="form-group">
                 <button id="image-gallery-button" type="button" class="btn btn-primary btn-lg">
@@ -27,40 +30,11 @@
         </br>
         <div id="links">
             <?php
-            /*include_once('../includes/db.php');
-            $name = $_GET['name'];
-            rawurldecode($name);
-            $select = mysql_query("SELECT imgPath, imgPathMobile FROM fotogalerij WHERE albumName = '".$name."'") or die(mysql_error());
-            while ($selecting = mysql_fetch_array($select)) {
-
-                $imgPaths = explode('  ',$selecting['imgPath']);
-                $imgPathsMobile = explode('  ',$selecting['imgPathMobile']);
-
-                //foreach($imgPaths as $imgPath) {
-                    foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
-                    echo '
-                    <div class="col-md-4 col-xs-4 galerijImg">
-                        <a href="' . $imgPathMobile . '" data-src-320px="'. $imgPathMobile .'"
-                           data-src-960px="'. $imgPath .'" title="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" data-gallery>
-                            <div class="change galerijBackImg col-md-12" style="background-image: url('. $imgPathMobile .')"
-                                 data-src-320px="'. $imgPathMobile .'"
-                                 data-src-960px="'. $imgPath .'"
-                                 alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'">
-                                 <img src="'. $imgPathMobile .'" data-src-320px="'. $imgPathMobile .'"
-                                    data-src-960px="'. $imgPath .'" alt="'. substr($imgPath, strrpos($imgPath, '/') + 1) .'" style="width: 0px"/>
-                            </div>
-                        </a>
-                    </div>
-                    ';
-                }
-            }
-            mysql_close();*/
-
             $db = DB::getInstance();
             $name = $_GET['name'];
             rawurldecode($name);
-            $gallery = $db->query("SELECT path, pathMobile FROM galleries WHERE name = '".$name."'");
-            if($gallery->count()) {
+            $gallery = $db->query("SELECT path, pathMobile FROM galleries WHERE name = '" . $name . "'");
+            if ($gallery->count()) {
                 foreach ($gallery->results() as $images) {
                     $imgPaths = explode('  ', $images->path);
                     $imgPathsMobile = explode('  ', $images->pathMobile);
@@ -122,8 +96,6 @@
 </div>
 <script src="../js/jquery.blueimp-gallery.min.js"></script>
 <script src="../js/bootstrap-image-gallery.js"></script>
-
-
 
 
 <!--            <div class="col-md-4 col-xs-4 galerijImg">-->
