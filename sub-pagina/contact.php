@@ -25,6 +25,28 @@
                 <div id="map"></div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-7 col-xs-12">
+                <h3><strong>Overig</strong></h3>
+                <p class="lead">
+                    Bestuur:<br>
+                    Via het onderstaande E-mail adres kunt u contact opnemen met het bestuur<br>
+                    ekc2000.emmen@knkv.nl<br><br>
+                    Wedstrijdsecretariaat:<br>
+                    Senioren: Petra Bethlehem: 0591-642123<br>
+                    Jeugd: Ilse Schuttrups: 06-10433293<br><br>
+                    Scheidsrechteraanwijzer:<br>
+                    Michael Beekman: 06-49077377.<br><br>
+                    Webmaster: Heeft u vragen of opmerkingen m.b.t de website? mail dan naar
+                    
+                </p>
+            </div>
+            <div class="col-md-5 col-xs-12 well social">
+                <i class="fa fa-facebook"></i> Volg ons op Facebook<br>
+                <i class="fa fa-twitter"></i> Volg ons op Twitter<br>
+                <i class="fa fa-linkedin"></i>
+            </div>
+        </div>
     </div>
 <script>
 
