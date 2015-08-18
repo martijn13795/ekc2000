@@ -5,65 +5,71 @@
             <div class="col-xs-12 col-md-12"><h1>Welkom bij <strong>EKC 2000</strong></h1><hr></div>
             <div class="row">
                 <div class="col-xs-12 col-md-12">
-                    <div class="col-xs-12 col-md-4 well infoDiv">
-                        <div class="col-md-4 col-xs-4">
-                            <a href="/nieuws"><i class="icon major fa-newspaper-o link"></i></a>
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <a href="/nieuws"><h3>Laatste nieuws</h3></a>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                            <p>07-03-15 Programma EKC 2000-dag<br><br>
-                            07-03-15 EKC 2000 B2 is zaalkampioen!<br><br>
-                            07-03-15 Paasspelen 2015!<br><br>
-                            22-02-15 Word donateur en steun EKC 2000<br><br>
-                            16-02-15 Interview met Riejander Deen<br><br>
-                            19-05-15 Selectietrainingen jeugd.<br><br>
-                            19-05-15 Oproep nieuwe senioren werven<br><br>
-                            19-05-15 Sponsorkleding inleveren.<br><br>
-                            14-05-15 Bekerwedstrijd halve finale S1 19 mei<br><br>
-                            14-05-15 Geen training tijdens schoolkorfbal</p>
+                    <div class="col-md-4 col-xs-12 homeInfoDiv">
+                        <div class="col-xs-12 col-md-12 well infoDiv">
+                            <div class="col-md-4 col-xs-4">
+                                <a href="/nieuws"><i class="icon major fa-newspaper-o link"></i></a>
+                            </div>
+                            <div class="col-md-8 col-xs-8">
+                                <a href="/nieuws"><h3>Laatste nieuws</h3></a>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                <p>07-03-15 Programma EKC 2000-dag<br><br>
+                                07-03-15 EKC 2000 B2 is zaalkampioen!<br><br>
+                                07-03-15 Paasspelen 2015!<br><br>
+                                22-02-15 Word donateur en steun EKC 2000<br><br>
+                                16-02-15 Interview met Riejander Deen<br><br>
+                                19-05-15 Selectietrainingen jeugd.<br><br>
+                                19-05-15 Oproep nieuwe senioren werven<br><br>
+                                19-05-15 Sponsorkleding inleveren.<br><br>
+                                14-05-15 Bekerwedstrijd halve finale S1 19 mei<br><br>
+                                14-05-15 Geen training tijdens schoolkorfbal</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4 well infoDiv">
-                        <div class="col-md-4 col-xs-4">
-                            <a href="/fotogalerij"><i class="icon major fa-camera link"></i></a>
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                        <p>
-                            <?php
-                            include_once('includes/db.php');
-                            $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
-                            while ($selecting = mysql_fetch_array($select)) {
-                                echo '<p class="fotoLink"><a href="/album/'.$selecting['albumName'].'">'  . $selecting['date'] . ' ' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</a></p>';
-                            }
-                            mysql_close();
-                            ?>
-                        </p>
+                    <div class="col-md-4 col-xs-12 homeInfoDiv">
+                        <div class="col-xs-12 col-md-12 well infoDiv">
+                            <div class="col-md-4 col-xs-4">
+                                <a href="/fotogalerij"><i class="icon major fa-camera link"></i></a>
                             </div>
+                            <div class="col-md-8 col-xs-8">
+                                <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                <p>
+                                    <?php
+                                    include_once('includes/db.php');
+                                    $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
+                                    while ($selecting = mysql_fetch_array($select)) {
+                                        echo '<p class="fotoLink"><a href="/album/'.$selecting['albumName'].'">'  . $selecting['date'] . ' ' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</a></p>';
+                                    }
+                                    mysql_close();
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-md-4 well infoDiv1">
-                        <div class="col-md-4 col-xs-4">
-                            <a href="/activiteiten"><i class="icon major fa-users link"></i></a>
-                        </div>
-                        <div class="col-md-8 col-xs-8">
-                            <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
-                        </div>
-                        <div class="col-md-12 col-xs-12">
-                        <p>12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag<br><br>
-                            12-03-15 EKC 2000-dag</p>
+                    <div class="col-md-4 col-xs-12 homeInfoDiv">
+                        <div class="col-xs-12 col-md-12 well infoDiv">
+                            <div class="col-md-4 col-xs-4">
+                                <a href="/activiteiten"><i class="icon major fa-users link"></i></a>
                             </div>
+                            <div class="col-md-8 col-xs-8">
+                                <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                            <p>12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag<br><br>
+                                12-03-15 EKC 2000-dag</p>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
