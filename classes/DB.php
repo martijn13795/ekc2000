@@ -90,6 +90,14 @@ class DB {
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
         }
+        if($this->query("DESCRIBE galleries")->error()){
+            $this->query("CREATE TABLE galleries ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(255), "
+                . "date DATE, "
+                . "path VARCHAR(5012), "
+                . "pathMobile VARCHAR(5012))");
+        }
     }
 
     public function query($sql, $params = array()) {

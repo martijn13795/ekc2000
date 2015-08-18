@@ -1,5 +1,7 @@
 <?php
-include_once('db.php');
+//include_once('db.php');
+require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
+$db = DB::getInstance();
 
 function imgResize($target, $newcopy, $w, $h, $ext) {
     list($w_orig, $h_orig) = getimagesize($target);
@@ -22,7 +24,7 @@ function imgResize($target, $newcopy, $w, $h, $ext) {
 }
 
     $albumName = $_POST['name'];
-    $date = $mysql_date_now = date("Y-m-d");
+    $date = date("Y-m-d");
 
 if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumName)) {
     $albumName = null;
@@ -53,16 +55,17 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                 if ($file_error === 0) {
 
                     if ($file_size <= 5242880) {
-                        $result = mysql_query("SELECT albumName FROM fotogalerij WHERE albumName='$albumName';");
-                        if (mysql_num_rows($result) == 0) {
-                            $sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+                        //$result = mysql_query("SELECT albumName FROM fotogalerij WHERE albumName='$albumName';");
+                        if (!$db->query("SELECT name FROM galleries WHERE name = '$albumName'")->count()) {
+                            //$sql = mysql_query("INSERT INTO fotogalerij (albumName, date) VALUES ('$albumName', '$date')");
+                            $db->query("INSERT INTO galleries (name, date) VALUES ('$albumName', '$date')");
                         }
 
                         $file_name_new = $file_name;
                         $file_name_new = str_replace(' ', '-', $file_name_new);
 
-                        $result = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName='$albumName' AND imgPath LIKE '%{$file_name_new}%'");
-                        if(mysql_num_rows($result) == 0) {
+                        //$result = mysql_query("SELECT imgPath FROM fotogalerij WHERE albumName='$albumName' AND imgPath LIKE '%{$file_name_new}%'");
+                        if(!$db->query("SELECT path FROM galleries WHERE name='$albumName' AND path LIKE '%{$file_name_new}%'")->count()) {
 
                             if (file_exists("../images/fotogalerij/" . $albumName . "/")) {
                                 } else {
@@ -71,12 +74,15 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                             $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
 
-                            $select = mysql_query('SELECT imgPath FROM fotogalerij');
-                            while ($selecting = mysql_fetch_array($select)) {
-                                $fileLocation = $selecting['imgPath'];
+                            $selects = $db->query('SELECT path FROM galleries');
+                            foreach($selects->results() as $select){
+                                $fileLocation = $select->path;
                             }
+                            /*while ($selecting = $select->path) {
+                                $fileLocation = $selecting;
+                            }*/
 
-                            $sql = mysql_query("update fotogalerij set imgPath='$fileLocation $file_destination ' WHERE albumName='$albumName';");
+                            $db->query("update galleries set path='$fileLocation $file_destination ' WHERE name='$albumName';");
 
                             if (move_uploaded_file($file_tmp, $file_destination)) {
                                 $uploaded[$position] = $file_destination;
@@ -87,12 +93,15 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                                 $hmax = 1080;
                                 imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
 
-                                $select = mysql_query('SELECT imgPathMobile FROM fotogalerij');
-                                while ($selecting = mysql_fetch_array($select)) {
-                                    $fileLocation = $selecting['imgPathMobile'];
+                                $selects = $db->query('SELECT pathMobile FROM galleries');
+                                foreach($selects->results() as $select){
+                                    $fileLocation = $select->pathMobile;
                                 }
+                                /*while ($selecting = $select->pathMobile) {
+                                    $fileLocation = $selecting;
+                                }*/
 
-                                $sql = mysql_query("update fotogalerij set imgPathMobile='$fileLocation $resized_file ' WHERE albumName='$albumName';");
+                                $db->query("update fotogalerij set imgPathMobile='$fileLocation $resized_file ' WHERE albumName='$albumName';");
 
                             } else {
                                 $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
@@ -132,4 +141,4 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
         }
     }
 
-mysql_close();
+//mysql_close();

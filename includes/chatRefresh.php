@@ -6,9 +6,26 @@ if ($messages->count()) {
     foreach ($messages->results() as $message) {
         $messageSQL = $db->query("SELECT name, IconPath FROM users WHERE id = '{$message->user_id}'");
         foreach ($messageSQL->results() as $user_id) {
-            echo '<li class="left clearfix">
+            $userMessage = new User($message->user_id);
+            if ($userMessage->hasPermission("dev")) {
+                echo '<li class="left clearfix">
                     <span class="chat-img pull-left">
-                        <img src="' . escape($user_id->IconPath) . '" alt="'. escape($user_id->name) .'" class="img-circle avatar" />
+                        <img src="' . escape($user_id->IconPath) . '" alt="' . escape($user_id->name) . '" class="img-circle avatar" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font">' . escape($user_id->name) . ' || Developer' . '</strong> <small class="pull-right text-muted">
+                            <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                        </div>
+                        <p>
+                        ' . escape($message->message) . '
+                        </p>
+                    </div>
+                </li>';
+            } else {
+                echo '<li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img src="' . escape($user_id->IconPath) . '" alt="' . escape($user_id->name) . '" class="img-circle avatar" />
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
@@ -20,6 +37,7 @@ if ($messages->count()) {
                         </p>
                     </div>
                 </li>';
+            }
         }
     }
 } else {

@@ -35,12 +35,21 @@
                         <div class="col-md-12 col-xs-12">
                         <p>
                             <?php
-                            include_once('includes/db.php');
+                            $db = DB::getInstance();
+                            $galleries = $db->query("SELECT id, date, name FROM galleries ORDER BY id DESC");
+                            if($galleries->count()){
+                                foreach($galleries->results() as $gallery){
+                                    echo '<p class="fotoLink"><a href="/album/'.$gallery->name.'">'.$gallery->date.' '.$gallery->name = str_replace('-', ' ', $gallery->name).'</a></p>';
+                                }
+                            }else{
+                                echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';
+                            }
+                            /*include_once('includes/db.php');
                             $select = mysql_query('SELECT albumID, date, albumName FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
                             while ($selecting = mysql_fetch_array($select)) {
                                 echo '<p class="fotoLink"><a href="/album/'.$selecting['albumName'].'">'  . $selecting['date'] . ' ' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</a></p>';
                             }
-                            mysql_close();
+                            mysql_close();*/
                             ?>
                         </p>
                             </div>

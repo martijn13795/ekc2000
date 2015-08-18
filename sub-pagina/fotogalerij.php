@@ -27,13 +27,26 @@
         </div>
             <?php
         }
-            include_once('../includes/db.php');
+            /*include_once('../includes/db.php');
             $select = mysql_query('SELECT albumID, date, albumName, imgPathMobile FROM fotogalerij ORDER BY albumID DESC') or die(mysql_error());
             while ($selecting = mysql_fetch_array($select)) {
                 $imgPathsMobile = explode('  ',$selecting['imgPathMobile']);
                 echo '<div class="well albumsDiv"><a href="/album/'.$selecting['albumName'].'"><img class="roundImg" src="'.$imgPathsMobile[0].'"/><h3>' . $selecting['albumName'] = str_replace('-', ' ', $selecting['albumName']) . '</h3></a><p>Upload datum: ' . $selecting['date'] . '</p></div>';
             }
-            mysql_close();
+            mysql_close();*/
+
+        $db = DB::getInstance();
+        $galleries = $db->query("SELECT id, date, name, pathMobile FROM galleries ORDER BY id DESC");
+        if($galleries->count()){
+            foreach($galleries->results() as $gallery){
+                $imgPathsMobile = explode('  ',$gallery->pathMobile);
+                echo '<div class="well albumsDiv"><a href="/album/'.$gallery->name.'"><img class="roundImg" src="'.$imgPathsMobile[0].'"/><h3>'
+                    . $gallery->name = str_replace('-', ' ', $gallery->name) . '</h3></a><p>Upload datum: ' . $gallery->date . '</p></div>';
+            }
+        } else {
+            //Bericht nog geen foto albums?
+            echo '<div class="well albumsDiv"><br/><h3>Er zijn nog geen albums beschikbaar.</h3></div>';
+        }
             ?>
     </div>
     <script>

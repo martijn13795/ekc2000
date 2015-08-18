@@ -25,7 +25,7 @@
                         <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
                         <li <?=activeClass("bestuur")?>><a href="/bestuur">Bestuur</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
-                        <li <?=activeClass("lid-worden")?>><a href="/lid-worden">lid worden</a></li>
+                        <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
                         <li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li>
                         <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
