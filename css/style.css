@@ -492,6 +492,19 @@ h1 {
 }
 
 .social {
-    font-size: 30px;
+    padding-top: 0px;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.social p {
+    font-size: 25px;
+    margin-top: 8px;
+    margin-left: 55px;
+}
+
+.social .fa {
+    font-size: 50px;
     color: #337AB7;
+    float: left;
 }

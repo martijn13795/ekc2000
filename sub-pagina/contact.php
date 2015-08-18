@@ -18,33 +18,33 @@
                         Straat: Calthornerbrink<br>
                         Postcode: 7812 HS Emmen<br>
                         Telefoonnummer: 0591-618868
+                    </p><hr>
+                    <h3><strong>Overig</strong></h3>
+                    <p class="lead">
+                        Bestuur:<br>
+                        ekc2000.emmen@knkv.nl<br><br>
+                        Wedstrijdsecretariaat:<br>
+                        Senioren: Petra Bethlehem: 0591-642123<br>
+                        Jeugd: Ilse Schuttrups: 06-10433293<br><br>
+                        Scheidsrechteraanwijzer:<br>
+                        Michael Beekman: 06-49077377.<br><br>
+                        Webmasters: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">
                 <div id="map"></div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-7 col-xs-12">
-                <h3><strong>Overig</strong></h3>
-                <p class="lead">
-                    Bestuur:<br>
-                    Via het onderstaande E-mail adres kunt u contact opnemen met het bestuur<br>
-                    ekc2000.emmen@knkv.nl<br><br>
-                    Wedstrijdsecretariaat:<br>
-                    Senioren: Petra Bethlehem: 0591-642123<br>
-                    Jeugd: Ilse Schuttrups: 06-10433293<br><br>
-                    Scheidsrechteraanwijzer:<br>
-                    Michael Beekman: 06-49077377.<br><br>
-                    Webmaster: Heeft u vragen of opmerkingen m.b.t de website? mail dan naar
-                    
-                </p>
-            </div>
-            <div class="col-md-5 col-xs-12 well social">
-                <i class="fa fa-facebook"></i> Volg ons op Facebook<br>
-                <i class="fa fa-twitter"></i> Volg ons op Twitter<br>
-                <i class="fa fa-linkedin"></i>
+            <div class="col-md-5 col-xs-12">
+                <div class="col-md-12 col-xs-12 well social">
+                    <h3><strong>Social media</strong></h3><hr><br>
+                    <a href="https://facebook.com/EKC2000" target="_blank">
+                        <i class="fa fa-facebook-official"></i><p>Like ons op Facebook</p>
+                    </a><br><br>
+                    <a href="https://twitter.com/EKC2000_Emmen" target="_blank">
+                        <i class="fa fa-twitter"></i><p>Volg ons op Twitter</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
