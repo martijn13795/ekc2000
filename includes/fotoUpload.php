@@ -70,7 +70,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                             $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
 
-                            $selects = $db->query('SELECT path FROM galleries');
+                            $selects = $db->query("SELECT path FROM galleries WHERE name='$albumName'");
                             foreach ($selects->results() as $select) {
                                 $fileLocation = $select->path;
                             }
@@ -86,7 +86,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                                 $hmax = 1080;
                                 imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
 
-                                $selects = $db->query('SELECT pathMobile FROM galleries');
+                                $selects = $db->query("SELECT pathMobile FROM galleries WHERE name='$albumName'");
                                 foreach ($selects->results() as $select) {
                                     $fileLocation = $select->pathMobile;
                                 }
