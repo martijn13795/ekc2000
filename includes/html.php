@@ -6,23 +6,6 @@
 </head>
 <body>
 <?php
-$servername = "94.213.96.73";
-$username = "ekc2000";
-$password = "xH2b8C5PnajhnXJ5";
-$dbName = "ekc2000";
-
-$conn = mysql_connect($servername, $username, $password);
-
-if (!$conn) {
-    die("connection failed: " .mysql_error());
-}
-
-$db_selected = mysql_select_db("ekc2000", $conn);
-
-if (!$db_selected) {
-    die('kan de database niet vinden' . mysql_error());
-}
-
 $user_ip = getenv('REMOTE_ADDR');
 $info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 $date = $mysql_date_now = date("Y-m-d H:i:s");
@@ -37,10 +20,11 @@ if ($user_ip != '127.0.0.1') {
     $region = "LocalHost";
     $country = "LocalHost";
 }
-$result = mysql_query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND IP='$user_ip' AND info='$info'");
-if (mysql_num_rows($result) == 0) {
-    mysql_query("INSERT INTO visitors (IP, city, region, country, date, info) VALUES ('$user_ip', '$city', '$region', '$country', '$date', '$info')");
+$db = DB::getInstance();
+if(!$db->query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND IP='$user_ip' AND info='$info'")->count()){
+    $db->query("INSERT INTO visitors (IP, city, region, country, date, info) VALUES ('$user_ip', '$city', '$region', '$country', '$date', '$info')");
 }
+
 ?>
 <?php include 'nav.php';?>
 <?php include 'menu.php';?>

@@ -99,8 +99,18 @@ class DB
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "name VARCHAR(255), "
                 . "date DATETIME, "
-                . "path VARCHAR(5012), "
-                . "pathMobile VARCHAR(5012))");
+                . "path LONGTEXT, "
+                . "pathMobile LONGTEXT)");
+        }
+        if ($this->query("DESCRIBE visitors")->error()) {
+            $this->query("CREATE TABLE visitors ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "ip VARCHAR(512), "
+                . "city VARCHAR(512), "
+                . "region VARCHAR(512), "
+                . "country VARCHAR(512), "
+                . "date DATETIME, "
+                . "info VARCHAR(512))");
         }
     }
 
