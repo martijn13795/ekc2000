@@ -32,12 +32,12 @@
             <?php
         }
         $db = DB::getInstance();
-        $galleries = $db->query("SELECT id, date, name, pathMobile FROM galleries ORDER BY id DESC");
+        $galleries = $db->query("SELECT id, date, name, pathMobile FROM galleries ORDER BY date DESC");
         if ($galleries->count()) {
             foreach ($galleries->results() as $gallery) {
                 $imgPathsMobile = explode('  ', $gallery->pathMobile);
                 echo '<div class="well albumsDiv"><a href="/album/' . $gallery->name . '"><img class="roundImg" src="' . $imgPathsMobile[0] . '"/><h3>'
-                    . $gallery->name = str_replace('-', ' ', $gallery->name) . '</h3></a><p>Upload datum: ' . $gallery->date . '</p></div>';
+                    . escape($name = str_replace('-', ' ', $gallery->name)) . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $gallery->date)[0]) . '</p></div>';
             }
         } else {
             //Bericht nog geen foto albums?

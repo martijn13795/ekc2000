@@ -24,7 +24,7 @@ function imgResize($target, $newcopy, $w, $h, $ext)
 }
 
 $albumName = $_POST['name'];
-$date = date("Y-m-d");
+$date = date("Y-m-d H:i:s");
 
 if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumName)) {
     $albumName = null;
@@ -75,7 +75,7 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
                                 $fileLocation = $select->path;
                             }
 
-                            $db->query("update galleries set path='$fileLocation $file_destination ' WHERE name='$albumName';");
+                            $db->query("update galleries set path='$fileLocation $file_destination ', date='$date' WHERE name='$albumName';");
 
                             if (move_uploaded_file($file_tmp, $file_destination)) {
                                 $uploaded[$position] = $file_destination;

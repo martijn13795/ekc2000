@@ -98,7 +98,7 @@ class DB
             $this->query("CREATE TABLE galleries ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "name VARCHAR(255), "
-                . "date DATE, "
+                . "date DATETIME, "
                 . "path VARCHAR(5012), "
                 . "pathMobile VARCHAR(5012))");
         }
