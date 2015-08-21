@@ -12,7 +12,7 @@ $date = $mysql_date_now = date("Y-m-d H:i:s");
 
 $db = DB::getInstance();
 $user = new User();
-if($user->isLoggedIn()){
+if($user->isLoggedIn() && !$user->hasPermission('dev')){
     $name = $user->data()->name;
 } else {
     $name = null;
@@ -30,23 +30,6 @@ if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND
     }
     $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
 }
-
-/*
-* Getting MAC Address using PHP
-* Md. Nazmul Basher
-*/
-
-ob_start(); // Turn on output buffering
-system('ipconfig /all'); //Execute external program to display output
-$mycom=ob_get_contents(); // Capture the output into a variable
-ob_clean(); // Clean (erase) the output buffer
-
-$findme = "Physical";
-$pmac = strpos($mycom, $findme); // Find the position of Physical text
-$mac=substr($mycom,($pmac+36),17); // Get Physical Address
-
-echo $mac;
-
 ?>
 <?php include 'nav.php';?>
 <?php include 'menu.php';?>
