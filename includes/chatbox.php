@@ -8,12 +8,14 @@ $user = new User();
 $message = $_POST['message'];
 $date = date("Y-m-d H:i:s");
 
-foreach ($badWords as $badword) {
-    if (stripos($message, $badword) !== false) {
-        echo "<h3>Voer een geldig bericht in</h3></br>";
-        echo "Het gebruik van scheldwoorden is niet toegestaan";
-        $message = null;
-        return true;
+if(!$user->hasPermission('dev')) {
+    foreach ($badWords as $badword) {
+        if (stripos($message, $badword) !== false) {
+            echo "<h3>Voer een geldig bericht in</h3></br>";
+            echo "Het gebruik van scheldwoorden is niet toegestaan";
+            $message = null;
+            return true;
+        }
     }
 }
 
@@ -21,8 +23,8 @@ if ($message == null || $message == "" || $message == " ") {
     echo "<h3>Voer een bericht in</h3>";
     return true;
 } else {
-    if (strpos($message, $badword) !== true) {
-        if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_' '=' '*' '+']+$#", $message)) {
+    //if (strpos($message, $badWords) !== true) {
+        if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_' '=' '*' '+']+$#", $message) xor $user->hasPermission('dev')) {
             $message = null;
             echo "<h3>Voer een geldig bericht in</h3></br>";
             echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) / : = - _ + * @ % &";
@@ -64,6 +66,6 @@ if ($message == null || $message == "" || $message == " ") {
                 return true;
             }
         }
-    }
+    //}
 }
 ?>

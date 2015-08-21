@@ -18,7 +18,7 @@ if ($messages->count()) {
                             <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
-                        ' . escape($message->message) . '
+                        ' . $message->message . '
                         </p>
                     </div>
                 </li>';
