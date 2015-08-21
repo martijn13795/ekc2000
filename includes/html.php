@@ -10,20 +10,42 @@ $user_ip = getenv('REMOTE_ADDR');
 $info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 $date = $mysql_date_now = date("Y-m-d H:i:s");
 
-if ($user_ip != '127.0.0.1') {
-    $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
-    $city = $geo["geoplugin_city"];
-    $region = $geo["geoplugin_regionName"];
-    $country = $geo["geoplugin_countryName"];
-} else {
-    $city = "LocalHost";
-    $region = "LocalHost";
-    $country = "LocalHost";
-}
 $db = DB::getInstance();
-if(!$db->query("SELECT IP FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND IP='$user_ip' AND info='$info'")->count()){
-    $db->query("INSERT INTO visitors (IP, city, region, country, date, info) VALUES ('$user_ip', '$city', '$region', '$country', '$date', '$info')");
+$user = new User();
+if($user->isLoggedIn()){
+    $name = $user->data()->name;
+} else {
+    $name = null;
 }
+if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND ip='$user_ip' AND info='$info' AND name='$name'")->count()){
+    if ($user_ip != '127.0.0.1') {
+        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+        $city = $geo["geoplugin_city"];
+        $region = $geo["geoplugin_regionName"];
+        $country = $geo["geoplugin_countryName"];
+    } else {
+        $city = "LocalHost";
+        $region = "LocalHost";
+        $country = "LocalHost";
+    }
+    $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
+}
+
+/*
+* Getting MAC Address using PHP
+* Md. Nazmul Basher
+*/
+
+ob_start(); // Turn on output buffering
+system('ipconfig /all'); //Execute external program to display output
+$mycom=ob_get_contents(); // Capture the output into a variable
+ob_clean(); // Clean (erase) the output buffer
+
+$findme = "Physical";
+$pmac = strpos($mycom, $findme); // Find the position of Physical text
+$mac=substr($mycom,($pmac+36),17); // Get Physical Address
+
+echo $mac;
 
 ?>
 <?php include 'nav.php';?>

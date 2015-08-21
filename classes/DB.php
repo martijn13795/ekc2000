@@ -106,6 +106,7 @@ class DB
             $this->query("CREATE TABLE visitors ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "ip VARCHAR(512), "
+                . "name VARCHAR(250), "
                 . "city VARCHAR(512), "
                 . "region VARCHAR(512), "
                 . "country VARCHAR(512), "
