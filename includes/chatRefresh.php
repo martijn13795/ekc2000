@@ -1,3 +1,10 @@
+<script>
+    function removeMes(id){
+        $.get("includes/removeMessage.php?id=" + id), function(data){
+            $('#result').html(data);
+        }
+    }
+</script>
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
@@ -30,7 +37,7 @@ if ($messages->count()) {
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                            <i class="fa fa-trash-o" onclick="removeMes('.escape($message->id).');"></i><span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
                         ' . escape($message->message) . '
