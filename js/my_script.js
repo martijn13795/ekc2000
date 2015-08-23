@@ -31,6 +31,8 @@ function logout() {
                 $('.alert').removeClass('on');
             }, 5000);
         }, 10);
-        $(body).load("../includes/menu.php");
+        setTimeout(function () {
+            window.location.reload(true);
+        }, 6000);
     }
 }
