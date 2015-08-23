@@ -524,3 +524,9 @@ h1 {
     width: 8%;
 }
 /*Antilopen eind*/
+
+.fa-trash-o{
+    font-size: 15px;
+    color: #e50000;
+    margin-right: 7px;
+}

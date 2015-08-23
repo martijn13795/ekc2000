@@ -1,10 +1,3 @@
-<script>
-    function removeMes(id){
-        $.get("includes/removeMessage.php?id=" + id), function(data){
-            $('#result').html(data);
-        }
-    }
-</script>
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();

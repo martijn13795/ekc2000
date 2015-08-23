@@ -88,6 +88,12 @@ jQuery(document).ready(function($) {
     $('input').keyup(updateCountdown);
 });
 
+function removeMes(id){
+    $.get("includes/removeMessage.php?id=" + id), function(data){
+        $('#result').html(data);
+    }
+}
+
 function del () {
     if (!$(".alert").hasClass("on")) {
         $('#chatRefresh').load('/includes/chatRefresh.php');
