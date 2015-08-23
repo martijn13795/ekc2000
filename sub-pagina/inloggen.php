@@ -1,3 +1,21 @@
+<script>
+    function warning() {
+        if (!$(".alert").hasClass("on")) {
+            $('#chatRefresh').load('/includes/chatRefresh.php');
+            var message = '<div class="alert alert-warning alert-dismissable">' +
+                '<button class="close" data-dismiss="alert">&times;</button>' +
+                'Gebruikersnaam of wachtwoord is niet juist' +
+                '</div>';
+            $('.alert').append(message);
+            setTimeout(function () {
+                $('.alert').addClass('on');
+                setTimeout(function () {
+                    $('.alert').removeClass('on');
+                }, 5000);
+            }, 10);
+        }
+    }
+</script>
 <?php
 include '../includes/html.php';
     $user = new User();
@@ -21,9 +39,13 @@ include '../includes/html.php';
                     $login = $user->login(Input::get('username'), Input::get('password'), $remember);
 
                     if ($login) {
-                        Redirect::to('/home');
+                        echo '<script>
+                            var logedin = "ja";
+                            localStorage.setItem("logedin", logedin);
+                            window.location.replace("/home");
+                        </script>';
                     } else {
-                        echo "<div class='error'>Loggin in failed</div>";
+                        echo '<script>warning();</script>';
                     }
                 } else {
                     foreach ($validation->errors() as $error) {
@@ -40,9 +62,9 @@ include '../includes/html.php';
                     <div class="form-group">
                         <form method="POST" action="/inloggen" id="inloggen" accept-charset="UTF-8">
                             <input type="text" id="username" class="form-control" name="username"
-                                   placeholder="Gebruikersnaam"><br/>
+                                   placeholder="Gebruikersnaam" REQUIRED><br/>
                             <input type="password" id="password" class="form-control" name="password"
-                                   placeholder="Wachtwoord"><br/>
+                                   placeholder="Wachtwoord" REQUIRED><br/>
                             <label for="remember">
                                 <input type="checkbox" name="remember" id="remember"/>
                                 Ingelogd blijven
@@ -58,21 +80,4 @@ include '../includes/html.php';
     }else{
         Redirect::to("/home");
     }
-
         ?>
-
-<script>
-    if (!$(".alert").hasClass("on")) {
-        var message = '<div class="alert alert-success alert-dismissable">' +
-            '<button class="close" data-dismiss="alert">&times;</button>' +
-            'U bent ingelogd' +
-            '</div>';
-        $('.alert').append(message);
-        setTimeout(function () {
-            $('.alert').addClass('on');
-            setTimeout(function () {
-                $('.alert').removeClass('on');
-            }, 5000);
-        }, 10);
-    }
-</script>

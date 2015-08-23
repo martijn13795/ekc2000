@@ -164,3 +164,23 @@
                 </div>
         </div>
 <script src="js/chat_script.js"></script>
+<script>
+    var logedin = localStorage.getItem("logedin");
+    if(logedin != "nee"){
+        logedin = "nee";
+        localStorage.setItem("logedin", logedin);
+        if (!$(".alert").hasClass("on")) {
+            var message = '<div class="alert alert-success alert-dismissable">' +
+                '<button class="close" data-dismiss="alert">&times;</button>' +
+                'U bent ingelogd' +
+                '</div>';
+            $('.alert').append(message);
+            setTimeout(function () {
+                $('.alert').addClass('on');
+                setTimeout(function () {
+                    $('.alert').removeClass('on');
+                }, 5000);
+            }, 10);
+        }
+    }
+</script>
