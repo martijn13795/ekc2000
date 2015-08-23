@@ -1,7 +1,6 @@
 <script>
     function warning() {
         if (!$(".alert").hasClass("on")) {
-            $('#chatRefresh').load('/includes/chatRefresh.php');
             var message = '<div class="alert alert-warning alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
                 'Gebruikersnaam of wachtwoord is niet juist' +

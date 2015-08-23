@@ -15,24 +15,23 @@ $(document).ready(function () {
     });
 });
 
-function logout() {
-    if (!$(".alert").hasClass("on")) {
-        $.get("../sub-pagina/uitloggen.php"), function (data) {
-            $('#result').html(data);
-        };
-        var message = '<div class="alert alert-warning alert-dismissable">' +
-            '<button class="close" data-dismiss="alert">&times;</button>' +
-            'U bent succesvol uitgelogd' +
-            '</div>';
-        $('.alert').append(message);
-        setTimeout(function () {
-            $('.alert').addClass('on');
+    var logedout = localStorage.getItem("logedout");
+    if (logedout != "nee") {
+        $(document).ready(function () {
+        logedout = "nee";
+        localStorage.setItem("logedout", logedout);
+        if (!$(".alert").hasClass("on")) {
+            var message = '<div class="alert alert-warning alert-dismissable">' +
+                '<button class="close" data-dismiss="alert">&times;</button>' +
+                'U bent succesvol uitgelogd' +
+                '</div>';
+            $('.alert').append(message);
             setTimeout(function () {
-                $('.alert').removeClass('on');
-            }, 5000);
-        }, 10);
-        setTimeout(function () {
-            window.location.reload(true);
-        }, 6000);
-    }
+                $('.alert').addClass('on');
+                setTimeout(function () {
+                    $('.alert').removeClass('on');
+                }, 5000);
+            }, 10);
+        }
+    });
 }
