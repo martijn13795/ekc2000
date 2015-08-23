@@ -37,7 +37,7 @@ if ($messages->count()) {
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">
-                            <i class="fa fa-trash-o" onclick="removeMes('.escape($message->id).');"></i><span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                            <i class="fa fa-trash-o" onclick="removeMes('.escape($message->id).') & del();"></i><span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
                         ' . escape($message->message) . '

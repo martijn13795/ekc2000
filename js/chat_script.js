@@ -87,3 +87,7 @@ jQuery(document).ready(function($) {
     $('input').change(updateCountdown);
     $('input').keyup(updateCountdown);
 });
+
+function del () {
+    $('#chatRefresh').load('/includes/chatRefresh.php');
+}
