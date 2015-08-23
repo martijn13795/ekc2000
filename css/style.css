@@ -441,6 +441,7 @@ h1 {
     top: 180px;
     right: 20px;
     opacity:1;
+    z-index:1000;
 }
 
 @media (max-width: 768px) {
@@ -457,6 +458,7 @@ h1 {
         top: 80px;
         right: 15px;
         opacity: 1;
+        z-index:1000;
     }
 }
 
