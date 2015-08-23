@@ -61,6 +61,19 @@
                 success: function (response) {
                     $(".progress-bar").addClass('progress-bar-success');
                     $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
+                    if (!$(".alert").hasClass("on")) {
+                        var message = '<div class="alert alert-success alert-dismissable">' +
+                            '<button class="close" data-dismiss="alert">&times;</button>' +
+                            'Het album is geupload' +
+                            '</div>';
+                        $('.alert').append(message);
+                        setTimeout(function () {
+                            $('.alert').addClass('on');
+                            setTimeout(function () {
+                                $('.alert').removeClass('on');
+                            }, 5000);
+                        }, 10);
+                    }
                     $("#refresh").show();
                     $("#error").show();
                     $("#error").html(response);

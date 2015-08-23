@@ -99,7 +99,7 @@ function del () {
         $('#chatRefresh').load('/includes/chatRefresh.php');
         var message = '<div class="alert alert-danger alert-dismissable">' +
             '<button class="close" data-dismiss="alert">&times;</button>' +
-            'Bericht is succesvol verwijderd' +
+            'Het bericht is verwijderd' +
             '</div>';
         $('.alert').append(message);
         setTimeout(function () {
