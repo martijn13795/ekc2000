@@ -14,3 +14,23 @@ $(document).ready(function () {
         $(this).removeClass('open');
     });
 });
+
+function logout() {
+    if (!$(".alert").hasClass("on")) {
+        $.get("../sub-pagina/uitloggen.php"), function (data) {
+            $('#result').html(data);
+        };
+        var message = '<div class="alert alert-success alert-dismissable">' +
+            '<button class="close" data-dismiss="alert">&times;</button>' +
+            'U bent succesvol uitgelogd' +
+            '</div>';
+        $('.alert').append(message);
+        setTimeout(function () {
+            $('.alert').addClass('on');
+            setTimeout(function () {
+                $('.alert').removeClass('on');
+            }, 5000);
+        }, 10);
+        $(body).load("../includes/menu.php");
+    }
+}

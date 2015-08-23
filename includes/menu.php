@@ -1,3 +1,4 @@
+<div class="alert"></div>
 <div id="menuHeader" class="hidden-xs">
     <div class="container">
         <div class="row">
@@ -54,12 +55,12 @@
                     if ($user->isLoggedIn()) {
                         if($user->hasPermission("dev")){
                             ?>
-                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
-                                    Uitloggen Developer</a></li>
+                            <li <?= activeClass("uitloggen") ?> onclick="logout()"><a><i class="fa fa-sign-in"></i>
+                                    Uitloggen D</a></li>
                             <?php
                         } else {
                             ?>
-                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
+                            <li <?= activeClass("uitloggen") ?> onclick="logout()"><a><i class="fa fa-sign-in"></i>
                                     Uitloggen</a></li>
                             <?php
                         }

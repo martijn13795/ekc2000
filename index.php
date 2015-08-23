@@ -1,5 +1,4 @@
 <?php include 'includes/html.php';?>
-<div class="alert"></div>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
