@@ -90,4 +90,15 @@ jQuery(document).ready(function($) {
 
 function del () {
     $('#chatRefresh').load('/includes/chatRefresh.php');
+    var message = '<div class="alert alert-success alert-dismissable">'+
+        '<button class="close" data-dismiss="alert">&times;</button>'+
+        'Bericht is succesvol verwijderd'+
+        '</div>';
+    $('.alert').append(message);
+    setTimeout(function(){
+        $('.alert').addClass('on');
+        setTimeout(function(){
+            $('.alert').removeClass('on');
+        },5000);
+    },10);
 }

@@ -33,6 +33,7 @@ include '../includes/html.php';
             }
         }
         ?>
+        <div class="alert"></div>
         <div class="container">
             <div class="row-fluid inloggenDiv">
                 <div class="col-md-4 col-md-offset-4 well">
@@ -62,19 +63,15 @@ include '../includes/html.php';
         ?>
 
 <script>
-    $('.alert').remove();
-    var tmpl = '<div class="alert alert-success alert-dismissable">'+
+    var message = '<div class="alert alert-success alert-dismissable">'+
         '<button class="close" data-dismiss="alert">&times;</button>'+
         'U bent ingelogd'+
         '</div>';
-    $('.row-fluid').append(tmpl);
+    $('.alert').append(message);
     setTimeout(function(){
         $('.alert').addClass('on');
         setTimeout(function(){
             $('.alert').removeClass('on');
-            setTimeout(function(){
-                $('.alert').remove();
-            },1000);
         },5000);
     },10);
 </script>
