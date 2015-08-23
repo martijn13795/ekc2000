@@ -20,7 +20,7 @@ function logout() {
         $.get("../sub-pagina/uitloggen.php"), function (data) {
             $('#result').html(data);
         };
-        var message = '<div class="alert alert-success alert-dismissable">' +
+        var message = '<div class="alert alert-warning alert-dismissable">' +
             '<button class="close" data-dismiss="alert">&times;</button>' +
             'U bent succesvol uitgelogd' +
             '</div>';
