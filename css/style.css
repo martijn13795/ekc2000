@@ -530,3 +530,9 @@ h1 {
     color: #e50000;
     margin-right: 7px;
 }
+
+.sponsorenImg img {
+    margin: 5px;
+    max-width: 250px;
+    max-height: 150px;
+}
