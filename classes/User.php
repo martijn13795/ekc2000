@@ -96,6 +96,14 @@ class User {
         }
         return false;
     }
+    public function getGroup(){
+        $group = $this->_db->query("SELECT name FROM groups WHERE id = '{$this->data()->group_id}'");
+
+        if($group->count()){
+            return $group->first()->name;
+        }
+        return false;
+    }
 
     public function exists() {
         return (!empty($this->_data)) ? true : false;
