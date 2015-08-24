@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
+$user = new User();
 $messages = $db->query("SELECT * FROM messages ORDER BY id");
 if ($messages->count()) {
     foreach ($messages->results() as $message) {
@@ -14,7 +15,7 @@ if ($messages->count()) {
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <strong class="primary-font">' . escape($user_id->name) . ' || Developer' . '</strong> <small class="pull-right text-muted">
+                            <strong class="primary-font">' . escape($user_id->name) . ' || Dev' . '</strong> <small class="pull-right text-muted">
                             <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
@@ -29,8 +30,11 @@ if ($messages->count()) {
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">
-                            <i class="fa fa-trash-o" onclick="removeMes('.escape($message->id).') & del();"></i><span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                            <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
+                if ($user->isLoggedIn() && $user->hasPermission("admin")) {
+                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
+                }
+                echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
                         ' . escape($message->message) . '

@@ -59,6 +59,7 @@ class DB
                 'IconPath' => 'images/icons/cassshh.png',
                 'group_id' => 1
             ));
+            $salt = Hash::salt(32);
             $this->insert('users', array(
                 'username' => 'martijn13795',
                 'password' => Hash::make('admin', $salt),
@@ -66,8 +67,19 @@ class DB
                 'salt' => $salt,
                 'name' => 'Martijn Posthuma',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'images/icons/default.png',
+                'IconPath' => 'images/icons/martijn13795.png',
                 'group_id' => 1
+            ));
+            $salt = Hash::salt(32);
+            $this->insert('users', array(
+                'username' => 'gast',
+                'password' => Hash::make('gast', $salt),
+                'mail' => 'gast@hotmail.com',
+                'salt' => $salt,
+                'name' => 'Gast',
+                'joined' => date('Y-m-d H:i:s'),
+                'IconPath' => 'images/icons/default.png',
+                'group_id' => 2
             ));
         }
         if ($this->query("DESCRIBE users_session")->error()) {
@@ -90,7 +102,7 @@ class DB
                 . "permissions TEXT)");
             $this->insert('groups', array(
                 'id' => '1',
-                'name' => 'developers',
+                'name' => 'Dev',
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
         }
