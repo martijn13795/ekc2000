@@ -78,7 +78,7 @@ class DB
                 'salt' => $salt,
                 'name' => 'Gast',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'images/icons/default.png',
+                'IconPath' => 'images/icons/default.jpg',
                 'group_id' => 2
             ));
         }
