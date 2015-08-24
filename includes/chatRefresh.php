@@ -15,7 +15,7 @@ if ($messages->count()) {
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($user->getGroup()) . '</strong> <small class="pull-right text-muted">
+                            <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($userMessage->getGroup()) . '</strong> <small class="pull-right text-muted">
                             <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
