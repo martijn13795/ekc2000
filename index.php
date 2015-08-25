@@ -108,9 +108,8 @@
                         <?php
                     }
                     ?>
-                    <div class="sponsorenDiv col-md-12 col-xs-12">
+                    <div class="sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
-                        <div class="col-md-12 col-xs-12 sponsorenImg">
                         <?php
                         $db = DB::getInstance();
                         $name = 'Sponsoren';
@@ -122,7 +121,7 @@
                                 $imgPathsMobile = explode('  ', $images->pathMobile);
                                 foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
                                     echo '
-                                    <div class="col-md-2 col-xs-2 sponsorenCol">
+                                    <div class="col-md-2 col-xs-2 sponsorenImg">
                                             <img class="img-responsive" src="' . $imgPathMobile . '" data-src-320px="' . $imgPathMobile . '"data-src-960px="' . $imgPathMobile . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
                                     </div>
                                     ';
@@ -130,7 +129,6 @@
                             }
                         }
                         ?>
-                        </div>
                     </div>
                 </div><br><hr>
             </div>
