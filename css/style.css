@@ -532,10 +532,11 @@ h1 {
 }
 
 .sponsorenImg img {
-    width: 100%;
     height: auto;
+    max-height: 110px;
 }
 
 .sponsorenImg {
     padding: 2px;
+    height: 130px;
 }

@@ -122,7 +122,7 @@
                                 foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
                                     echo '
                                     <div class="col-md-2 col-xs-2 sponsorenImg">
-                                            <img class="img-responsive" src="' . $imgPathMobile . '" data-src-320px="' . $imgPathMobile . '"data-src-960px="' . $imgPathMobile . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
+                                            <img class="img-responsive" src="' . $imgPath . '" data-src-320px="' . $imgPath . '"data-src-960px="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
                                     </div>
                                     ';
                                 }

@@ -54,6 +54,10 @@ if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumNa
 
                 if ($file_error === 0) {
 
+                    if ($albumName == "Sponsoren") {
+                        if ($file_size <= 100000){
+                        }else {$failed[$position] = $file_name . " is te groot" . "<br>"; break;}
+                    }
                     if ($file_size <= 5242880) {
                         if (!$db->query("SELECT name FROM galleries WHERE name = '$albumName'")->count()) {
                             $db->query("INSERT INTO galleries (name, date) VALUES ('$albumName', '$date')");
