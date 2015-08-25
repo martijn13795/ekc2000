@@ -532,7 +532,10 @@ h1 {
 }
 
 .sponsorenImg img {
-    margin: 5px;
-    max-width: 250px;
-    max-height: 150px;
+    width: 100%;
+    height: auto;
+}
+
+.sponsorenCol {
+    padding: 2px;
 }
