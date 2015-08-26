@@ -79,7 +79,7 @@
             </div>
         </div>
             <div class="grayBar">
-                <div class="container sponsorenDiv">
+                <div class="container">
                     <?php
                     $user = new User();
                     if ($user->isLoggedIn()) {
@@ -108,6 +108,7 @@
                         <?php
                     }
                     ?>
+                    <div class="col-md-12 col-xs-12 sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
                         <?php
                         $db = DB::getInstance();
@@ -128,6 +129,7 @@
                             }
                         }
                         ?>
+                    </div>
                 </div><br><hr>
             </div>
         <div class="container">
