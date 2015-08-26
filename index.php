@@ -79,7 +79,7 @@
             </div>
         </div>
             <div class="grayBar">
-                <div class="container">
+                <div class="container sponsorenDiv">
                     <?php
                     $user = new User();
                     if ($user->isLoggedIn()) {
@@ -108,7 +108,6 @@
                         <?php
                     }
                     ?>
-                    <div class="sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
                         <?php
                         $db = DB::getInstance();
@@ -122,14 +121,13 @@
                                 foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
                                     echo '
                                     <div class="col-md-2 col-xs-2 sponsorenImg">
-                                            <img class="img-responsive" src="' . $imgPath . '" data-src-320px="' . $imgPath . '"data-src-960px="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
+                                            <img class="img-responsive" src="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
                                     </div>
                                     ';
                                 }
                             }
                         }
                         ?>
-                    </div>
                 </div><br><hr>
             </div>
         <div class="container">
