@@ -125,6 +125,26 @@ class DB
                 . "date DATETIME, "
                 . "info VARCHAR(512))");
         }
+        if ($this->query("DESCRIBE albums")->error()) {
+            $this->query("CREATE TABLE albums ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(255), "
+                . "date DATETIME)");
+            $this->insert('albums', array(
+                'id' => '1',
+                'name' => 'Sponsoren',
+                'date' => date('Y-m-d H:i:s')
+            ));
+        }
+        if ($this->query("DESCRIBE pictures")->error()) {
+            $this->query("CREATE TABLE pictures ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "album_id int, "
+                . "name VARCHAR(255), "
+                . "date DATETIME, "
+                . "path LONGTEXT, "
+                . "pathMobile LONGTEXT)");
+        }
     }
 
     public function query($sql, $params = array())
