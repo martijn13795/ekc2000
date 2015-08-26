@@ -130,7 +130,7 @@
                         }
                         ?>
                     </div>
-                </div><br><hr>
+                </div><br>
             </div>
         <div class="container">
             <div class="row">
