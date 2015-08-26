@@ -532,8 +532,9 @@ h1 {
 }
 
 .sponsorenImg img {
+    max-width: 90%;
     height: auto;
-    max-height: 110px;
+    max-height: 90px;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -545,4 +546,10 @@ h1 {
     position: relative;
     padding: 2px;
     height: 130px;
+}
+
+@media (max-width: 768px) {
+    .sponsorenImg {
+        height: 80px;
+    }
 }
