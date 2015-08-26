@@ -544,19 +544,16 @@ h1 {
     transform: translate(-50%, -50%);
     padding: 5px;
     left: 50%;
-    overflow: hidden;
 }
 
 .sponsorenImg {
     position: relative;
     padding: 2px;
     height: 130px;
-    overflow: hidden;
 }
 
 @media (max-width: 768px) {
     .sponsorenImg {
         height: 80px;
-        overflow: hidden;
     }
 }
