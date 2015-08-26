@@ -108,7 +108,7 @@
                         <?php
                     }
                     ?>
-                    <div class="col-md-12 col-xs-12 sponsorenDiv">
+                    <div class="sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
                         <?php
                         $db = DB::getInstance();
