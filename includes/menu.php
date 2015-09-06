@@ -55,7 +55,7 @@
                     if ($user->isLoggedIn()) {
                         if($user->hasPermission("dev")){
                             ?>
-                            <li <?= activeClass("profiel") ?>><a href="/profiel">Profiel D</a></li>
+                            <li <?= activeClass("profiel") ?>><a href="/profiel">Profiel Dev</a></li>
                             <?php
                         } else {
                             ?>
