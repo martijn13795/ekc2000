@@ -1,4 +1,4 @@
-<?php include '../includes/html.php';?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/html.php';?>
     <div class="container">
         <div class="col-md-12 col-xs-12">
             <h1>Oeps! - De pagina is niet gevonden</h1>

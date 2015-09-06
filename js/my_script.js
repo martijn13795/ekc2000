@@ -16,7 +16,7 @@ $(document).ready(function () {
 });
 
     var logedout = localStorage.getItem("logedout");
-    if (logedout != "nee") {
+    if (logedout == "ja") {
         $(document).ready(function () {
         logedout = "nee";
         localStorage.setItem("logedout", logedout);

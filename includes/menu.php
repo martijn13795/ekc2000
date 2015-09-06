@@ -55,13 +55,11 @@
                     if ($user->isLoggedIn()) {
                         if($user->hasPermission("dev")){
                             ?>
-                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
-                                    Uitloggen D</a></li>
+                            <li <?= activeClass("profiel") ?>><a href="/profiel">Profiel D</a></li>
                             <?php
                         } else {
                             ?>
-                            <li <?= activeClass("uitloggen") ?>><a href="/uitloggen"><i class="fa fa-sign-in"></i>
-                                    Uitloggen</a></li>
+                            <li <?= activeClass("profiel") ?>><a href="/profiel">Profiel</a></li>
                             <?php
                         }
                     } else {

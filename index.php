@@ -213,7 +213,7 @@
 <script src="js/chat_script.js"></script>
 <script>
     var logedin = localStorage.getItem("logedin");
-    if(logedin != "nee"){
+    if(logedin == "ja"){
         logedin = "nee";
         localStorage.setItem("logedin", logedin);
         if (!$(".alert").hasClass("on")) {
