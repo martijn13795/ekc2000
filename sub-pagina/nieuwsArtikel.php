@@ -20,3 +20,6 @@
         Ga terug
     </button>
 </div>
+<script>
+    $("img").addClass("img-responsive");
+</script>
