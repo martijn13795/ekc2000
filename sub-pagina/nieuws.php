@@ -31,10 +31,10 @@ $db = DB::getInstance();
 $nieuwsMessage = $db->query("SELECT date, name FROM nieuws ORDER BY date DESC");
 if ($nieuwsMessage->count()) {
     foreach ($nieuwsMessage->results() as $nieuws) {
-        echo '<div class="well albumsDiv"><a href="/artikel/' . $nieuws->name . '"><h3>' . $nieuws->name . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $nieuws->date)[0]) . '</p></div>';
+        echo '<div class="well nieuwsDiv"><a href="/artikel/' . $nieuws->name . '"><h3>' . $nieuws->name . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $nieuws->date)[0]) . '</p></div>';
     }
 } else {
-    echo '<div class="well albumsDiv"><br/><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
+    echo '<div class="well nieuwsDiv"><br/><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
 }
 ?>
     </div>

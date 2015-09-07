@@ -557,3 +557,7 @@ h1 {
         height: 80px;
     }
 }
+
+.nieuwsDiv h3 {
+    margin-top: -5px;
+}
