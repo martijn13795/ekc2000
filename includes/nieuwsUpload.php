@@ -1,7 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
+$name = $_POST['name'];
 $text = $_POST['editor1'];
 $date = date("Y-m-d H:i:s");
-$db->query("INSERT INTO nieuws (text, date) VALUES ('$text', '$date')");
+$db->query("INSERT INTO nieuws (name, text, date) VALUES ('$name', '$text', '$date')");
 header("Location: /nieuws");
