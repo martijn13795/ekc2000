@@ -32,11 +32,11 @@
                     </ul>
                 </li>
 
-                <li <?=activeClass("nieuws")?>><a href="/nieuws">Nieuws</a></li>
+                <li <?php activeClass("nieuws"); $testGet = isset($_GET['artikelName']) ? activeClass($_GET['artikelName']) : ''; ?>><a href="/nieuws">Nieuws</a></li>
 
                 <li <?=activeClass("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
 
-                <li <?php activeClass("fotogalerij"); if (empty($_GET)) {} else {activeClass($_GET['name']);}?>><a href="/fotogalerij">Fotogalerij</a></li>
+                <li <?php activeClass("fotogalerij"); $testGet = isset($_GET['name']) ? activeClass($_GET['name']) : ''; ?>><a href="/fotogalerij">Fotogalerij</a></li>
 
                 <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("wedstrijd-verslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>

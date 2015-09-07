@@ -15,16 +15,19 @@
                                 <a href="/nieuws"><h3>Laatste nieuws</h3></a>
                             </div>
                             <div class="col-md-12 col-xs-12">
-                                <p>07-03-15 Programma EKC 2000-dag<br><br>
-                                07-03-15 EKC 2000 B2 is zaalkampioen!<br><br>
-                                07-03-15 Paasspelen 2015!<br><br>
-                                22-02-15 Word donateur en steun EKC 2000<br><br>
-                                16-02-15 Interview met Riejander Deen<br><br>
-                                19-05-15 Selectietrainingen jeugd.<br><br>
-                                19-05-15 Oproep nieuwe senioren werven<br><br>
-                                19-05-15 Sponsorkleding inleveren.<br><br>
-                                14-05-15 Bekerwedstrijd halve finale S1 19 mei<br><br>
-                                14-05-15 Geen training tijdens schoolkorfbal</p>
+                                <p>
+                                    <?php
+                                    $db = DB::getInstance();
+                                    $nieuwsMessage = $db->query("SELECT date, name FROM nieuws ORDER BY date DESC");
+                                    if ($nieuwsMessage->count()) {
+                                        foreach ($nieuwsMessage->results() as $nieuws) {
+                                            echo '<p class="fotoLink"><a href="/artikel/' . $nieuws->name . '">' . escape($date = explode(" ", $nieuws->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $nieuws->name)) . '</a></p>';
+                                        }
+                                    } else {
+                                        echo '<p class="fotoLink">Er zijn nog geen artikelen beschikbaar.</p>';
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         </div>
                     </div>

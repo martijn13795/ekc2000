@@ -62,3 +62,5 @@ RewriteRule ^album/([0-9a-zA-Z_-]+.*) sub-pagina/album.php?name=$1 [NC,L]
 RewriteRule ^uitloggen sub-pagina/uitloggen.php [NC,L]
 
 RewriteRule ^profiel sub-pagina/profiel.php [NC,L]
+
+RewriteRule ^artikel/([0-9a-zA-Z_-]+.*) sub-pagina/nieuwsArtikel.php?artikelName=$1 [NC,L]
