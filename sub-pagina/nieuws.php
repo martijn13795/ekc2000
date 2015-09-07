@@ -2,13 +2,20 @@
 <script src="../ckeditor/ckeditor.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container"><br>
+        <?php
+        $user = new User();
+        if ($user->isLoggedIn()) {
+        ?>
+        <div class="hidden-xs">
         <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">
             <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" maxlength="60" REQUIRED><br>
             <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
             <input type="submit" value="Upload"/>
         </form><br>
         <div id="error"></div>
+        </div>
 <?php
+        }
 $db = DB::getInstance();
 $nieuwsMessage = $db->query("SELECT date, name FROM nieuws ORDER BY date DESC");
 if ($nieuwsMessage->count()) {
