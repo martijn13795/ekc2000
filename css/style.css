@@ -561,3 +561,7 @@ h1 {
 .nieuwsDiv h3 {
     margin-top: -5px;
 }
+
+.artikelDiv {
+    word-wrap: break-word;
+}

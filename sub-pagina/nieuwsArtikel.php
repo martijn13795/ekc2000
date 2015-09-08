@@ -8,7 +8,7 @@
         if ($nieuwsMessage->count()) {
             foreach ($nieuwsMessage->results() as $nieuws) {
                 echo '
-                    <div class="">
+                    <div class="artikelDiv">
                         <span>'. $nieuws->text .'</span>
                     </div>
                 ';
@@ -22,4 +22,5 @@
 </div>
 <script>
     $("img").addClass("img-responsive");
+    $('.img-responsive').removeAttr("height").css({ height: "" });
 </script>
