@@ -34,7 +34,7 @@
 
                 <li <?php activeClass("nieuws"); $testGet = isset($_GET['artikelName']) ? activeClass($_GET['artikelName']) : ''; ?>><a href="/nieuws">Nieuws</a></li>
 
-                <li <?=activeClass("activiteiten")?>><a href="/activiteiten">Activiteiten</a></li>
+                <li <?php activeClass("activiteiten"); $testGet = isset($_GET['activiteitName']) ? activeClass($_GET['activiteitName']) : ''; ?>><a href="/activiteiten">Activiteiten</a></li>
 
                 <li <?php activeClass("fotogalerij"); $testGet = isset($_GET['name']) ? activeClass($_GET['name']) : ''; ?>><a href="/fotogalerij">Fotogalerij</a></li>
 

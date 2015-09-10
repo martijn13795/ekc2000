@@ -31,7 +31,7 @@
     $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
     if ($activiteiten->count()) {
         foreach ($activiteiten->results() as $activiteit) {
-            echo '<div class="well activiteitDiv"><a href="/artikel/' . $activiteit->name . '"><h3>' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $activiteit->date)[0]) . '</p></div>';
+            echo '<div class="well activiteitDiv"><a href="/activiteit/' . $activiteit->name . '"><h3>' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $activiteit->date)[0]) . '</p></div>';
         }
     } else {
         echo '<div class="well activiteitDiv"><br/><h3>Er zijn nog geen activiteiten beschikbaar.</h3></div>';
