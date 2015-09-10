@@ -64,16 +64,19 @@
                                 <a href="/activiteiten"><h3>Komende activiteiten</h3></a>
                             </div>
                             <div class="col-md-12 col-xs-12">
-                            <p>12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag<br><br>
-                                12-03-15 EKC 2000-dag</p>
+                            <p>
+                                <?php
+                                $db = DB::getInstance();
+                                $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
+                                if ($activiteiten->count()) {
+                                    foreach ($activiteiten->results() as $activiteit) {
+                                        echo '<p class="fotoLink"><a href="/artikel/' . $activiteit->name . '">' . escape($date = explode(" ", $activiteit->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</a></p>';
+                                    }
+                                } else {
+                                    echo '<p class="fotoLink">Er zijn nog geen activiteiten beschikbaar.</p>';
+                                }
+                                ?>
+                            </p>
                                 </div>
                         </div>
                     </div>
