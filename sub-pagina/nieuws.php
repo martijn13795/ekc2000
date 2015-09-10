@@ -6,7 +6,7 @@
         $user = new User();
         if ($user->isLoggedIn()) {
         ?>
-        <div class="hidden-xs">
+        <div class="hidden visible-lg">
             <div class="col-md-12 well">
                 <h2>Legenda</h2>
                 <h3>Zorg ervoor dat het er goed uitziet in de editor<br>

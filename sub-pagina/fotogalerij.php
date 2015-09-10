@@ -8,7 +8,7 @@
         $user = new User();
         if ($user->isLoggedIn()) {
             ?>
-            <div class="hidden-xs">
+            <div class="hidden visible-lg">
                 <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
                       enctype="multipart/form-data">
                     <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name"

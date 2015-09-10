@@ -5,7 +5,7 @@
         $user = new User();
         if ($user->isLoggedIn()) {
             ?>
-            <div class="hidden-xs">
+            <div class="hidden visible-lg">
                 <h1>Upload sponsoren</h1><br>
                 <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
                       enctype="multipart/form-data">
