@@ -70,7 +70,7 @@
                                 $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
                                 if ($activiteiten->count()) {
                                     foreach ($activiteiten->results() as $activiteit) {
-                                        echo '<p class="fotoLink"><a href="/artikel/' . $activiteit->name . '">' . escape($date = explode(" ", $activiteit->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</a></p>';
+                                        echo '<p class="fotoLink"><a href="/activiteit/' . $activiteit->name . '">' . escape($date = explode(" ", $activiteit->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</a></p>';
                                     }
                                 } else {
                                     echo '<p class="fotoLink">Er zijn nog geen activiteiten beschikbaar.</p>';
