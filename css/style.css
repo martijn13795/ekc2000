@@ -569,3 +569,7 @@ h1 {
 .activiteitDiv {
     word-wrap: break-word;
 }
+
+.activiteitDiv h3 {
+    margin-top: -5px;
+}
