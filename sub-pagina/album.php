@@ -33,28 +33,27 @@
             $db = DB::getInstance();
             $name = $_GET['name'];
             rawurldecode($name);
-            $gallery = $db->query("SELECT path, pathMobile FROM galleries WHERE name = '" . $name . "'");
-            if ($gallery->count()) {
-                foreach ($gallery->results() as $images) {
-                    $imgPaths = explode('  ', $images->path);
-                    $imgPathsMobile = explode('  ', $images->pathMobile);
-                    foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
-                        echo '
+            $album = $db->query("SELECT id FROM albums WHERE name = '" . $name . "'")->first();
+            $pics = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
+            if ($pics->count()) {
+                foreach ($pics->results() as $pic) {
+                    echo '
                         <div class="col-md-4 col-xs-4 galerijImg">
-                            <a href="' . $imgPathMobile . '" data-src-320px="' . $imgPathMobile . '"
-                               data-src-960px="' . $imgPath . '" title="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '" data-gallery>
-                                <div class="change galerijBackImg col-md-12" style="background-image: url(' . $imgPathMobile . ')"
-                                     data-src-320px="' . $imgPathMobile . '"
-                                     data-src-960px="' . $imgPath . '"
-                                     alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '">
-                                     <img src="' . $imgPathMobile . '" data-src-320px="' . $imgPathMobile . '"
-                                        data-src-960px="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '" style="width: 0px"/>
+                            <a href="' . escape($pic->pathMobile) . '" data-src-320px="' . escape($pic->pathMobile) . '"
+                               data-src-960px="' . escape($pic->path) . '" title="' . escape($pic->name) . '" data-gallery>
+                                <div class="change galerijBackImg col-md-12" style="background-image: url(' . escape($pic->pathMobile) . ')"
+                                     data-src-320px="' . escape($pic->pathMobile) . '"
+                                     data-src-960px="' . escape($pic->path) . '"
+                                     alt="' . escape($pic->name) . '">
+                                     <img src="' . escape($pic->pathMobile) . '" data-src-320px="' . escape($pic->pathMobile) . '"
+                                        data-src-960px="' . escape($pic->path) . '" alt="' . escape($pic->name) . '" style="width: 0px"/>
                                 </div>
                             </a>
                         </div>
                         ';
-                    }
                 }
+            } else {
+                echo "<h1>Dit album heeft nog geen afbeeldingen.</h1>";
             }
             ?>
         </div>

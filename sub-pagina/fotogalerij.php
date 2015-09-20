@@ -40,11 +40,11 @@
                     $img_path = $album_data->first()->pathMobile;
                     echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
                         . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                        . '<p>Aantal afbeeldingen: ' . $album_data->count() . '</p></div>';
+                        . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
                 } else {
                     echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><h3>'
                         . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                        . '<p>Aantal afbeeldingen: ' . $album_data->count() . '</p></div>';
+                        . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
                 }
             }
         } else {
