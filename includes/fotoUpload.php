@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 
+$size = 5242880;
 function imgResize($target, $newcopy, $w, $h, $ext)
 {
     list($w_orig, $h_orig) = getimagesize($target);
@@ -23,114 +24,123 @@ function imgResize($target, $newcopy, $w, $h, $ext)
     imagejpeg($tci, $newcopy, 80);
 }
 
-$albumName = $_POST['name'];
-$date = date("Y-m-d H:i:s");
+function formatSizeUnits($bytes)
+{
+    if ($bytes >= 1073741824)
+    {
+        $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+    }
+    elseif ($bytes >= 1048576)
+    {
+        $bytes = number_format($bytes / 1048576, 2) . ' MB';
+    }
+    elseif ($bytes >= 1024)
+    {
+        $bytes = number_format($bytes / 1024, 2) . ' KB';
+    }
+    elseif ($bytes > 1)
+    {
+        $bytes = $bytes . ' bytes';
+    }
+    elseif ($bytes == 1)
+    {
+        $bytes = $bytes . ' byte';
+    }
+    else
+    {
+        $bytes = '0 bytes';
+    }
 
-if (!preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $albumName)) {
-    $albumName = null;
-    echo "<h3>Voer een geldig bericht in</h3></br>";
-    echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ! ( ) - _ + *";
-} else {
-    $albumName = str_replace(' ', '-', $albumName);
-    if (!empty($_FILES['files']['name'][0]) || !empty($albumName)) {
+    return $bytes;
+}
 
-        $files = $_FILES['files'];
+if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
+    $album_name = $_POST['name'];
+    if(preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $album_name)){
+        $album_name = str_replace(' ', '-', $album_name);
+        if(!empty($_FILES['files']['name'][0])){
+            $files = $_FILES['files'];
+            $allowed = array('jpg', 'jpeg', 'pjpeg', 'png');
 
-        $uploaded = array();
-        $failed = array();
+            foreach($files['name'] as $position => $file_name){
+                $file_tmp = $files['tmp_name'][$position];
+                $file_size = $files['size'][$position];
+                $file_error = $files['error'][$position];
 
-        $allowed = array('jpg', 'jpeg', 'png');
-
-        foreach ($files['name'] as $position => $file_name) {
-
-            $file_tmp = $files['tmp_name'][$position];
-            $file_size = $files['size'][$position];
-            $file_error = $files['error'][$position];
-
-            $file_ext = explode('.', $file_name);
-            $file_ext = strtolower(end($file_ext));
-
-            if (in_array($file_ext, $allowed)) {
-
-                if ($file_error === 0) {
-
-                    if ($albumName == "Sponsoren") {
-                        if ($file_size <= 100000){
-                        }else {$failed[$position] = $file_name . " is te groot" . "<br>"; break;}
-                    }
-                    if ($file_size <= 5242880) {
-                        if (!$db->query("SELECT name FROM galleries WHERE name = '$albumName'")->count()) {
-                            $db->query("INSERT INTO galleries (name, date) VALUES ('$albumName', '$date')");
-                        }
-
-                        $file_name_new = $file_name;
-                        $file_name_new = str_replace(' ', '-', $file_name_new);
-                        if (!$db->query("SELECT path FROM galleries WHERE name='$albumName' AND path LIKE '%{$file_name_new}%'")->count()) {
-
-                            if (file_exists("../images/fotogalerij/" . $albumName . "/")) {
+                $file_ext = pathinfo($files['name'][$position], PATHINFO_EXTENSION);
+                if(in_array($file_ext, $allowed)){
+                    if($file_error === 0){
+                        if($file_size <= $size) {
+                            $album_id = null;
+                            if ($db->query("SELECT * FROM albums WHERE name = '$album_name'")->count()) {
+                                $album_id = $db->query("SELECT * FROM albums WHERE name = '$album_name'")->first()->id;
+                                $db->update('albums', $album_id, array(
+                                    'date' => date("Y-m-d H:i:s")
+                                ));
                             } else {
-                                mkdir("../images/fotogalerij/" . $albumName, 0777);
+                                $db->insert('albums', array(
+                                    'name' => $album_name,
+                                    'date' => date("Y-m-d H:i:s")
+                                ));
+                                $album_id = $db->query("SELECT * FROM albums WHERE name = '$album_name'")->first()->id;
                             }
-
-                            $file_destination = '../images/fotogalerij/' . $albumName . "/" . $file_name_new;
-
-                            $selects = $db->query("SELECT path FROM galleries WHERE name='$albumName'");
-                            foreach ($selects->results() as $select) {
-                                $fileLocation = $select->path;
+                            if(!is_dir("../images/gallerij/" . $album_name . "/") && !file_exists("../images/" . $album_name . "/")){
+                                mkdir("../images/gallerij/" . $album_name, 0777);
                             }
-
-                            $db->query("update galleries set path='$fileLocation $file_destination ', date='$date' WHERE name='$albumName';");
-
-                            if (move_uploaded_file($file_tmp, $file_destination)) {
-                                $uploaded[$position] = $file_destination;
-
-                                $target_file = "../images/fotogalerij/" . $albumName . "/" . $file_name_new;
-                                $resized_file = "../images/fotogalerij/" . $albumName . "/mobile_" . $file_name_new;
+                            $file_name_new = str_replace(' ', '-', $file_name);
+                            $file_path = "../images/gallerij/" . $album_name . "/" . $file_name_new;
+                            if(file_exists($file_path) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND path = '$file_path'")->count()){
+                                $i = 1;
+                                while(file_exists($file_path) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND path = '$file_path'")->count()){
+                                    $file_path = "../images/gallerij/" . $album_name . "/" . $file_name_new . "_" . $i . "." . $file_ext;
+                                    $i++;
+                                }
+                            }
+                            $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile" . $file_name_new;
+                            if(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
+                                $i = 1;
+                                while(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
+                                    $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile_" . $file_name_new . "_" . $i . "." . $file_ext;
+                                    $i++;
+                                }
+                            }
+                            if(move_uploaded_file($file_tmp, $file_path)){
                                 $wmax = 1024;
                                 $hmax = 1080;
-                                imgResize($target_file, $resized_file, $wmax, $hmax, $file_ext);
+                                imgResize($file_path, $file_path_mobile, $wmax, $hmax, $file_ext);
 
-                                $selects = $db->query("SELECT pathMobile FROM galleries WHERE name='$albumName'");
-                                foreach ($selects->results() as $select) {
-                                    $fileLocation = $select->pathMobile;
-                                }
-
-                                $db->query("update galleries set pathMobile='$fileLocation $resized_file ' WHERE name='$albumName';");
-
+                                $db->insert('pictures',array(
+                                    'album_id' => $album_id,
+                                    'name' => $file_name_new,
+                                    'date' => date("Y-m-d H:i:s"),
+                                    'path' => $file_path,
+                                    'pathMobile' => $file_path_mobile
+                                ));
+                                $db->update('albums', $album_id, array(
+                                    'date' => date("Y-m-d H:i:s")
+                                ));
+                                echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font></br>";
                             } else {
-                                $failed[$position] = $file_name . ", uploaden mislukt" . "<br>";
+                                echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font></br>";
                             }
                         } else {
-                            $failed[$position] = $file_name . " bestaat al" . "<br>";
+                            echo "<b>" . $file_name . "</b> <font color='red'>>Is te groot: </font>" . formatSizeUnits($file_size) . " / " . formatSizeUnits($size) . "</br>";
                         }
                     } else {
-                        $failed[$position] = $file_name . " is te groot" . "<br>";
+                        echo "<b>" . $file_name . "</b> <font color='red'>>Error: </font>" . $file_error . "</br>";
                     }
-
                 } else {
-                    $failed[$position] = $file_name . " error " . $file_error . "<br>";
+                    echo "<b>" . $file_name . "</b> <font color='red'>>Kies een ander bestand type dan: </font>" . $file_ext . "</br>";
                 }
-
-            } else {
-                $failed[$position] = $file_name . "<br>Kies een ander bestand type dan " . $file_ext . "<br>";
             }
+        } else {
+            echo "Voer iets in";
         }
     } else {
-        echo "Voer iets in";
+        $album_name = null;
+        echo "<h3>Voer een geldig bericht in</h3></br>";
+        echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ! ( ) - _ + *";
     }
-}
-
-if (!$uploaded == 0) {
-    echo "<h3>Deze bestanden zijn geupload</h3>";
-    foreach ($uploaded as $upload) {
-        $upload = end(explode('/', $upload));
-        echo $upload . "<br>";
-    }
-}
-
-if (!$failed == 0) {
-    echo "<h3>Deze bestanden zijn niet geupload</h3>";
-    foreach ($failed as $fail) {
-        echo $fail . "<br>";
-    }
+} else {
+    echo "<h3>Voer een geldig bericht in</h3></br>";
 }
