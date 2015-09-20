@@ -7,7 +7,7 @@ if ($user->isLoggedIn()) {
         <div class="col-md-12 col-xs-12"><h2>Welkom, gebruiker<button class="btn btn-primary logoutButton" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
         <div class="row">
             <div class="col-md-4 col-xs-12">
-                <div class="col-md-12 col-sm-offset-1 col-xs-10">
+                <div class="col-md-12 col-xs-offset-1 col-xs-10">
                     <img class="img-responsive avatarDiv" src="../images/icons/default.jpg" alt="avatar"/>
                     <button class="btn btn-warning">Verander</button><br><br>
                 </div>
