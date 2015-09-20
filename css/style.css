@@ -573,3 +573,12 @@ h1 {
 .activiteitDiv h3 {
     margin-top: -5px;
 }
+
+.avatarDiv {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.logoutButton {
+    float: right;
+}
