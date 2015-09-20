@@ -96,7 +96,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                     $i++;
                                 }
                             }
-                            $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile" . $file_name_new;
+                            $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile_" . $file_name_new;
                             if(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
                                 $i = 1;
                                 while(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
