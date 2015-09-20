@@ -42,7 +42,7 @@
                                 <p>
                                     <?php
                                     $db = DB::getInstance();
-                                    $albums = $db->query("SELECT * FROM albums ORDER BY date DESC");
+                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
                                             echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(str_replace('-', ' ', $album->name)) . '</a></p>';
