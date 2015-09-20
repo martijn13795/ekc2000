@@ -42,10 +42,10 @@
                                 <p>
                                     <?php
                                     $db = DB::getInstance();
-                                    $galleries = $db->query("SELECT id, date, name FROM galleries ORDER BY date DESC");
-                                    if ($galleries->count()) {
-                                        foreach ($galleries->results() as $gallery) {
-                                            echo '<p class="fotoLink"><a href="/album/' . $gallery->name . '">' . escape($date = explode(" ", $gallery->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $gallery->name)) . '</a></p>';
+                                    $albums = $db->query("SELECT * FROM albums ORDER BY date DESC");
+                                    if ($albums->count()) {
+                                        foreach ($albums->results() as $album) {
+                                            echo '<p class="fotoLink"><a href="/album/' . $album->name . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(str_replace('-', ' ', $album->name)) . '</a></p>';
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';

@@ -32,12 +32,20 @@
             <?php
         }
         $db = DB::getInstance();
-        $galleries = $db->query("SELECT id, date, name, pathMobile FROM galleries ORDER BY date DESC");
-        if ($galleries->count()) {
-            foreach ($galleries->results() as $gallery) {
-                $imgPathsMobile = explode('  ', $gallery->pathMobile);
-                echo '<div class="well albumsDiv"><a href="/album/' . $gallery->name . '"><img class="roundImg" src="' . $imgPathsMobile[0] . '"/><h3>'
-                    . escape($name = str_replace('-', ' ', $gallery->name)) . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $gallery->date)[0]) . '</p></div>';
+        $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
+        if ($albums->count()) {
+            foreach ($albums->results() as $album) {
+                $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
+                if($album_data->count()){
+                    $img_path = $album_data->first()->pathMobile;
+                    echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
+                        . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
+                        . '<p>Aantal afbeeldingen: ' . $album_data->count() . '</p></div>';
+                } else {
+                    echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><h3>'
+                        . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
+                        . '<p>Aantal afbeeldingen: ' . $album_data->count() . '</p></div>';
+                }
             }
         } else {
             //Bericht nog geen foto albums?
