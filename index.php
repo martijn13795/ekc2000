@@ -2,7 +2,7 @@
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
-            <div class="col-xs-12 col-md-12"><h1>Welkom bij <strong>EKC 2000</strong></h1><hr></div>
+            <div class="col-xs-12 col-md-12"><h1>Welkom bij <strong>EKC 2000</strong><?php $user = new User(); if ($user->isLoggedIn()) {$name = $user->data()->name; echo ', '.$name;} ?></h1><hr></div>
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="col-md-4 col-xs-12 homeInfoDiv">
@@ -196,7 +196,7 @@
         if (!$(".alert").hasClass("on")) {
             var message = '<div class="alert alert-success alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
-                'U bent ingelogd' +
+                'Welkom <?php $name = $user->data()->name; echo $name;  ?> <br><br> U bent ingelogd' +
                 '</div>';
             $('.alert').append(message);
             setTimeout(function () {
