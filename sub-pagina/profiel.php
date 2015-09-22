@@ -29,7 +29,7 @@ if ($user->isLoggedIn()) {
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Achternaam:</h3>
-                            <p><?php $name = $user->data()->name; $names = explode(" ", $name); echo $names[1]; ?></p>
+                            <p><?php $name = $user->data()->name; $names = explode(" ", $name, 2); echo $names[1]; ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Email:</h3>
