@@ -4,11 +4,11 @@ $user = new User();
 if ($user->isLoggedIn()) {
 ?>
     <div class="container">
-        <div class="col-md-12 col-xs-12"><h2>Welkom, <?php $name = $user->data()->name; echo $name ?><button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
+        <div class="col-md-12 col-xs-12"><h2>Welkom, <?php echo $user->data()->name; ?><button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
         <div class="row">
             <div class="col-md-5 col-xs-12">
                 <div class="col-md-12 col-xs-12">
-                    <img class="img-responsive avatarDiv" src="../<?php $name = $user->data()->IconPath; echo $name ?>" alt="avatar"/><br>
+                    <img class="img-responsive avatarDiv" src="../<?php echo $user->data()->IconPath; ?>" alt="avatar"/><br>
                     <button class="btn btn-warning">Verander</button><button class="btn btn-primary logoutButton hidden visible-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button><br><br>
                 </div>
             </div>
@@ -17,7 +17,7 @@ if ($user->isLoggedIn()) {
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <h3>Gebruikersnaam:</h3>
-                            <p><?php $username = $user->data()->username; echo $username; ?></p>
+                            <p><?php echo $user->data()->username; ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Wachtwoord:</h3>
@@ -33,7 +33,7 @@ if ($user->isLoggedIn()) {
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Email:</h3>
-                            <p><?php $email = $user->data()->mail; echo $email; ?></p>
+                            <p><?php echo $user->data()->mail; ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3></h3>
