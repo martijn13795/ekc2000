@@ -32,21 +32,17 @@
         <div class="sponsorenDiv">
             <h1>Onze sponsoren</h1><br>
             <?php
-            $db = DB::getInstance();
-            $name = 'Sponsoren';
-            rawurldecode($name);
-            $gallery = $db->query("SELECT path, pathMobile FROM galleries WHERE name = '" . $name . "'");
-            if ($gallery->count()) {
-                foreach ($gallery->results() as $images) {
-                    $imgPaths = explode('  ', $images->path);
-                    $imgPathsMobile = explode('  ', $images->pathMobile);
-                    foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
-                        echo '
-                                    <div class="col-md-2 col-xs-2 sponsorenImg">
-                                            <img class="img-responsive" src="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
-                                    </div>
-                                    ';
+            $album = $db->query("SELECT * FROM albums WHERE name ='Sponsoren'");
+            if($album->count()) {
+                $sponsoren = $db->query("SELECT * FROM pictures WHERE album_id = '".$album->first()->id."'");
+                if ($sponsoren->count()) {
+                    foreach ($sponsoren->results() as $sponsor) {
+                        echo '<div class="col-md-2 col-xs-2 sponsorenImg">
+                                <img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
+                              </div>';
                     }
+                } else {
+                    echo '<p>Er zijn geen sponsoren beschikbaar</p>';
                 }
             }
             ?>
