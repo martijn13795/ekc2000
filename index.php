@@ -16,7 +16,6 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $db = DB::getInstance();
                                     $nieuwsMessage = $db->query("SELECT date, name FROM nieuws ORDER BY date DESC");
                                     if ($nieuwsMessage->count()) {
                                         foreach ($nieuwsMessage->results() as $nieuws) {
@@ -41,7 +40,6 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $db = DB::getInstance();
                                     $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
@@ -66,7 +64,6 @@
                             <div class="col-md-12 col-xs-12">
                             <p>
                                 <?php
-                                $db = DB::getInstance();
                                 $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
                                 if ($activiteiten->count()) {
                                     foreach ($activiteiten->results() as $activiteit) {
@@ -88,21 +85,19 @@
                     <div class="sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
                         <?php
-                        $db = DB::getInstance();
-                        $name = 'Sponsoren';
-                        rawurldecode($name);
-                        $gallery = $db->query("SELECT * FROM galleries WHERE name = '" . $name . "'");
-                        if ($gallery->count()) {
-                            foreach ($gallery->results() as $images) {
-                                $imgPaths = explode('  ', $images->path);
-                                $imgPathsMobile = explode('  ', $images->pathMobile);
-                                foreach (array_combine($imgPaths, $imgPathsMobile) as $imgPath => $imgPathMobile) {
+                        $album = $db->query("SELECT * FROM albums WHERE name ='Sponsoren'");
+                        if($album->count()) {
+                            $sponsoren = $db->query("SELECT * FROM pictures WHERE album_id = '".$album->first()->id."'");
+                            if ($sponsoren->count()) {
+                                foreach ($sponsoren->results() as $sponsor) {
                                     echo '
                                     <div class="col-md-2 col-xs-2 sponsorenImg">
-                                            <img class="img-responsive" src="' . $imgPath . '" alt="' . substr($imgPath, strrpos($imgPath, '/') + 1) . '"/>
+                                            <img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                                     </div>
                                     ';
                                 }
+                            } else {
+                                echo '<p>Er zijn geen sponsoren beschikbaar</p>';
                             }
                         }
                         ?>
