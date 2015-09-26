@@ -39,6 +39,7 @@
                 foreach ($pics->results() as $pic) {
                     echo '
                         <div class="col-md-4 col-xs-4 galerijImg">
+                        <div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($pic->id) .'\', \''. escape($pic->pathMobile) .'\');"></i></div>
                             <a href="' . escape($pic->pathMobile) . '" data-src-320px="' . escape($pic->pathMobile) . '"
                                data-src-960px="' . escape($pic->path) . '" title="' . escape($pic->name) . '" data-gallery>
                                 <div class="change galerijBackImg col-md-12" style="background-image: url(' . escape($pic->pathMobile) . ')"
@@ -95,65 +96,23 @@
 </div>
 <script src="../js/jquery.blueimp-gallery.min.js"></script>
 <script src="../js/bootstrap-image-gallery.js"></script>
-
-
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/clubFoto-medium.jpg" data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/clubFoto.jpg" title="Club foto" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFoto-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/clubFoto-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/clubFoto.jpg"-->
-<!--                         alt="Club foto"><img src="../images/fotogalerij/clubFoto-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/clubFotoGroot-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/clubFotoGroot.jpg" title="Club foto groot" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoGroot-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/clubFotoGroot-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/clubFotoGroot.jpg"-->
-<!--                         alt="Club foto groot"><img src="../images/fotogalerij/clubFotoGroot-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/clubFotoJuigen-medium.jpg" data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/clubFotoJuigen.jpg" title="Club foto juigen" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/clubFotoJuigen-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/clubFotoJuigen-medium.jpg"-->
-<!--                         alt="Club foto juigen"><img src="../images/fotogalerij/clubFotoJuigen-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/speech-medium.jpg" data-src-320px="../images/fotogalerij/speech-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/speech.jpg" title="Speech" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/speech-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/speech.jpg"-->
-<!--                         alt="Speech"><img src="../images/fotogalerij/speech-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/speech2-medium.jpg" data-src-320px="../images/fotogalerij/speech2-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/speech2.jpg" title="Speech2" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/speech2-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/speech2-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/speech2.jpg"-->
-<!--                         alt="Speech2"><img src="../images/fotogalerij/speech2-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="col-md-4 col-xs-4 galerijImg">-->
-<!--                <a href="../images/fotogalerij/ballonen-medium.jpg" data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
-<!--                   data-src-960px="../images/fotogalerij/ballonen.jpg" title="Ballonen" data-gallery>-->
-<!--                    <div class="change galerijBackImg" style="background-image: url('../images/fotogalerij/ballonen-medium.jpg')"-->
-<!--                         data-src-320px="../images/fotogalerij/ballonen-medium.jpg"-->
-<!--                         data-src-960px="../images/fotogalerij/ballonen.jpg"-->
-<!--                         alt="Ballonen"><img src="../images/fotogalerij/ballonen-medium.jpg" style="width: 0px"/>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
+<script>
+    function imageDel(id, path){
+        if (!$(".alert").hasClass("on")) {
+            var message = '<div class="alert alert-danger alert-dismissable">' +
+                '<button class="close" onclick="$(`.alert`).removeClass(`on`);">&times;</button>' +
+                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br><img src="' + path + '" class="img-responsive imageDelAlert"/><br><br><button class="btn btn-warning" onclick="imageRemove('+id+')">Verwijderen</button>&#09;<button class="btn btn-success" onclick="$(`.alert`).removeClass(`on`);">Annuleren</button>' +
+                '</div>';
+            $('.alert').append(message);
+            setTimeout(function () {
+                $('.alert').addClass('on');
+            }, 10);
+        }
+    }
+    function imageRemove(id){
+        $.get("../includes/removeImage.php?id=" + id), function(data){
+            $('#result').html(data);
+        }
+        location.reload();
+    }
+</script>

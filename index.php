@@ -91,7 +91,7 @@
                         $db = DB::getInstance();
                         $name = 'Sponsoren';
                         rawurldecode($name);
-                        $gallery = $db->query("SELECT path, pathMobile FROM galleries WHERE name = '" . $name . "'");
+                        $gallery = $db->query("SELECT * FROM galleries WHERE name = '" . $name . "'");
                         if ($gallery->count()) {
                             foreach ($gallery->results() as $images) {
                                 $imgPaths = explode('  ', $images->path);
@@ -196,7 +196,7 @@
         if (!$(".alert").hasClass("on")) {
             var message = '<div class="alert alert-success alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
-                'Welkom <?php $name = $user->data()->name; echo $name;  ?> <br><br> U bent ingelogd' +
+                'Welkom <?php echo escape($user->data()->name); ?> <br><br> U bent ingelogd' +
                 '</div>';
             $('.alert').append(message);
             setTimeout(function () {

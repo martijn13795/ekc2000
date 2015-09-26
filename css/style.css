@@ -584,3 +584,22 @@ h1 {
 .logoutButton {
     float: right;
 }
+
+.imageDel {
+    position: absolute;
+    z-index: 1;
+    float: right;
+    display: block;
+    float: right;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.imageDelButton {
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
+}
+
+.imageDelAlert {
+    max-width: 350px;
+}
