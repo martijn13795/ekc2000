@@ -1,18 +1,16 @@
 <script>
     function warning() {
-        if (!$(".alert").hasClass("on")) {
-            var message = '<div class="alert alert-warning alert-dismissable">' +
+            $('.alerts').append('<div class="alert alert-warning alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
                 'Gebruikersnaam of wachtwoord is niet juist' +
-                '</div>';
-            $('.alert').append(message);
+                '</div>');
             setTimeout(function () {
-                $('.alert').addClass('on');
-                setTimeout(function () {
-                    $('.alert').removeClass('on');
-                }, 5000);
-            }, 10);
-        }
+                $('.alerts').addClass('on');
+            setTimeout(function () {
+                $('.alerts').removeClass('on');
+                $('.alerts').children('.alert:first-child').remove();
+            }, 5000);
+        }, 10);
     }
 </script>
 <?php

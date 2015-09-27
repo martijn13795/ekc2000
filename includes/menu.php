@@ -1,4 +1,4 @@
-<div class="alert"></div>
+<div class="alerts"></div>
 <div id="menuHeader" class="hidden-xs">
     <div class="container">
         <div class="row">

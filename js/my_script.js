@@ -14,24 +14,3 @@ $(document).ready(function () {
         $(this).removeClass('open');
     });
 });
-
-    var logedout = localStorage.getItem("logedout");
-    if (logedout == "ja") {
-        $(document).ready(function () {
-        logedout = "nee";
-        localStorage.setItem("logedout", logedout);
-        if (!$(".alert").hasClass("on")) {
-            var message = '<div class="alert alert-warning alert-dismissable">' +
-                '<button class="close" data-dismiss="alert">&times;</button>' +
-                'U bent succesvol uitgelogd' +
-                '</div>';
-            $('.alert').append(message);
-            setTimeout(function () {
-                $('.alert').addClass('on');
-                setTimeout(function () {
-                    $('.alert').removeClass('on');
-                }, 5000);
-            }, 10);
-        }
-    });
-}

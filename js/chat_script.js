@@ -94,19 +94,17 @@ function removeMes(id){
     }
 }
 
-function del () {
-    if (!$(".alert").hasClass("on")) {
-        $('#chatRefresh').load('/includes/chatRefresh.php');
-        var message = '<div class="alert alert-danger alert-dismissable">' +
-            '<button class="close" data-dismiss="alert">&times;</button>' +
-            'Het bericht is verwijderd' +
-            '</div>';
-        $('.alert').append(message);
+function del() {
+    $('#chatRefresh').load('/includes/chatRefresh.php');
+    $(".alerts").append('<div class="alert alert-danger alert-dismissable">' +
+        '<button class="close" data-dismiss="alert">&times;</button>' +
+        'Het bericht is verwijderd' +
+        '</div>');
+    setTimeout(function () {
+        $('.alerts').addClass('on');
         setTimeout(function () {
-            $('.alert').addClass('on');
-            setTimeout(function () {
-                $('.alert').removeClass('on');
-            }, 5000);
-        }, 10);
-    }
+            $('.alerts').removeClass('on');
+            $('.alerts').children('.alert:first-child').remove();
+        }, 5000);
+    }, 10);
 }

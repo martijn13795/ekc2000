@@ -188,18 +188,33 @@
     if(logedin == "ja"){
         logedin = "nee";
         localStorage.setItem("logedin", logedin);
-        if (!$(".alert").hasClass("on")) {
-            var message = '<div class="alert alert-success alert-dismissable">' +
+            $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
-                'Welkom <?php echo escape($user->data()->name); ?> <br><br> U bent ingelogd' +
-                '</div>';
-            $('.alert').append(message);
+                'Welkom <?php if ($user->isLoggedIn()) { echo escape($user->data()->name); } ?> <br><br> U bent ingelogd' +
+                '</div>');
             setTimeout(function () {
-                $('.alert').addClass('on');
+                $('.alerts').addClass('on');
                 setTimeout(function () {
-                    $('.alert').removeClass('on');
+                    $('.alerts').removeClass('on');
+                    $('.alerts').children('.alert:first-child').remove();
                 }, 5000);
             }, 10);
         }
+
+    var logedout = localStorage.getItem("logedout");
+    if (logedout == "ja") {
+        logedout = "nee";
+        localStorage.setItem("logedout", logedout);
+        $('.alerts').append('<div class="alert alert-warning alert-dismissable">' +
+            '<button class="close" data-dismiss="alert">&times;</button>' +
+            'U bent succesvol uitgelogd' +
+            '</div>');
+        setTimeout(function () {
+            $('.alerts').addClass('on');
+            setTimeout(function () {
+                $('.alerts').removeClass('on');
+                $('.alerts').children('.alert:first-child').remove();
+            }, 5000);
+        }, 10);
     }
 </script>

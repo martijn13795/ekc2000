@@ -64,19 +64,17 @@
             success: function (response) {
                 $(".progress-bar").addClass('progress-bar-success');
                 $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
-                if (!$(".alert").hasClass("on")) {
-                    var message = '<div class="alert alert-success alert-dismissable">' +
+                    $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
                         '<button class="close" data-dismiss="alert">&times;</button>' +
                         'De sponsoren zijn geupload' +
-                        '</div>';
-                    $('.alert').append(message);
+                        '</div>');
                     setTimeout(function () {
-                        $('.alert').addClass('on');
+                        $('.alerts').addClass('on');
                         setTimeout(function () {
-                            $('.alert').removeClass('on');
+                            $('.alerts').removeClass('on');
+                            $('.alerts').children('.alert:first-child').remove();
                         }, 5000);
                     }, 10);
-                }
                 $("#refresh").show();
                 $("#error").show();
                 $("#error").html(response);
