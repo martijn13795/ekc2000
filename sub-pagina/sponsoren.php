@@ -68,13 +68,15 @@
                         '<button class="close" data-dismiss="alert">&times;</button>' +
                         'De sponsoren zijn geupload' +
                         '</div>');
+                setTimeout(function () {
+                    $('.alerts').children('.alert:last-child').addClass('on');
                     setTimeout(function () {
-                        $('.alerts').addClass('on');
+                        $('.alerts').children('.alert:first-child').removeClass('on');
                         setTimeout(function () {
-                            $('.alerts').removeClass('on');
                             $('.alerts').children('.alert:first-child').remove();
-                        }, 5000);
-                    }, 10);
+                        }, 900);
+                    }, 5000);
+                }, 10);
                 $("#refresh").show();
                 $("#error").show();
                 $("#error").html(response);

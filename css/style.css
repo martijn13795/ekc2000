@@ -433,15 +433,21 @@ h1 {
     position: fixed;
     top: 10px;
     right: 30px;
+    min-width: 325px;
+    z-index:10000;
+}
+
+.alert{
+    margin-top: 0px;
     transition:all 1s ease;
     opacity:0;
     min-width: 325px;
 }
-.alerts.on{
-    top: 40px;
+
+.alert.on{
+    margin-top: 30px;
     right: 30px;
     opacity:1;
-    z-index:10000;
 }
 
 @media (max-width: 768px) {
@@ -449,16 +455,20 @@ h1 {
         position: fixed;
         top: 10px;
         right: 15px;
+        min-width: 325px;
+        z-index:10000;
+    }
+
+    .alert {
+        margin-top: 0px;
         transition: all 1s ease;
         opacity: 0;
         min-width: 325px;
     }
 
-    .alerts.on {
-        top: 50px;
-        right: 15px;
+    .alert.on {
+        margin-top: 40px;
         opacity: 1;
-        z-index:10000;
     }
 }
 

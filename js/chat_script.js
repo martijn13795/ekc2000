@@ -53,7 +53,7 @@ function clearInput() {
 $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
     function scrollToBottom(){document.getElementById("panel-body").scrollTop = scroll;}
-    setTimeout(scrollToBottom,250);
+    setTimeout(scrollToBottom,500);
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php');
     }, 5000);
@@ -101,10 +101,12 @@ function del() {
         'Het bericht is verwijderd' +
         '</div>');
     setTimeout(function () {
-        $('.alerts').addClass('on');
+        $('.alerts').children('.alert:last-child').addClass('on');
         setTimeout(function () {
-            $('.alerts').removeClass('on');
-            $('.alerts').children('.alert:first-child').remove();
+            $('.alerts').children('.alert:first-child').removeClass('on');
+            setTimeout(function () {
+                $('.alerts').children('.alert:first-child').remove();
+            }, 900);
         }, 5000);
     }, 10);
 }
