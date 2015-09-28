@@ -100,10 +100,7 @@
     function imageDel(id, path){
             $('.alerts').append('<div class="alert alert-danger alert-dismissable">' +
                 '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
-                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br>' +
-                '<img src="' + path + '" class="img-responsive imageDelAlert"/><br><br>' +
-                '<button class="btn btn-warning" onclick="imageRemove('+id+')">Verwijderen</button>&#09;' +
-                '<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br><img src="' + path + '" class="img-responsive imageDelAlert"/><br><br><button class="btn btn-warning" onclick="imageRemove('+id+')">Verwijderen</button>&#09;<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
                 '</div>');
         setTimeout(function () {
             $('.alerts').addClass('on');
@@ -117,7 +114,7 @@
     function imageRemove(id){
         $.get("../includes/removeImage.php?id=" + id), function(data){
             $('#result').html(data);
-        };
+        }
         location.reload();
     }
 </script>

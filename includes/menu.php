@@ -1,4 +1,4 @@
-<div class="alerts col-xs-offset-7 col-xs-5 col-md-offset-9 col-md-3"></div>
+<div class="alerts"></div>
 <div id="menuHeader" class="hidden-xs">
     <div class="container">
         <div class="row">
