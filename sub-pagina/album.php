@@ -98,23 +98,23 @@
 <script src="../js/bootstrap-image-gallery.js"></script>
 <script>
     function imageDel(id, path){
+        if (!$(".alerts").hasClass("on")) {
             $('.alerts').append('<div class="alert alert-danger alert-dismissable">' +
                 '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
-                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br><img src="' + path + '" class="img-responsive imageDelAlert"/><br><br><button class="btn btn-warning" onclick="imageRemove('+id+')">Verwijderen</button>&#09;<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br><img src="' + path + '" class="img-responsive imageDelAlert"/><br><br><button class="btn btn-warning" onclick="imageRemove(' + id + ')">Verwijderen</button>&#09;<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
                 '</div>');
-        setTimeout(function () {
-            $('.alerts').addClass('on');
             setTimeout(function () {
-                $('.alerts').removeClass('on');
-                $('.alerts').children('.alert:first-child').remove();
-            }, 10000);
-        }, 10);
+                $('.alerts').addClass('on');
+            }, 10);
+        }
     }
 
     function imageRemove(id){
         $.get("../includes/removeImage.php?id=" + id), function(data){
             $('#result').html(data);
-        }
-        location.reload();
+        };
+        setTimeout(function () {
+            location.reload();
+        }, 10);
     }
 </script>
