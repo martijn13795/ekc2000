@@ -9,7 +9,7 @@ if ($user->isLoggedIn()) {
             <div class="col-md-5 col-xs-12">
                 <div class="col-md-12 col-xs-12">
                     <img class="img-responsive avatarDiv" src="../<?php echo $user->data()->IconPath; ?>" alt="avatar"/><br>
-                    <button class="btn btn-warning">Verander</button><button class="btn btn-primary logoutButton hidden visible-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button><br><br>
+                    <button class="btn btn-primary col-xs-12 logoutButton hidden visible-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button><br><br><br>
                 </div>
             </div>
             <div class="col-md-7 col-xs-12">
