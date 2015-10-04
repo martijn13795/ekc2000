@@ -613,3 +613,7 @@ h1 {
 .imageDelAlert {
     max-width: 350px;
 }
+
+.fa-trash-o {
+    cursor: pointer;
+}
