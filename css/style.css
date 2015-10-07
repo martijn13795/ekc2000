@@ -617,3 +617,8 @@ h1 {
 .fa-trash-o {
     cursor: pointer;
 }
+
+.tableHeader {
+    text-align: center;
+    background-color: #f5f5f5;
+}

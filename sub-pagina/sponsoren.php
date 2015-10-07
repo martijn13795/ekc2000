@@ -37,8 +37,9 @@
                 $sponsoren = $db->query("SELECT * FROM pictures WHERE album_id = '".$album->first()->id."'");
                 if ($sponsoren->count()) {
                     foreach ($sponsoren->results() as $sponsor) {
-                        echo '<div class="col-md-2 col-xs-2 sponsorenImg">
-                                <img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
+                        echo '<div class="col-md-2 col-xs-2 sponsorenImg">';
+                        if ($user->isLoggedIn()) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick=""></i></div>';}
+                        echo '<img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                               </div>';
                     }
                 } else {
