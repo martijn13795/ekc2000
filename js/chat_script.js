@@ -14,7 +14,7 @@ $(document).ready(function() {
             function (info) {
                 $("#result").html(info);
                 jQuery('#remaining').html("");
-                document.getElementById("panel-body").scrollTop = scroll;
+                setTimeout(scrollToBottom, 300);
             });
         clearInput();
     });
@@ -34,7 +34,7 @@ $(document).ready(function(){
                 $("#chat :input").serializeArray(),
                 function (info) {
                     $("#result").html(info);
-                    document.getElementById("panel-body").scrollTop = scroll;
+                    setTimeout(scrollToBottom, 300);
                 });
             clearInput();
             return false;
@@ -53,7 +53,7 @@ function clearInput() {
 $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
     function scrollToBottom(){document.getElementById("panel-body").scrollTop = scroll;}
-    setTimeout(scrollToBottom,500);
+    setTimeout(scrollToBottom,1000);
     setInterval(function chatRefresh() {
         $('#chatRefresh').load('/includes/chatRefresh.php');
     }, 5000);
