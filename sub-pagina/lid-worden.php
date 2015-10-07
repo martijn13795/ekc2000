@@ -86,6 +86,6 @@
                 </tr>
                 </tbody>
             </table>
-            <p>Download hier het inschrijfformulier: <a href="../documenten/Inschrijfformulier.doc">Inschrijfformulier</a></p>
+            <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier.doc">Inschrijfformulier</a></p>
         </div>
     </div>
