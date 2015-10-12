@@ -68,6 +68,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                 $file_error = $files['error'][$position];
 
                 $file_ext = pathinfo($files['name'][$position], PATHINFO_EXTENSION);
+                $file_name = basename($file_name, ".".$file_ext);
                 if(in_array($file_ext, $allowed)){
                     if($file_error === 0){
                         if($file_size <= $size) {
@@ -88,7 +89,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 mkdir("../images/gallerij/" . $album_name, 0777);
                             }
                             $file_name_new = str_replace(' ', '-', $file_name);
-                            $file_path = "../images/gallerij/" . $album_name . "/" . $file_name_new;
+                            $file_path = "../images/gallerij/" . $album_name . "/" . $file_name_new . "." . $file_ext;
                             if(file_exists($file_path) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND path = '$file_path'")->count()){
                                 $i = 1;
                                 while(file_exists($file_path) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND path = '$file_path'")->count()){
@@ -96,7 +97,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                     $i++;
                                 }
                             }
-                            $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile_" . $file_name_new;
+                            $file_path_mobile = "../images/gallerij/" . $album_name . "/mobile_" . $file_name_new . "." . $file_ext;
                             if(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
                                 $i = 1;
                                 while(file_exists($file_path_mobile) || $db->query("SELECT * FROM pictures WHERE album_id = '$album_id' AND pathMobile = '$file_path'")->count()){
