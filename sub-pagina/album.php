@@ -118,6 +118,6 @@
         };
         setTimeout(function () {
             location.reload();
-        }, 10);
+        }, 20);
     }
 </script>

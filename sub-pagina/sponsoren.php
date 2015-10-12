@@ -38,7 +38,7 @@
                 if ($sponsoren->count()) {
                     foreach ($sponsoren->results() as $sponsor) {
                         echo '<div class="col-md-2 col-xs-2 sponsorenImg">';
-                        if ($user->isLoggedIn()) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick=""></i></div>';}
+                        if ($user->isLoggedIn()) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($sponsor->id) .'\', \''. escape($sponsor->pathMobile) .'\');"></i></div>';}
                         echo '<img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                               </div>';
                     }
@@ -89,4 +89,28 @@
         $("#refresh").hide();
         $("#error").hide();
     });
+
+    function imageDel(id, path){
+        if (!$(".alert").hasClass("on")) {
+            $('.alerts').append('<div class="alert alert-danger alert-dismissable">' +
+                '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
+                'Weet u zeker dat u deze afbeelding wilt verwijderen?<br><br>' +
+                '<img src="' + path + '" class="img-responsive imageDelAlert"/><br><br>' +
+                '<button class="btn btn-warning" onclick="imageRemove(' + id + ')">Verwijderen</button>&#09;' +
+                '<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+                '</div>');
+            setTimeout(function () {
+                $('.alerts').children('.alert:last-child').addClass('on');
+            }, 10);
+        }
+    }
+
+    function imageRemove(id){
+        $.get("../includes/removeImage.php?id=" + id), function(data){
+            $('#result').html(data);
+        };
+        setTimeout(function () {
+            location.reload();
+        }, 20);
+    }
 </script>
