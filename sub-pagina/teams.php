@@ -60,7 +60,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <iframe style="width: 100%; height: 240px;" border="0"frameborder="0" src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=A1"></iframe>
+                <iframe style="width: 100%; height: 490px;" border="0"frameborder="0" src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=A1"></iframe>
             </div>
         </div>
     </div>
