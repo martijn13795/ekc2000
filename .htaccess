@@ -51,7 +51,9 @@ RewriteRule ^trainingstijden sub-pagina/trainingstijden.php [NC,L]
 
 RewriteRule ^uitslagen sub-pagina/uitslagen.php [NC,L]
 
-RewriteRule ^wedstrijd-verslagen sub-pagina/wedstrijd-verslagen.php [NC,L]
+RewriteRule ^uitslag-invoeren sub-pagina/uitslagen-invoeren.php [NC,L]
+
+RewriteRule ^wedstrijdverslagen sub-pagina/wedstrijdverslagen.php [NC,L]
 
 RewriteRule ^wedstrijdschema sub-pagina/wedstrijdschema.php [NC,L]
 
