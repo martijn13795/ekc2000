@@ -60,7 +60,24 @@
                     </tr>
                     </tbody>
                 </table>
-                <iframe style="width: 100%; height: 490px;" border="0"frameborder="0" src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=A1"></iframe>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="tableHeader" colspan="2">Trainingstijden</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Dinsdag</th>
+                        <td>19:00 t/m 20:00</td>
+                    </tr>
+                    <tr>
+                        <th>Vrijdag</th>
+                        <td>19:00 t/m 20:00</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <iframe style="width: 100%; height: 320px;" border="0"frameborder="0" src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=A1"></iframe>
             </div>
         </div>
     </div>
