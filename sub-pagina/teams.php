@@ -47,11 +47,11 @@
                         <td>Sanne Schutrups</td>
                     </tr>
                     <tr>
-                        <td>Simon Guigelaar</td>
+                        <td>Simon Guichelaar</td>
                         <td>Nathalie ten Broeke</td>
                     </tr>
                     <tr>
-                        <td>Hugo </td>
+                        <td>Hugo Okken</td>
                         <td>Thirza Venema</td>
                     </tr>
                     <tr>
