@@ -2,7 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
-$messages = $db->query("SELECT * FROM messages ORDER BY id");
+$more=25;
+if(isset($_POST['more'])){$more=$_POST['more'];}
+$messages = $db->query("SELECT * FROM( SELECT * FROM messages ORDER BY id DESC LIMIT $more) messages ORDER BY id ASC");
 if ($messages->count()) {
     foreach ($messages->results() as $message) {
         $messageSQL = $db->query("SELECT name, IconPath FROM users WHERE id = '{$message->user_id}'");

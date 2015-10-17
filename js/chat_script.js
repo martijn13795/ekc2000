@@ -55,7 +55,13 @@ $(document).ready(function() {
     function scrollToBottom(){document.getElementById("panel-body").scrollTop = scroll;}
     setTimeout(scrollToBottom,1000);
     setInterval(function chatRefresh() {
-        $('#chatRefresh').load('/includes/chatRefresh.php');
+        function more(more) {
+            $.post('../includes/chatRefresh.php', {more: more},
+                function (returnedData) {
+                    console.log(returnedData);
+                    $('#chatRefresh').html(returnedData);
+                });
+        }
     }, 5000);
 });
 

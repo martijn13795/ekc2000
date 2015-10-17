@@ -117,6 +117,11 @@
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix">
+                            <div class="col-md-12 col-xs-12"><button class="btn btn-info" style="width: 100%" onclick="more(val = val+25)">laad meer berichten</button><br><br></div>
+                                </li>
+                            </ul>
+                            <ul class="chat">
+                                <li class="left clearfix">
                                                     <span class="chat-img pull-left">
                                                         <img src="/images/logoChat.png" alt="User Avatar" class="img-circle avatar" />
                                                     </span>
@@ -184,6 +189,15 @@
         </div>
 <script src="js/chat_script.js"></script>
 <script>
+    var val = 25;
+    function more(more) {
+        $.post('/includes/chatRefresh.php', {more: more},
+            function (returnedData) {
+                console.log(returnedData);
+                $('#chatRefresh').html(returnedData);
+            });
+    }
+
     var logedin = localStorage.getItem("logedin");
     if(logedin == "ja"){
         logedin = "nee";
