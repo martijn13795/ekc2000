@@ -58,7 +58,6 @@ $(document).ready(function() {
         function more(more) {
             $.post('../includes/chatRefresh.php', {more: more},
                 function (returnedData) {
-                    console.log(returnedData);
                     $('#chatRefresh').html(returnedData);
                 });
         }

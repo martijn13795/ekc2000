@@ -117,7 +117,7 @@
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix">
-                            <div class="col-md-12 col-xs-12"><button class="btn btn-info" style="width: 100%" onclick="more(val = val+25)">Laad 25 extra berichten</button><br><br></div>
+                            <div class="col-md-12 col-xs-12" style="text-align: center;"><h4 style="margin-bottom: -20px;">Scroll naar boven voor extra berichten</h4><br><br></div>
                                 </li>
                             </ul>
                             <ul class="chat">
@@ -190,10 +190,23 @@
 <script src="js/chat_script.js"></script>
 <script>
     var val = 25;
+    setInterval(function(){
+        var scrollHeight = $("#panel-body").scrollTop();
+        if(scrollHeight >= 0 && scrollHeight < 10){
+            var totalHeight = $("#panel-body")[0].scrollHeight;
+            val = val + 25;
+            more(val);
+            setTimeout(function () {
+                var totalHeight2 = $("#panel-body")[0].scrollHeight;
+                var totalHeight3 = totalHeight2 - totalHeight;
+                document.getElementById("panel-body").scrollTop = totalHeight3;
+            },1000);
+        }
+    },1200);
+
     function more(more) {
         $.post('/includes/chatRefresh.php', {more: more},
             function (returnedData) {
-                console.log(returnedData);
                 $('#chatRefresh').html(returnedData);
             });
     }
