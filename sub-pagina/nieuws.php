@@ -1,7 +1,8 @@
 <?php include '../includes/html.php';?>
 <script src="../ckeditor/ckeditor.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-    <div class="container"><br>
+    <div class="container">
+        <h1>Nieuws</h1><hr>
         <?php
         $user = new User();
         if ($user->isLoggedIn()) {

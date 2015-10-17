@@ -27,7 +27,7 @@
                         <li <?=activeClass("bestuur")?>><a href="/bestuur">Bestuur</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
                         <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
-                        <li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li>
+                        <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li><?php } ?>
                         <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
                 </li>

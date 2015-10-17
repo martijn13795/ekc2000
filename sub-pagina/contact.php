@@ -28,7 +28,7 @@
                         Jeugd: Ilse Schuttrups: 06-10433293<br><br>
                         Scheidsrechteraanwijzer:<br>
                         Michael Beekman: 06-49077377.<br><br>
-                        Webmasters: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
+                        Developers: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
                 </div>
             </div>
