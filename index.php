@@ -117,7 +117,7 @@
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
                                 <li class="left clearfix">
-                            <div class="col-md-12 col-xs-12"><button class="btn btn-info" style="width: 100%" onclick="more(val = val+25)">laad meer berichten</button><br><br></div>
+                            <div class="col-md-12 col-xs-12"><button class="btn btn-info" style="width: 100%" onclick="more(val = val+25)">Laad 25 extra berichten</button><br><br></div>
                                 </li>
                             </ul>
                             <ul class="chat">
