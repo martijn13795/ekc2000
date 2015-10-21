@@ -5,5 +5,5 @@ $name = $_POST['artikelName'];
 $name = str_replace(' ', '-', $name);
 $text = $_POST['editor1'];
 $date = date("Y-m-d H:i:s");
-$db->query("INSERT INTO nieuws (name, text, date) VALUES ('$name', '$text', '$date')");
+$db->query("INSERT INTO news (name, text, date) VALUES ('$name', '$text', '$date')");
 header("Location: /nieuws");

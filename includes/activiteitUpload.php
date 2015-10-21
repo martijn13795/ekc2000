@@ -5,5 +5,5 @@ $name = $_POST['activiteitName'];
 $name = str_replace(' ', '-', $name);
 $text = $_POST['editor1'];
 $date = date("Y-m-d H:i:s");
-$db->query("INSERT INTO activiteiten (name, text, date) VALUES ('$name', '$text', '$date')");
+$db->query("INSERT INTO activites (name, text, date) VALUES ('$name', '$text', '$date')");
 header("Location: /activiteiten");
