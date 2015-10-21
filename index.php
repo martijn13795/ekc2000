@@ -19,7 +19,7 @@
                                     $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC");
                                     if ($newsdata->count()) {
                                         foreach ($newsdata->results() as $news) {
-                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape($news = explode(" ", $news->date)[0]) . ' ' . escape($news = str_replace('-', ' ', $news->name)) . '</a></p>';
+                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(str_replace('-', ' ', $news->name)) . '</a></p>';
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen artikelen beschikbaar.</p>';
