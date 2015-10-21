@@ -42,6 +42,7 @@ class DB
                 . "name VARCHAR(50), "
                 . "joined DATETIME, "
                 . "IconPath VARCHAR(60), "
+                . "gender VARCHAR(1), "
                 . "group_id INT)");
             //Create user on first setup
             $salt = Hash::salt(32);
@@ -53,6 +54,7 @@ class DB
                 'name' => 'Cas van Dinter',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/cassshh.png',
+                'gender' => 'M',
                 'group_id' => 1
             ));
             $salt = Hash::salt(32);
@@ -64,6 +66,7 @@ class DB
                 'name' => 'Martijn Posthuma',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/martijn13795.png',
+                'gender' => 'M',
                 'group_id' => 1
             ));
             $salt = Hash::salt(32);
@@ -75,6 +78,7 @@ class DB
                 'name' => 'Gast',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/default.jpg',
+                'gender' => 'F',
                 'group_id' => 2
             ));
         }
