@@ -16,10 +16,10 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $nieuwsMessage = $db->query("SELECT date, name FROM nieuws ORDER BY date DESC");
-                                    if ($nieuwsMessage->count()) {
-                                        foreach ($nieuwsMessage->results() as $nieuws) {
-                                            echo '<p class="fotoLink"><a href="/artikel/' . $nieuws->name . '">' . escape($date = explode(" ", $nieuws->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $nieuws->name)) . '</a></p>';
+                                    $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC");
+                                    if ($newsdata->count()) {
+                                        foreach ($newsdata->results() as $news) {
+                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape($news = explode(" ", $news->date)[0]) . ' ' . escape($news = str_replace('-', ' ', $news->name)) . '</a></p>';
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen artikelen beschikbaar.</p>';
@@ -64,10 +64,10 @@
                             <div class="col-md-12 col-xs-12">
                             <p>
                                 <?php
-                                $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
-                                if ($activiteiten->count()) {
-                                    foreach ($activiteiten->results() as $activiteit) {
-                                        echo '<p class="fotoLink"><a href="/activiteit/' . $activiteit->name . '">' . escape($date = explode(" ", $activiteit->date)[0]) . ' ' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</a></p>';
+                                $activities = $db->query("SELECT date, name FROM activities ORDER BY date DESC");
+                                if ($activities->count()) {
+                                    foreach ($activities->results() as $activity) {
+                                        echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape(explode(" ", $activity->date)[0]) . ' ' . escape(str_replace('-', ' ', $activity->name)) . '</a></p>';
                                     }
                                 } else {
                                     echo '<p class="fotoLink">Er zijn nog geen activiteiten beschikbaar.</p>';
