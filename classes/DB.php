@@ -102,14 +102,6 @@ class DB
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
         }
-        if ($this->query("DESCRIBE galleries")->error()) {
-            $this->query("CREATE TABLE galleries ("
-                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                . "name VARCHAR(255), "
-                . "date DATETIME, "
-                . "path LONGTEXT, "
-                . "pathMobile LONGTEXT)");
-        }
         if ($this->query("DESCRIBE visitors")->error()) {
             $this->query("CREATE TABLE visitors ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
@@ -124,6 +116,7 @@ class DB
         if ($this->query("DESCRIBE albums")->error()) {
             $this->query("CREATE TABLE albums ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
                 . "name VARCHAR(255), "
                 . "date DATETIME)");
             $this->insert('albums', array(
@@ -135,11 +128,72 @@ class DB
         if ($this->query("DESCRIBE pictures")->error()) {
             $this->query("CREATE TABLE pictures ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                . "album_id int, "
+                . "user_id INT, "
+                . "album_id INT, "
                 . "name VARCHAR(255), "
                 . "date DATETIME, "
                 . "path LONGTEXT, "
                 . "pathMobile LONGTEXT)");
+        }
+        if ($this->query("DESCRIBE news")->error()) {
+            $this->query("CREATE TABLE news ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "name VARCHAR(64), "
+                . "text LONGTEXT, "
+                . "date DATETIME)");
+        }
+        if ($this->query("DESCRIBE activities")->error()) {
+            $this->query("CREATE TABLE activities ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "name VARCHAR(64), "
+                . "text LONGTEXT, "
+                . "date DATETIME)");
+        }
+        if ($this->query("DESCRIBE documents")->error()) {
+            $this->query("CREATE TABLE documents ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "name VARCHAR(64), "
+                . "description VARCHAR(64), "
+                . "path LONGTEXT, "
+                . "date DATETIME)");
+        }
+        if ($this->query("DESCRIBE reports")->error()) {
+            $this->query("CREATE TABLE reports ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "team_id INT, "
+                . "name VARCHAR(64), "
+                . "text LONGTEXT, "
+                . "date DATETIME)");
+        }
+        if ($this->query("DESCRIBE ideas")->error()) {
+            $this->query("CREATE TABLE ideas ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "name VARCHAR(64), "
+                . "text VARCHAR(512), "
+                . "date DATETIME)");
+        }
+        if ($this->query("DESCRIBE teams")->error()) {
+            $this->query("CREATE TABLE teams ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(32), "
+                . "path LONGTEXT)");
+        }
+        if ($this->query("DESCRIBE players")->error()) {
+            $this->query("CREATE TABLE players ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "team_id INT, "
+                . "user_id INT)");
+        }
+        if ($this->query("DESCRIBE trainers")->error()) {
+            $this->query("CREATE TABLE trainers ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "team_id INT, "
+                . "user_id INT)");
         }
     }
 
