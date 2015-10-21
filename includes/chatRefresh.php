@@ -6,7 +6,12 @@ $more=25;
 if(isset($_POST['more'])){$more=$_POST['more'];}
 $messages = $db->query("SELECT * FROM( SELECT * FROM messages ORDER BY id DESC LIMIT $more) messages ORDER BY id ASC");
 if ($messages->count()) {
+    ?><script>var totalMessages = 0;</script><?php
     foreach ($messages->results() as $message) {
+        ?><script>
+            totalMessages = totalMessages + 1;
+            localStorage.setItem("totalMessages", totalMessages);
+        </script><?php
         $messageSQL = $db->query("SELECT name, IconPath FROM users WHERE id = '{$message->user_id}'");
         foreach ($messageSQL->results() as $user_id) {
             $userMessage = new User($message->user_id);
