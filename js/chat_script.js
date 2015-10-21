@@ -67,12 +67,12 @@ $(document).ready(function() {
         count=count-1;
         if (count <= 0)
         {
-                var val = localStorage.getItem("val");
-                    $.post('../includes/chatRefresh.php', {more: val},
-                        function (returnedData) {
-                            $('#chatRefresh').html(returnedData);
-                        });
             count = 5;
+            var val = localStorage.getItem("val");
+            $.post('../includes/chatRefresh.php', {more: val},
+                function (returnedData) {
+                    $('#chatRefresh').html(returnedData);
+                });
             return;
         }
     }timer();
