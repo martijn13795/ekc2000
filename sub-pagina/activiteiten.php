@@ -29,10 +29,10 @@
         <?php
     }
     $db = DB::getInstance();
-    $activiteiten = $db->query("SELECT date, name FROM activiteiten ORDER BY date DESC");
-    if ($activiteiten->count()) {
-        foreach ($activiteiten->results() as $activiteit) {
-            echo '<div class="well activiteitDiv"><a href="/activiteit/' . $activiteit->name . '"><h3>' . escape($name = str_replace('-', ' ', $activiteit->name)) . '</h3></a><p>Upload datum: ' . escape($date = explode(" ", $activiteit->date)[0]) . '</p></div>';
+    $activities = $db->query("SELECT date, name FROM activities ORDER BY date DESC");
+    if ($activities->count()) {
+        foreach ($activities->results() as $activity) {
+            echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $activity->date)[0]) . '</p></div>';
         }
     } else {
         echo '<div class="well activiteitDiv"><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';

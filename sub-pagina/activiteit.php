@@ -4,12 +4,12 @@
         <?php
         $db = DB::getInstance();
         $name = $_GET['activiteitName'];
-        $activiteiten = $db->query("SELECT text FROM activiteiten WHERE name = '" . $name . "'");
-        if ($activiteiten->count()) {
-            foreach ($activiteiten->results() as $activiteit) {
+        $activities = $db->query("SELECT text FROM activities WHERE name = '" . $name . "'");
+        if ($activities->count()) {
+            foreach ($activities->results() as $activity) {
                 echo '
                     <div class="artikelDiv">
-                        <span>'. $activiteit->text .'</span>
+                        <span>'. $activity->text .'</span>
                     </div>
                 ';
             }

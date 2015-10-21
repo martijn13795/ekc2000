@@ -4,11 +4,11 @@ $user = new User();
 if ($user->isLoggedIn()) {
 ?>
     <div class="container">
-        <div class="col-md-12 col-xs-12"><h2>Welkom, <?php echo $user->data()->name; ?><button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
+        <div class="col-md-12 col-xs-12"><h2>Welkom, <?php echo escape($user->data()->name); ?><button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
         <div class="row">
             <div class="col-md-5 col-xs-12">
                 <div class="col-md-12 col-xs-12">
-                    <img class="img-responsive avatarDiv" src="../<?php echo $user->data()->IconPath; ?>" alt="avatar"/><br>
+                    <img class="img-responsive avatarDiv" src="../<?php echo escape($user->data()->IconPath); ?>" alt="avatar"/><br>
                     <button class="btn btn-primary col-xs-12 logoutButton hidden visible-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button><br><br><br>
                 </div>
             </div>
@@ -17,7 +17,7 @@ if ($user->isLoggedIn()) {
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <h3>Gebruikersnaam:</h3>
-                            <p><?php echo $user->data()->username; ?></p>
+                            <p><?php echo escape($user->data()->username); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Wachtwoord:</h3>
@@ -25,15 +25,15 @@ if ($user->isLoggedIn()) {
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Voornaam:</h3>
-                            <p><?php $name = $user->data()->name; $names = explode(" ", $name); echo $names[0]; ?></p>
+                            <p><?php echo escape(explode(" ", $user->data()->name)[0]); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Achternaam:</h3>
-                            <p><?php $name = $user->data()->name; $names = explode(" ", $name, 2); echo $names[1]; ?></p>
+                            <p><?php echo escape(explode(" ", $user->data()->name, 2)[1]); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Email:</h3>
-                            <p><?php echo $user->data()->mail; ?></p>
+                            <p><?php echo escape($user->data()->mail); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3></h3>

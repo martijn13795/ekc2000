@@ -4,12 +4,12 @@
         <?php
         $db = DB::getInstance();
         $name = $_GET['artikelName'];
-        $nieuwsMessage = $db->query("SELECT text FROM nieuws WHERE name = '" . $name . "'");
-        if ($nieuwsMessage->count()) {
-            foreach ($nieuwsMessage->results() as $nieuws) {
+        $newsdata = $db->query("SELECT text FROM news WHERE name = '" . $name . "'");
+        if ($newsdata->count()) {
+            foreach ($newsdata->results() as $news) {
                 echo '
                     <div class="artikelDiv">
-                        <span>'. $nieuws->text .'</span>
+                        <span>'. $news->text .'</span>
                     </div>
                 ';
             }
