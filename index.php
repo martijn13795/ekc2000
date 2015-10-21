@@ -214,6 +214,11 @@
         }
     },1200);
 
+    var totalMessages = localStorage.getItem("totalMessages");
+    if (totalMessages <= totalMessagesDB) {
+        $('#scroll').hide();
+    }
+
     function more(more) {
             $.post('/includes/chatRefresh.php', {more: more},
                 function (returnedData) {
