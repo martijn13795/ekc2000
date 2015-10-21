@@ -54,14 +54,6 @@ $(document).ready(function() {
     $('#chatRefresh').load('/includes/chatRefresh.php');
     function scrollToBottom(){document.getElementById("panel-body").scrollTop = scroll;}
     setTimeout(scrollToBottom,1000);
-    setInterval(function chatRefresh() {
-        function more(more) {
-            $.post('../includes/chatRefresh.php', {more: more},
-                function (returnedData) {
-                    $('#chatRefresh').html(returnedData);
-                });
-        }
-    }, 5000);
 });
 
 $(document).ready(function() {
@@ -75,6 +67,11 @@ $(document).ready(function() {
         count=count-1;
         if (count <= 0)
         {
+                var val = localStorage.getItem("val");
+                $.post('../includes/chatRefresh.php', {more: val},
+                    function (returnedData) {
+                        $('#chatRefresh').html(returnedData);
+                    });
             count = 5;
             return;
         }
