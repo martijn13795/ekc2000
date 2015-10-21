@@ -68,10 +68,10 @@ $(document).ready(function() {
         if (count <= 0)
         {
                 var val = localStorage.getItem("val");
-                $.post('../includes/chatRefresh.php', {more: val},
-                    function (returnedData) {
-                        $('#chatRefresh').html(returnedData);
-                    });
+                    $.post('../includes/chatRefresh.php', {more: val},
+                        function (returnedData) {
+                            $('#chatRefresh').html(returnedData);
+                        });
             count = 5;
             return;
         }

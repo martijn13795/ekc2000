@@ -190,11 +190,13 @@
 <script src="js/chat_script.js"></script>
 <script>
     var val = 25;
+    localStorage.setItem("val", val);
     setInterval(function(){
         var scrollHeight = $("#panel-body").scrollTop();
         if(scrollHeight >= 0 && scrollHeight < 10){
             var totalHeight = $("#panel-body")[0].scrollHeight;
             val = val + 25;
+            localStorage.setItem("val", val);
             more(val);
             setTimeout(function () {
                 var totalHeight2 = $("#panel-body")[0].scrollHeight;
