@@ -120,18 +120,18 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 $db->update('albums', $album_id, array(
                                     'date' => date("Y-m-d H:i:s")
                                 ));
-                                echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font></br>";
+                                echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font><br>";
                             } else {
-                                echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font></br>";
+                                echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
                             }
                         } else {
-                            echo "<b>" . $file_name . "</b> <font color='red'>>Is te groot: </font>" . formatSizeUnits($file_size) . " / " . formatSizeUnits($size) . "</br>";
+                            echo "<b>" . $file_name . "</b> <font color='red'>>Is te groot: </font>" . formatSizeUnits($file_size) . " / " . formatSizeUnits($size) . "<br>";
                         }
                     } else {
-                        echo "<b>" . $file_name . "</b> <font color='red'>>Error: </font>" . $file_error . "</br>";
+                        echo "<b>" . $file_name . "</b> <font color='red'>>Error: </font>" . $file_error . "<br>";
                     }
                 } else {
-                    echo "<b>" . $file_name . "</b> <font color='red'>>Kies een ander bestand type dan: </font>" . $file_ext . "</br>";
+                    echo "<b>" . $file_name . "</b> <font color='red'>>Kies een ander bestand type dan: </font>" . $file_ext . "<br>";
                 }
             }
         } else {
@@ -139,9 +139,9 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
         }
     } else {
         $album_name = null;
-        echo "<h3>Voer een geldig bericht in</h3></br>";
+        echo "<h3>Voer een geldig bericht in</h3><br>";
         echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ! ( ) - _ + *";
     }
 } else {
-    echo "<h3>Voer een geldig bericht in</h3></br>";
+    echo "<h3>Voer een geldig bericht in</h3><br>";
 }

@@ -35,7 +35,7 @@
             echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $activity->date)[0]) . '</p></div>';
         }
     } else {
-        echo '<div class="well activiteitDiv"><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';
+        echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';
     }
     ?>
 </div>

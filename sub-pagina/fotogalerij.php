@@ -49,7 +49,7 @@
             }
         } else {
             //Bericht nog geen foto albums?
-            echo '<div class="well albumsDiv"><br/><h3>Er zijn nog geen albums beschikbaar.</h3></div>';
+            echo '<div class="well albumsDiv"><br><h3>Er zijn nog geen albums beschikbaar.</h3></div>';
         }
         ?>
     </div>

@@ -35,7 +35,7 @@
                 echo '<div class="well nieuwsDiv"><a href="/artikel/' . escape($news->name) . '"><h3>' . escape(str_replace('-', ' ', $news->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p></div>';
             }
         } else {
-            echo '<div class="well nieuwsDiv"><br/><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
+            echo '<div class="well nieuwsDiv"><br><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
         }
         ?>
     </div>
