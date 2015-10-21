@@ -22,7 +22,7 @@
             <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
                 <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="60" REQUIRED><br>
                 <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
-                <input type="submit" value="Upload"/>
+                <input type="submit" class="btn btn-primary" value="Upload"/>
             </form><br>
             <div id="error"></div>
         </div>
