@@ -1,9 +1,17 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
-$name = $_POST['artikelName'];
-$name = str_replace(' ', '-', $name);
-$text = $_POST['editor1'];
-$date = date("Y-m-d H:i:s");
-$db->query("INSERT INTO news (name, text, date) VALUES ('$name', '$text', '$date')");
+$user = new User();
+if($user->isLoggedIn() && $user->hasPermission('admin')) {
+    if (isset($_POST['artikelName']) && !empty($_POST['artikelName']) && isset($_POST['editor1']) && !empty($_POST['editor1'])) {
+        $name = $_POST['artikelName'];
+        $name = str_replace(' ', '-', $name);
+        $text = $_POST['editor1'];
+        $db->insert('news',array(
+            'name' => escape($name),
+            'text' => escape($text),
+            'date' => date("Y-m-d H:i:s")
+        ));
+    }
+}
 header("Location: /nieuws");
