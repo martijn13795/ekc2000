@@ -22,7 +22,7 @@
                                             echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(str_replace('-', ' ', $news->name)) . '</a></p>';
                                         }
                                     } else {
-                                        echo '<p class="fotoLink">Er zijn nog geen nieuws beschikbaar.</p>';
+                                        echo '<p class="fotoLink">Er is nog geen nieuws beschikbaar.</p>';
                                     }
                                     ?>
                                 </p>
