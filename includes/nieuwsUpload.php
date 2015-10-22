@@ -8,8 +8,8 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
         $name = str_replace(' ', '-', $name);
         $text = $_POST['editor1'];
         $db->insert('news',array(
-            'name' => escape($name),
-            'text' => escape($text),
+            'name' => $name,
+            'text' => $text,
             'date' => date("Y-m-d H:i:s")
         ));
     }
