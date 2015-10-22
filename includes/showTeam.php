@@ -37,8 +37,8 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th class="tableHeader">Heren</th>
-                    <th class="tableHeader">Dames</th>
+                    <th class="tableHeaderPlayers">Heren</th>
+                    <th class="tableHeaderPlayers">Dames</th>
                 </tr>
                 </thead>
                 <tbody>
