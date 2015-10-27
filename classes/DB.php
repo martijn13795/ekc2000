@@ -40,9 +40,12 @@ class DB
                 . "mail VARCHAR(50), "
                 . "salt VARCHAR(32), "
                 . "name VARCHAR(50), "
+                . "surname_prefix VARCHAR(50),"
+                . "surname VARCHAR(50),"
                 . "joined DATETIME, "
                 . "IconPath VARCHAR(60), "
                 . "gender VARCHAR(1), "
+                . "birthdate DATE, "
                 . "group_id INT)");
             //Create user on first setup
             $salt = Hash::salt(32);
@@ -51,10 +54,13 @@ class DB
                 'password' => Hash::make('admin', $salt),
                 'mail' => 'casvd@hotmail.com',
                 'salt' => $salt,
-                'name' => 'Cas van Dinter',
+                'name' => 'Cas',
+                'surname_prefix' => 'van',
+                'surname' => 'Dinter',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/cassshh.png',
                 'gender' => 'M',
+                'birthdate' => date("Y-m-d", strtotime("1997-05-31")),
                 'group_id' => 1
             ));
             $salt = Hash::salt(32);
@@ -63,10 +69,12 @@ class DB
                 'password' => Hash::make('admin', $salt),
                 'mail' => 'martijn13795@hotmail.com',
                 'salt' => $salt,
-                'name' => 'Martijn Posthuma',
+                'name' => 'Martijn',
+                'surname' => 'Posthuma',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/martijn13795.png',
                 'gender' => 'M',
+                'birthdate' => date('Y-m-d'),
                 'group_id' => 1
             ));
             $salt = Hash::salt(32);
@@ -76,9 +84,12 @@ class DB
                 'mail' => 'gast@hotmail.com',
                 'salt' => $salt,
                 'name' => 'Gast',
+                'surname_prefix' => 'van',
+                'surname' => 'Kerol',
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => 'images/icons/default.jpg',
                 'gender' => 'F',
+                'birthdate' => date('Y-m-d'),
                 'group_id' => 2
             ));
         }

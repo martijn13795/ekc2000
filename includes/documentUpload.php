@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
+$user = new User();
 
 $target_dir = "../documents/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -38,6 +39,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         $db->insert('documents',array(
+            'user_id' => $user->data()->id,
             'name' => $_POST['name'],
             'date' => date("Y-m-d H:i:s"),
             'path' => $target_file

@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
+$user = new User();
 
 $size = 5242880;
 function imgResize($target, $newcopy, $w, $h, $ext)
@@ -80,6 +81,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 ));
                             } else {
                                 $db->insert('albums', array(
+                                    'user_id' => $user->data()->id,
                                     'name' => $album_name,
                                     'date' => date("Y-m-d H:i:s")
                                 ));
@@ -111,6 +113,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 imgResize($file_path, $file_path_mobile, $wmax, $hmax, $file_ext);
 
                                 $db->insert('pictures',array(
+                                    'user_id' => $user->data()->id,
                                     'album_id' => $album_id,
                                     'name' => $file_name_new,
                                     'date' => date("Y-m-d H:i:s"),

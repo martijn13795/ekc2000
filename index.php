@@ -2,7 +2,21 @@
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
-            <div class="col-xs-12 col-md-12"><h1>Welkom bij <strong>EKC 2000</strong><?php $user = new User(); if ($user->isLoggedIn()) { echo ', '.$user->data()->name; } ?></h1><hr></div>
+            <div class="col-xs-12 col-md-12">
+                <h1>Welkom bij <strong>EKC 2000</strong>,
+                    <?php
+                    $user = new User();
+                    if ($user->isLoggedIn()){
+                        echo escape($user->data()->name) . " ";
+                        if($user->data()->surname_prefix){
+                            echo escape($user->data()->surname_prefix) . " ";
+                        }
+                        echo escape($user->data()->surname);
+                    }
+                    ?>
+                </h1>
+                <hr>
+            </div>
             <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="col-md-4 col-xs-12 homeInfoDiv">

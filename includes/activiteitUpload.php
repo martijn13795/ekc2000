@@ -9,6 +9,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
         $text = $_POST['editor1'];
         $db->insert('activities',array(
             'name' => $name,
+            'user_id' => $user->data()->id,
             'text' => $text,
             'date' => date("Y-m-d H:i:s")
         ));

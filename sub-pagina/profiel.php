@@ -4,7 +4,23 @@ $user = new User();
 if ($user->isLoggedIn()) {
 ?>
     <div class="container">
-        <div class="col-md-12 col-xs-12"><h2>Welkom, <?php echo escape($user->data()->name); ?><button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';"><i class="fa fa-sign-out"></i>Uitloggen</button></h2><hr></div>
+        <div class="col-md-12 col-xs-12">
+            <h2>Welkom,
+                <?php
+                $user = new User();
+                if ($user->isLoggedIn()){
+                    echo escape($user->data()->name) . " ";
+                    if($user->data()->surname_prefix){
+                        echo escape($user->data()->surname_prefix) . " ";
+                    }
+                    echo escape($user->data()->surname);
+                }
+                ?>
+                <button class="btn btn-primary logoutButton hidden-xs" onclick="location.href='/uitloggen';">
+                    <i class="fa fa-sign-out"></i>Uitloggen</button>
+            </h2>
+            <hr>
+        </div>
         <div class="row">
             <div class="col-md-5 col-xs-12">
                 <div class="col-md-12 col-xs-12">
@@ -25,19 +41,24 @@ if ($user->isLoggedIn()) {
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Voornaam:</h3>
-                            <p><?php echo escape(explode(" ", $user->data()->name)[0]); ?></p>
+                            <p><?php echo escape($user->data()->name); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Achternaam:</h3>
-                            <p><?php echo escape(explode(" ", $user->data()->name, 2)[1]); ?></p>
+                            <p><?php
+                                if($user->data()->surname_prefix){
+                                    echo escape($user->data()->surname_prefix) . " ";
+                                }
+                                echo escape($user->data()->surname);
+                                ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <h3>Email:</h3>
                             <p><?php echo escape($user->data()->mail); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
-                            <h3></h3>
-                            <p></p>
+                            <h3>Geboortedatum:</h3>
+                            <p><?php echo escape($user->data()->birthdate); ?></p>
                         </div>
                     </div>
                 </div>
