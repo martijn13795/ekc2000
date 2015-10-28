@@ -23,9 +23,15 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                 $trainers = $db->query("SELECT user_id FROM trainers WHERE team_id = '$team->id'");
                 if ($trainers->count()) {
                     foreach ($trainers->results() as $trainer) {
-                        $user = $db->query("SELECT name FROM users WHERE id = '$trainer->user_id'");
+                        $user = $db->query("SELECT name, surname_prefix, surname FROM users WHERE id = '$trainer->user_id'");
                         if ($user->count()) {
-                            echo "<tr><td>" . $user->first()->name . "</td></tr>";
+                            echo "<tr><td>";
+                            echo escape($user->first()->name) . " ";
+                            if($user->first()->surname_prefix){
+                                echo escape($user->first()->surname_prefix) . " ";
+                            }
+                            echo escape($user->first()->surname);
+                            echo "</td></tr>";
                         }
                     }
                 } else {
@@ -47,12 +53,24 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                 if ($players->count()) {
                     $playersTeam = array(array(), array());
                     foreach ($players->results() as $player) {
-                        $user = $db->query("SELECT name, gender FROM users WHERE id = '$player->user_id'");
+                        $user = $db->query("SELECT name, surname_prefix, surname, gender FROM users WHERE id = '$player->user_id'");
                         if ($user->count()) {
+                            $name = null;
                             if($user->first()->gender === 'M'){
-                                $playersTeam[0][] = escape($user->first()->name);
+                                //$playersTeam[0][] = escape($user->first()->name);
+                                $name = escape($user->first()->name) . " ";
+                                if($user->first()->surname_prefix){
+                                    $name .=  escape($user->first()->surname_prefix) . " ";
+                                }
+                                $name .= escape($user->first()->surname);
+                                $playersTeam[0][] = $name;
                             } elseif ($user->first()->gender === 'F'){
-                                $playersTeam[1][] = escape($user->first()->name);
+                                $name = escape($user->first()->name) . " ";
+                                if($user->first()->surname_prefix){
+                                    $name .=  escape($user->first()->surname_prefix) . " ";
+                                }
+                                $name .= escape($user->first()->surname);
+                                $playersTeam[1][] = $name;
                             }
                         }
                     }
@@ -98,14 +116,23 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>Dinsdag</th>
-                    <td>19:00 t/m 20:00</td>
-                </tr>
-                <tr>
-                    <th>Vrijdag</th>
-                    <td>19:00 t/m 20:00</td>
-                </tr>
+                <?php
+                $schedules = $db->query("SELECT * FROM schedules WHERE team_id = '$team->id' ORDER BY day_id");
+                if ($schedules->count()) {
+                    foreach ($schedules->results() as $schedule) {
+                        $day = $db->query("SELECT name FROM days WHERE id = '$schedule->day_id'");
+                        if($day->count()){
+                            echo "<tr><th>" . escape($day->first()->name) . "</th><td>"
+                                . escape(explode(":", $schedule->start)[0] . ":" . explode(":", $schedule->start)[1])
+                                . " t/m "
+                                . escape(explode(":", $schedule->end)[0] . ":" . explode(":", $schedule->end)[1])
+                                . "</td></tr>";
+                        }
+                    }
+                } else {
+                    echo "<tr><th>Geen trainingstijden beschikbaar</th></tr>";
+                }
+                ?>
                 </tbody>
             </table>
             <iframe style="width: 100%; height: 320px;" border="0" frameborder="0"

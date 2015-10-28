@@ -210,6 +210,39 @@ class DB
                 . "team_id INT, "
                 . "user_id INT)");
         }
+        if ($this->query("DESCRIBE schedules")->error()) {
+            $this->query("CREATE TABLE schedules ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "team_id INT, "
+                . "day_id int, "
+                . "start TIME, "
+                . "end TIME)");
+        }
+        if ($this->query("DESCRIBE days")->error()) {
+            $this->query("CREATE TABLE days ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "name VARCHAR(32))");
+            $this->insert('days', array(
+                'id' => '1',
+                'name' => 'Maandag'
+            ));
+            $this->insert('days', array(
+                'id' => '2',
+                'name' => 'Dinsdag'
+            ));
+            $this->insert('days', array(
+                'id' => '3',
+                'name' => 'Woensdag'
+            ));
+            $this->insert('days', array(
+                'id' => '4',
+                'name' => 'Donderdag'
+            ));
+            $this->insert('days', array(
+                'id' => '5',
+                'name' => 'Vrijdag'
+            ));
+        }
     }
 
     public function query($sql, $params = array())

@@ -9,18 +9,21 @@
                 <label>Van welk team is het verslag:</label>
                 <select name="team" class="form-control" id="team" REQUIRED>
                     <option disabled selected value="">Selecteer een team</option>
-                    <option value="Eerste">Eerste</option>
-                    <option value="Tweede">Tweede</option>
-                    <option value="Derde">Derde</option>
-                    <option value="A1">A1</option>
-                    <option value="B1">B1</option>
-                    <option value="B2">B2</option>
-                    <option value="C1">C1</option>
-                    <option value="D1">D1</option>
-                    <option value="D2">D2</option>
-                    <option value="E1">E1</option>
-                    <option value="F1">F1</option>
-                    <option value="Welpen">Welpen</option>
+                    <?php
+                    $teams = $db->query("SELECT id, name FROM teams");
+                    if ($teams->count()) {
+                        $teamsArray = array();
+                        foreach ($teams->results() as $team) {
+                            $teamsArray[escape($team->id)] = escape($team->name);
+                        }
+                        asort($teamsArray);
+                        foreach ($teamsArray as $id => $name){
+                            echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
+                        }
+                    } else {
+                        echo '<option>Geen</option>';
+                    }
+                    ?>
                 </select><br>
                 <textarea class="form-control" rows="8" id="verslag" placeholder="Type hier..." REQUIRED></textarea></br>
                 <input type="submit" id="submit" class="btn btn-success">

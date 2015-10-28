@@ -10,88 +10,46 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row" class="tableHeader"></th>
-                    <th scope="row" class="tableHeader">Maandag</th>
-                    <th scope="row" class="tableHeader">Dinsdag</th>
-                    <th scope="row" class="tableHeader">Woensdag</th>
-                    <th scope="row" class="tableHeader">Donderdag</th>
-                    <th scope="row" class="tableHeader">Vrijdag</th>
-                </tr>
-                <tr>
-                    <th scope="row">1<sup>e</sup></th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr>
-                <tr>
-                    <th scope="row">2<sup>e</sup></th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr>
-                <tr>
-                    <th scope="row">3<sup>e</sup></th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr>
-                <tr>
-                    <th scope="row">A's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">B's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">C's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">D's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">E's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">F's</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr><tr>
-                    <th scope="row">Welpen</th>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                    <td></td>
-                    <td></td>
-                    <td>20:00 t/m 21:30</td>
-                </tr>
+                <?php
+                $teams = $db->query("SELECT id, name FROM teams");
+                if ($teams->count()) {
+                    $teamsArray = array();
+                    foreach ($teams->results() as $team) {
+                        $teamsArray[escape($team->id)] = escape($team->name);
+                    }
+                    $days = $db->query("SELECT name FROM days");
+                    $dayscount = 0;
+                    if($days->count()){
+                        $dayscount = $days->count();
+                        echo '<th scope="row" class="tableHeader"></th>';
+                        foreach($days->results() as $day){
+                            echo '<th scope="row" class="tableHeader">'. escape($day->name) .'</th>';
+                        }
+                    } else {
+                        echo '<tr><th></th><td>Geen trainingstijden beschikbaar</td></tr>';
+                        exit;
+                    }
+                    asort($teamsArray);
+                    foreach ($teamsArray as $id => $name){
+                        echo '<tr><th scope="row">'.escape($name).'</th>';
+                        for($i = 1; $i <= $dayscount; $i++){
+                            $schedule = $db->query("SELECT * FROM schedules WHERE team_id = '$id' AND day_id = '$i'");
+                            if($schedule->count()){
+                                echo "<td>"
+                                    . escape(explode(":", $schedule->first()->start)[0] . ":" . explode(":", $schedule->first()->start)[1])
+                                    . " t/m "
+                                    . escape(explode(":", $schedule->first()->end)[0] . ":" . explode(":", $schedule->first()->end)[1])
+                                    . "</td>";
+                            } else {
+                                echo "<td></td>";
+                            }
+                        }
+                        echo '</tr>';
+                    }
+                } else {
+                    echo '<tr><th>Geen teams beschikbaar</th><td></td></tr>';
+                }
+                ?>
                 </tbody>
             </table>
         </div>
