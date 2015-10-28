@@ -34,14 +34,14 @@
                 <tr>
                     <th colspan="4" class="tableHeader">Contributie</th>
                 </tr>
+                <tr>
+                    <th scope="row" class="tableHeader">Team categorie</th>
+                    <th scope="row" class="tableHeader">Leeftijd</th>
+                    <th scope="row" class="tableHeader">Lid contributie per maand</th>
+                    <th scope="row" class="tableHeader">Bondscontributie per jaar</th>
+                </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">Team categorie</th>
-                    <th scope="row">Leeftijd</th>
-                    <th scope="row">Lid contributie per maand</th>
-                    <th scope="row">Bondscontributie per jaar</th>
-                </tr>
                 <tr>
                     <th scope="row">senioren</th>
                     <td>18+</td>
