@@ -23,7 +23,7 @@ if ($message == null || $message == "" || $message == " ") {
     echo "<h3>Voer een bericht in</h3>";
     return true;
 } else {
-        if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '-' '_' '=' '*' '+']+$#", $message) && !$user->hasPermission('dev')) {
+        if (!preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' '@' ' ' '%' '&' '(' ')' '/' ':' '\-\' '_' '=' '*' '+']+$#", $message) && !$user->hasPermission('dev')) {
             $message = null;
             echo "<h3>Voer een geldig bericht in</h3></br>";
             echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) / : = - _ + * @ % &";
