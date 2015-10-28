@@ -5,7 +5,7 @@
         <h1>Nieuws</h1><hr>
         <?php
         $user = new User();
-        if ($user->isLoggedIn()) {
+        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
         ?>
             <div class="hidden visible-lg">
             <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">

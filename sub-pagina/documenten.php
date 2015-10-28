@@ -3,16 +3,25 @@
     <div class="container">
         <h1>Documenten</h1><hr>
         <div class="col-md-12 col-xs-12">
-            <div class="hidden visible-lg">
-                <form method="post" action="../includes/documentUpload.php" name="myForm" class="myForm" enctype="multipart/form-data">
-                    <label>Naam van Document:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
-                    <input type="file" id="fileToUpload" name="fileToUpload" REQUIRED><br>
-                    <input type="submit" id="submit" class="btn btn-success">
-                </form>
-                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
-                <div id="error"></div>
-            </div>
             <?php
+            $user = new User();
+            if ($user->isLoggedIn() && $user->hasPermission('admin')) {
+                ?>
+                <div class="hidden visible-lg">
+                    <form method="post" action="../includes/documentUpload.php" name="myForm" class="myForm"
+                          enctype="multipart/form-data">
+                        <label>Naam van Document:</label><input type="text" id="name" class="form-control" name="name"
+                                                                placeholder="Naam" maxlength="60" REQUIRED><br>
+                        <input type="file" id="fileToUpload" name="fileToUpload" REQUIRED><br>
+                        <input type="submit" id="submit" class="btn btn-success">
+                    </form>
+                    <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+                    <br><br>
+
+                    <div id="error"></div>
+                </div>
+                <?php
+            }
             }
             $db = DB::getInstance();
             $documents = $db->query("SELECT * FROM documents ORDER BY date DESC");

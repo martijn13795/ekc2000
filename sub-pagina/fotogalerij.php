@@ -6,7 +6,7 @@
         <hr>
         <?php
         $user = new User();
-        if ($user->isLoggedIn()) {
+        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
             ?>
             <div class="hidden visible-lg">
                 <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
