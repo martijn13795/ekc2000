@@ -32,7 +32,7 @@
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th colspan="4" class="tableHeader">Contributie 2014-2015</th>
+                    <th colspan="4" class="tableHeader">Contributie</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,49 +43,67 @@
                     <th scope="row">Bondscontributie per jaar</th>
                 </tr>
                 <tr>
-                    <th scope="row">Senior</th>
+                    <th scope="row">senioren</th>
                     <td>18+</td>
-                    <td>&euro; 19,00</td>
+                    <td>&euro; 19,75</td>
                     <td>&euro; 35,00</td>
                 </tr>
                 <tr>
-                    <th scope="row">A's</th>
-                    <td>15-18</td>
-                    <td>&euro; 15,00</td>
+                    <th scope="row">Junioren A's</th>
+                    <td>15-17</td>
+                    <td>&euro; 15,60</td>
                     <td>&euro; 28,00</td>
-                </tr><tr>
-                    <th scope="row">B's</th>
-                    <td>13-15</td>
-                    <td>&euro; 11,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Aspiranten B's</th>
+                    <td>13-14</td>
+                    <td>&euro; 11,50</td>
                     <td>&euro; 21,00</td>
-                </tr><tr>
-                    <th scope="row">C's</th>
-                    <td>11-13</td>
-                    <td>&euro; 11,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Aspiranten C's</th>
+                    <td>11-12</td>
+                    <td>&euro; 11,50</td>
                     <td>&euro; 21,00</td>
-                </tr><tr>
-                    <th scope="row">D's</th>
-                    <td>9-11</td>
-                    <td>&euro; 10,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pupillen D's</th>
+                    <td>9-10</td>
+                    <td>&euro; 10,50</td>
                     <td>&euro; 17,50</td>
-                </tr><tr>
-                    <th scope="row">E's</th>
-                    <td>7-9</td>
-                    <td>&euro; 10,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pupillen E's</th>
+                    <td>7-8</td>
+                    <td>&euro; 10,50</td>
                     <td>&euro; 17,50</td>
-                </tr><tr>
-                    <th scope="row">F's</th>
-                    <td>5-7</td>
-                    <td>&euro; 9,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Welpen F's</th>
+                    <td>5-6</td>
+                    <td>&euro; 9,40</td>
                     <td>&euro; 17,50</td>
-                </tr><tr>
-                    <th scope="row">Welpen</th>
-                    <td>0-5</td>
-                    <td>&euro; 3,50</td>
+                </tr>
+                <tr>
+                    <th scope="row">Welpen kangaroes</th>
+                    <td>0-4</td>
+                    <td>&euro; 4,50</td>
                     <td>&euro; 17,50</td>
+                </tr>
+                <tr>
+                    <th scope="row">Niet spelende leden</th>
+                    <td></td>
+                    <td>50% van leefdtijdscategorie</td>
+                    <td>&euro; 5,00</td>
+                </tr>
+                <tr>
+                    <th scope="row">Donateurs</th>
+                    <td></td>
+                    <td>&euro; 25,00 per jaar</td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>
-            <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier.doc">Inschrijfformulier</a></p>
+            <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></p>
         </div>
     </div>
