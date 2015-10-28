@@ -38,7 +38,7 @@
                 if ($sponsoren->count()) {
                     foreach ($sponsoren->results() as $sponsor) {
                         echo '<div class="col-md-2 col-xs-2 sponsorenImg">';
-                        if ($user->isLoggedIn()) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($sponsor->id) .'\', \''. escape($sponsor->pathMobile) .'\');"></i></div>';}
+                        if ($user->isLoggedIn() && $user->hasPermission('admin')) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($sponsor->id) .'\', \''. escape($sponsor->pathMobile) .'\');"></i></div>';}
                         echo '<img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                               </div>';
                     }

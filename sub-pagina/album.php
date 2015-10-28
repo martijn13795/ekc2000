@@ -39,7 +39,7 @@
                 foreach ($pics->results() as $pic) {
                     echo '
                         <div class="col-md-4 col-xs-4 galerijImg">';
-                    if ($user->isLoggedIn()) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($pic->id) .'\', \''. escape($pic->pathMobile) .'\');"></i></div>';}
+                    if ($user->isLoggedIn() && $user->hasPermission('admin')) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($pic->id) .'\', \''. escape($pic->pathMobile) .'\');"></i></div>';}
                            echo' <a href="' . escape($pic->pathMobile) . '" data-src-320px="' . escape($pic->pathMobile) . '"
                                data-src-960px="' . escape($pic->path) . '" title="' . escape($pic->name) . '" data-gallery>
                                 <div class="change galerijBackImg col-md-12" style="background-image: url(' . escape($pic->pathMobile) . ')"
