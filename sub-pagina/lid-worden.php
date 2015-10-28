@@ -1,10 +1,9 @@
 <?php include '../includes/html.php';?>
     <div class="container">
         <h1>Lid worden</h1><hr>
-        <p>De contributie wordt bepaald doormiddel van de leeftijd (peildatum 1 oktober).
-            Elk jaar dient er in oktober bondscontributie te worden betaald.
-            Elk nieuw lid betaalt de eerste keer ook bondscontributie.
-            Het lidmaatschap dient voor 30 mei te worden afgemeld, tot 30 juni blijft het lid contributie plichtig.</p><br>
+        <p>EKC 2000 is een korfbalvereniging waar zowel wedstrijd- als breedtekorfbal wordt gespeeld. Hierdoor is er voor iedereen ruimte om te korfballen, ongeacht niveau of leeftijd. Om lid te worden kan het onderstaande aanmeldformulier worden gedownload. Vul het formulier in en stuur het op naar ledenadministratie@ekc2000.nl. Mocht je nog niet zeker weten of je lid wilt worden, doe dan eens mee met een proeftraining. Voor mogelijkheden en meer informatie over proeftrainingen kan je ook een mail sturen naar ledenadministratie@ekc2000.nl.
+            We hopen je snel te mogen begroeten als nieuw EKC 2000-lid!
+        <p/><br>
         <div class="col-md-6 col-xs-12">
             <table class="table table-bordered">
                 <thead>
@@ -104,6 +103,10 @@
                 </tr>
                 </tbody>
             </table>
+            <p>De contributie wordt bepaald doormiddel van de leeftijd (peildatum 1 oktober).
+                Elk jaar dient er in oktober bondscontributie te worden betaald.
+                Elk nieuw lid betaalt de eerste keer ook bondscontributie.
+                Het lidmaatschap dient voor 30 mei te worden afgemeld, tot 30 juni blijft het lid contributie plichtig.</p>
             <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></p>
         </div>
     </div>
