@@ -18,11 +18,11 @@
                     <td>Jolanda ten Broeke</td>
                 </tr>
                 <tr>
-                    <th scope="row">Telefoon Nr:</th>
+                    <th scope="row">Telefoonnummer:</th>
                     <td>0591-634459</td>
                 </tr>
                 <tr>
-                    <th scope="row">Email adres:</th>
+                    <th scope="row">E-mail adres:</th>
                     <td><a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a></td>
                 </tr>
                 </tbody>
