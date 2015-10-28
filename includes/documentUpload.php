@@ -22,7 +22,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
+if ($_FILES["fileToUpload"]["size"] > 15000000) {
     echo "Het bestand is te groot";
     $uploadOk = 0;
 }
