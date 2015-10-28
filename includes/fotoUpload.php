@@ -87,7 +87,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 ));
                                 $album_id = $db->query("SELECT * FROM albums WHERE name = '$album_name'")->first()->id;
                             }
-                            if(!is_dir("../images/gallerij/" . $album_name . "/") && !file_exists("../images/" . $album_name . "/")){
+                            if(!is_dir("../images/gallerij/" . $album_name . "/") && !file_exists("../images/gallerij/" . $album_name . "/")){
                                 mkdir("../images/gallerij/" . $album_name, 0777);
                             }
                             $file_name_new = str_replace(' ', '-', $file_name);

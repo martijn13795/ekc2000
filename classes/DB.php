@@ -58,7 +58,7 @@ class DB
                 'surname_prefix' => 'van',
                 'surname' => 'Dinter',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'images/icons/cassshh.png',
+                'IconPath' => '../images/icons/cassshh.png',
                 'gender' => 'M',
                 'birthdate' => date("Y-m-d", strtotime("1997-05-31")),
                 'group_id' => 1
@@ -72,7 +72,7 @@ class DB
                 'name' => 'Martijn',
                 'surname' => 'Posthuma',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'images/icons/martijn13795.png',
+                'IconPath' => '../images/icons/martijn13795.png',
                 'gender' => 'M',
                 'birthdate' => date('Y-m-d'),
                 'group_id' => 1
@@ -87,7 +87,7 @@ class DB
                 'surname_prefix' => 'van',
                 'surname' => 'Kerol',
                 'joined' => date('Y-m-d H:i:s'),
-                'IconPath' => 'images/icons/default.jpg',
+                'IconPath' => '../images/icons/default.jpg',
                 'gender' => 'F',
                 'birthdate' => date('Y-m-d'),
                 'group_id' => 2
