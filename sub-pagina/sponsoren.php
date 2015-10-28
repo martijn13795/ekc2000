@@ -3,7 +3,7 @@
     <div class="container">
         <?php
         $user = new User();
-        if ($user->isLoggedIn()) {
+        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
             ?>
             <div class="hidden visible-lg">
                 <h1>Upload sponsoren</h1><br>
