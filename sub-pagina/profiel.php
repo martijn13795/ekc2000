@@ -1,4 +1,5 @@
 <?php include '../includes/html.php';?>
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <?php
 $user = new User();
 if ($user->isLoggedIn()) {
@@ -64,7 +65,81 @@ if ($user->isLoggedIn()) {
                 </div>
             </div>
         </div>
+        <div class="col-md-12 col-xs-12">
+            <h1>Maak een nieuw account</h1>
+            <form action="../includes/makeAccount.php" method="post" class="myForm" name="myForm">
+                <label>Voornaam:</label><input type="text" id="firstname" class="form-control" name="firstname" placeholder="Voornaam" maxlength="60" REQUIRED><br>
+                <label>Tussenvoegsel:</label><input type="text" id="insertion" class="form-control" name="insertion" placeholder="Tussenvoegsel" maxlength="60"><br>
+                <label>Achternaam:</label><input type="text" id="lastname" class="form-control" name="lastname" placeholder="Achternaam" maxlength="60" REQUIRED><br>
+                <label>Email:</label><input type="email" id="email" class="form-control" name="email" placeholder="Email" maxlength="60" REQUIRED><br>
+                <label>Team:</label><select name="team" class="form-control" id="team" REQUIRED>
+                    <option disabled selected value="">Selecteer een team</option>
+                    <?php
+                    $teams = $db->query("SELECT id, name FROM teams");
+                    if ($teams->count()) {
+                        $teamsArray = array();
+                        foreach ($teams->results() as $team) {
+                            $teamsArray[escape($team->id)] = escape($team->name);
+                        }
+                        asort($teamsArray);
+                        foreach ($teamsArray as $id => $name){
+                            echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
+                        }
+                    } else {
+                        echo '<option>Geen</option>';
+                    }
+                    ?>
+                </select><br>
+                <label>Trainer/Coach van team:</label><select name="trainer" class="form-control" id="trainer" REQUIRED>
+                    <option disabled selected value="">Selecteer een team</option>
+                    <?php
+                    $teams = $db->query("SELECT id, name FROM teams");
+                    if ($teams->count()) {
+                        $teamsArray = array();
+                        foreach ($teams->results() as $team) {
+                            $teamsArray[escape($team->id)] = escape($team->name);
+                        }
+                        asort($teamsArray);
+                        foreach ($teamsArray as $id => $name){
+                            echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
+                        }
+                    } else {
+                        echo '<option>Geen</option>';
+                    }
+                    ?>
+                </select><br>
+                <label>Geslacht:</label><br>
+                <label class="radio-inline"><input type="radio" name="optradio" REQUIRED>Man</label>
+                <label class="radio-inline"><input type="radio" name="optradio">Vrouw</label><br><br>
+                <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="DD-MM-YYYY" REQUIRED><br>
+                <label>Profielfoto:</label><input type="file" id="fileToUpload" name="fileToUpload" REQUIRED><br>
+                <input class="btn btn-primary" id="submit" type="submit">
+            </form>
+            <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
+            <div id="error"></div>
+        </div>
     </div>
 <?php
 }
 ?>
+<script>
+    $(document).ready(function () {
+        $('.myForm').ajaxForm({
+            beforeSend: function () {
+                $("#submit").hide();
+                $("#error").show();
+                $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
+            },
+            success: function (response) {
+                $("#refresh").show();
+                $("#error").show();
+                $("#error").html(response);
+                $("#name").val('');
+                $("#fileToUpload").val('');
+            }
+        });
+        $("#refresh").hide();
+        $("#error").hide();
+    });
+</script>
+
