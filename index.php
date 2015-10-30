@@ -246,7 +246,15 @@
         localStorage.setItem("logedin", logedin);
             $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
                 '<button class="close" data-dismiss="alert">&times;</button>' +
-                'Welkom <?php if ($user->isLoggedIn()) { echo escape($user->data()->name); } ?> <br><br> U bent ingelogd' +
+                'Welkom <?php
+                            if ($user->isLoggedIn()){
+                                echo escape($user->data()->name) . " ";
+                                if($user->data()->surname_prefix){
+                                    echo escape($user->data()->surname_prefix) . " ";
+                                }
+                                echo escape($user->data()->surname);
+                            }
+                        ?> <br><br> U bent ingelogd' +
                 '</div>');
         setTimeout(function () {
             $('.alerts').children('.alert:last-child').addClass('on');
