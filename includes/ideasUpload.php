@@ -14,6 +14,7 @@ if($user->isLoggedIn()) {
             'name' => $name,
             'text' => $text,
             'date' => date("Y-m-d H:i:s")));
+        echo "Uw idee is verstuurd<br><br>";
     } else {
         echo "<h3>Er is wat mis gegaan. Probeer het opnieuw.</h3><br>";
     }
