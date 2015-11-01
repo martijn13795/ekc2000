@@ -68,3 +68,5 @@ RewriteRule ^profiel sub-pagina/profiel.php [NC,L]
 RewriteRule ^artikel/([0-9a-zA-Z_-]+.*) sub-pagina/nieuwsArtikel.php?artikelName=$1 [NC,L]
 
 RewriteRule ^activiteit/([0-9a-zA-Z_-]+.*) sub-pagina/activiteit.php?activiteitName=$1 [NC,L]
+
+RewriteRule ^info sub-pagina/info.php [NC,L]
