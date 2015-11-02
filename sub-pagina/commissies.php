@@ -62,8 +62,12 @@
                     Elona Dokter</p>
             </div>
             <div class="col-md-5 col-md-offset-2 col-xs-12 well commissieDiv">
-                <h3>Halcommissie:</h3>
-                <p>Vacant</p>
+                <h3>Supportersvereniging:</h3>
+                <p>Peter Bult<br>
+                    Redmer Bouma<br>
+                    Bert Schepers<br>
+                    Alnie Deen<br>
+                    Sanne van Os</p>
             </div>
             <div class="col-md-5 col-xs-12 well commissieDiv">
                 <h3>Scheidsrechteraanwijzer:</h3>
@@ -79,6 +83,10 @@
                 <p>Eva van Dongeren<br>
                     Roel Hilbrands<br>
                     Ralph van Straten</p>
+            </div>
+            <div class="col-md-5 col-md-offset-2 col-xs-12 well commissieDiv">
+                <h3>Halcommissie:</h3>
+                <p>Vacant</p>
             </div>
         </div>
     </div>
