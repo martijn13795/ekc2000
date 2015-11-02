@@ -49,7 +49,7 @@
                                 <a href="/fotogalerij"><i class="icon major fa-camera link"></i></a>
                             </div>
                             <div class="col-md-8 col-xs-8">
-                                <a href="/fotogalerij"><h3>Laaste foto albums</h3></a>
+                                <a href="/fotogalerij"><h3>Laatste foto albums</h3></a>
                             </div>
                             <div class="col-md-12 col-xs-12">
                                 <p>
