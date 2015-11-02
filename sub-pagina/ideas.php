@@ -9,7 +9,7 @@
                 <label>Naam van het idee:</label>
                 <input type="text" class="form-control" placeholder="Naam" id="name" name="name" REQUIRED/><br>
                 <label>Het idee:</label>
-                <textarea class="form-control" rows="8" id="idea" placeholder="Type hier..." name="idea"
+                <textarea class="form-control" rows="8" maxlength="512" id="idea" placeholder="Type hier..." name="idea"
                           REQUIRED></textarea></br>
                 <input type="submit" id="submit" class="btn btn-success">
             </form>
@@ -59,6 +59,19 @@
             },
             success: function (response) {
                 $("#refresh").show();
+                $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                    '<button class="close" data-dismiss="alert">&times;</button>' +
+                    'Het idee is verstuurd' +
+                    '</div>');
+                setTimeout(function () {
+                    $('.alerts').children('.alert:last-child').addClass('on');
+                    setTimeout(function () {
+                        $('.alerts').children('.alert:first-child').removeClass('on');
+                        setTimeout(function () {
+                            $('.alerts').children('.alert:first-child').remove();
+                        }, 900);
+                    }, 5000);
+                }, 10);
                 $("#error").show();
                 $("#error").html(response);
                 $("#name").val('');

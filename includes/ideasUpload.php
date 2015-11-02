@@ -14,7 +14,7 @@ if($user->isLoggedIn()) {
             'name' => $name,
             'text' => $text,
             'date' => date("Y-m-d H:i:s")));
-        echo "Uw idee is verstuurd<br><br>";
+        echo "<h3>Bedankt voor het insturen van je idee</h3><p>We stellen het erg op prijs dat je de tijd hebt genomen om je idee in te sturen.</p><p>Alle ingezonden ideeën zullen bij de desbetreffende commissie terecht komen,</p><p>zij zullen vervolgens de haalbaarheid beoordelen.</p><br>";
     } else {
         echo "<h3>Er is wat mis gegaan. Probeer het opnieuw.</h3><br>";
     }
