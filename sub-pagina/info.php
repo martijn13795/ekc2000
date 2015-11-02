@@ -19,7 +19,7 @@ if ($user->isLoggedIn()) {
             </thead>
             <tbody>
             <?php
-            $visitors = $db->query("SELECT * FROM visitors ORDER BY id DESC LIMIT 200");
+            $visitors = $db->query("SELECT * FROM visitors WHERE country = 'Netherlands' ORDER BY id DESC");
             if ($visitors->count()) {
                 foreach ($visitors->results() as $visitor) {
                     echo '
