@@ -93,7 +93,7 @@
             </div>
         </div>
             <div class="grayBar">
-                <div class="container">
+                <div class="container" style="padding: 0px;">
                     <div class="sponsorenDiv">
                         <h1>Onze sponsoren</h1><br>
                         <?php
