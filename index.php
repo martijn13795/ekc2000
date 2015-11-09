@@ -15,6 +15,7 @@
                 ?></h1>
                 <hr>
             </div>
+            <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="col-md-4 col-xs-12 homeInfoDiv">
                         <div class="col-xs-12 col-md-12 well infoDiv">
@@ -89,6 +90,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
             <div class="grayBar">
                 <div class="container">
@@ -115,13 +117,14 @@
                 </div><br>
             </div>
         <div class="container">
+            <div class="row" style="margin: 0px;">
                 <div class="col-md-8 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-
+                            <div class="row">
                                 <div class="col-md-7 col-xs-7"><span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox</div>
                                 <div class="col-md-5 col-xs-5"><span id="timer" class="glyphicon glyphicon-time"></span></div>
-                            
+                            </div>
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
@@ -196,6 +199,7 @@
                     <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
                     <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")</script>
                 </div>
+            </div>
         </div>
 <script src="js/chat_script.js"></script>
 <script>
