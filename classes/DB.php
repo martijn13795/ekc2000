@@ -16,7 +16,7 @@ class DB
             $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
             $this->checkTables();
         } catch (PDOException $ex) {
-            mysql_query("CREATE DATABASE " . Config::get('mysql/db'), mysql_connect(Config::get('mysql/host'), Config::get('mysql/username'), Config::get('mysql/password')));
+            mysqli_query(mysqli_connect(Config::get('mysql/host'), Config::get('mysql/username'), Config::get('mysql/password')), "CREATE DATABASE " . Config::get('mysql/db'));
             echo "<h1>Refresh the page</h1>";
             die($ex->getMessage());
         }
