@@ -117,7 +117,6 @@
                 </div><br>
             </div>
         <div class="container">
-            <div class="row" style="margin: 0px;">
                 <div class="col-md-8 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -199,7 +198,6 @@
                     <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
                     <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")</script>
                 </div>
-            </div>
         </div>
 <script src="js/chat_script.js"></script>
 <script>
