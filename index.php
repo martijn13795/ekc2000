@@ -117,86 +117,88 @@
                 </div><br>
             </div>
         <div class="container">
-            <div class="col-md-8 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-7 col-xs-7"><span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox</div>
-                            <div class="col-md-5 col-xs-5"><span id="timer" class="glyphicon glyphicon-time"></span></div>
+            <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                <div class="col-md-8 col-xs-12" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-7 col-xs-7"><span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox</div>
+                                <div class="col-md-5 col-xs-5"><span id="timer" class="glyphicon glyphicon-time"></span></div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="panel-body" class="panel-body">
-                        <ul class="chat">
-                            <li class="left clearfix">
-                                <div class="col-md-12 col-xs-12" id="scroll" style="text-align: center;"><h4 style="margin-bottom: -20px;">Scroll naar boven voor extra berichten</h4><br><br></div>
-                                <div id="totalMessagesDB" hidden><?php echo $db->query("SELECT id FROM messages")->count(); ?></div>
-                            </li>
-                        </ul>
-                        <ul class="chat">
-                            <li class="left clearfix">
+                        <div id="panel-body" class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                            <div class="col-md-12 col-xs-12" id="scroll" style="text-align: center;"><h4 style="margin-bottom: -20px;">Scroll naar boven voor extra berichten</h4><br><br></div>
+                                    <div id="totalMessagesDB" hidden><?php echo $db->query("SELECT id FROM messages")->count(); ?></div>
+                                </li>
+                            </ul>
+                            <ul class="chat">
+                                <li class="left clearfix">
                                                     <span class="chat-img pull-left">
                                                         <img src="/images/logoChat.png" alt="User Avatar" class="img-circle avatar" />
                                                     </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <strong class="primary-font">EKC 2000</strong> <small class="pull-right text-muted">
-                                            <span class="glyphicon glyphicon-time"></span>2015-07-10 13:13:00</small>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">EKC 2000</strong> <small class="pull-right text-muted">
+                                                <span class="glyphicon glyphicon-time"></span>2015-07-10 13:13:00</small>
+                                        </div>
+                                        <h1>
+                                            Welkom bij de chatbox van EKC 2000
+                                        </h1>
                                     </div>
-                                    <h1>
-                                        Welkom bij de chatbox van EKC 2000
-                                    </h1>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul id="chatRefresh" class="chat">
-                            <!--Wordt ingeladen-->
-                        </ul>
-                        <?php
-                        $user = new User();
-                        if ($user->isLoggedIn()) {
+                                </li>
+                            </ul>
+                            <ul id="chatRefresh" class="chat">
+                                <!--Wordt ingeladen-->
+                            </ul>
+                            <?php
+                            $user = new User();
+                            if ($user->isLoggedIn()) {
                             ?>
                             <span id="result"></span>
-                            <?php
-                        } else {
+                                <?php
+                            } else {
                             ?>
                             <span id="result"><h3>Login om te kunnen chatten</h3>Klik <a href='/inloggen'>hier</a> om in te loggen</span>
-                            <?php
-                        }
-                        ?>
-                        <span id="remaining"></span>
-                    </div>
-                    <div class="panel-footer">
-                        <?php
-                        $user = new User();
-                        if ($user->isLoggedIn()) {
+                                <?php
+                            }
                             ?>
-                            <form id="chat" action="/includes/chatbox.php" method="post">
-                                <div class="input-group">
-                                    <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." />
+                            <span id="remaining"></span>
+                        </div>
+                        <div class="panel-footer">
+                            <?php
+                            $user = new User();
+                            if ($user->isLoggedIn()) {
+                                ?>
+                                <form id="chat" action="/includes/chatbox.php" method="post">
+                                    <div class="input-group">
+                                        <input id="btn-input" type="text" class="form-control input-sm" maxlength="140" name="message" placeholder="Type je bericht hier..." />
                                     <span class="input-group-btn">
                                         <button id="sub" type="button" class="btn btn-primary btn-sm">Verstuur</button>
                                     </span>
-                                </div>
-                            </form>
-                            <?php
-                        } else {
-                            ?>
-                            <div class="input-group">
-                                <input id="btn-input" class="form-control input-sm" maxlength="140" placeholder="Type je bericht hier..." disabled/>
+                                    </div>
+                                </form>
+                                <?php
+                            } else {
+                                ?>
+                                    <div class="input-group">
+                                        <input id="btn-input" class="form-control input-sm" maxlength="140" placeholder="Type je bericht hier..." disabled/>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-primary btn-sm" disabled>Verstuur</button>
                                     </span>
-                            </div>
-                            <?php
-                        }
-                        ?>
+                                    </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-xs-12">
-                <h4>Bekijk de tweets van EKC 2000 live!</h4>
-                <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
-                <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")</script>
+                <div class="col-md-4 col-xs-12" style="padding-left: 0px; padding-right: 0px;">
+                    <h4>Bekijk de tweets van EKC 2000 live!</h4>
+                    <a class="twitter-timeline" href="https://twitter.com/EKC2000_Emmen" data-widget-id="618144740459065344">Tweets door @EKC2000_Emmen</a>
+                    <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs")</script>
+                </div>
             </div>
         </div>
 <script src="js/chat_script.js"></script>
