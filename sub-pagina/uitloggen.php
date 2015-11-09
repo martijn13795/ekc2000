@@ -10,3 +10,5 @@ if($user->isLoggedIn()) {
                  window.location.href = "/home";
           </script>';
 }
+
+include '../includes/htmlUnder.php';

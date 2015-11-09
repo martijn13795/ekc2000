@@ -84,4 +84,5 @@ if(!$user->isLoggedIn()) {
 }else{
     Redirect::to("/home");
 }
+include '../includes/htmlUnder.php';
 ?>

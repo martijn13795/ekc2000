@@ -110,3 +110,4 @@
             <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></p>
         </div>
     </div>
+<?php include '../includes/htmlUnder.php'; ?>

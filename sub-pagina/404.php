@@ -8,3 +8,4 @@
             <a onclick="history.back()" class="btn btn-primary">Ga terug</a>
         </div>
     </div>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/htmlUnder.php';?>

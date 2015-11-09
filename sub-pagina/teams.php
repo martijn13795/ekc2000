@@ -44,3 +44,4 @@ $db = DB::getInstance();
         });
     });
 </script>
+<?php include '../includes/htmlUnder.php'; ?>

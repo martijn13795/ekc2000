@@ -194,6 +194,7 @@ Footer
 .footer {
     position: absolute;
     bottom: 0px;
+    left: 0;
     margin-right: auto;
     margin-left: auto;
     width: 100%;

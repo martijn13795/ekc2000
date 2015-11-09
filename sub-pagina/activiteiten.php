@@ -1,4 +1,4 @@
-<?php include '../includes/html.php';?>
+<?php include '../includes/html.php'; ?>
 <script src="../ckeditor/ckeditor.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <div class="container">
@@ -28,3 +28,4 @@
     }
     ?>
 </div>
+<?php include '../includes/htmlUnder.php'; ?>

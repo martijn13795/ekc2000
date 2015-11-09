@@ -24,3 +24,4 @@
     $("img").addClass("img-responsive");
     $('.img-responsive').removeAttr("height").css({ height: "" });
 </script>
+<?php include '../includes/htmlUnder.php'; ?>

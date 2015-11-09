@@ -66,3 +66,4 @@
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<?php include '../includes/htmlUnder.php'; ?>

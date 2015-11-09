@@ -75,3 +75,4 @@ if ($user->isLoggedIn()) {
         });
     });
 </script>
+<?php include '../includes/htmlUnder.php'; ?>

@@ -5,3 +5,4 @@
             <p>Binnenkort kunt je hier meer lezen over het onstaan van de vereniging.</p>
         </div>
     </div>
+<?php include '../includes/htmlUnder.php'; ?>
