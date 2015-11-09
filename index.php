@@ -117,7 +117,7 @@
                 </div><br>
             </div>
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin: 0px;">
                 <div class="col-md-8 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
