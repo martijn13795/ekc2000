@@ -37,7 +37,6 @@
         ?>
         <div class="col-md-12 col-xs-12">
             <?php
-            if ($user->isLoggedIn() && $user->hasPermission('dev')) {
                 $db = DB::getInstance();
                 $reports = $db->query("SELECT * FROM reports ORDER BY date DESC");
                 if ($reports->count()) {
@@ -47,7 +46,6 @@
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen verslagen beschikbaar</h3></div>';
                 }
-            }
             ?>
         </div>
     </div>
