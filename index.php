@@ -15,7 +15,6 @@
                 ?></h1>
                 <hr>
             </div>
-            <div class="row">
                 <div class="col-xs-12 col-md-12">
                     <div class="col-md-4 col-xs-12 homeInfoDiv">
                         <div class="col-xs-12 col-md-12 well infoDiv">
@@ -90,7 +89,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
             <div class="grayBar">
                 <div class="container">
@@ -120,10 +118,10 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <div class="row">
+
                                 <div class="col-md-7 col-xs-7"><span class="glyphicon glyphicon-comment"></span> Kom in contact en deel wat je denkt in deze chatbox</div>
                                 <div class="col-md-5 col-xs-5"><span id="timer" class="glyphicon glyphicon-time"></span></div>
-                            </div>
+                            
                         </div>
                         <div id="panel-body" class="panel-body">
                             <ul class="chat">
