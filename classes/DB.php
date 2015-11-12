@@ -35,7 +35,7 @@ class DB
         if ($this->query("DESCRIBE users")->error()) {
             $this->query("CREATE TABLE users ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                . "username VARCHAR(20), "
+                . "username VARCHAR(50), "
                 . "password VARCHAR(64), "
                 . "mail VARCHAR(50), "
                 . "salt VARCHAR(32), "
@@ -74,7 +74,7 @@ class DB
                 'joined' => date('Y-m-d H:i:s'),
                 'IconPath' => '../images/icons/martijn13795.png',
                 'gender' => 'M',
-                'birthdate' => date('Y-m-d'),
+                'birthdate' => date("Y-m-d", strtotime("1996-04-22")),
                 'group_id' => 1
             ));
             $salt = Hash::salt(32);
