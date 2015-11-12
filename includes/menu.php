@@ -49,7 +49,7 @@
                         <li <?=activeClass("uitslag-invoeren")?>><a href="/uitslag-invoeren">Uitslagen invoeren</a></li>
                         <li <?=activeClass("wedstrijdverslagen")?>><a href="/wedstrijdverslagen">Wedstrijdverslagen</a></li>
                         <li <?=activeClass("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
-                        <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Kantinedienst</a></li>
+                        <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Zaal-/kantinedienst</a></li>
                     </ul>
                 </li>
                 <?php
