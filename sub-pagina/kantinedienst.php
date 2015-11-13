@@ -24,5 +24,5 @@
     </div>
 <?php include '../includes/htmlUnder.php'; ?>
 <script>
-    $('table').addClass("table table-striped");
+    $('table').addClass("table");
 </script>
