@@ -543,13 +543,8 @@ h1 {
     width: 8%;
 }
 
-.kop {
-    border-bottom: 1px solid #08088A;
-    color: #08088A;
-    font-weight: 400;
-    letter-spacing: 1.5pt;
-    padding-left: 5px;
-    padding-top: 20px;
+table .datum {
+    background-color: #E0E0E0;
 }
 /*Antilopen eind*/
 
