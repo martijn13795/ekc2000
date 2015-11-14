@@ -21,7 +21,9 @@ if ($user->isLoggedIn()) {
             <?php
             $visitors = $db->query("SELECT * FROM visitors WHERE country = 'Netherlands' ORDER BY id DESC");
             if ($visitors->count()) {
+                $totalNL = 0;
                 foreach ($visitors->results() as $visitor) {
+                    $totalNL++;
                     echo '
                         <tr>
                             <td>' . escape($visitor->id) . '</td>
@@ -34,6 +36,7 @@ if ($user->isLoggedIn()) {
                         </tr>
                          ';
                 }
+                echo "Aantal resultaten: " . $totalNL . "<br><br>";
             }
             ?>
             </tbody>
