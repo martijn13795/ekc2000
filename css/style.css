@@ -516,6 +516,7 @@ h1 {
     padding-top: 0px;
     margin-top: 15px;
     text-decoration: none;
+    padding-bottom: 46px;
 }
 
 .social p {
@@ -639,4 +640,8 @@ table .datum {
     text-align: center;
     background-color: #f5f5f5;
     width: 50%;
+}
+
+.lead {
+    font-size: 18px;
 }
