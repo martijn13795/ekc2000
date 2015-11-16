@@ -5,11 +5,12 @@ $user = new User();
 
 if($user->isLoggedIn()) {
     if (!empty($_POST['name']) && isset($_POST['name'])
-        && !empty($_POST['text']) && isset($_POST['text'])
+        && isset($_POST['editor1']) && !empty($_POST['editor1'])
         && !empty($_POST['team']) && is_numeric($_POST['team'])
     ) {
         $name = trim($_POST['name']);
-        $text = trim($_POST['text']);
+        $name = str_replace(' ', '-', $name);
+        $text = trim($_POST['editor1']);
         $team_id = trim($_POST['team']);
         $db->insert('reports',array(
             'user_id' => $user->data()->id,

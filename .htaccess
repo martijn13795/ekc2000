@@ -72,3 +72,5 @@ RewriteRule ^activiteit/([0-9a-zA-Z_-]+.*) sub-pagina/activiteit.php?activiteitN
 RewriteRule ^info sub-pagina/info.php [NC,L]
 
 RewriteRule ^ideeenbus sub-pagina/ideas.php [NC,L]
+
+RewriteRule ^verslag/([0-9a-zA-Z_-]+.*) sub-pagina/verslag.php?report=$1 [NC,L]

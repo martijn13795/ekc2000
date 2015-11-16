@@ -1,4 +1,5 @@
 <?php include '../includes/html.php';?>
+<script src="../ckeditor/ckeditor.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container">
         <h1>Wedstrijdverslagen</h1><hr>
@@ -26,7 +27,7 @@
                     }
                     ?>
                 </select><br>
-                <textarea class="form-control" rows="8" id="text" name="text" placeholder="Type hier..." REQUIRED></textarea></br>
+                <textarea class="ckeditor" id="editor1" name="editor1"></textarea></br>
                 <input type="submit" id="submit" class="btn btn-success">
             </form>
             <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
@@ -41,7 +42,7 @@
                 $reports = $db->query("SELECT * FROM reports ORDER BY date DESC");
                 if ($reports->count()) {
                     foreach ($reports->results() as $report) {
-                        echo '<div class="well activiteitDiv"><h3>' . escape(str_replace('-', ' ', $report->name)) . '</h3><p>Upload datum: ' . escape(explode(" ", $report->date)[0]) . '</p></div>';
+                        echo '<div class="well activiteitDiv"><a href="/verslag/' . escape($report->name) . '"><h3>' . escape(str_replace('-', ' ', $report->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $report->date)[0]) . '</p></div>';
                     }
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen verslagen beschikbaar</h3></div>';
@@ -50,6 +51,14 @@
         </div>
     </div>
 <script>
+    $('#editor1').closest('form').submit(CKupdate);
+
+    function CKupdate() {
+        for (instance in CKEDITOR.instances)
+            CKEDITOR.instances[instance].updateElement();
+        return true;
+    }
+
     $(document).ready(function () {
         $('.myForm').ajaxForm({
             beforeSend: function () {
@@ -63,7 +72,7 @@
                 $("#error").html(response);
                 $("#name").val('');
                 $("#team").val('');
-                $("#text").val('');
+                $("#editor1").val('');
             }
         });
         $("#refresh").hide();
