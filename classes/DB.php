@@ -164,7 +164,8 @@ class DB
                 . "user_id INT, "
                 . "name VARCHAR(64), "
                 . "text LONGTEXT, "
-                . "date DATETIME)");
+                . "date DATETIME, "
+                . "date_activity DATE)");
         }
         if ($this->query("DESCRIBE documents")->error()) {
             $this->query("CREATE TABLE documents ("

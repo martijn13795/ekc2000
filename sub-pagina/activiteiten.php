@@ -10,6 +10,7 @@
         <div class="hidden visible-lg">
             <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
                 <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="60" REQUIRED><br>
+                <label>Datum van activiteit:</label><input type="text" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" REQUIRED><br>
                 <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                 <input type="submit" class="btn btn-primary" value="Upload"/>
             </form><br>
@@ -21,7 +22,8 @@
     $activities = $db->query("SELECT date, name FROM activities ORDER BY date DESC");
     if ($activities->count()) {
         foreach ($activities->results() as $activity) {
-            echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $activity->date)[0]) . '</p></div>';
+            echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a>
+            <p>Activiteit datum: ' . escape($activity->date_activity) . '</p><p>Upload datum: ' . escape(explode(" ", $activity->date)[0]) . '</p></div>';
         }
     } else {
         echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';
