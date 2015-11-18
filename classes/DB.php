@@ -183,7 +183,8 @@ class DB
                 . "team_id INT, "
                 . "name VARCHAR(64), "
                 . "text LONGTEXT, "
-                . "date DATETIME)");
+                . "date DATETIME, "
+                . "date_match DATE)");
         }
         if ($this->query("DESCRIBE ideas")->error()) {
             $this->query("CREATE TABLE ideas ("

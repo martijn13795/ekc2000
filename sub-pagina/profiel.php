@@ -68,7 +68,10 @@ if ($user->isLoggedIn()) {
         <?php
         if($user->hasPermission('admin')){
             ?>
-            <div class="col-md-12 col-xs-12">
+        <button class="btn btn-default" id="upload" onclick="showUpload()">Nieuw account</button>
+    <br>
+
+        <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
                 <h1>Maak een nieuw account</h1>
                 <form action="../includes/createAccount.php" method="post" class="myForm" name="myForm">
                     <label>Voornaam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Voornaam" maxlength="60" REQUIRED><br>
@@ -119,6 +122,7 @@ if ($user->isLoggedIn()) {
                 <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
                 <div id="error"></div>
             </div>
+            </div>
         <?php
         }
         ?>
@@ -145,5 +149,18 @@ if ($user->isLoggedIn()) {
         $("#refresh").hide();
         $("#error").hide();
     });
+
+    function showUpload() {
+            $("#upload").attr("onclick", "hideUpload()");
+            $("#upload").text("Verberg");
+
+            $("#uploadContainer").show();
+        }
+        function hideUpload() {
+            $("#upload").attr("onclick", "showUpload()");
+            $("#upload").text("Nieuw account");
+
+            $("#uploadContainer").hide();
+        }
 </script>
 <?php include '../includes/htmlUnder.php'; ?>

@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
+
 if($user->isLoggedIn() && $user->hasPermission('admin')) {
     if (isset($_POST['activiteitName']) && !empty($_POST['activiteitName']) && isset($_POST['editor1']) && !empty($_POST['editor1']) && isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {
         $name = $_POST['activiteitName'];
@@ -16,9 +17,12 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
                 'date' => date("Y-m-d H:i:s"),
                 'date_activity' => $date
             ));
+            echo "<p>De activiteit is verstuurd</p><br>";
         } else {
             echo '<p>Er is wat mis gegaan bij de datum</p>';
         }
+    } else {
+        echo "<h3>Er is wat mis gegaan. Probeer het opnieuw.</h3><br>";
     }
 }
 header("Location: /activiteiten");
