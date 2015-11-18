@@ -19,7 +19,7 @@
         <?php
     }
     $db = DB::getInstance();
-    $activities = $db->query("SELECT date, name FROM activities ORDER BY date DESC");
+    $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC");
     if ($activities->count()) {
         foreach ($activities->results() as $activity) {
             echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a>

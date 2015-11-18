@@ -76,7 +76,7 @@
                             <div class="col-md-12 col-xs-12">
                             <p>
                                 <?php
-                                $activities = $db->query("SELECT date, name FROM activities ORDER BY date DESC");
+                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
                                         echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(str_replace('-', ' ', $activity->name)) . '</a></p>';
