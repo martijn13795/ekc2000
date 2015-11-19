@@ -8,16 +8,12 @@
             $user = new User();
             if ($user->isLoggedIn() && $user->hasPermission('admin')) {
             ?>
-            <button class="btn btn-default" id="upload" onclick="showUpload()">Upload</button>
-            <br>
-
-            <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
-
-                <div class="hidden visible-lg">
+            <div class="hidden visible-lg">
+                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+                <div id="uploadContainer" hidden>
                     <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
                           enctype="multipart/form-data">
-                        <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name"
-                                                             placeholder="Naam" maxlength="60" REQUIRED><br>
+                        <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
                         <input type="file" id="file" name="files[]" multiple REQUIRED><br>
                         <input class="btn btn-success" id="submit" type="submit" value="Upload">
                     </form>
@@ -28,11 +24,7 @@
                     <br>
 
                     <div class="progress progress-striped active">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                             aria-valuemax="100"
-                             style="width: 0%">
-
-                        </div>
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
                     </div>
                 </div>
             </div>

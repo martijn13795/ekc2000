@@ -43,3 +43,7 @@ if($user->isLoggedIn()) {
         }
     }
 }
+?>
+<script>
+    $("#submit").show();
+</script>

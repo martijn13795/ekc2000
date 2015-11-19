@@ -7,7 +7,7 @@ if($user->isLoggedIn()) {
     if (!empty($_POST['name']) && isset($_POST['name'])
         && isset($_POST['editor1']) && !empty($_POST['editor1'])
         && !empty($_POST['team']) && is_numeric($_POST['team'])
-        && !empty($_POST['matchDate']) && is_numeric($_POST['matchDate'])
+        && !empty($_POST['matchDate'])
     ) {
         $name = trim($_POST['name']);
         $name = str_replace(' ', '-', $name);

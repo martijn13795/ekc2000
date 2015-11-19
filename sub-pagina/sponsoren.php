@@ -5,13 +5,11 @@
         $user = new User();
         if ($user->isLoggedIn() && $user->hasPermission('admin')) {
             ?>
-            <br>
-            <button class="btn btn-default" id="upload" onclick="showUpload()">Upload</button>
-            <br>
-
-            <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
-
-                <div class="hidden visible-lg">
+            <div class="hidden visible-lg">
+                <br>
+                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button>
+                <br>
+                <div id="uploadContainer" hidden>
                     <h1>Upload sponsoren</h1><br>
 
                     <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"

@@ -28,7 +28,7 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC");
+                                    $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 12");
                                     if ($newsdata->count()) {
                                         foreach ($newsdata->results() as $news) {
                                             echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(str_replace('-', ' ', $news->name)) . '</a></p>';
@@ -52,7 +52,7 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
+                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 12");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
                                             echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(str_replace('-', ' ', $album->name)) . '</a></p>';
@@ -76,7 +76,7 @@
                             <div class="col-md-12 col-xs-12">
                             <p>
                                 <?php
-                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC");
+                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC LIMIT 12");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
                                         echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(str_replace('-', ' ', $activity->name)) . '</a></p>';

@@ -9,12 +9,9 @@ if ($user->isLoggedIn()) { ?>
             $user = new User();
             if ($user->isLoggedIn() && $user->hasPermission('admin')) {
             ?>
-            <button class="btn btn-default" id="upload" onclick="showUpload()">Upload</button>
-            <br>
-
-            <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
-
-                <div class="hidden visible-lg">
+            <div class="hidden visible-lg">
+                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+                <div id="uploadContainer" hidden>
                     <form method="post" action="../includes/documentUpload.php" name="myForm" class="myForm"
                           enctype="multipart/form-data">
                         <label>Naam van Document:</label><input type="text" id="name" class="form-control"
@@ -25,7 +22,6 @@ if ($user->isLoggedIn()) { ?>
                     </form>
                     <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
                     <br><br>
-
                     <div id="error"></div>
                 </div>
             </div>

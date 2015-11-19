@@ -69,12 +69,22 @@ if ($user->isLoggedIn()) {
 
                             <p><?php echo escape($user->data()->birthdate); ?></p>
                         </div>
+                        <div class="col-md-6 col-xs-12">
+                            <br><button class="btn btn-primary" id="password" onclick="showPassword()">Wachtwoord veranderen</button>
+                        </div>
+                        <?php
+                        if ($user->hasPermission('admin')) {
+                        ?>
+                            <div class="col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="upload" onclick="showUpload()">Nieuw account maken</button>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
-        <button class="btn btn-default" id="password" onclick="showPassword()">Nieuw wachtwoord</button>
-        <br>
 
         <div class="col-md-12 col-xs-12" id="passwordContainer" hidden><br>
 
@@ -100,8 +110,6 @@ if ($user->isLoggedIn()) {
         <?php
         if ($user->hasPermission('admin')) {
             ?>
-            <button class="btn btn-default" id="upload" onclick="showUpload()">Nieuw account</button>
-            <br>
 
             <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
 
@@ -183,8 +191,6 @@ if ($user->isLoggedIn()) {
                     $("#refresh").show();
                     $("#error").show();
                     $("#error").html(response);
-                    //$("#name").val('');
-                    //$("#fileToUpload").val('');
                 }
             });
             $("#refresh").hide();
@@ -198,7 +204,7 @@ if ($user->isLoggedIn()) {
         }
         function hideUpload() {
             $("#upload").attr("onclick", "showUpload()");
-            $("#upload").text("Nieuw account");
+            $("#upload").text("Nieuw account maken");
             $("#uploadContainer").hide();
         }
 
@@ -209,7 +215,7 @@ if ($user->isLoggedIn()) {
         }
         function hidePassword() {
             $("#password").attr("onclick", "showPassword()");
-            $("#password").text("Nieuw wachtwoord");
+            $("#password").text("Wachtwoord veranderen");
             $("#passwordContainer").hide();
         }
     </script>

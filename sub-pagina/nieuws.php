@@ -8,16 +8,11 @@
         $user = new User();
         if ($user->isLoggedIn() && $user->hasPermission('admin')) {
         ?>
-        <button class="btn btn-default" id="upload" onclick="showUpload()">Upload</button>
-        <br>
-
-        <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
-
-            <div class="hidden visible-lg">
+        <div class="hidden visible-lg">
+            <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+            <div id="uploadContainer" hidden>
                 <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">
-                    <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control"
-                                                           name="artikelName" placeholder="Naam" maxlength="60"
-                                                           REQUIRED><br>
+                    <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" maxlength="60" REQUIRED><br>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                     <input type="submit" class="btn btn-primary" value="Upload"/>
                 </form>

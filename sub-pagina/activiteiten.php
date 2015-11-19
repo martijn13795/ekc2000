@@ -8,16 +8,12 @@
         $user = new User();
         if ($user->isLoggedIn() && $user->hasPermission('admin')) {
         ?>
-        <button class="btn btn-default" id="upload" onclick="showUpload()">Upload</button><br>
-        <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
-            <div class="hidden visible-lg">
+        <div class="hidden visible-lg">
+            <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+            <div id="uploadContainer" hidden>
                 <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
-                    <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control"
-                                                              name="activiteitName" placeholder="Naam"
-                                                              maxlength="60" REQUIRED><br>
-                    <label>Datum van activiteit:</label><input type="text" class="form-control"
-                                                               name="activiteitDate" placeholder="YYYY-MM-DD"
-                                                               REQUIRED><br>
+                    <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="60" REQUIRED><br>
+                    <label>Datum van activiteit:</label><input type="text" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                     <input type="submit" class="btn btn-primary" value="Upload"/>
                 </form>
