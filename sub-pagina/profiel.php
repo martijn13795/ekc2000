@@ -91,13 +91,9 @@ if ($user->isLoggedIn()) {
             <h1>Verander uw wachtwoord</h1>
 
             <form action="../includes/changePassword.php" method="post" class="myForm" name="myForm">
-                <label>Oud wachtwoord:</label><input type="password" id="old_password" class="form-control" name="old_password"
-                                                     placeholder="Oud wachtwoord" maxlength="60" REQUIRED><br>
-                <label>Nieuw wachtwoord:</label><input type="password" id="new_password" class="form-control"
-                                                       name="new_password" placeholder="Nieuw wachtwoord" maxlength="60"><br>
-                <label>Herhaal nieuw wachtwoord:</label><input type="password" id="new_password_repeat" class="form-control"
-                                                               name="new_password_repeat" placeholder="Herhaal nieuw wachtwoord" maxlength="60"
-                                                               REQUIRED><br>
+                <label>Oud wachtwoord:</label><input type="password" id="old_password" class="form-control" name="old_password" placeholder="Oud wachtwoord" maxlength="60" REQUIRED><br>
+                <label>Nieuw wachtwoord:</label><input type="password" id="new_password" class="form-control" name="new_password" placeholder="Nieuw wachtwoord" maxlength="60" REQUIRED><br>
+                <label>Herhaal nieuw wachtwoord:</label><input type="password" id="new_password_repeat" class="form-control" name="new_password_repeat" placeholder="Herhaal nieuw wachtwoord" maxlength="60" REQUIRED><br>
                 <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
                 <input class="btn btn-primary" id="submit" type="submit">
             </form>
@@ -116,15 +112,10 @@ if ($user->isLoggedIn()) {
                 <h1>Maak een nieuw account</h1>
 
                 <form action="../includes/createAccount.php" method="post" class="myForm" name="myForm">
-                    <label>Voornaam:</label><input type="text" id="name" class="form-control" name="name"
-                                                   placeholder="Voornaam" maxlength="60" REQUIRED><br>
-                    <label>Tussenvoegsel:</label><input type="text" id="surname_prefix" class="form-control"
-                                                        name="surname_prefix" placeholder="Tussenvoegsel"
-                                                        maxlength="60"><br>
-                    <label>Achternaam:</label><input type="text" id="surname" class="form-control" name="surname"
-                                                     placeholder="Achternaam" maxlength="60" REQUIRED><br>
-                    <label>Email:</label><input type="email" id="email" class="form-control" name="email"
-                                                placeholder="Email" maxlength="60" REQUIRED><br>
+                    <label>Voornaam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Voornaam" maxlength="60" REQUIRED><br>
+                    <label>Tussenvoegsel:</label><input type="text" id="surname_prefix" class="form-control" name="surname_prefix" placeholder="Tussenvoegsel" maxlength="60"><br>
+                    <label>Achternaam:</label><input type="text" id="surname" class="form-control" name="surname" placeholder="Achternaam" maxlength="60" REQUIRED><br>
+                    <label>Email:</label><input type="email" id="email" class="form-control" name="email" placeholder="Email" maxlength="60" REQUIRED><br>
                     <label>Team:</label><select name="team" class="form-control" id="team" REQUIRED>
                         <option disabled selected value="">Selecteer een team</option>
                         <?php
@@ -142,8 +133,7 @@ if ($user->isLoggedIn()) {
                         ?>
                         <option value="0">Geen</option>
                     </select><br>
-                    <label>Trainer/Coach van team:</label><select name="trainer" class="form-control" id="trainer"
-                                                                  REQUIRED>
+                    <label>Trainer/Coach van team:</label><select name="trainer" class="form-control" id="trainer" REQUIRED>
                         <option disabled selected value="">Selecteer een team</option>
                         <?php
                         $teams = $db->query("SELECT id, name FROM teams");
@@ -163,17 +153,15 @@ if ($user->isLoggedIn()) {
                     <label>Geslacht:</label><br>
                     <label class="radio-inline"><input type="radio" name="gender" value="M" REQUIRED>Man</label>
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
-                    <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday"
-                                                        placeholder="YYYY-MM-DD" REQUIRED><br>
+                    <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
                     <input class="btn btn-primary" id="submit" type="submit">
                 </form>
-                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
-                <br><br>
             </div>
             <?php
         }
         ?>
+        <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
         <div id="error"></div>
     </div>
     <?php

@@ -32,9 +32,19 @@ if($user->isLoggedIn()) {
                         'password' => Hash::make(Input::get('new_password'), $salt),
                         'salt' => $salt
                     ));
-                    Redirect::to('/profile');
+                    ?>
+                    <script>
+                        $("#refresh").show();
+                    </script>
+                    <?php
+                    echo "<h3>Uw wachtwoord is veranderd</h3>";
                 }
             } else {
+                ?>
+                    <script>
+                    $("#submit").show();
+                    </script>
+                <?php
                 foreach($validation->errors() as $error){
                     echo '<p>' . $error . '</p>';
                 }
@@ -43,7 +53,3 @@ if($user->isLoggedIn()) {
         }
     }
 }
-?>
-<script>
-    $("#submit").show();
-</script>
