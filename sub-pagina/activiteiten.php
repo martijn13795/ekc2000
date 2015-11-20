@@ -33,7 +33,7 @@
                 if ($activities->count()) {
                     foreach ($activities->results() as $activity) {
                         echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a>
-                    <p>Activiteit datum: ' . escape($activity->date_activity) . '</p><p>Upload datum: ' . escape(explode(" ", $activity->date)[0]) . '</p></div>';
+                    <p>Activiteit datum: ' . escape($activity->date_activity) . '</p></div>';
                     }
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';
