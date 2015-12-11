@@ -12,7 +12,7 @@ if ($messages->count()) {
             totalMessages = totalMessages + 1;
             localStorage.setItem("totalMessages", totalMessages);
         </script><?php
-        $messageSQL = $db->query("SELECT name, IconPath FROM users WHERE id = '{$message->user_id}'");
+        $messageSQL = $db->query("SELECT name, IconPath, id FROM users WHERE id = '{$message->user_id}'");
         foreach ($messageSQL->results() as $user_id) {
             $userMessage = new User($message->user_id);
             if ($userMessage->hasPermission("dev")) {
@@ -22,8 +22,11 @@ if ($messages->count()) {
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($userMessage->getGroup()) . '</strong> <small class="pull-right text-muted">
-                            <span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                            <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($userMessage->getGroup()) . '</strong> <small class="pull-right text-muted">';
+                if ($user->isLoggedIn() && $user->data()->id == $user_id->id) {
+                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
+                }
+                            echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
                         ' . $message->message . '
@@ -38,7 +41,7 @@ if ($messages->count()) {
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
-                if ($user->isLoggedIn() && $user->hasPermission("admin")) {
+                if (($user->isLoggedIn() && $user->data()->id == $user_id->id) || $user->hasPermission("admin")) {
                     echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
                 }
                 echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
