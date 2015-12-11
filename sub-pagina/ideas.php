@@ -30,6 +30,17 @@
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen idee&euml;n beschikbaar</h3></div>';
                 }
+            } elseif ($user->isLoggedIn()) {
+                $db = DB::getInstance();
+                $userID = $user->data()->id;
+                $ideas = $db->query("SELECT * FROM ideas WHERE user_id = '$userID' ORDER BY date DESC");
+                if ($ideas->count()) {
+                    foreach ($ideas->results() as $idea) {
+                        echo '<div class="well activiteitDiv"><h3>' . escape(str_replace('-', ' ', $idea->name)) . '</h3><p>' . escape($idea->text) . '</p><br><p>Upload datum: ' . escape(explode(" ", $idea->date)[0]) . '</p></div>';
+                    }
+                } else {
+                    echo '<div class="well activiteitDiv"><br><h3>U heeft nog geen idee&euml;n geupload</h3></div>';
+                }
             }
             ?>
         </div>
