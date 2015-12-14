@@ -7,6 +7,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
     if (isset($_POST['activiteitName']) && !empty($_POST['activiteitName']) && isset($_POST['editor1']) && !empty($_POST['editor1']) && isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {
         $name = $_POST['activiteitName'];
         $name = str_replace(' ', '-', $name);
+        $name = str_replace('\'', '-', $name);
         $text = $_POST['editor1'];
         $date = date("Y-m-d", strtotime(trim($_POST['activiteitDate'])));
         if($date){
