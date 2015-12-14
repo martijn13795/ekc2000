@@ -6,12 +6,12 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $id = $_GET['id'];
     $userID = $user->data()->id;
     if($user->isLoggedIn() && $user->hasPermission('admin')){
-        if($db->query("SELECT * FROM pictures WHERE id = '$id'")->count()){
-            $db->query("DELETE FROM pictures WHERE id = '$id'");
+        if($db->query("SELECT * FROM reports WHERE id = '$id'")->count()){
+            $db->query("DELETE FROM reports WHERE id = '$id'");
         }
     } elseif($user->isLoggedIn()){
-        if($db->query("SELECT * FROM pictures WHERE id = '$id' AND user_id = '$userID'")->count()){
-            $db->query("DELETE FROM pictures WHERE id = '$id'");
+        if($db->query("SELECT * FROM reports WHERE id = '$id' AND user_id = '$userID'")->count()){
+            $db->query("DELETE FROM reports WHERE id = '$id'");
         }
     }
 }

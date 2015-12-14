@@ -28,10 +28,18 @@
                 <?php
                 }
                 $db = DB::getInstance();
-                $newsdata = $db->query("SELECT date, name FROM news ORDER BY date DESC");
+                $newsdata = $db->query("SELECT date, name, id, user_id FROM news ORDER BY date DESC");
                 if ($newsdata->count()) {
                     foreach ($newsdata->results() as $news) {
-                        echo '<div class="well nieuwsDiv"><a href="/artikel/' . escape($news->name) . '"><h3>' . escape(str_replace('-', ' ', $news->name)) . '</h3></a><p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p></div>';
+                        echo '<div class="well nieuwsDiv">';
+                        if (($user->isLoggedIn() && $user->data()->id == $news->user_id) || $user->hasPermission("admin")) {
+                            echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
+                        }
+                                    echo '<a href="/artikel/' . escape($news->name) . '">
+                                        <h3>' . escape(str_replace('-', ' ', $news->name)) . '</h3>
+                                    </a>
+                                    <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>
+                              </div>';
                     }
                 } else {
                     echo '<div class="well nieuwsDiv"><br><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
@@ -52,6 +60,13 @@
             $("#upload").text("Upload");
 
             $("#uploadContainer").hide();
+        }
+
+        function removeNews(id){
+            $.get("includes/removeNews.php?id=" + id), function(data){
+                $('#result').html(data);
+            };
+            location.reload();
         }
     </script>
 <?php include '../includes/htmlUnder.php'; ?>

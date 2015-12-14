@@ -40,11 +40,19 @@
                             $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
                             if ($album_data->count()) {
                                 $img_path = $album_data->first()->pathMobile;
-                                echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
+                                echo '<div class="well albumsDiv">';
+                                if (($user->isLoggedIn() && $user->data()->id == $album->user_id) || $user->hasPermission("admin")) {
+                                    echo '<i class="fa fa-trash-o" style="float: right; margin: 5px;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
+                                }
+                                echo '<a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
                                     . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
                                     . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
                             } else {
-                                echo '<div class="well albumsDiv"><a href="/album/' . $album->name . '"><h3>'
+                                echo '<div class="well albumsDiv">';
+                                if (($user->isLoggedIn() && $user->data()->id == $album->user_id) || $user->hasPermission("admin")) {
+                                    echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
+                                }
+                                echo '<a href="/album/' . $album->name . '"><h3>'
                                     . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
                                     . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
                             }
@@ -109,6 +117,13 @@
                 $("#upload").text("Upload");
 
                 $("#uploadContainer").hide();
+            }
+
+            function removeAlbum(id){
+                $.get("includes/removeAlbum.php?id=" + id), function(data){
+                    $('#result').html(data);
+                };
+                location.reload();
             }
         </script>
     </div>

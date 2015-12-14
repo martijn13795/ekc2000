@@ -29,10 +29,14 @@
                 <?php
                 }
                 $db = DB::getInstance();
-                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC");
+                $activities = $db->query("SELECT date, date_activity, name, id, user_id FROM activities ORDER BY date DESC");
                 if ($activities->count()) {
                     foreach ($activities->results() as $activity) {
-                        echo '<div class="well activiteitDiv"><a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a>
+                        echo '<div class="well activiteitDiv">';
+                        if (($user->isLoggedIn() && $user->data()->id == $activity->user_id) || $user->hasPermission("admin")) {
+                            echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';
+                        }
+                        echo '<a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(str_replace('-', ' ', $activity->name)) . '</h3></a>
                     <p>Activiteit datum: ' . escape($activity->date_activity) . '</p></div>';
                     }
                 } else {
@@ -53,6 +57,13 @@
                 $("#upload").text("Upload");
 
                 $("#uploadContainer").hide();
+            }
+
+            function removeActivity(id){
+                $.get("includes/removeactivity.php?id=" + id), function(data){
+                    $('#result').html(data);
+                };
+                location.reload();
             }
         </script>
     </div>

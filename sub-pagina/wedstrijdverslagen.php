@@ -125,5 +125,12 @@
 
             $("#uploadContainer").hide();
         }
+
+        function removeReport(id){
+            $.get("includes/removeReport.php?id=" + id), function(data){
+                $('#result').html(data);
+            };
+            location.reload();
+        }
     </script>
 <?php include '../includes/htmlUnder.php'; ?>

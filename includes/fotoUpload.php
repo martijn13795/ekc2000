@@ -57,7 +57,7 @@ function formatSizeUnits($bytes)
 
 if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
     $album_name = $_POST['name'];
-    if(preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $album_name)){
+    if((preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $album_name)) && !preg_match("[']", $album_name)){
         $album_name = str_replace(' ', '-', $album_name);
         if(!empty($_FILES['files']['name'][0])){
             $files = $_FILES['files'];
