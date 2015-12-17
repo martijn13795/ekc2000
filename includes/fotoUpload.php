@@ -61,7 +61,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
         $album_name = str_replace(' ', '-', $album_name);
         if(!empty($_FILES['files']['name'][0])){
             $files = $_FILES['files'];
-            $allowed = array('jpg', 'jpeg', 'pjpeg', 'png');
+            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'pjpeg', 'PJPEG', 'png', 'PNG');
 
             foreach($files['name'] as $position => $file_name){
                 $file_tmp = $files['tmp_name'][$position];
