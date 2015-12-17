@@ -1,5 +1,6 @@
 Options -Indexes
 
+php_value max_file_uploads  100
 php_value upload_max_filesize 20M
 php_value post_max_size 500M
 
