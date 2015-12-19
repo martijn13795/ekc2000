@@ -127,6 +127,20 @@
         }
 
         function removeReport(id){
+            if (!$(".alert").hasClass("on")) {
+                $('.alerts').append('<div class="alert alert-danger alert-dismissable">' +
+                    '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
+                    'Weet u zeker dat u dit verslag wilt verwijderen?<br><br>' +
+                    '<button class="btn btn-warning" onclick="removeTrue(' + id + ') & $(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Verwijderen</button>&#09;' +
+                    '<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+                    '</div>');
+                setTimeout(function () {
+                    $('.alerts').children('.alert:last-child').addClass('on');
+                }, 10);
+            }
+        }
+
+        function removeTrue(id){
             $.get("includes/removeReport.php?id=" + id), function(data){
                 $('#result').html(data);
             };

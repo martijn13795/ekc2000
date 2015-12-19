@@ -118,7 +118,7 @@
         };
         setTimeout(function () {
             location.reload();
-        }, 20);
+        }, 100);
     }
 </script>
 <?php include '../includes/htmlUnder.php'; ?>

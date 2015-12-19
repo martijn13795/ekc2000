@@ -24,7 +24,7 @@ if ($messages->count()) {
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($userMessage->getGroup()) . '</strong> <small class="pull-right text-muted">';
                 if ($user->isLoggedIn() && $user->data()->id == $user_id->id) {
-                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
+                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ')"></i>';
                 }
                             echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
