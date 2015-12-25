@@ -109,11 +109,19 @@ class DB
         if ($this->query("DESCRIBE groups")->error()) {
             $this->query("CREATE TABLE groups ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
-                . "name VARCHAR(20), "
-                . "permissions TEXT)");
+                . "name VARCHAR(20))");
             $this->insert('groups', array(
                 'id' => '1',
-                'name' => 'Dev',
+                'name' => 'Dev'
+            ));
+        }
+        if ($this->query("DESCRIBE permissions")->error()) {
+            $this->query("CREATE TABLE permissions ("
+                . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
+                . "user_id INT, "
+                . "permissions TEXT)");
+            $this->insert('permissions', array(
+                'user_id' => '1',
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
         }

@@ -82,7 +82,7 @@ class User {
     }
 
     public function hasPermission($key){
-        $group = $this->_db->query("SELECT * FROM groups WHERE id = '{$this->data()->group_id}'");
+        $group = $this->_db->query("SELECT * FROM permissions WHERE user_id = '{$this->data()->id}'");
 
         if($group->count()){
             $permissions = json_decode($group->first()->permissions, true);
