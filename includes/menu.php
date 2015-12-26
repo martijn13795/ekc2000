@@ -39,7 +39,7 @@
 
                 <li <?php activeClass("activiteiten"); $testGet = isset($_GET['activiteitName']) ? activeClass($_GET['activiteitName']) : ''; ?>><a href="/activiteiten">Activiteiten</a></li>
 
-                <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("wedstrijdverslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
+                <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("uitslag-invoeren"),activeClass("uitslag-poules"),activeClass("wedstrijdverslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("teams")?>><a href="/teams">Teams</a></li>
@@ -48,6 +48,7 @@
                         <li <?=activeClass("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
                         <li <?=activeClass("uitslag-invoeren")?>><a href="/uitslag-invoeren">Uitslagen invoeren</a></li>
                         <li <?=activeClass("wedstrijdverslagen")?>><a href="/wedstrijdverslagen">Wedstrijdverslagen</a></li>
+                        <li <?=activeClass("uitslag-poules")?>><a href="/uitslag-poules">Uitslagen poules</a></li>
                         <li <?=activeClass("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
                         <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Zaal-/kantinedienst</a></li>
                     </ul>

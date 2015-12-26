@@ -546,6 +546,67 @@ h1 {
 table .datum {
     background-color: #E0E0E0;
 }
+
+/*Uitslagen-poules begin*/
+.Titel {
+    margin-top: 0;
+}
+
+.a {
+    font-style: italic;
+    font-size: 8pt;
+    text-align: right;
+}
+
+.tbkop {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.tbkopd {
+    font-size: 16px;
+}
+
+.tbr {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tbkopc {
+    background-color: #E0E0E0;
+    font-size: 14px;
+    color: #333;
+    padding: 8px;
+    font-weight: 700;
+}
+
+.Utblijst {
+    width: 100%;
+}
+
+.UG, .UT {
+    width: 42%;
+}
+
+.UU, .UUV, .UUW {
+    width: 16%;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.cl, .cl td, .cl td a {
+    font-weight: 700;
+}
+
+.UUV {
+    background-color: #FFD4D4;
+}
+
+.UUW {
+    background-color: #D4FFD4;
+}
+/*Uitslagen-poules eind*/
+
 /*Antilopen eind*/
 
 .fa-trash-o{
