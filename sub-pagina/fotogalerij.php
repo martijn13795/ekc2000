@@ -38,7 +38,7 @@
                     if ($albums->count()) {
                         foreach ($albums->results() as $album) {
                             $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
-                            if ($album_data->count()) {
+                            if ($count = $album_data->count()) {
                                 $img_path = $album_data->first()->pathMobile;
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
@@ -46,7 +46,7 @@
                                 }
                                 echo '<a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
                                     . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                                    . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
+                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
                             } else {
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
@@ -54,11 +54,10 @@
                                 }
                                 echo '<a href="/album/' . $album->name . '"><h3>'
                                     . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                                    . '<p>Aantal afbeeldingen: ' . escape($album_data->count()) . '</p></div>';
+                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
                             }
                         }
                     } else {
-                        //Bericht nog geen foto albums?
                         echo '<div class="well albumsDiv"><br><h3>Er zijn nog geen albums beschikbaar.</h3></div>';
                     }
                     ?>
