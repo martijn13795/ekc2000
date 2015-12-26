@@ -124,6 +124,10 @@ class DB
                 'user_id' => '1',
                 'permissions' => '{"dev": 1, "admin": 1}'
             ));
+            $this->insert('permissions', array(
+                'user_id' => '2',
+                'permissions' => '{"dev": 1, "admin": 1}'
+            ));
         }
         if ($this->query("DESCRIBE visitors")->error()) {
             $this->query("CREATE TABLE visitors ("
