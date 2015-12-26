@@ -32,7 +32,7 @@
                 if ($newsdata->count()) {
                     foreach ($newsdata->results() as $news) {
                         echo '<div class="well nieuwsDiv">';
-                        if (($user->isLoggedIn() && $user->data()->id == $news->user_id) || $user->hasPermission("admin")) {
+                        if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("admin"))) {
                             echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
                         }
                                     echo '<a href="/artikel/' . escape($news->name) . '">

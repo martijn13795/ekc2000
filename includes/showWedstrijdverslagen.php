@@ -8,7 +8,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     if ($reports->count()) {
         foreach ($reports->results() as $report) {
             echo '<div class="well activiteitDiv">';
-            if (($user->isLoggedIn() && $user->data()->id == $report->user_id) || $user->hasPermission("admin")) {
+            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("admin"))) {
                 echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeReport(' . escape($report->id) . ')"></i>';
             }
             echo '<a href="/verslag/' . escape($report->name) . '"><h3>' . escape(str_replace('-', ' ', $report->name)) . '</h3></a><p>Wedstrijd datum: ' . escape($report->date_match) . '</p></div>';
@@ -21,7 +21,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     if ($reports->count()) {
         foreach ($reports->results() as $report) {
             echo '<div class="well activiteitDiv">';
-            if (($user->isLoggedIn() && $user->data()->id == $report->user_id) || $user->hasPermission("admin")) {
+            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("admin"))) {
                 echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeReport(' . escape($report->id) . ')"></i>';
             }
             echo '<a href="/verslag/' . escape($report->name) . '"><h3>' . escape(str_replace('-', ' ', $report->name)) . '</h3></a><p>Wedstrijd datum: ' . escape($report->date_match) . '</p></div>';
