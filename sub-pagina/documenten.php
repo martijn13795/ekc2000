@@ -49,7 +49,11 @@ if ($user->isLoggedIn()) { ?>
                             if ($type == "pdf") {
                                 $image = "../images/pdf.png";
                             }
-                            echo '<div class="well albumsDiv"><a href="/' . $document->path . '"><img class="roundImg" src="' . $image . '"/><h3>'
+                            echo '<div class="well albumsDiv">';
+                            if ($user->isLoggedIn() && ($user->data()->id == $document->user_id || $user->hasPermission("admin"))) {
+                                echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeDocument(' . escape($document->id) . ')"></i>';
+                            }
+                            echo '<a href="/' . $document->path . '"><img class="roundImg" src="' . $image . '"/><h3>'
                                 . escape(str_replace('-', ' ', $document->name)) . '</h3></a><p>Geupload op: ' . escape(explode(" ", $document->date)[0]) . '</p><br></div>';
                         }
                     } else {
@@ -91,6 +95,27 @@ if ($user->isLoggedIn()) { ?>
             $("#upload").text("Upload");
 
             $("#uploadContainer").hide();
+        }
+
+        function removeDocument(id){
+            if (!$(".alert").hasClass("on")) {
+                $('.alerts').append('<div class="alert alert-danger alert-dismissable">' +
+                    '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
+                    'Weet u zeker dat u dit verslag wilt verwijderen?<br><br>' +
+                    '<button class="btn btn-warning" onclick="removeTrue(' + id + ') & $(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Verwijderen</button>&#09;' +
+                    '<button class="btn btn-success" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+                    '</div>');
+                setTimeout(function () {
+                    $('.alerts').children('.alert:last-child').addClass('on');
+                }, 10);
+            }
+        }
+
+        function removeTrue(id){
+            $.get("includes/removeDocument.php?id=" + id), function(data){
+                $('#result').html(data);
+            };
+            location.reload();
         }
     </script>
 <?php include '../includes/htmlUnder.php'; ?>
