@@ -25,6 +25,8 @@ spl_autoload_register(function($class) {
 
 require_once $_SERVER['DOCUMENT_ROOT'] .  '/functions/sanitize.php';
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/email.php';
+
 if (Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/session_name'))) {
     $hash = Cookie::get(Config::get('remember/cookie_name'));
     $hashCheck = DB::getInstance()->query("SELECT * FROM users_session WHERE " . Config::get('remember/cookie_name') . " = '{$hash}'");

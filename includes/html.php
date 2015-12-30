@@ -1,5 +1,4 @@
 <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';?>
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/functions/email.php'; ?>
 <!--
 Martijn Posthuma
 Cas van Dinter
