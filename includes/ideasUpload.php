@@ -24,7 +24,7 @@ if($user->isLoggedIn()) {
         $text = 'Er is een nieuw idee aangemaakt.<br><br>
                  <h3>'. $name .'</h3>
                  <p>'. $idea .'</p><br>
-                 Bekijk direct het idee op <a href=\"http://www.ekc2000.nl/ideeenbus\">ekc2000.nl</a>.';
+                 Bekijk direct het idee op <a href="http://www.ekc2000.nl/ideeenbus">ekc2000.nl</a>.';
         email($to, $subject, $title, $text);
     } else {
         echo "<h3>Er is wat mis gegaan. Probeer het opnieuw.</h3><br>";
