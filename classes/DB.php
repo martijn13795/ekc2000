@@ -104,7 +104,8 @@ class DB
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
                 . "message VARCHAR(250), "
-                . "date DATETIME)");
+                . "date DATETIME, "
+                . "approved BOOLEAN DEFAULT FALSE)");
         }
         if ($this->query("DESCRIBE groups")->error()) {
             $this->query("CREATE TABLE groups ("
