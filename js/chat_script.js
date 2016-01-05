@@ -123,3 +123,71 @@ function removeTrue(id){
     }, 10);
     $('#chatRefresh').load('/includes/chatRefresh.php');
 }
+
+function approveMes(id){
+    if (!$(".alert").hasClass("on")) {
+        $('.alerts').append('<div class="alert alert-warning alert-dismissable">' +
+            '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
+            'Weet u zeker dat u dit bericht wilt goedkeuren?<br><br>' +
+            '<button class="btn btn-success" onclick="approveTrue(' + id + ') & $(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Goedkeuren</button>&#09;' +
+            '<button class="btn btn-primary" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+            '</div>');
+        setTimeout(function () {
+            $('.alerts').children('.alert:last-child').addClass('on');
+        }, 10);
+    }
+}
+
+function approveTrue(id){
+    $.get("includes/approveMessage.php?id=" + id), function(data){
+        $('#result').html(data);
+    };
+    $(".alerts").append('<div class="alert alert-success alert-dismissable">' +
+        '<button class="close" data-dismiss="alert">&times;</button>' +
+        'Het bericht is goedgekeurd' +
+        '</div>');
+    setTimeout(function () {
+        $('.alerts').children('.alert:last-child').addClass('on');
+        setTimeout(function () {
+            $('.alerts').children('.alert:first-child').removeClass('on');
+            setTimeout(function () {
+                $('.alerts').children('.alert:first-child').remove();
+            }, 900);
+        }, 5000);
+    }, 10);
+    $('#chatRefresh').load('/includes/chatRefresh.php');
+}
+
+function disapproveMes(id){
+    if (!$(".alert").hasClass("on")) {
+        $('.alerts').append('<div class="alert alert-warning alert-dismissable">' +
+            '<button class="close" onclick="$(`.alerts`).removeClass(`on`); $(`.alerts`).children(`.alert:first-child`).remove();">&times;</button>' +
+            'Weet u zeker dat u dit bericht wilt afkeuren?<br><br>' +
+            '<button class="btn btn-danger" onclick="disapproveTrue(' + id + ') & $(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Afkeuren</button>&#09;' +
+            '<button class="btn btn-primary" onclick="$(`.alerts`).removeClass(`on`);  $(`.alerts`).children(`.alert:first-child`).remove();">Annuleren</button>' +
+            '</div>');
+        setTimeout(function () {
+            $('.alerts').children('.alert:last-child').addClass('on');
+        }, 10);
+    }
+}
+
+function disapproveTrue(id){
+    $.get("includes/disapproveMessage.php?id=" + id), function(data){
+        $('#result').html(data);
+    };
+    $(".alerts").append('<div class="alert alert-warning alert-dismissable">' +
+        '<button class="close" data-dismiss="alert">&times;</button>' +
+        'Het bericht is afgekeurd' +
+        '</div>');
+    setTimeout(function () {
+        $('.alerts').children('.alert:last-child').addClass('on');
+        setTimeout(function () {
+            $('.alerts').children('.alert:first-child').removeClass('on');
+            setTimeout(function () {
+                $('.alerts').children('.alert:first-child').remove();
+            }, 900);
+        }, 5000);
+    }, 10);
+    $('#chatRefresh').load('/includes/chatRefresh.php');
+}

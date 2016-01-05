@@ -33,7 +33,7 @@ if ($messages->count()) {
                         </p>
                     </div>
                 </li>';
-            } else {
+            } elseif ($user->isLoggedIn()) {
                 echo '<li class="left clearfix">
                     <span class="chat-img pull-left">
                         <img src="' . escape($user_id->IconPath) . '" alt="' . escape($user_id->name) . '" class="img-circle avatar" />
@@ -41,9 +41,32 @@ if ($messages->count()) {
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
+                if ($user->isLoggedIn() && $user->hasPermission("admin")) {
+                    if ($message->approved == 0){
+                        echo '<i class="fa fa-check" style="font-size: 15px; color: green; cursor: pointer;" onclick="approveMes(' . escape($message->id) . ')"></i> ';
+                    }
+                    if ($message->approved == 1){
+                        echo '<i class="fa fa-close" style="font-size: 15px; color: red; cursor: pointer;" onclick="disapproveMes(' . escape($message->id) . ')"></i> ';
+                    }
+                }
                 if ($user->isLoggedIn() && ($user->data()->id == $user_id->id || $user->hasPermission("admin"))) {
                     echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
                 }
+                echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
+                        </div>
+                        <p>
+                        ' . escape($message->message) . '
+                        </p>
+                    </div>
+                </li>';
+            } elseif ($message->approved == 1) {
+                echo '<li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img src="' . escape($user_id->IconPath) . '" alt="' . escape($user_id->name) . '" class="img-circle avatar" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
                 echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
                         <p>
@@ -55,12 +78,11 @@ if ($messages->count()) {
         }
     }
 } else {
-    //Echo bericht voor nog geen berichten?
     echo '<li class="right clearfix">
-                <div class="chat-body clearfix">
+            <div class="chat-body clearfix">
                 <div class="header">
+                    <h4>Er zijn nog geen berichten</h4>
                 </div>
-                <h4>Er zijn nog geen berichten</h4>
-                </div>
-                </li>';
+            </div>
+          </li>';
 }
