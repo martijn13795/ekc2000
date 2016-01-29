@@ -2,73 +2,75 @@
     <script src="../ckeditor/ckeditor.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container">
-        <h1>Wedstrijdverslagen</h1>
-        <hr>
-        <?php if ($user->isLoggedIn()) { ?>
-                <div class="hidden visible-lg">
-                    <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
-                    <div id="uploadContainer" hidden>
-                    <form method="post" name="myForm" class="myForm" action="../includes/wedstrijdverslagenUpload.php">
-                        <label>Naam van het verslag:</label>
-                        <input type="text" class="form-control" placeholder="Naam" id="name" name="name" REQUIRED/><br>
-                        <label>Datum van de wedstrijd:</label><input type="text" class="form-control" name="matchDate"
-                                                                     placeholder="YYYY-MM-DD" REQUIRED><br>
-                        <label>Van welk team is het verslag:</label>
-                        <select name="team" class="form-control" id="team" REQUIRED>
-                            <option disabled selected value="">Selecteer een team</option>
-                            <?php
-                            $teams = $db->query("SELECT id, name FROM teams");
-                            if ($teams->count()) {
-                                $teamsArray = array();
-                                foreach ($teams->results() as $team) {
-                                    $teamsArray[escape($team->id)] = escape($team->name);
+        <div class="col-md-12 col-xs-12">
+            <h1>Wedstrijdverslagen</h1>
+            <hr>
+            <?php if ($user->isLoggedIn()) { ?>
+                    <div class="hidden visible-lg">
+                        <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+                        <div id="uploadContainer" hidden>
+                        <form method="post" name="myForm" class="myForm" action="../includes/wedstrijdverslagenUpload.php">
+                            <label>Naam van het verslag:</label>
+                            <input type="text" class="form-control" placeholder="Naam" id="name" name="name" REQUIRED/><br>
+                            <label>Datum van de wedstrijd:</label><input type="text" class="form-control" name="matchDate"
+                                                                         placeholder="YYYY-MM-DD" REQUIRED><br>
+                            <label>Van welk team is het verslag:</label>
+                            <select name="team" class="form-control" id="team" REQUIRED>
+                                <option disabled selected value="">Selecteer een team</option>
+                                <?php
+                                $teams = $db->query("SELECT id, name FROM teams");
+                                if ($teams->count()) {
+                                    $teamsArray = array();
+                                    foreach ($teams->results() as $team) {
+                                        $teamsArray[escape($team->id)] = escape($team->name);
+                                    }
+                                    asort($teamsArray);
+                                    foreach ($teamsArray as $id => $name) {
+                                        echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
+                                    }
+                                } else {
+                                    echo '<option>Geen</option>';
                                 }
-                                asort($teamsArray);
-                                foreach ($teamsArray as $id => $name) {
-                                    echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
-                                }
-                            } else {
-                                echo '<option>Geen</option>';
-                            }
-                            ?>
-                        </select><br>
-                        <textarea class="ckeditor" id="editor1" name="editor1"></textarea></br>
-                        <input type="submit" id="submit" class="btn btn-success">
-                    </form>
+                                ?>
+                            </select><br>
+                            <textarea class="ckeditor" id="editor1" name="editor1"></textarea></br>
+                            <input type="submit" id="submit" class="btn btn-success">
+                        </form>
+                    </div>
+                    <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+
+                    <div id="error"></div>
                 </div>
-                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+                <?php
+            }
+            ?>
+            <h3 id="title">Team</h3>
 
-                <div id="error"></div>
+            <div style="float: right; margin-top: -40px;">
+                <form>
+                    <select class="form-control" id="teams">
+                        <option value="0">Alles</option>
+                        <?php
+                        $teams = $db->query("SELECT id, name FROM teams");
+                        if ($teams->count()) {
+                            $teamsArray = array();
+                            foreach ($teams->results() as $team) {
+                                $teamsArray[escape($team->id)] = escape($team->name);
+                            }
+                            asort($teamsArray);
+                            foreach ($teamsArray as $id => $name) {
+                                echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+                </form>
             </div>
-            <?php
-        }
-        ?>
-        <h3 id="title">Team</h3>
+            <br>
 
-        <div style="float: right; margin-top: -40px;">
-            <form>
-                <select class="form-control" id="teams">
-                    <option value="0">Alles</option>
-                    <?php
-                    $teams = $db->query("SELECT id, name FROM teams");
-                    if ($teams->count()) {
-                        $teamsArray = array();
-                        foreach ($teams->results() as $team) {
-                            $teamsArray[escape($team->id)] = escape($team->name);
-                        }
-                        asort($teamsArray);
-                        foreach ($teamsArray as $id => $name) {
-                            echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
-                        }
-                    }
-                    ?>
-                </select>
-            </form>
-        </div>
-        <br>
-
-        <div class="row" id="teamData">
-            <!-- Wordt ingeladen -->
+            <div class="row" id="teamData">
+                <!-- Wordt ingeladen -->
+            </div>
         </div>
     </div>
     <script>
