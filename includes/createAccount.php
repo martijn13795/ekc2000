@@ -77,6 +77,14 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                     echo "<h3>New account gemaakt:</h3>";
                                     echo "<p>Gebruikersnaam: " . $username . "</p>";
                                     echo "<p>Wachtwoord: " . $birthday . "</p>";
+                                    $to = "martijn13795@hotmail.com";
+                                    $subject = "Uw account voor EKC 2000 is aangemaakt";
+                                    $title = "Hallo " . $name . " " . $surname . ",";
+                                    $text = 'Uw account voor de website van EKC 2000 is aangemaakt.<br><br>
+                                            <p>Uw gebruikersnaam is: '. $username .'</p>
+                                            <p>Uw wachtwoord is: '. $birthday .'</p><br>
+                                            log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.';
+                                    email($to, $subject, $title, $text);
                                 } else {
                                     echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
                                     echo "<p>Er is wat mis gegaan bij het uploaden. Probeer het opnieuw.</p><br>";
