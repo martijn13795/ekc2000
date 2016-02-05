@@ -224,19 +224,19 @@ function email($to, $subject, $title, $text){
                                                                         <div class="sharing">
                                                                             <div class="links emb-web-links" style="line-height: 26px;Margin-bottom: 26px;mso-line-height-rule: at-least;">
 
-                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9;" href="https://facebook.com/EKC2000" target="_blank">
+                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9; text-decoration: none;" href="https://facebook.com/EKC2000" target="_blank">
                                                                                     <img style="border: 0;-ms-interpolation-mode: bicubic;vertical-align: middle;" src="https://i8.createsend1.com/static/eb/master/03-fresh/imgf/facebook-sf.png" width="29" height="26">
                                                                                 </a>
-                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9;" href="https://twitter.com/EKC2000_Emmen" target="_blank">
+                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9; text-decoration: none;" href="https://twitter.com/EKC2000_Emmen" target="_blank">
                                                                                     <img style="border: 0;-ms-interpolation-mode: bicubic;vertical-align: middle;" src="https://i9.createsend1.com/static/eb/master/03-fresh/imgf/twitter-sf.png" width="29" height="26">
                                                                                 </a>
-                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9;" href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">
+                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9; text-decoration: none;" href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">
                                                                                     <img style="border: 0;-ms-interpolation-mode:bicubic;vertical-align: middle;" src="https://i2.createsend1.com/static/eb/master/03-fresh/imgf/linkedin-sf.png" width="29" height="26">
                                                                                 </a>
-                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9;" href="https://nl.linkedin.com/in/casvandinter" target="_blank">
+                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9; text-decoration: none;" href="https://nl.linkedin.com/in/casvandinter" target="_blank">
                                                                                     <img style="border: 0;-ms-interpolation-mode:bicubic;vertical-align: middle;" src="https://i2.createsend1.com/static/eb/master/03-fresh/imgf/linkedin-sf.png" width="29" height="26">
                                                                                 </a>
-                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9;" href="http://www.ekc2000.nl" target="_blank">
+                                                                                <a style="transition: opacity 0.2s ease-in;color: #b9b9b9; text-decoration: none;" href="http://www.ekc2000.nl" target="_blank">
                                                                                     <img style="border: 0;-ms-interpolation-mode: bicubic;vertical-align: middle;" src="https://i3.createsend1.com/static/eb/master/03-fresh/imgf/website-sf.png" width="29" height="26">
                                                                                 </a>
                                                                             </div>

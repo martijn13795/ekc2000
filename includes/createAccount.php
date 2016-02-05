@@ -10,8 +10,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             && isset($_POST['team']) && is_numeric($_POST['team'])
                             && isset($_POST['trainer']) && is_numeric($_POST['trainer'])
                             && !empty($_POST['gender']) && isset($_POST['gender'])
-                            && !empty($_POST['birthday']) && isset($_POST['birthday'])
-                            && !empty($_FILES['icon']) && isset($_FILES['icon'])){
+                            && !empty($_POST['birthday']) && isset($_POST['birthday'])){
         $name = str_replace(' ', '.', trim($_POST['name']));
         $surname_prefix = (!empty($_POST['surname_prefix']) && isset($_POST['surname_prefix'])) ? str_replace(' ', '.', trim($_POST['surname_prefix'])) : null;
         $surname = str_replace(' ', '.', trim($_POST['surname']));
@@ -80,10 +79,20 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                     $to = "martijn13795@hotmail.com";
                                     $subject = "Uw account voor EKC 2000 is aangemaakt";
                                     $title = "Hallo " . $name . " " . $surname . ",";
-                                    $text = 'Uw account voor de website van EKC 2000 is aangemaakt.<br><br>
+                                    $text = '<h3>Uw account voor de website van EKC 2000 is aangemaakt.</h3>
                                             <p>Uw gebruikersnaam is: '. $username .'</p>
                                             <p>Uw wachtwoord is: '. $birthday .'</p><br>
-                                            log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.';
+                                            <h3>Waarom heb ik een account?</h3>
+                                            <p>Met het account voor de website van EKC 2000 kun je een aantal dingen doen.</p>
+                                            <p><ul>
+                                              <li>Chatten in de chatbox</li>
+                                              <li>Idee&euml;n uploaden</li>
+                                              <li>Documenten bekijken</li>
+                                              <li>Uw profiel pagina bezoeken</li>
+                                              <li>Uw wachtwoord veranderen</li>
+                                            </ul></p>
+                                            <p>Natuurlijk worden er nog meer dingen met de accounts gedaan, maar dat is vooral achter de schermen.</p>
+                                            <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                                     email($to, $subject, $title, $text);
                                 } else {
                                     echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
