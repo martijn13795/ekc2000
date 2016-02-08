@@ -10,7 +10,8 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             && isset($_POST['team']) && is_numeric($_POST['team'])
                             && isset($_POST['trainer']) && is_numeric($_POST['trainer'])
                             && !empty($_POST['gender']) && isset($_POST['gender'])
-                            && !empty($_POST['birthday']) && isset($_POST['birthday'])){
+                            && !empty($_POST['birthday']) && isset($_POST['birthday'])
+                            && !empty($_FILES['icon']) && isset($_FILES['icon'])){
         $name = str_replace(' ', '.', trim($_POST['name']));
         $surname_prefix = (!empty($_POST['surname_prefix']) && isset($_POST['surname_prefix'])) ? str_replace(' ', '.', trim($_POST['surname_prefix'])) : null;
         $surname = str_replace(' ', '.', trim($_POST['surname']));

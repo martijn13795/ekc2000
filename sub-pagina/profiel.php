@@ -154,7 +154,7 @@ if ($user->isLoggedIn()) {
                     <label class="radio-inline"><input type="radio" name="gender" value="M" REQUIRED>Man</label>
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
-                    <label>Profielfoto:</label><input type="file" id="icon" name="icon"><br>
+                    <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
                     <input class="btn btn-primary" id="submit" type="submit">
                 </form>
             </div>
