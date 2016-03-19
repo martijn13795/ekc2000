@@ -2,7 +2,9 @@
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Album - <?php $name = $_GET['name'];
-            echo $name = str_replace('-', ' ', $name); ?></h1>
+            $name = str_replace("XY","%",$name);
+            $name = escape(rawurldecode($name));
+            echo $name; ?></h1>
         <hr>
         <button onclick="history.go(-1)" type="button" class="btn btn-info">
             Ga terug
@@ -32,14 +34,14 @@
             <?php
             $db = DB::getInstance();
             $name = $_GET['name'];
-            rawurldecode($name);
+            rawurlencode($name);
             $album = $db->query("SELECT id FROM albums WHERE name = '" . $name . "'")->first();
             $pics = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
             if ($pics->count()) {
                 foreach ($pics->results() as $pic) {
                     echo '
                         <div class="col-md-4 col-xs-4 galerijImg">';
-                    if (($user->isLoggedIn() && $user->data()->id == $pic->user_id) || $user->hasPermission("admin")) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($pic->id) .'\', \''. escape($pic->pathMobile) .'\');"></i></div>';}
+                    if (($user->isLoggedIn() && $user->data()->id == $pic->user_id) || ($user->isLoggedIn() && $user->hasPermission("admin"))) { echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\''. escape($pic->id) .'\', \''. escape($pic->pathMobile) .'\');"></i></div>';}
                            echo' <a href="' . escape($pic->pathMobile) . '" data-src-320px="' . escape($pic->pathMobile) . '"
                                data-src-960px="' . escape($pic->path) . '" title="' . escape($pic->name) . '" data-gallery>
                                 <div class="change galerijBackImg col-md-12" style="background-image: url(' . escape($pic->pathMobile) . ')"

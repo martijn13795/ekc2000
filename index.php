@@ -55,7 +55,8 @@
                                     $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 8");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
-                                            echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(str_replace('-', ' ', $album->name)) . '</a></p>';
+                                            $album_name = str_replace("XY","%",$album->name);
+                                            echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';

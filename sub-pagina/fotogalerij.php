@@ -13,13 +13,13 @@
                 <div id="uploadContainer" hidden>
                     <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
                           enctype="multipart/form-data">
-                        <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
+                        <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="256" REQUIRED><br>
                         <input type="file" id="file" name="files[]" multiple REQUIRED><br>
                         <input class="btn btn-success" id="submit" type="submit" value="Upload">
                     </form>
                     <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
                     <br>
-
+                    <br>
                     <div id="error"></div>
                     <br>
 
@@ -39,21 +39,23 @@
                         foreach ($albums->results() as $album) {
                             $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
                             if ($count = $album_data->count()) {
+                                $album_name = str_replace("XY","%",$album->name);
                                 $img_path = $album_data->first()->pathMobile;
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
                                     echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
                                 }
                                 echo '<a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
-                                    . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
+                                    . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
                                     . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
                             } else {
+                                $album_name = str_replace("XY","%",$album->name);
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
                                     echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
                                 }
                                 echo '<a href="/album/' . $album->name . '"><h3>'
-                                    . escape(str_replace('-', ' ', $album->name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
+                                    . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
                                     . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
                             }
                         }
@@ -78,12 +80,17 @@
                         $(".progress-bar").html('<p>' + percentComplete + ' %' + '</p>');
                     },
                     success: function (response) {
-                        $(".progress-bar").addClass('progress-bar-success');
-                        $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
-                        $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
-                            '<button class="close" data-dismiss="alert">&times;</button>' +
-                            'Het album is geupload' +
-                            '</div>');
+                        if (response.indexOf(">Uploaden voltooid.") >= 0) {
+                            $(".progress-bar").addClass('progress-bar-success');
+                            $(".progress-bar").html('<p onclick="history.go(0)">Uploaden voltooid</p>');
+                            $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                                '<button class="close" data-dismiss="alert">&times;</button>' +
+                                'Het album is geupload' +
+                                '</div>');
+                        } else {
+                            $(".progress-bar").addClass('progress-bar-warning');
+                            $(".progress-bar").html('<p onclick="history.go(0)">Uploaden mislukt</p>');
+                        }
                         setTimeout(function () {
                             $('.alerts').children('.alert:last-child').addClass('on');
                             setTimeout(function () {

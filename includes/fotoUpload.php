@@ -57,8 +57,9 @@ function formatSizeUnits($bytes)
 
 if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
     $album_name = $_POST['name'];
-    if((preg_match("#^[a-zA-Z0-9 '!' ',' '.' '(' ')' '_' '+' ' ' '*']+$#", $album_name)) && !preg_match("[']", $album_name)){
-        $album_name = str_replace(' ', '-', $album_name);
+    if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $album_name)) {
+        $album_name = rawurlencode($album_name);
+        $album_name = str_replace("%","XY",$album_name);
         if(!empty($_FILES['files']['name'][0])){
             $files = $_FILES['files'];
             $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'pjpeg', 'PJPEG', 'png', 'PNG');
@@ -143,7 +144,7 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
     } else {
         $album_name = null;
         echo "<h3>Voer een geldig bericht in</h3><br>";
-        echo "Characters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ! ( ) - _ + *";
+        echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ * ' \" %<br><br>";
     }
 } else {
     echo "<h3>Voer een geldig bericht in</h3><br>";
