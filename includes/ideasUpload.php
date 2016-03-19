@@ -18,10 +18,10 @@ if($user->isLoggedIn()) {
             <p>We stellen het erg op prijs dat je de tijd hebt genomen om je idee in te sturen.</p>
             <p>Alle ingezonden ideeën zullen bij de desbetreffende commissie terecht komen,</p>
             <p>zij zullen vervolgens de haalbaarheid beoordelen.</p><br>";
-        $to = "martijn13795@hotmail.com";
+        $to = "communicatie@ekc2000.nl, martijn13795@hotmail.com";
         $subject = "Er is een nieuw idee op de site geplaatst";
         $title = "Hallo,";
-        $text = 'Er is een nieuw idee aangemaakt.<br><br>
+        $text = 'Er is een nieuw idee ingestuurd.<br><br>
                  <h3>'. $name .'</h3>
                  <p>'. $idea .'</p><br>
                  Bekijk direct het idee op <a href="http://www.ekc2000.nl/ideeenbus">ekc2000.nl</a>.';

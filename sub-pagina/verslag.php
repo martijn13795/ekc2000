@@ -4,11 +4,12 @@
             <?php
             $db = DB::getInstance();
             $name = $_GET['report'];
+            $name = rawurlencode($name);
             $reports = $db->query("SELECT * FROM reports WHERE name = '" . $name . "'");
             if ($reports->count()) {
                 foreach ($reports->results() as $report) {
                     echo '
-                    <h1>' . escape(str_replace('-', ' ', $report->name)) . '</h1><hr>
+                    <h1>' . escape(rawurldecode($report->name)) . '</h1><hr>
                     <div class="artikelDiv">
                         <span>'. $report->text .'</span>
                     </div>

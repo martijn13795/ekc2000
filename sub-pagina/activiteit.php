@@ -4,6 +4,7 @@
         <?php
         $db = DB::getInstance();
         $name = $_GET['activiteitName'];
+        $name = rawurlencode($name);
         $activities = $db->query("SELECT text FROM activities WHERE name = '" . $name . "'");
         if ($activities->count()) {
             foreach ($activities->results() as $activity) {

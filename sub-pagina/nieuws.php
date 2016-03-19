@@ -12,12 +12,12 @@
             <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
             <div id="uploadContainer" hidden>
                 <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">
-                    <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" maxlength="60" REQUIRED><br>
+                    <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" maxlength="256" REQUIRED><br>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
-                    <input type="submit" class="btn btn-primary" value="Upload"/>
+                    <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
                 </form>
+                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
                 <br>
-
                 <div id="error"></div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
                         }
                                     echo '<a href="/artikel/' . escape($news->name) . '">
-                                        <h3>' . escape(str_replace('-', ' ', $news->name)) . '</h3>
+                                        <h3>' . escape(rawurldecode($news->name)) . '</h3>
                                     </a>
                                     <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>
                               </div>';
@@ -61,6 +61,43 @@
 
             $("#uploadContainer").hide();
         }
+
+        function CKupdate(){
+            for ( var instance in CKEDITOR.instances )
+                CKEDITOR.instances[instance].updateElement();
+        }
+
+        $(document).ready(function () {
+            $('.myForm').ajaxForm({
+                beforeSend: function () {
+                    $("#error").show();
+                    $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
+                },
+                success: function (response) {
+                    if (response == "<h3>Het artikel is geupload</h3>Refresh de pagina<br><br>"){
+                        $("#submit").hide();
+                        $("#refresh").show();
+                        $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                        '<button class="close" data-dismiss="alert">&times;</button>' +
+                        'Het artikel is geupload' +
+                        '</div>');
+                    }
+                    setTimeout(function () {
+                        $('.alerts').children('.alert:last-child').addClass('on');
+                        setTimeout(function () {
+                            $('.alerts').children('.alert:first-child').removeClass('on');
+                            setTimeout(function () {
+                                $('.alerts').children('.alert:first-child').remove();
+                            }, 900);
+                        }, 5000);
+                    }, 10);
+                    $("#error").show();
+                    $("#error").html(response);
+                }
+            });
+            $("#error").hide();
+            $("#refresh").hide();
+        });
 
         function removeNews(id){
             if (!$(".alert").hasClass("on")) {

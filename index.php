@@ -31,7 +31,7 @@
                                     $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 8");
                                     if ($newsdata->count()) {
                                         foreach ($newsdata->results() as $news) {
-                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(str_replace('-', ' ', $news->name)) . '</a></p>';
+                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er is nog geen nieuws beschikbaar.</p>';
@@ -79,7 +79,7 @@
                                 $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC LIMIT 8");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
-                                        echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(str_replace('-', ' ', $activity->name)) . '</a></p>';
+                                        echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
                                     }
                                 } else {
                                     echo '<p class="fotoLink">Er zijn nog geen activiteiten beschikbaar.</p>';

@@ -51,6 +51,7 @@ Cas van Dinter
     <![endif]-->
     <script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
     <script src="../js/my_script.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>

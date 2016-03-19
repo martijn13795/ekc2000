@@ -11,9 +11,8 @@
                         <div id="uploadContainer" hidden>
                         <form method="post" name="myForm" class="myForm" action="../includes/wedstrijdverslagenUpload.php">
                             <label>Naam van het verslag:</label>
-                            <input type="text" class="form-control" placeholder="Naam" id="name" name="name" REQUIRED/><br>
-                            <label>Datum van de wedstrijd:</label><input type="text" class="form-control" name="matchDate"
-                                                                         placeholder="YYYY-MM-DD" REQUIRED><br>
+                            <input type="text" class="form-control" placeholder="Naam" id="name" name="name" maxlength="256" REQUIRED/><br>
+                            <label>Datum van de wedstrijd:</label><input type="text" class="form-control" name="matchDate" placeholder="YYYY-MM-DD" REQUIRED><br>
                             <label>Van welk team is het verslag:</label>
                             <select name="team" class="form-control" id="team" REQUIRED>
                                 <option disabled selected value="">Selecteer een team</option>
@@ -34,12 +33,12 @@
                                 ?>
                             </select><br>
                             <textarea class="ckeditor" id="editor1" name="editor1"></textarea></br>
-                            <input type="submit" id="submit" class="btn btn-success">
+                            <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-success">
                         </form>
+                        <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+                        <br>
+                        <div id="error"></div>
                     </div>
-                    <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
-
-                    <div id="error"></div>
                 </div>
                 <?php
             }
@@ -74,32 +73,41 @@
         </div>
     </div>
     <script>
-        $('#editor1').closest('form').submit(CKupdate);
-
-        function CKupdate() {
-            for (instance in CKEDITOR.instances)
+        function CKupdate(){
+            for ( var instance in CKEDITOR.instances )
                 CKEDITOR.instances[instance].updateElement();
-            return true;
         }
 
         $(document).ready(function () {
             $('.myForm').ajaxForm({
                 beforeSend: function () {
-                    $("#submit").hide();
                     $("#error").show();
                     $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
                 },
                 success: function (response) {
-                    $("#refresh").show();
+                    if (response == "<h3>Het verslag is geupload</h3>Refresh de pagina<br><br>"){
+                        $("#submit").hide();
+                        $("#refresh").show();
+                        $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                            '<button class="close" data-dismiss="alert">&times;</button>' +
+                            'Het verslag is geupload' +
+                            '</div>');
+                    }
+                    setTimeout(function () {
+                        $('.alerts').children('.alert:last-child').addClass('on');
+                        setTimeout(function () {
+                            $('.alerts').children('.alert:first-child').removeClass('on');
+                            setTimeout(function () {
+                                $('.alerts').children('.alert:first-child').remove();
+                            }, 900);
+                        }, 5000);
+                    }, 10);
                     $("#error").show();
                     $("#error").html(response);
-                    $("#name").val('');
-                    $("#team").val('');
-                    $("#editor1").val('');
                 }
             });
-            $("#refresh").hide();
             $("#error").hide();
+            $("#refresh").hide();
         });
 
         $(document).ready(function () {

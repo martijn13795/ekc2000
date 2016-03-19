@@ -4,6 +4,7 @@
         <?php
         $db = DB::getInstance();
         $name = $_GET['artikelName'];
+        $name = rawurlencode($name);
         $newsdata = $db->query("SELECT text FROM news WHERE name = '" . $name . "'");
         if ($newsdata->count()) {
             foreach ($newsdata->results() as $news) {

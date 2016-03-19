@@ -167,7 +167,7 @@ class DB
             $this->query("CREATE TABLE news ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
-                . "name VARCHAR(64), "
+                . "name VARCHAR(256), "
                 . "text LONGTEXT, "
                 . "date DATETIME)");
         }
@@ -175,7 +175,7 @@ class DB
             $this->query("CREATE TABLE activities ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
-                . "name VARCHAR(64), "
+                . "name VARCHAR(256), "
                 . "text LONGTEXT, "
                 . "date DATETIME, "
                 . "date_activity DATE)");
@@ -184,8 +184,8 @@ class DB
             $this->query("CREATE TABLE documents ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
-                . "name VARCHAR(64), "
-                . "description VARCHAR(64), "
+                . "name VARCHAR(256), "
+                . "description VARCHAR(256), "
                 . "path LONGTEXT, "
                 . "date DATETIME)");
         }
@@ -194,7 +194,7 @@ class DB
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
                 . "team_id INT, "
-                . "name VARCHAR(64), "
+                . "name VARCHAR(256), "
                 . "text LONGTEXT, "
                 . "date DATETIME, "
                 . "date_match DATE)");
@@ -203,7 +203,7 @@ class DB
             $this->query("CREATE TABLE ideas ("
                 . "id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "
                 . "user_id INT, "
-                . "name VARCHAR(64), "
+                . "name VARCHAR(256), "
                 . "text VARCHAR(512), "
                 . "date DATETIME)");
         }
