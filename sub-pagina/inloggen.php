@@ -55,11 +55,6 @@ if(!$user->isLoggedIn()) {
     }
     ?>
     <div class="container">
-        <br><div class="col-md-6 col-md-offset-3 well">
-            <p>Gebruikersnaam: voornaam.(tussenvoegsel).achternaam</p>
-            <p>Wachtwoord: Geboortedatum jaar-maand-dag (1900-01-01)</p>
-            <p>Voor vragen mail naar: <a href="mailto:website@ekc2000.nl">website@ekc2000.nl</a></p>
-        </div>
         <div class="row-fluid inloggenDiv">
             <div class="col-md-4 col-md-offset-4 well">
                 <legend>Inloggen</legend>
