@@ -28,10 +28,17 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
+                                    $start = new DateTimeImmutable();
+                                    $datetime = $start->modify('-7 day');
                                     $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 8");
                                     if ($newsdata->count()) {
                                         foreach ($newsdata->results() as $news) {
-                                            echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
+                                            $newsDate = new DateTime($news->date);
+                                            if ($newsDate >= $datetime) {
+                                                echo '<p class="fotoLink" style="font-weight: bold;"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
+                                            } else {
+                                                echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
+                                            }
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er is nog geen nieuws beschikbaar.</p>';
@@ -56,7 +63,12 @@
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
                                             $album_name = str_replace("XY","%",$album->name);
-                                            echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
+                                            $albumDate = new DateTime($album->date);
+                                            if ($albumDate >= $datetime) {
+                                                echo '<p class="fotoLink" style="font-weight: bold;"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
+                                            } else {
+                                                echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
+                                            }
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';
@@ -77,10 +89,16 @@
                             <div class="col-md-12 col-xs-12">
                             <p>
                                 <?php
+                                $dateNow = new DateTimeImmutable();
                                 $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC LIMIT 8");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
-                                        echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
+                                        $activityDate = new DateTime($activity->date_activity);
+                                        if ($activityDate >= $dateNow) {
+                                            echo '<p class="fotoLink" style="font-weight: bold;"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
+                                        } else {
+                                            echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
+                                        }
                                     }
                                 } else {
                                     echo '<p class="fotoLink">Er zijn nog geen activiteiten beschikbaar.</p>';
