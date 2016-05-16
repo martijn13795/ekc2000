@@ -111,7 +111,7 @@
             }
 
             function removeTrue(id){
-                $.get("includes/removeactivity.php?id=" + id), function(data){
+                $.get("includes/removeActivity.php?id=" + id), function(data){
                     $('#result').html(data);
                 };
                 location.reload();
