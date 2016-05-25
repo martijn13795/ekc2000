@@ -29,7 +29,7 @@
                 <?php
                 }
                 $db = DB::getInstance();
-                $activities = $db->query("SELECT date, date_activity, name, id, user_id FROM activities ORDER BY date DESC");
+                $activities = $db->query("SELECT date, date_activity, name, id, user_id FROM activities ORDER BY date_activity DESC");
                 if ($activities->count()) {
                     foreach ($activities->results() as $activity) {
                         echo '<div class="well activiteitDiv">';

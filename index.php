@@ -90,7 +90,7 @@
                             <p>
                                 <?php
                                 $dateNow = new DateTimeImmutable();
-                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date DESC LIMIT 8");
+                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date_activity DESC LIMIT 8");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
                                         $activityDate = new DateTime($activity->date_activity);
