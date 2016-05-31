@@ -4,7 +4,7 @@ if(!isset($_SESSION)){session_start();}
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => '127.0.0.1',
+        'host' => '82.73.86.16',
         'username' => 'ekc2000',
         'password' => 'xH2b8C5PnajhnXJ5',
         'db' => 'ekc'
