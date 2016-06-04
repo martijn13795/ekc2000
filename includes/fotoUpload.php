@@ -25,6 +25,28 @@ function imgResize($target, $newcopy, $w, $h, $ext)
     imagejpeg($tci, $newcopy, 80);
 }
 
+function image_fix_orientation($filename) {
+    $exif = exif_read_data($filename);
+    if (!empty($exif['Orientation'])) {
+        $image = imagecreatefromjpeg($filename);
+        switch ($exif['Orientation']) {
+            case 3:
+                $image = imagerotate($image, 180, 0);
+                break;
+
+            case 6:
+                $image = imagerotate($image, -90, 0);
+                break;
+
+            case 8:
+                $image = imagerotate($image, 90, 0);
+                break;
+        }
+
+        imagejpeg($image, $filename, 90);
+    }
+}
+
 function formatSizeUnits($bytes)
 {
     if ($bytes >= 1073741824)
@@ -69,6 +91,8 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                 $file_size = $files['size'][$position];
                 $file_error = $files['error'][$position];
 
+                image_fix_orientation($file_tmp);
+
                 $file_ext = pathinfo($files['name'][$position], PATHINFO_EXTENSION);
                 $file_name = basename($file_name, ".".$file_ext);
                 if(in_array($file_ext, $allowed)){
@@ -112,7 +136,6 @@ if (!empty(trim($_POST['name'])) && isset($_POST['name'])){
                                 $wmax = 1024;
                                 $hmax = 1080;
                                 imgResize($file_path, $file_path_mobile, $wmax, $hmax, $file_ext);
-
                                 $db->insert('pictures',array(
                                     'user_id' => $user->data()->id,
                                     'album_id' => $album_id,
