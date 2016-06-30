@@ -38,13 +38,13 @@ if($user->isLoggedIn()) {
                     </script>
                     <?php
                     echo "<h3>Uw wachtwoord is veranderd</h3>";
-                    $to = $user->data()->email;
+                    $to = $user->data()->mail;
                     $subject = "Uw wachtwoord is gewijzigd";
-                    $title = "Hallo " . $name . " " . $surname . ",";
+                    $title = "Hallo " . $user->data()->name . " " . $user->data()->surname . ",";
                     $text = '<h3>Uw wachtwoord is gewijzigd.</h3>
                                             <p>Uw gebruikersnaam is: '. $user->data()->username .'</p>
                                             <p>Uw wachtwoord is: '. $_POST['new_password'] .'</p><br>
-                                            <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                                            <p>log nu in op <a href="http://ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                     email($to, $subject, $title, $text);
                 }
             } else {
