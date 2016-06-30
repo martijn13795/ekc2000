@@ -73,6 +73,10 @@
         </div>
     </div>
     <script>
+        function update(updateThing, updateId){
+            window.location = '/update/' + updateThing + '&' + updateId;
+        }
+        
         function CKupdate(){
             for ( var instance in CKEDITOR.instances )
                 CKEDITOR.instances[instance].updateElement();

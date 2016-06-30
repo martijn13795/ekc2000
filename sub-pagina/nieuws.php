@@ -34,6 +34,7 @@
                         echo '<div class="well nieuwsDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("admin"))) {
                             echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
+                            echo '<i class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`news`, ' . escape($news->id) . ')"></i>';
                         }
                                     echo '<a href="/artikel/' . escape($news->name) . '">
                                         <h3>' . escape(rawurldecode($news->name)) . '</h3>
@@ -49,6 +50,10 @@
         </div>
     </div>
     <script>
+        function update(updateThing, updateId){
+            window.location = '/update/' + updateThing + '&' + updateId;
+        }
+
         function showUpload() {
             $("#upload").attr("onclick", "hideUpload()");
             $("#upload").text("Verberg");

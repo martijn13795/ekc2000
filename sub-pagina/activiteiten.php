@@ -35,6 +35,7 @@
                         echo '<div class="well activiteitDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("admin"))) {
                             echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';
+                            echo '<i class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`activities`, ' . escape($activity->id) . ')"></i>';
                         }
                         echo '<a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(rawurldecode($activity->name)) . '</h3></a>
                     <p>Activiteit datum: ' . escape($activity->date_activity) . '</p></div>';
@@ -46,6 +47,10 @@
             </div>
         </div>
         <script>
+            function update(updateThing, updateId){
+                window.location = '/update/' + updateThing + '&' + updateId;
+            }
+
             function showUpload() {
                 $("#upload").attr("onclick", "hideUpload()");
                 $("#upload").text("Verberg");
