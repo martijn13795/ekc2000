@@ -35,7 +35,7 @@
                         echo '<div class="well activiteitDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("admin"))) {
                             echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';
-                            echo '<i class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`activities`, ' . escape($activity->id) . ')"></i>';
+                            echo '<div class="hidden visible-lg"><i class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`activities`, ' . escape($activity->id) . ')"></i></div>';
                         }
                         echo '<a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(rawurldecode($activity->name)) . '</h3></a>
                     <p>Activiteit datum: ' . escape($activity->date_activity) . '</p></div>';
