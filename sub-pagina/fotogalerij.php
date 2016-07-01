@@ -44,6 +44,7 @@
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
                                     echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
+                                    echo '<div class="hidden visible-lg"><i class="fa fa-plus-square-o" style="float: right; color: green;" onclick="update(\''.escape(rawurldecode($album_name)).'\')"></i></div>';
                                 }
                                 echo '<a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
                                     . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
@@ -53,6 +54,7 @@
                                 echo '<div class="well albumsDiv">';
                                 if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
                                     echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
+                                    echo '<div class="hidden visible-lg"><i class="fa fa-plus-square-o" style="float: right; color: green;" onclick="update(\''.escape(rawurldecode($album_name)).'\')"></i></div>';
                                 }
                                 echo '<a href="/album/' . $album->name . '"><h3>'
                                     . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
@@ -67,6 +69,14 @@
             </div>
         </div>
         <script>
+            function update(name) {
+                document.getElementById('name').value = name;
+                $("#upload").attr("onclick", "hideUpload()");
+                $("#upload").text("Verberg");
+
+                $("#uploadContainer").show();
+            }
+
             $(document).ready(function () {
                 $('.myForm').ajaxForm({
                     beforeSend: function () {
