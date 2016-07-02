@@ -32,26 +32,26 @@ Cas van Dinter
     <link rel="shortcut icon" href="/images/favicon/favicon.ico">
 
     <!--dit is voor de fotogalerij-->
-    <link rel="stylesheet" href="../css/blueimp-gallery.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-image-gallery.min.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/bootstrap-image-gallery.min.css">
 
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="/images/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/fonts/font-awesome/css/font-awesome.min.css">
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="../js/jquery-2.2.2.min.js" type="text/javascript"></script>
-    <script src="../js/my_script.js" type="text/javascript"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery-2.2.2.min.js" type="text/javascript"></script>
+    <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/js/my_script.js" type="text/javascript"></script>
+    <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/js/bootstrap.min.js"></script>
 </head>
 <body>
     <script>

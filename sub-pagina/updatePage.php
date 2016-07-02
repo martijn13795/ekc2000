@@ -1,5 +1,5 @@
 <?php include '../includes/html.php'; ?>
-    <script src="../ckeditor/ckeditor.js"></script>
+    <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/ckeditor/ckeditor.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container">
         <?php
