@@ -33,8 +33,8 @@
                     foreach ($newsdata->results() as $news) {
                         echo '<div class="well nieuwsDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("admin"))) {
-                            echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
-                            echo '<div class="hidden visible-lg"><i class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`news`, ' . escape($news->id) . ')"></i></div>';
+                            echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
+                            echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`news`, ' . escape($news->id) . ')"></i></div>';
                         }
                                     echo '<a href="/artikel/' . escape($news->name) . '">
                                         <h3>' . escape(rawurldecode($news->name)) . '</h3>
@@ -51,7 +51,7 @@
     </div>
     <script>
         function update(updateThing, updateId){
-            window.location = '/update/' + updateThing + '/' + updateId;
+            window.location = '/bewerk/' + updateThing + '/' + updateId;
         }
 
         function showUpload() {

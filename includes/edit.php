@@ -17,7 +17,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
                     'text' => $text,
                     'date' => date("Y-m-d H:i:s")
                 ));
-                echo "<h3>Het updaten is afgerond</h3>";
+                echo "<h3>Het bewerken is voltooid</h3>";
                 echo "Ga terug naar de pagina<br><br>";
             } else {
                 echo "<h3>Voer een geldig bericht in</h3><br>";

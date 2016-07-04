@@ -24,14 +24,14 @@
                     $location = "/wedstrijdverslagen";
                 }
         ?>
-            <h1>Update - <?php echo escape(rawurldecode($name)); ?></h1>
+            <h1>Bewerk - <?php echo escape(rawurldecode($name)); ?></h1>
             <hr>
             <div class="hidden visible-lg">
                 <div id="uploadContainer">
-                    <form action="../includes/update.php?updateThing=<?php echo $updateThing; ?>&updateId=<?php echo $updateId; ?>" method="POST" class="myForm" name="myForm">
-                        <label>Update naam:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" value="<?php echo escape(rawurldecode($name)); ?>" maxlength="256" REQUIRED><br>
+                    <form action="../../includes/edit.php?updateThing=<?php echo $updateThing; ?>&updateId=<?php echo $updateId; ?>" method="POST" class="myForm" name="myForm">
+                        <label>Bewerk naam:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" value="<?php echo escape(rawurldecode($name)); ?>" maxlength="256" REQUIRED><br>
                         <textarea class="ckeditor" id="editor1" name="editor1"><?php echo $text; ?></textarea><br>
-                        <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Update"/>
+                        <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Bewerken"/>
                     </form>
                     <button class="btn btn-info" id="refresh" onclick="window.location.href = '<?php echo $location ?>';">Terug</button>
                     <br>
@@ -56,12 +56,12 @@
                     $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
                 },
                 success: function (response) {
-                    if (response == "<h3>Het updaten is afgerond</h3>Ga terug naar de pagina<br><br>"){
+                    if (response == "<h3>Het bewerken is voltooid</h3>Ga terug naar de pagina<br><br>"){
                         $("#submit").hide();
                         $("#refresh").show();
                         $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
                             '<button class="close" data-dismiss="alert">&times;</button>' +
-                            'Het updaten is afgerond' +
+                            'Het bewerken is voltooid' +
                             '</div>');
                     }
                     setTimeout(function () {

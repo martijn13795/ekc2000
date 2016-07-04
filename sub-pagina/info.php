@@ -71,7 +71,6 @@ if ($user->isLoggedIn()) {
 <?php
 }
 ?>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>

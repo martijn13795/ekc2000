@@ -24,7 +24,7 @@ if ($messages->count()) {
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . ' || ' . escape($userMessage->getGroup()) . '</strong> <small class="pull-right text-muted">';
                 if ($user->isLoggedIn() && $user->data()->id == $user_id->id) {
-                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ')"></i>';
+                    echo '<i title="Verwijderen" class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ')"></i>';
                 }
                             echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>
@@ -43,14 +43,14 @@ if ($messages->count()) {
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
                 if ($user->isLoggedIn() && $user->hasPermission("admin")) {
                     if ($message->approved == 0){
-                        echo '<i class="fa fa-check" style="font-size: 15px; color: green; cursor: pointer;" onclick="approveMes(' . escape($message->id) . ')"></i> ';
+                        echo '<i title="Goedkeuren" class="fa fa-check" style="font-size: 15px; color: green; cursor: pointer;" onclick="approveMes(' . escape($message->id) . ')"></i> ';
                     }
                     if ($message->approved == 1){
-                        echo '<i class="fa fa-close" style="font-size: 15px; color: red; cursor: pointer;" onclick="disapproveMes(' . escape($message->id) . ')"></i> ';
+                        echo '<i title="Afkeuren" class="fa fa-close" style="font-size: 15px; color: red; cursor: pointer;" onclick="disapproveMes(' . escape($message->id) . ')"></i> ';
                     }
                 }
                 if ($user->isLoggedIn() && ($user->data()->id == $user_id->id || $user->hasPermission("admin"))) {
-                    echo '<i class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
+                    echo '<i title="Verwijderen" class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
                 }
                 echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
                         </div>

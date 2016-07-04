@@ -74,7 +74,7 @@
     </div>
     <script>
         function update(updateThing, updateId){
-            window.location = '/update/' + updateThing + '/' + updateId;
+            window.location = '/bewerk/' + updateThing + '/' + updateId;
         }
         
         function CKupdate(){
