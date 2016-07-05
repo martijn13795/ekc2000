@@ -70,13 +70,16 @@ if ($user->isLoggedIn()) {
                             <p><?php echo escape($user->data()->birthdate); ?></p>
                         </div>
                         <div class="col-md-6 col-xs-12">
-                            <br><button class="btn btn-primary" id="password" onclick="showPassword()">Wachtwoord veranderen</button>
+                            <br><button class="btn btn-primary" id="password" style="width: 200px;" onclick="showPassword()">Wachtwoord veranderen</button>
                         </div>
                         <?php
                         if ($user->hasPermission('admin')) {
                         ?>
                             <div class="col-md-6 col-xs-12">
-                                <br><button class="btn btn-primary" id="upload" onclick="showUpload()">Nieuw account maken</button>
+                                <br><button class="btn btn-primary" id="upload" style="width: 200px;" onclick="showUpload()">Nieuw account maken</button>
+                            </div>
+                            <div class="hidden visible-lg col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="editUser" style="width: 200px; margin-top: 10px;" onclick="window.location='/bewerk-gebruikers'">Bewerk gebruikers</button>
                             </div>
                         <?php
                         }

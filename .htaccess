@@ -79,3 +79,5 @@ RewriteRule ^verslag/([0-9a-zA-Z_-]+.*) sub-pagina/verslag.php?report=$1 [NC,L]
 RewriteRule ^uitslag-poules sub-pagina/uitslag-poules.php [NC,L]
 
 RewriteRule ^bewerk/([0-9a-zA-Z_-]+.*)/([0-9a-zA-Z_-]+.*) sub-pagina/editPage.php?updateThing=$1&updateId=$2 [NC,L]
+
+RewriteRule ^bewerk-gebruiker sub-pagina/editUser.php [NC,L]
