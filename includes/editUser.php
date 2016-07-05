@@ -20,7 +20,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
             $insert = $db->query("SELECT * FROM trainers where user_id='$id'");
             if ($insert->count()){$insert = $db->query("update trainers set team_id='$data' where user_id='$id'");}
             else {
-                $db->insert('players', array(
+                $db->insert('trainers', array(
                     'team_id' => $data,
                     'user_id' => $id
                 ));
