@@ -6,11 +6,15 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     $id = $_GET['id'];
     $userID = $user->data()->id;
     if($user->isLoggedIn() && $user->hasPermission('admin')){
-        if($db->query("SELECT * FROM pictures WHERE id = '$id'")->count()){
+        if($query = $db->query("SELECT * FROM pictures WHERE id = '$id'")->first()){
+            unlink($query->path);
+            unlink($query->pathMobile);
             $db->query("DELETE FROM pictures WHERE id = '$id'");
         }
     } elseif($user->isLoggedIn()){
-        if($db->query("SELECT * FROM pictures WHERE id = '$id' AND user_id = '$userID'")->count()){
+        if($query = $db->query("SELECT * FROM pictures WHERE id = '$id' AND user_id = '$userID'")->first()){
+            unlink($query->path);
+            unlink($query->pathMobile);
             $db->query("DELETE FROM pictures WHERE id = '$id'");
         }
     }
