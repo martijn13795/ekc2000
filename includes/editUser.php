@@ -26,7 +26,12 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
                 ));
             };
         }else if ($colum == "delete"){
-            $delete = $db->query("DELETE FROM `users` WHERE `users`.`id` = '$id'");
+            $query = $db->query("SELECT * FROM users WHERE id = '$id'")->first();
+            unlink($query->IconPath);
+            $deleteUser = $db->query("DELETE FROM `users` WHERE `users`.`id` = '$id'");
+            $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
+            $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
+            $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
         }else {
             $db->query("update users set `$colum`='$data' where id='$id'");
         }
