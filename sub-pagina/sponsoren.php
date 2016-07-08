@@ -12,11 +12,13 @@
                 <div id="uploadContainer" hidden>
                     <h1>Upload sponsoren</h1><br>
 
-                    <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
-                          enctype="multipart/form-data">
-                        <div class="hidden"><input type="text" id="name" class="form-control" name="name"
-                                                   value="Sponsoren" maxlength="60" REQUIRED></div>
-                        <input type="file" id="file" name="files[]" multiple REQUIRED><br>
+                    <form action="../includes/sponsorUpload.php" method="post" class="myForm" name="myForm" enctype="multipart/form-data">
+                        <div class="hidden">
+                            <input type="text" id="name" class="form-control" name="name" value="Sponsoren" maxlength="60" REQUIRED>
+                        </div>
+                        <label>Titel van sponsor:</label><input type="text" id="title" class="form-control" name="title" placeholder="Title" maxlength="255" REQUIRED><br>
+                        <label>Link van sponsor:</label><input type="text" id="link" class="form-control" name="link" placeholder="Link" maxlength="255" REQUIRED><br>
+                        <input type="file" id="file" name="files[]" REQUIRED><br>
                         <input class="btn btn-success" id="submit" type="submit" value="Upload">
                     </form>
                     <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
@@ -26,10 +28,7 @@
                     <br>
 
                     <div class="progress progress-striped active">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                             aria-valuemax="100"
-                             style="width: 0%">
-
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         </div>
                     </div>
                 </div>
@@ -42,14 +41,14 @@
             <?php
             $album = $db->query("SELECT * FROM albums WHERE name ='Sponsoren'");
             if ($album->count()) {
-                $sponsoren = $db->query("SELECT * FROM pictures WHERE album_id = '" . $album->first()->id . "'");
+                $sponsoren = $db->query("SELECT * FROM sponsoren WHERE album_id = '" . $album->first()->id . "'");
                 if ($sponsoren->count()) {
                     foreach ($sponsoren->results() as $sponsor) {
                         echo '<div class="col-md-2 col-xs-2 sponsorenImg">';
                         if ($user->isLoggedIn() && $user->hasPermission('admin')) {
                             echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\'' . escape($sponsor->id) . '\', \'' . escape($sponsor->pathMobile) . '\');"></i></div>';
                         }
-                        echo '<img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
+                        echo '<img onclick="window.open(\'' . escape($sponsor->link) . '\', \'_blank\');" title="' . escape($sponsor->title) . '" style="cursor: pointer;" class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                               </div>';
                     }
                 } else {
@@ -116,7 +115,7 @@
         }
 
         function imageRemove(id) {
-            $.get("../includes/removeImage.php?id=" + id), function (data) {
+            $.get("../includes/removeSponsor.php?id=" + id), function (data) {
                 $('#result').html(data);
             };
             setTimeout(function () {

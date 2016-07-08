@@ -118,12 +118,12 @@
                         <?php
                         $album = $db->query("SELECT * FROM albums WHERE name ='Sponsoren'");
                         if($album->count()) {
-                            $sponsoren = $db->query("SELECT * FROM pictures WHERE album_id = '".$album->first()->id."'");
+                            $sponsoren = $db->query("SELECT * FROM sponsoren WHERE album_id = '".$album->first()->id."'");
                             if ($sponsoren->count()) {
                                 foreach ($sponsoren->results() as $sponsor) {
                                     echo '
                                     <div class="col-md-2 col-xs-2 sponsorenImg">
-                                            <img class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
+                                            <img onclick="window.open(\'' . escape($sponsor->link) . '\', \'_blank\');" title="' . escape($sponsor->title) . '" style="cursor: pointer;" class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>
                                     </div>
                                     ';
                                 }
