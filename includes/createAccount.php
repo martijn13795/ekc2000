@@ -24,7 +24,6 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
 
         $username = $surname_prefix ? $name.'.'.$surname_prefix.'.'.$surname : $name.'.'.$surname;
         $username = strtolower($username);
-        print_r($username);
 
         $users = $db->query("SELECT * FROM users WHERE username = '". escape($username) ."'");
         if(!$users->count()){
@@ -36,7 +35,6 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                     $file_error = $icon['error'];
                     $file_ext = pathinfo($icon['name'], PATHINFO_EXTENSION);
                     $file_name = basename($icon['name'], ".".$file_ext);
-                    print_r($_FILES['icon']);
                     if(in_array($file_ext, $allowed)) {
                         if ($file_error === 0) {
                             if ($file_size <= $size) {

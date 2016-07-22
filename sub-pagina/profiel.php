@@ -72,6 +72,9 @@ if ($user->isLoggedIn()) {
                         <div class="col-md-6 col-xs-12">
                             <br><button class="btn btn-primary" id="password" style="width: 200px;" onclick="showPassword()">Wachtwoord veranderen</button>
                         </div>
+                        <div class="col-md-6 col-xs-12" style="height: 54px;">
+
+                        </div>
                         <?php
                         if ($user->hasPermission('admin')) {
                         ?>
@@ -79,7 +82,13 @@ if ($user->isLoggedIn()) {
                                 <br><button class="btn btn-primary" id="upload" style="width: 200px;" onclick="showUpload()">Nieuw account maken</button>
                             </div>
                             <div class="hidden visible-lg col-md-6 col-xs-12">
-                                <br><button class="btn btn-primary" id="editUser" style="width: 200px; margin-top: 10px;" onclick="window.location='/bewerk-gebruikers'">Bewerk gebruikers</button>
+                                <br><button class="btn btn-primary" id="editUser" style="width: 200px;" onclick="window.location='/bewerk-gebruikers'">Bewerk gebruikers</button>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="uploadTeam" style="width: 200px;" onclick="showTeam()">Nieuw team maken</button>
+                            </div>
+                            <div class="hidden visible-lg col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="editTeam" style="width: 200px;" onclick="window.location='/bewerk-teams'">Bewerk teams</button>
                             </div>
                         <?php
                         }
@@ -98,7 +107,7 @@ if ($user->isLoggedIn()) {
                 <label>Nieuw wachtwoord:</label><input type="password" id="new_password" class="form-control" name="new_password" placeholder="Nieuw wachtwoord" maxlength="60" REQUIRED><br>
                 <label>Herhaal nieuw wachtwoord:</label><input type="password" id="new_password_repeat" class="form-control" name="new_password_repeat" placeholder="Herhaal nieuw wachtwoord" maxlength="60" REQUIRED><br>
                 <input type="hidden" name="token" value="<?php echo Token::generate() ?>">
-                <input class="btn btn-primary" id="submit" type="submit">
+                <input class="btn btn-primary submit" id="submit" type="submit">
             </form>
             <br>
         </div>
@@ -158,7 +167,58 @@ if ($user->isLoggedIn()) {
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
-                    <input class="btn btn-primary" id="submit" type="submit">
+                    <input class="btn btn-primary submit" id="submit" type="submit">
+                </form>
+            </div>
+            <?php
+        }
+        if ($user->hasPermission('admin')) {
+            ?>
+
+            <div class="col-md-12 col-xs-12" id="uploadTeamDiv" hidden><br>
+
+                <h1>Maak een nieuw team</h1>
+
+                <form action="../includes/createTeam.php" method="post" class="myForm" name="myForm">
+                    <label>Naam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
+                    <label>Foto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
+                    <label>trainingstijden:</label>
+                    <div class="form-inline">
+                        <label>Dag:</label>
+                        <select class="form-control" name="day1" id="day1" REQUIRED>
+                            <option disabled selected value="">Kies een dag</option>
+                            <option value="1">Maandag</option>
+                            <option value="2">Dinsdag</option>
+                            <option value="3">Woensdag</option>
+                            <option value="4">Donderdag</option>
+                            <option value="5">Vrijdag</option>
+                        </select>
+                        <label>Begin:</label><input type="time" id="begin1" class="form-control" name="begin1" REQUIRED>
+                        <label>Eind:</label><input type="time" id="end1" class="form-control" name="end1" REQUIRED><br><br>
+                        <label>Dag:</label>
+                        <select class="form-control" name="day2" id="day2">
+                            <option disabled selected value="">Kies een dag</option>
+                            <option value="1">Maandag</option>
+                            <option value="2">Dinsdag</option>
+                            <option value="3">Woensdag</option>
+                            <option value="4">Donderdag</option>
+                            <option value="5">Vrijdag</option>
+                        </select>
+                        <label>Begin:</label><input type="time" id="begin2" class="form-control" name="begin2">
+                        <label>Eind:</label><input type="time" id="end2" class="form-control" name="end2"><br><br>
+                        <label>Dag:</label>
+                        <select class="form-control" name="day3" id="day3">
+                            <option disabled selected value="">Kies een dag</option>
+                            <option value="1">Maandag</option>
+                            <option value="2">Dinsdag</option>
+                            <option value="3">Woensdag</option>
+                            <option value="4">Donderdag</option>
+                            <option value="5">Vrijdag</option>
+                        </select>
+                        <label>Begin:</label><input type="time" id="begin3" class="form-control" name="begin3">
+                        <label>Eind:</label><input type="time" id="end3" class="form-control" name="end3"><br><br>
+                    </div>
+                    <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
             </div>
             <?php
@@ -174,7 +234,7 @@ if ($user->isLoggedIn()) {
         $(document).ready(function () {
             $('.myForm').ajaxForm({
                 beforeSend: function () {
-                    $("#submit").hide();
+                    $(".submit").hide();
                     $("#error").show();
                     $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
                 },
@@ -197,6 +257,16 @@ if ($user->isLoggedIn()) {
             $("#upload").attr("onclick", "showUpload()");
             $("#upload").text("Nieuw account maken");
             $("#uploadContainer").hide();
+        }
+        function showTeam() {
+            $("#uploadTeam").attr("onclick", "hideTeam()");
+            $("#uploadTeam").text("Verberg");
+            $("#uploadTeamDiv").show();
+        }
+        function hideTeam() {
+            $("#uploadTeam").attr("onclick", "showTeam()");
+            $("#uploadTeam").text("Nieuw team maken");
+            $("#uploadTeamDiv").hide();
         }
 
         function showPassword() {
