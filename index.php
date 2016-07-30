@@ -226,7 +226,8 @@
 <script>
     $(document).ready(function() {
         $(".titleDiv p").dotdotdot({
-            watch: "window"
+            watch: "window",
+            height		: null
         });
     });
 
