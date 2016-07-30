@@ -1,4 +1,5 @@
 <?php include 'includes/html.php';?>
+<script src="js/jquery.dotdotdot.min.js"></script>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
@@ -30,14 +31,14 @@
                                     <?php
                                     $start = new DateTimeImmutable();
                                     $datetime = $start->modify('-7 day');
-                                    $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 8");
+                                    $newsdata = $db->query("SELECT * FROM news ORDER BY date DESC LIMIT 6");
                                     if ($newsdata->count()) {
                                         foreach ($newsdata->results() as $news) {
                                             $newsDate = new DateTime($news->date);
                                             if ($newsDate >= $datetime) {
-                                                echo '<p class="fotoLink" style="font-weight: bold;"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
                                             } else {
-                                                echo '<p class="fotoLink"><a href="/artikel/' . escape($news->name) . '">' . escape(explode(" ", $news->date)[0]) . ' ' . escape(rawurldecode($news->name)) . '</a></p>';
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
                                             }
                                         }
                                     } else {
@@ -59,15 +60,15 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 8");
+                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 6");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
                                             $album_name = str_replace("XY","%",$album->name);
                                             $albumDate = new DateTime($album->date);
                                             if ($albumDate >= $datetime) {
-                                                echo '<p class="fotoLink" style="font-weight: bold;"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
                                             } else {
-                                                echo '<p class="fotoLink"><a href="/album/' . escape($album->name) . '">' . escape(explode(" ", $album->date)[0]) . ' ' . escape(rawurldecode($album_name)) . '</a></p>';
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
                                             }
                                         }
                                     } else {
@@ -90,14 +91,14 @@
                             <p>
                                 <?php
                                 $dateNow = new DateTimeImmutable();
-                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date_activity DESC LIMIT 8");
+                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date_activity DESC LIMIT 6");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
                                         $activityDate = new DateTime($activity->date_activity);
                                         if ($activityDate >= $dateNow) {
-                                            echo '<p class="fotoLink" style="font-weight: bold;"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
                                         } else {
-                                            echo '<p class="fotoLink"><a href="/activiteit/' . escape($activity->name) . '">' . escape($activity->date_activity) . ' ' . escape(rawurldecode($activity->name)) . '</a></p>';
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
                                         }
                                     }
                                 } else {
@@ -223,6 +224,12 @@
         </div>
 <script src="js/chat_script.js"></script>
 <script>
+    $(document).ready(function() {
+        $(".titleDiv p").dotdotdot({
+            watch: "window"
+        });
+    });
+
     var totalMessagesDB = document.getElementById("totalMessagesDB").textContent;
     var val = 25;
     localStorage.setItem("val", val);
