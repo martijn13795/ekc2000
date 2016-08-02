@@ -66,9 +66,9 @@
                                             $album_name = str_replace("XY","%",$album->name);
                                             $albumDate = new DateTime($album->date);
                                             if ($albumDate >= $datetime) {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
                                             } else {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
                                             }
                                         }
                                     } else {
@@ -96,9 +96,9 @@
                                     foreach ($activities->results() as $activity) {
                                         $activityDate = new DateTime($activity->date_activity);
                                         if ($activityDate >= $dateNow) {
-                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
                                         } else {
-                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($activity->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape($activity->date_activity) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($activity->name)) ?></p></div></div> <?php
                                         }
                                     }
                                 } else {
