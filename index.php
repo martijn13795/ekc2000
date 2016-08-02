@@ -36,9 +36,9 @@
                                         foreach ($newsdata->results() as $news) {
                                             $newsDate = new DateTime($news->date);
                                             if ($newsDate >= $datetime) {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
                                             } else {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/artikel/<?php echo escape($news->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $news->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($news->name)) ?></p></div></div> <?php
                                             }
                                         }
                                     } else {
