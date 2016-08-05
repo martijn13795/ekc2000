@@ -33,6 +33,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                     <option <?php if ($schedules2){ if ($schedules2->day_id == 3){echo "selected";}} ?> value="3">Woensdag</option>
                     <option <?php if ($schedules2){ if ($schedules2->day_id == 4){echo "selected";}} ?> value="4">Donderdag</option>
                     <option <?php if ($schedules2){ if ($schedules2->day_id == 5){echo "selected";}} ?> value="5">Vrijdag</option>
+                    <option value="6">Geen</option>
                 </select>
                 <label>Begin:</label><input type="time" value="<?php echo $schedules2->start ?>" id="begin2" class="form-control" name="begin2">
                 <label>Eind:</label><input type="time" value="<?php echo $schedules2->end ?>" id="end2" class="form-control" name="end2"><br><br>
@@ -45,6 +46,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                     <option <?php if ($schedules3){ if ($schedules3->day_id == 3){echo "selected";}} ?> value="3">Woensdag</option>
                     <option <?php if ($schedules3){ if ($schedules3->day_id == 4){echo "selected";}} ?> value="4">Donderdag</option>
                     <option <?php if ($schedules3){ if ($schedules3->day_id == 5){echo "selected";}} ?> value="5">Vrijdag</option>
+                    <option value="6">Geen</option>
                 </select>
                 <label>Begin:</label><input type="time" value="<?php echo $schedules3->start ?>" id="begin3" class="form-control" name="begin3">
                 <label>Eind:</label><input type="time" value="<?php echo $schedules3->end ?>" id="end3" class="form-control" name="end3"><br><br>

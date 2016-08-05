@@ -79,20 +79,54 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
                             ));
                         }
                         if ($day2) {
-                            $schedules2 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 1,2")->first();
-                            $db->update('schedules', $schedules2->id, array(
-                                'day_id' => $day2,
-                                'start' => $begin2,
-                                'end' => $end2
-                            ));
+                            if ($day2 == 6) {
+                                if ($db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 1,2")->count()) {
+                                    $schedules2 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 1,2")->first();
+                                    $deleteSchedule = $db->query("DELETE FROM `schedules` WHERE `schedules`.`id` = '$schedules2->id'");
+                                }
+                            } else {
+                                if ($db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 1,2")->count()) {
+                                    $schedules2 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 1,2")->first();
+                                    $db->update('schedules', $schedules2->id, array(
+                                        'day_id' => $day2,
+                                        'start' => $begin2,
+                                        'end' => $end2
+                                    ));
+                                } else {
+                                    $team = $db->query("SELECT id FROM teams WHERE name = '" . escape($name) . "'")->first();
+                                    $db->insert('schedules', array(
+                                        'team_id' => $team->id,
+                                        'day_id' => $day2,
+                                        'start' => $begin2,
+                                        'end' => $end2
+                                    ));
+                                }
+                            }
                         }
                         if ($day3) {
-                            $schedules3 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 2,3")->first();
-                            $db->update('schedules', $schedules3->id, array(
-                                'day_id' => $day3,
-                                'start' => $begin3,
-                                'end' => $end3
-                            ));
+                            if ($day3 == 6) {
+                                if ($db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 2,3")->count()) {
+                                    $schedules2 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 2,3")->first();
+                                    $deleteSchedule = $db->query("DELETE FROM `schedules` WHERE `schedules`.`id` = '$schedules3->id'");
+                                }
+                            } else {
+                                if ($db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 2,3")->count()) {
+                                    $schedules3 = $db->query("SELECT * FROM `schedules` WHERE `team_id` = '$id' LIMIT 2,3")->first();
+                                    $db->update('schedules', $schedules3->id, array(
+                                        'day_id' => $day3,
+                                        'start' => $begin3,
+                                        'end' => $end3
+                                    ));
+                                } else {
+                                    $team = $db->query("SELECT id FROM teams WHERE name = '" . escape($name) . "'")->first();
+                                    $db->insert('schedules', array(
+                                        'team_id' => $team->id,
+                                        'day_id' => $day3,
+                                        'start' => $begin3,
+                                        'end' => $end3
+                                    ));
+                                }
+                            }
                         }
                         echo "<h3>Team Bewerkt</h3>";
                     } else {
