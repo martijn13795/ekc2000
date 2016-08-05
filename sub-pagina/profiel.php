@@ -168,70 +168,174 @@ if ($user->isLoggedIn()) {
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
                     <label>Permissies:</label><br>
+                    <?php
+                    if($user->hasPermission('dev') || $user->hasPermission('chatapprove')) {
+                    ?>
+                        <div class="checkbox checkbox-warning">
+                            <input id="chatapprove" type="checkbox" value="1" name="permissions[chatapprove]">
+                            <label for="chatapprove" style="font-weight: normal;">Chatbericht goedkeuring</label>
+                        </div>
+                     <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('chatremove')) {
+                    ?>
                     <div class="checkbox checkbox-danger">
-                        <input id="chatapprove" type="checkbox" value="1" name="permissions[chatapprove]">
-                        <label for= "chatapprove" style="font-weight: normal;">Chatbericht goedkeuring</label>
+                        <input id="chatremove" type="checkbox" value="1" name="permissions[chatremove]">
+                        <label for="chatremove" style="font-weight: normal;">Chatbericht verwijderen</label>
                     </div>
-                    <label><input type="checkbox" value="1" name="permissions[chatremove]">
-                        Chatbericht verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[sponsorupload]">
-                        Sponsoren uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[sponsorremove]">
-                        Sponsoren verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[documentupload]">
-                        Documenten uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[documentremove]">
-                        Documenten verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[newsupload]">
-                        Nieuws uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[newsremove]">
-                        Nieuws verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[newschange]">
-                        Nieuws aanpassen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[imageupload]">
-                        Foto's/albums uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[imageremove]">
-                        Foto's/albums verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[activityupload]">
-                        Activiteiten uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[activityremove]">
-                        Activiteiten verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[activitychange]">
-                        Activiteiten aanpassen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[reportupload]">
-                        Wedstrijdverslagen uploaden
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[reportremove]">
-                        Wedstrijdverslagen verwijderen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[reportchange]">
-                        Wedstrijdverslagen aanpassen
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[createuser]">
-                        Gebruikers aanmaken
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[edituser]">
-                        Gebruikers bewerken
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[createteam]">
-                        Team aanmaken
-                    </label><br>
-                    <label><input type="checkbox" value="1" name="permissions[editteam]">
-                        Team bewerken
-                    </label><br>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('sponsorupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="sponsorupload" type="checkbox" value="1" name="permissions[sponsorupload]">
+                        <label for="sponsorupload" style="font-weight: normal;">Sponsoren uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('sponsorremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="sponsorremove" type="checkbox" value="1" name="permissions[sponsorremove]">
+                        <label for="sponsorremove" style="font-weight: normal;">Sponsoren verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('documentupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="documentupload" type="checkbox" value="1" name="permissions[documentupload]">
+                        <label for="documentupload" style="font-weight: normal;">Documenten uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('documentremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="documentremove" type="checkbox" value="1" name="permissions[documentremove]">
+                        <label for="documentremove" style="font-weight: normal;">Documenten verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('newsupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="newsupload" type="checkbox" value="1" name="permissions[newsupload]">
+                        <label for="newsupload" style="font-weight: normal;">Nieuws uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('newsremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="newsremove" type="checkbox" value="1" name="permissions[newsremove]">
+                        <label for="newsremove" style="font-weight: normal;">Nieuws verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('newschange')) {
+                    ?>
+                    <div class="checkbox checkbox-warning">
+                        <input id="newschange" type="checkbox" value="1" name="permissions[newschange]">
+                        <label for="newschange" style="font-weight: normal;">Nieuws aanpassen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('imageupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="imageupload" type="checkbox" value="1" name="permissions[imageupload]">
+                        <label for="imageupload" style="font-weight: normal;">Foto's/albums uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('imageremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="imageremove" type="checkbox" value="1" name="permissions[imageremove]">
+                        <label for="imageremove" style="font-weight: normal;">Nieuws verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('activityupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="activityupload" type="checkbox" value="1" name="permissions[activityupload]">
+                        <label for="activityupload" style="font-weight: normal;">Activiteiten uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('activityremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="activityremove" type="checkbox" value="1" name="permissions[activityremove]">
+                        <label for="activityremove" style="font-weight: normal;">Activiteiten verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('activitychange')) {
+                    ?>
+                    <div class="checkbox checkbox-warning">
+                        <input id="activitychange" type="checkbox" value="1" name="permissions[activitychange]">
+                        <label for="activitychange" style="font-weight: normal;">Activiteiten aanpassen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('reportupload')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="reportupload" type="checkbox" value="1" name="permissions[reportupload]">
+                        <label for="reportupload" style="font-weight: normal;">Wedstrijdverslagen uploaden</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('reportremove')) {
+                    ?>
+                    <div class="checkbox checkbox-danger">
+                        <input id="reportremove" type="checkbox" value="1" name="permissions[reportremove]">
+                        <label for="reportremove" style="font-weight: normal;">Wedstrijdverslagen verwijderen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('reportchange')) {
+                    ?>
+                    <div class="checkbox checkbox-warning">
+                        <input id="reportchange" type="checkbox" value="1" name="permissions[reportchange]">
+                        <label for="reportchange" style="font-weight: normal;">Wedstrijdverslagen aanpassen</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('createuser')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="createuser" type="checkbox" value="1" name="permissions[createuser]">
+                        <label for="createuser" style="font-weight: normal;">Gebruikers aanmaken</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('edituser')) {
+                    ?>
+                    <div class="checkbox checkbox-warning">
+                        <input id="edituser" type="checkbox" value="1" name="permissions[edituser]">
+                        <label for="edituser" style="font-weight: normal;">Gebruikers bewerken</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('createteam')) {
+                    ?>
+                    <div class="checkbox checkbox-primary">
+                        <input id="createteam" type="checkbox" value="1" name="permissions[createteam]">
+                        <label for="createteam" style="font-weight: normal;">Team aanmaken</label>
+                    </div>
+                    <?php
+                    }
+                    if($user->hasPermission('dev') || $user->hasPermission('editteam')) {
+                    ?>
+                    <div class="checkbox checkbox-warning">
+                        <input id="editteam" type="checkbox" value="1" name="permissions[editteam]">
+                        <label for="editteam" style="font-weight: normal;">Team bewerken</label>
+                    </div>
+                    <?php } ?>
                     <br><br>
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
