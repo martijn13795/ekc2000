@@ -72,6 +72,15 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                             'user_id' => $newuser->id
                                         ));
                                     }
+                                    if(isset($_POST['permissions'])){
+                                        $newuser = $db->query("SELECT id FROM users WHERE username = '". escape($username) ."'")->first();
+                                        $perms = json_encode(array_map("intval", $_POST['permissions']));
+                                        $db->insert('permissions', array(
+                                            'user_id' => $newuser->id,
+                                            'permissions' => $perms
+                                        ));
+                                    }
+
                                     echo "<h3>New account gemaakt:</h3>";
                                     echo "<p>Gebruikersnaam: " . $username . "</p>";
                                     echo "<p>Wachtwoord: " . $birthday . "</p>";

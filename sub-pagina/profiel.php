@@ -1,5 +1,5 @@
 <?php include '../includes/html.php'; ?>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js" xmlns="http://www.w3.org/1999/html"></script>
 <?php
 $user = new User();
 if ($user->isLoggedIn()) {
@@ -167,6 +167,72 @@ if ($user->isLoggedIn()) {
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
+                    <label>Permissies:</label><br>
+                    <div class="checkbox checkbox-danger">
+                        <input id="chatapprove" type="checkbox" value="1" name="permissions[chatapprove]">
+                        <label for= "chatapprove" style="font-weight: normal;">Chatbericht goedkeuring</label>
+                    </div>
+                    <label><input type="checkbox" value="1" name="permissions[chatremove]">
+                        Chatbericht verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[sponsorupload]">
+                        Sponsoren uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[sponsorremove]">
+                        Sponsoren verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[documentupload]">
+                        Documenten uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[documentremove]">
+                        Documenten verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[newsupload]">
+                        Nieuws uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[newsremove]">
+                        Nieuws verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[newschange]">
+                        Nieuws aanpassen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[imageupload]">
+                        Foto's/albums uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[imageremove]">
+                        Foto's/albums verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[activityupload]">
+                        Activiteiten uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[activityremove]">
+                        Activiteiten verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[activitychange]">
+                        Activiteiten aanpassen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[reportupload]">
+                        Wedstrijdverslagen uploaden
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[reportremove]">
+                        Wedstrijdverslagen verwijderen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[reportchange]">
+                        Wedstrijdverslagen aanpassen
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[createuser]">
+                        Gebruikers aanmaken
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[edituser]">
+                        Gebruikers bewerken
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[createteam]">
+                        Team aanmaken
+                    </label><br>
+                    <label><input type="checkbox" value="1" name="permissions[editteam]">
+                        Team bewerken
+                    </label><br>
+                    <br><br>
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
             </div>
