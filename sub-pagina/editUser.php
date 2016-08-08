@@ -24,6 +24,7 @@
                         <th>Team</th>
                         <th>Trainer</th>
                         <th>Geboortedatum</th>
+                        <th>Permissies</th>
                         <th><i title="Verwijderen" style="cursor: auto; padding-left: 7px;" class="fa fa-trash-o"></i></th>
                     </tr>
                     </thead>
@@ -61,7 +62,15 @@
                                         echo 'Geen';
                                     } echo '
                                 </span></td>
-                                <td><span class="birthdate" id="' . escape($user->id) . '">' . escape($user->birthdate) . '</span></td>
+                                <td><span class="birthdate" id="' . escape($user->id) . '">' . escape($user->birthdate) . '</span></td>';
+                                    if ($db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->count()) {
+                                        $getPermissions = $db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->first();
+                                        $getPermissions = $getPermissions->permissions;
+                                    } else {
+                                        $getPermissions = '{"":0}';
+                                    }
+                                    echo '
+                                <td><span class="permissions" onclick="makeChecked(' . escape($getPermissions) . ')" id="' . escape($user->id) . '" data-type="checklist">Permissies</span></td>
                                 <td><span class="delete" id="' . escape($user->id) . '" onclick="removeUser(' . escape($user->id) . ')"><i title="Verwijderen" style="padding-left: 7px;" class="fa fa-trash-o"></i></span></td>
                             </tr>
                              ';
@@ -82,7 +91,7 @@
                 },
                 "aoColumnDefs" : [ {
                     'bSortable' : false,
-                    'aTargets' : [ 10 ]
+                    'aTargets' : [ 11 ]
                 } ]
             });
         });
@@ -161,17 +170,32 @@
                     ]
                 });
                 $('.birthdate').editable();
-
+                $('.permissions').editable({
+                    source: {"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsremove":"Nieuws verwijderen","newschange":"Nieuws aanpassen","imageupload":"Foto's/albums uploaden","imageremove":"Foto's/albums verwijderen","activityupload":"Activiteiten uploaden","activityremove":"Activiteiten verwijderen","activitychange":"Activiteiten aanpassen","reportupload":"Wedstrijdverslagen uploaden","reportremove":"Wedstrijdverslagen verwijderen","reportchange":"Wedstrijdverslagen aanpassen","createuser":"Gebruikers aanmaken","edituser":"Gebruikers bewerken","createteam":"Team aanmaken","editteam":"Team bewerken"}
+                });
             });
+        }
+
+        function makeChecked(id) {
+            setTimeout(function(){
+                $.each(id, function(val, i){
+                    $("input[value='" + val + "']").prop('checked', true);
+                });
+            }, 500);
+
         }
 
         $(document).on('click', '.editable-submit', function () {
             var x = $(this).closest('td').children('span').attr('id');
-            var y = $('.input-sm').last().val();
+            var y = $('.input-sm, input:checked').last().val();
+            var val = [];
+            $(':checkbox:checked').each(function(i){
+                val[i] = $(this).val();
+            });
             var z = $(this).closest('td').children('span');
             var colum = $(this).closest('td').children('span').attr('class').split(' ')[0];
             $.ajax({
-                url: "../includes/editUser.php?id=" + x + "&data=" + y + "&colum=" + colum,
+                url: "../includes/editUser.php?id=" + x + "&data=" + y + "&colum=" + colum + "&val=" + val,
                 type: 'GET',
                 success: function (s) {
                     if (s == 'status') {

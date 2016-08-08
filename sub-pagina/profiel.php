@@ -253,7 +253,7 @@ if ($user->isLoggedIn()) {
                     ?>
                     <div class="checkbox checkbox-danger">
                         <input id="imageremove" type="checkbox" value="1" name="permissions[imageremove]">
-                        <label for="imageremove" style="font-weight: normal;">Nieuws verwijderen</label>
+                        <label for="imageremove" style="font-weight: normal;">Foto's/albums verwijderen</label>
                     </div>
                     <?php
                     }

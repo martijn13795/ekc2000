@@ -32,6 +32,24 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
             $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
             $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
             $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
+        }else if ($colum == "permissions"){
+            $val = $_GET['val'];
+            $tags = explode(',',$val);
+            $i = 0;
+            $count = count($tags);
+            foreach($tags as $key) {
+                if($count == 1) {
+                    $val = "{\"" . $key . "\":1}";
+                } else if($i<1) {
+                    $val = "{\"" . $key . "\":1,";
+                } else if ($i >= 1 && $i < ($count - 1)) {
+                    $val = $val . "\"" . $key . "\":1,";
+                } else {
+                    $val = $val . "\"" . $key . "\":1}";
+                }
+                $i++;
+            }
+            $db->query("update permissions set `$colum`='$val' where user_id='$id'");
         }else {
             $db->query("update users set `$colum`='$data' where id='$id'");
         }
