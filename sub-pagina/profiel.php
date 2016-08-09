@@ -90,6 +90,12 @@ if ($user->isLoggedIn()) {
                             <div class="hidden visible-lg col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="editTeam" style="width: 200px;" onclick="window.location='/bewerk-teams'">Bewerk teams</button>
                             </div>
+                            <div class="col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="uploadCommission" style="width: 200px;" onclick="showCommission()">Nieuwe commissie maken</button>
+                            </div>
+                            <div class="hidden visible-lg col-md-6 col-xs-12">
+                                <br><button class="btn btn-primary" id="editCommission" style="width: 200px;" onclick="window.location='/bewerk-commissies'">Bewerk commissies</button>
+                            </div>
                         <?php
                         }
                         ?>
@@ -167,6 +173,19 @@ if ($user->isLoggedIn()) {
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
                     <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
+                    <label>Commissies:</label><br>
+                    <?php
+                    $commissions = $db->query("SELECT * FROM commissions");
+                    if ($commissions->count()) {
+                        foreach ($commissions->results() as $commission) {
+                            echo '<div class="checkbox checkbox-primary">
+                            <input id="'.escape($commission->name).'" type="checkbox" value="'.escape($commission->name).'" name="commission['.escape($commission->name).']">
+                            <label for="'.escape($commission->name).'" style="font-weight: normal;">'.escape($commission->name).'</label>
+                        </div>';
+                        }
+                    }
+                    ?>
+                    <br>
                     <label>Permissies:</label><br>
                     <?php
                     if($user->hasPermission('dev') || $user->hasPermission('chatapprove')) {
@@ -391,7 +410,19 @@ if ($user->isLoggedIn()) {
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
             </div>
-            <?php
+
+        <div class="col-md-12 col-xs-12" id="uploadCommissionDiv" hidden><br>
+
+            <h1>Maak een nieuwe commissie</h1>
+
+            <form action="../includes/createCommission.php" method="post" class="myForm" name="myForm">
+                <label>Naam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
+                <label>Email:</label><input type="email" id="mail" class="form-control" name="mail" placeholder="Email" maxlength="256" REQUIRED><br>
+                <label>Telefoonnummer:</label><input type="text" id="phone" class="form-control" name="phone" placeholder="Telefoonnummer" maxlength="10"><br>
+                <input class="btn btn-primary submit" id="submit" type="submit">
+            </form>
+        </div>
+        <?php
         }
         ?>
         <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
@@ -437,6 +468,16 @@ if ($user->isLoggedIn()) {
             $("#uploadTeam").attr("onclick", "showTeam()");
             $("#uploadTeam").text("Nieuw team maken");
             $("#uploadTeamDiv").hide();
+        }
+        function showCommission() {
+            $("#uploadCommission").attr("onclick", "hideCommission()");
+            $("#uploadCommission").text("Verberg");
+            $("#uploadCommissionDiv").show();
+        }
+        function hideCommission() {
+            $("#uploadCommission").attr("onclick", "showCommission()");
+            $("#uploadCommission").text("Nieuwe commissie maken");
+            $("#uploadCommissionDiv").hide();
         }
 
         function showPassword() {

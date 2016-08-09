@@ -32,6 +32,12 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
             $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
             $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
             $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
+            $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
+            foreach ($removeMembers->results() as $removeMember) {
+                $members = $removeMember->members;
+                $members = str_replace(",$id,", "", $members);
+                $db->query("update commissions set `members`='$members' WHERE members LIKE '%,$id,%' AND id = '$removeMember->id'");
+            }
         }else if ($colum == "permissions"){
             $val = $_GET['val'];
             $tags = explode(',',$val);
@@ -50,6 +56,38 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
                 $i++;
             }
             $db->query("update permissions set `$colum`='$val' where user_id='$id'");
+        }else if ($colum == "commissions"){
+            $val = $_GET['val'];
+            $resetMembers = $db->query("SELECT * FROM commissions");
+            foreach ($resetMembers->results() as $resetMember) {
+                $members = $resetMember->members;
+                $members = str_replace(",$id,", "", $members);
+                if ($db->query("update commissions set `members`='$members' WHERE id = '$resetMember->id'")->count()) {
+                    $db->query("update commissions set `members`='$members' WHERE id = '$resetMember->id'");
+                }
+            }
+            $tags = explode(',',$val);
+            foreach($tags as $key) {
+                if ($key != "Geen") {
+                    $getMembers = $db->query("SELECT * FROM commissions WHERE name='$key'")->first();
+                    if ($getMembers->members != "") {
+                        $members = $getMembers->members . ',' . $id . ',';
+                    } else {
+                        $members = ',' . $id . ',';
+                    }
+                    if ($db->query("SELECT * FROM `commissions` WHERE members LIKE '%,$id,%' AND `name` = '$key'")->count()) {
+                    } else {
+                        $db->query("update commissions set `members`='$members' where `name`='$key'");
+                    }
+                } else if ($key == "Geen") {
+                    $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
+                    foreach ($removeMembers->results() as $removeMember) {
+                        $members = $removeMember->members;
+                        $members = str_replace(",$id,", "", $members);
+                        $db->query("update commissions set `members`='$members' WHERE members LIKE '%,$id,%' AND id = '$removeMember->id'");
+                    }
+                }
+            }
         }else {
             $db->query("update users set `$colum`='$data' where id='$id'");
         }

@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-    <div class="container">
+    <div style="width: 90%; margin: 0 auto;">
         <h1>Bewerk gebruikers</h1>
         <hr>
         <?php
@@ -24,6 +24,7 @@
                         <th>Team</th>
                         <th>Trainer</th>
                         <th>Geboortedatum</th>
+                        <th>Commissies</th>
                         <th>Permissies</th>
                         <th><i title="Verwijderen" style="cursor: auto; padding-left: 7px;" class="fa fa-trash-o"></i></th>
                     </tr>
@@ -63,6 +64,39 @@
                                     } echo '
                                 </span></td>
                                 <td><span class="birthdate" id="' . escape($user->id) . '">' . escape($user->birthdate) . '</span></td>';
+                                    if ($db->query("SELECT * FROM `commissions` WHERE members LIKE '%,$user->id,%'")->count()) {
+                                        $getCommissions = $db->query("SELECT `name` FROM `commissies` WHERE members LIKE '%,$user->id,%'");
+                                        $commission = "";
+                                        $count = count($getCommissions->results());
+                                        $b = 0;
+                                        foreach ($getCommissions->results() as $getCommission) {
+                                            if ($b < ($count - 1)) {
+                                                $commission = $commission . $getCommission->name . ',';
+                                                $b++;
+                                            } else {
+                                                $commission = $commission . $getCommission->name;
+                                            }
+                                        }
+                                        $tags = explode(',',$commission);
+                                        $i = 0;
+                                        $count = count($tags);
+                                        foreach($tags as $key) {
+                                            if ($count <= 1) {
+                                                $commission = "{\"" . $key . "\":1}";
+                                            } else if ($i < 1) {
+                                                $commission = "{\"" . $key . "\":1,";
+                                            } else if ($i >= 1 && $i < ($count - 1)) {
+                                                $commission = $commission . "\"" . $key . "\":1,";
+                                            } else {
+                                                $commission = $commission . "\"" . $key . "\":1}";
+                                            }
+                                            $i++;
+                                        }
+                                    } else {
+                                        $commission = '{"":0}';
+                                    }
+                                    echo '
+                                <td><span class="commissions" onclick="makeChecked(' . escape($commission) . ')" id="' . escape($user->id) . '" data-type="checklist">Commissies</span></td>';
                                     if ($db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->count()) {
                                         $getPermissions = $db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->first();
                                         $getPermissions = $getPermissions->permissions;
@@ -91,7 +125,7 @@
                 },
                 "aoColumnDefs" : [ {
                     'bSortable' : false,
-                    'aTargets' : [ 11 ]
+                    'aTargets' : [ 12 ]
                 } ]
             });
         });
@@ -172,6 +206,19 @@
                 $('.birthdate').editable();
                 $('.permissions').editable({
                     source: {"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsremove":"Nieuws verwijderen","newschange":"Nieuws aanpassen","imageupload":"Foto's/albums uploaden","imageremove":"Foto's/albums verwijderen","activityupload":"Activiteiten uploaden","activityremove":"Activiteiten verwijderen","activitychange":"Activiteiten aanpassen","reportupload":"Wedstrijdverslagen uploaden","reportremove":"Wedstrijdverslagen verwijderen","reportchange":"Wedstrijdverslagen aanpassen","createuser":"Gebruikers aanmaken","edituser":"Gebruikers bewerken","createteam":"Team aanmaken","editteam":"Team bewerken"}
+                });
+                $('.commissions').editable({
+                   source: {
+                       <?php
+                       $commissions = $db->query("SELECT * FROM commissions");
+                       if ($commissions->count()) {
+                           foreach ($commissions->results() as $commission) {
+                               echo '"' . escape($commission->name) . '":"' . escape($commission->name) . '",';
+                           }
+                           echo '"Geen":"Geen"';
+                       }
+                       ?>
+                   }
                 });
             });
         }

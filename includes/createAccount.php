@@ -80,7 +80,20 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                             'permissions' => $perms
                                         ));
                                     }
-
+                                    if(isset($_POST['commission'])) {
+                                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
+                                        $val = $_POST['commission'];
+                                        $id = $newuser->id;
+                                        foreach ($val as $key) {
+                                            $getMembers = $db->query("SELECT * FROM commissions WHERE name='$key'")->first();
+                                            if ($getMembers->members != "") {
+                                                $members = $getMembers->members . ',' . $id . ',';
+                                            } else {
+                                                $members = ',' . $id . ',';
+                                            }
+                                                $db->query("update commissions set `members`='$members' where `name`='$key'");
+                                        }
+                                    }
                                     echo "<h3>New account gemaakt:</h3>";
                                     echo "<p>Gebruikersnaam: " . $username . "</p>";
                                     echo "<p>Wachtwoord: " . $birthday . "</p>";
