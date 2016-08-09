@@ -13,6 +13,7 @@
                             <h3>' . escape($commission->name) . ':</h3>
                             <p>Email: ' . escape($commission->mail) . '</p>
                             '; if ($commission->phone != 0){ echo '<p>Telefoonnummer: ' . escape($commission->phone) . '</p>';}echo '
+                            <p>Leden:<br>';
                             $tags = explode(',,',$commission->members);
                             foreach($tags as $key) {
                                 $tags2 = explode(',',$key);
@@ -34,6 +35,7 @@
                             <h3>' . escape($commission->name) . ':</h3>
                             <p>Email: ' . escape($commission->mail) . '</p>
                             '; if ($commission->phone != 0){ echo '<p>Telefoonnummer: ' . escape($commission->phone) . '</p>';}echo '
+                            <p>Leden:<br>';
                             $tags = explode(',,',$commission->members);
                             foreach($tags as $key) {
                                 $tags2 = explode(',',$key);
