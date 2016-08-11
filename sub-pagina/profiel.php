@@ -187,7 +187,15 @@ if ($user->isLoggedIn()) {
                     ?>
                     <br>
                     <label>Permissies:</label><br>
-                    <div class="row">
+                    <div id="permissions" class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="checkbox checkbox-success">
+                                    <input id="admin" type="checkbox" value="1">
+                                    <label for="admin" style="font-weight: normal;">Admin</label>
+                                </div>
+                            </div>
+                        </div>
                         <?php
                         if($user->hasPermission('dev') || $user->hasPermission('chatapprove')) {
                         ?>
@@ -261,7 +269,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-warning">
                                 <input id="newschange" type="checkbox" value="1" name="permissions[newschange]">
-                                <label for="newschange" style="font-weight: normal;">Nieuws aanpassen</label>
+                                <label for="newschange" style="font-weight: normal;">Nieuws bewerken</label>
                             </div>
                         <?php
                         }
@@ -309,7 +317,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-warning">
                                 <input id="activitychange" type="checkbox" value="1" name="permissions[activitychange]">
-                                <label for="activitychange" style="font-weight: normal;">Activiteiten aanpassen</label>
+                                <label for="activitychange" style="font-weight: normal;">Activiteiten bewerken</label>
                             </div>
                         <?php
                         }
@@ -336,7 +344,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-warning">
                                 <input id="reportchange" type="checkbox" value="1" name="permissions[reportchange]">
-                                <label for="reportchange" style="font-weight: normal;">Wedstrijdverslagen aanpassen</label>
+                                <label for="reportchange" style="font-weight: normal;">Wedstrijdverslagen bewerken</label>
                             </div>
                         <?php
                         }
@@ -352,9 +360,9 @@ if ($user->isLoggedIn()) {
                         if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
                         ?>
                         <div class="col-md-3">
-                            <label>Gebruikers:</label><br>
+                            <label>Gebruikers (alleen admins):</label><br>
                             <div class="checkbox checkbox-primary">
-                                <input id="usercreate" type="checkbox" value="1" name="permissions[usercreate]">
+                                <input id="usercreate" type="checkbox" value="1" name="permissions[usercreate]" disabled>
                                 <label for="usercreate" style="font-weight: normal;">Gebruikers aanmaken</label>
                             </div>
                         <?php
@@ -362,7 +370,7 @@ if ($user->isLoggedIn()) {
                         if($user->hasPermission('dev') || $user->hasPermission('useredit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="useredit" type="checkbox" value="1" name="permissions[useredit]">
+                                <input id="useredit" type="checkbox" value="1" name="permissions[useredit]" disabled>
                                 <label for="useredit" style="font-weight: normal;">Gebruikers bewerken</label>
                             </div>
                         <?php
@@ -370,7 +378,7 @@ if ($user->isLoggedIn()) {
                         if($user->hasPermission('dev') || $user->hasPermission('userremove')) {
                         ?>
                             <div class="checkbox checkbox-danger">
-                                <input id="userremove" type="checkbox" value="1" name="permissions[userremove]">
+                                <input id="userremove" type="checkbox" value="1" name="permissions[userremove]" disabled>
                                 <label for="userremove" style="font-weight: normal;">Gebruikers verwijderen</label>
                             </div>
                         </div>
@@ -419,7 +427,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-warning">
                             <input id="commissionedit" type="checkbox" value="1" name="permissions[commissionedit]">
-                                 <label for="commissionedit" style="font-weight: normal;">Commissie aanpassen</label>
+                                 <label for="commissionedit" style="font-weight: normal;">Commissie bewerken</label>
                                  </div>
                         <?php
                         }
@@ -570,5 +578,27 @@ if ($user->isLoggedIn()) {
             $("#password").text("Wachtwoord veranderen");
             $("#passwordContainer").hide();
         }
+
+        $("#admin").change(function() {
+            if(this.checked) {
+                //Do stuff
+                $('#permissions input[type=checkbox]').prop('checked', true);
+            } else {
+                $('#permissions input[type=checkbox]').prop('checked', false);
+            }
+        });
+
+        $("#permissions input[type=checkbox]").change(function() {
+            if(!this.checked) {
+                //Do stuff
+                var cbadmin = $("#admin");
+                if(cbadmin.is(':checked')){
+                    $('#permissions input[type=checkbox]').prop('checked', false);
+                }
+                cbadmin.prop('checked', false);
+            }
+        });
+
+
     </script>
 <?php include '../includes/htmlUnder.php'; ?>
