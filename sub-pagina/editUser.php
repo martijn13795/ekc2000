@@ -233,8 +233,30 @@
                     $("input[value='" + val + "']").prop('checked', true);
                 });
             }, 500);
-
         }
+
+        $(document).on('change', '.editable-checklist', function () {
+            $(':checkbox:checked').each(function(){
+                var cb = [];
+                var none = false;
+                $(':checkbox:checked').each(function(i){
+                    if($(this).val() == "Geen"){
+                        none = true;
+                    } else {
+                        cb[i] = $(this);
+                    }
+                });
+                if(none) {
+                    $.each(cb, function (i, j) {
+                        j.prop("checked", false);
+                    });
+                }
+            });
+
+            /*if(this.val == "Geen" && this.checked){
+                alert("asdads");
+            }*/
+        });
 
         $(document).on('click', '.editable-submit', function () {
             var x = $(this).closest('td').children('span').attr('id');
@@ -261,5 +283,6 @@
                 }
             });
         });
+
     </script>
 <?php include '../includes/htmlUnder.php'; ?>
