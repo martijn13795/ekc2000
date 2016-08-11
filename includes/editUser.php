@@ -44,18 +44,27 @@ if($user->isLoggedIn() && $user->hasPermission('admin')) {
             $i = 0;
             $count = count($tags);
             foreach($tags as $key) {
-                if($count == 1) {
-                    $val = "{\"" . $key . "\":1}";
-                } else if($i<1) {
-                    $val = "{\"" . $key . "\":1,";
-                } else if ($i >= 1 && $i < ($count - 1)) {
-                    $val = $val . "\"" . $key . "\":1,";
+                if ($key == "Geen") {
+                    $db->query("DELETE FROM `permissions` where user_id='$id'");
+                    return;
                 } else {
-                    $val = $val . "\"" . $key . "\":1}";
+                    if ($count == 1) {
+                        $val = "{\"" . $key . "\":1}";
+                    } else if ($i < 1) {
+                        $val = "{\"" . $key . "\":1,";
+                    } else if ($i >= 1 && $i < ($count - 1)) {
+                        $val = $val . "\"" . $key . "\":1,";
+                    } else {
+                        $val = $val . "\"" . $key . "\":1}";
+                    }
+                    $i++;
                 }
-                $i++;
             }
-            $db->query("update permissions set `$colum`='$val' where user_id='$id'");
+            if ($db->query("update permissions set `$colum`='$val' where user_id='$id'")->count()){
+                $db->query("update permissions set `$colum`='$val' where user_id='$id'");
+            } else {
+                $db->query("INSERT INTO `permissions`(`user_id`, `permissions`) VALUES ('$id','$val')");
+            }
         }else if ($colum == "commissions"){
             $val = $_GET['val'];
             $resetMembers = $db->query("SELECT * FROM commissions");
