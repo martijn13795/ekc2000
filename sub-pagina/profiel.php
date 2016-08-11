@@ -172,7 +172,7 @@ if ($user->isLoggedIn()) {
                     <label class="radio-inline"><input type="radio" name="gender" value="M" REQUIRED>Man</label>
                     <label class="radio-inline"><input type="radio" name="gender" value="F">Vrouw</label><br><br>
                     <label>Geboortedatum:</label><input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD" REQUIRED><br>
-                    <label>Profielfoto:</label><input type="file" id="icon" name="icon" REQUIRED><br>
+                    <label>Profielfoto:</label><input type="file" id="icon" name="icon"><br>
                     <label>Commissies:</label><br>
                     <?php
                     $commissions = $db->query("SELECT * FROM commissions");
@@ -349,46 +349,91 @@ if ($user->isLoggedIn()) {
                         </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('createuser')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
                         ?>
                         <div class="col-md-3">
                             <label>Gebruikers:</label><br>
                             <div class="checkbox checkbox-primary">
-                                <input id="createuser" type="checkbox" value="1" name="permissions[createuser]">
-                                <label for="createuser" style="font-weight: normal;">Gebruikers aanmaken</label>
+                                <input id="usercreate" type="checkbox" value="1" name="permissions[usercreate]">
+                                <label for="usercreate" style="font-weight: normal;">Gebruikers aanmaken</label>
                             </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('edituser')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('useredit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="edituser" type="checkbox" value="1" name="permissions[edituser]">
-                                <label for="edituser" style="font-weight: normal;">Gebruikers bewerken</label>
+                                <input id="useredit" type="checkbox" value="1" name="permissions[useredit]">
+                                <label for="useredit" style="font-weight: normal;">Gebruikers bewerken</label>
+                            </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('userremove')) {
+                        ?>
+                            <div class="checkbox checkbox-danger">
+                                <input id="userremove" type="checkbox" value="1" name="permissions[userremove]">
+                                <label for="userremove" style="font-weight: normal;">Gebruikers verwijderen</label>
                             </div>
                         </div>
                         </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('createteam')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('teamcreate')) {
                         ?>
                         <div class="col-md-12">
                         <div class="col-md-3">
                             <label>Teams:</label><br>
                             <div class="checkbox checkbox-primary">
-                                <input id="createteam" type="checkbox" value="1" name="permissions[createteam]">
-                                <label for="createteam" style="font-weight: normal;">Team aanmaken</label>
+                                <input id="teamcreate" type="checkbox" value="1" name="permissions[teamcreate]">
+                                <label for="teamcreate" style="font-weight: normal;">Team aanmaken</label>
                             </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('editteam')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('teamedit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="editteam" type="checkbox" value="1" name="permissions[editteam]">
-                                <label for="editteam" style="font-weight: normal;">Team bewerken</label>
+                                <input id="teamedit" type="checkbox" value="1" name="permissions[teamedit]">
+                                <label for="teamedit" style="font-weight: normal;">Team bewerken</label>
+                            </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('teamremove')) {
+                        ?>
+                            <div class="checkbox checkbox-danger">
+                                <input id="teamremove" type="checkbox" value="1" name="permissions[teamremove]">
+                                <label for="teamremove" style="font-weight: normal;">Team verwijderen</label>
                             </div>
                         </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('commissioncreate')) {
+                        ?>
+                            <div class="col-md-3">
+                            <label>Commissies:</label><br>
+                            <div class="checkbox checkbox-primary">
+                                <input id="commissioncreate" type="checkbox" value="1" name="permissions[commissioncreate]">
+                                <label for="commissioncreate" style="font-weight: normal;">Commissie aanmaken</label>
+                            </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('commissionedit')) {
+                        ?>
+                            <div class="checkbox checkbox-warning">
+                            <input id="commissionedit" type="checkbox" value="1" name="permissions[commissionedit]">
+                                 <label for="commissionedit" style="font-weight: normal;">Commissie aanpassen</label>
+                                 </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('commissionremove')) {
+                        ?>
+                             <div class="checkbox checkbox-danger">
+                             <input id="commissionremove" type="checkbox" value="1" name="permissions[commissionremove]">
+                                 <label for="commissionremove" style="font-weight: normal;">Commissie verwijderen</label>
+                                 </div>
+                             </div>
                         </div>
-                        <?php } ?>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <br><br>
                     <input class="btn btn-primary submit" id="submit" type="submit">

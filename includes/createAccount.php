@@ -10,8 +10,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             && isset($_POST['team']) && is_numeric($_POST['team'])
                             && isset($_POST['trainer']) && is_numeric($_POST['trainer'])
                             && !empty($_POST['gender']) && isset($_POST['gender'])
-                            && !empty($_POST['birthday']) && isset($_POST['birthday'])
-                            && !empty($_FILES['icon']) && isset($_FILES['icon'])){
+                            && !empty($_POST['birthday']) && isset($_POST['birthday'])){
         $name = str_replace(' ', '.', trim($_POST['name']));
         $surname_prefix = (!empty($_POST['surname_prefix']) && isset($_POST['surname_prefix'])) ? str_replace(' ', '.', trim($_POST['surname_prefix'])) : null;
         $surname = str_replace(' ', '.', trim($_POST['surname']));
@@ -20,7 +19,12 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
         $trainer = trim($_POST['trainer']);
         $gender = trim($_POST['gender']);
         $birthday = date("Y-m-d", strtotime(trim($_POST['birthday'])));
-        $icon = $_FILES['icon'];
+        if(isset($_FILES['icon'])) {
+            $icon = $_FILES['icon'];
+            $hasicon = !empty($icon);
+        } else {
+            $hasicon = false;
+        }
 
         $username = $surname_prefix ? $name.'.'.$surname_prefix.'.'.$surname : $name.'.'.$surname;
         $username = strtolower($username);
@@ -28,81 +32,113 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
         $users = $db->query("SELECT * FROM users WHERE username = '". escape($username) ."'");
         if(!$users->count()){
             if($gender === 'M' || $gender === 'F'){
-                if($birthday){
-                    $allowed = array('jpg', 'jpeg', 'pjpeg', 'png');
-                    $file_tmp = $icon['tmp_name'];
-                    $file_size = $icon['size'];
-                    $file_error = $icon['error'];
-                    $file_ext = pathinfo($icon['name'], PATHINFO_EXTENSION);
-                    $file_name = basename($icon['name'], ".".$file_ext);
-                    if(in_array($file_ext, $allowed)) {
-                        if ($file_error === 0) {
-                            if ($file_size <= $size) {
-                                if(!is_dir("../images/icons/") && !file_exists("../images/icons/")){
-                                    mkdir("../images/icons", 0777);
+                if($birthday) {
+                    if ($hasicon) {
+                        $allowed = array('jpg', 'jpeg', 'pjpeg', 'png');
+                        $file_tmp = $icon['tmp_name'];
+                        $file_size = $icon['size'];
+                        $file_error = $icon['error'];
+                        $file_ext = pathinfo($icon['name'], PATHINFO_EXTENSION);
+                        $file_name = basename($icon['name'], "." . $file_ext);
+                        if (in_array($file_ext, $allowed)) {
+                            if ($file_error === 0) {
+                                if ($file_size <= $size) {
+                                    if (!is_dir("../images/icons/") && !file_exists("../images/icons/")) {
+                                        mkdir("../images/icons", 0777);
+                                    }
+                                    $file_path = "../images/icons/" . $username . "." . $file_ext;
+                                    if (move_uploaded_file($file_tmp, $file_path)) {
+                                        $salt = Hash::salt(32);
+                                        $db->insert('users', array(
+                                            'username' => $username,
+                                            'password' => Hash::make($birthday, $salt),
+                                            'mail' => $email,
+                                            'salt' => $salt,
+                                            'name' => $name,
+                                            'surname_prefix' => $surname_prefix,
+                                            'surname' => $surname,
+                                            'joined' => date('Y-m-d H:i:s'),
+                                            'IconPath' => $file_path,
+                                            'gender' => $gender,
+                                            'birthdate' => $birthday,
+                                            'group_id' => 2
+                                        ));
+                                    } else {
+                                        echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
+                                        echo "<p>Er is wat mis gegaan bij het uploaden. Probeer het opnieuw.</p><br>";
+                                    }
+                                } else {
+                                    echo "<b>" . $file_name . "</b> <font color='red'>>Is te groot: </font>" . formatSizeUnits($file_size) . " / " . formatSizeUnits($size) . "<br>";
                                 }
-                                $file_path = "../images/icons/" . $username . "." . $file_ext;
-                                if(move_uploaded_file($file_tmp, $file_path)){
-                                    $salt = Hash::salt(32);
-                                    $db->insert('users', array(
-                                        'username' => $username,
-                                        'password' => Hash::make($birthday, $salt),
-                                        'mail' => $email,
-                                        'salt' => $salt,
-                                        'name' => $name,
-                                        'surname_prefix' => $surname_prefix,
-                                        'surname' => $surname,
-                                        'joined' => date('Y-m-d H:i:s'),
-                                        'IconPath' => $file_path,
-                                        'gender' => $gender,
-                                        'birthdate' => $birthday,
-                                        'group_id' => 2
-                                    ));
-                                    if($team){
-                                        $newuser = $db->query("SELECT id FROM users WHERE username = '". escape($username) ."'")->first();
-                                        $db->insert('players', array(
-                                            'team_id' => $team,
-                                            'user_id' => $newuser->id
-                                        ));
-                                    }
-                                    if($trainer){
-                                        $newuser = $db->query("SELECT id FROM users WHERE username = '". escape($username) ."'")->first();
-                                        $db->insert('trainers', array(
-                                            'team_id' => $trainer,
-                                            'user_id' => $newuser->id
-                                        ));
-                                    }
-                                    if(isset($_POST['permissions'])){
-                                        $newuser = $db->query("SELECT id FROM users WHERE username = '". escape($username) ."'")->first();
-                                        $perms = json_encode(array_map("intval", $_POST['permissions']));
-                                        $db->insert('permissions', array(
-                                            'user_id' => $newuser->id,
-                                            'permissions' => $perms
-                                        ));
-                                    }
-                                    if(isset($_POST['commission'])) {
-                                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
-                                        $val = $_POST['commission'];
-                                        $id = $newuser->id;
-                                        foreach ($val as $key) {
-                                            $getMembers = $db->query("SELECT * FROM commissions WHERE name='$key'")->first();
-                                            if ($getMembers->members != "") {
-                                                $members = $getMembers->members . ',' . $id . ',';
-                                            } else {
-                                                $members = ',' . $id . ',';
-                                            }
-                                                $db->query("update commissions set `members`='$members' where `name`='$key'");
-                                        }
-                                    }
-                                    echo "<h3>New account gemaakt:</h3>";
-                                    echo "<p>Gebruikersnaam: " . $username . "</p>";
-                                    echo "<p>Wachtwoord: " . $birthday . "</p>";
-                                    $to = "martijn13795@hotmail.com";
-                                    $subject = "Uw account voor EKC 2000 is aangemaakt";
-                                    $title = "Hallo " . $name . " " . $surname . ",";
-                                    $text = '<h3>Uw account voor de website van EKC 2000 is aangemaakt.</h3>
-                                            <p>Uw gebruikersnaam is: '. $username .'</p>
-                                            <p>Uw wachtwoord is: '. $birthday .'</p><br>
+                            } else {
+                                echo "<b>" . $file_name . "</b> <font color='red'>>Error: </font>" . $file_error . "<br>";
+                            }
+                        } else {
+                            echo "<b>" . $file_name . "</b> <font color='red'>>Kies een ander bestand type dan: </font>" . $file_ext . "<br>";
+                        }
+                    } else {
+                        $salt = Hash::salt(32);
+                        $db->insert('users', array(
+                            'username' => $username,
+                            'password' => Hash::make($birthday, $salt),
+                            'mail' => $email,
+                            'salt' => $salt,
+                            'name' => $name,
+                            'surname_prefix' => $surname_prefix,
+                            'surname' => $surname,
+                            'joined' => date('Y-m-d H:i:s'),
+                            'IconPath' => '../images/icons/default.jpg',
+                            'gender' => $gender,
+                            'birthdate' => $birthday,
+                            'group_id' => 2
+                        ));
+                    }
+
+                    if ($team) {
+                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
+                        $db->insert('players', array(
+                            'team_id' => $team,
+                            'user_id' => $newuser->id
+                        ));
+                    }
+                    if ($trainer) {
+                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
+                        $db->insert('trainers', array(
+                            'team_id' => $trainer,
+                            'user_id' => $newuser->id
+                        ));
+                    }
+                    if (isset($_POST['permissions'])) {
+                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
+                        $perms = json_encode(array_map("intval", $_POST['permissions']));
+                        $db->insert('permissions', array(
+                            'user_id' => $newuser->id,
+                            'permissions' => $perms
+                        ));
+                    }
+                    if (isset($_POST['commission'])) {
+                        $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
+                        $val = $_POST['commission'];
+                        $id = $newuser->id;
+                        foreach ($val as $key) {
+                            $getMembers = $db->query("SELECT * FROM commissions WHERE name='$key'")->first();
+                            if ($getMembers->members != "") {
+                                $members = $getMembers->members . ',' . $id . ',';
+                            } else {
+                                $members = ',' . $id . ',';
+                            }
+                            $db->query("update commissions set `members`='$members' where `name`='$key'");
+                        }
+                    }
+                    echo "<h3>New account gemaakt:</h3>";
+                    echo "<p>Gebruikersnaam: " . $username . "</p>";
+                    echo "<p>Wachtwoord: " . $birthday . "</p>";
+                    $to = "martijn13795@hotmail.com";
+                    $subject = "Uw account voor EKC 2000 is aangemaakt";
+                    $title = "Hallo " . $name . " " . $surname . ",";
+                    $text = '<h3>Uw account voor de website van EKC 2000 is aangemaakt.</h3>
+                                            <p>Uw gebruikersnaam is: ' . $username . '</p>
+                                            <p>Uw wachtwoord is: ' . $birthday . '</p><br>
                                             <h3>Waarom heb ik een account?</h3>
                                             <p>Met het account voor de website van EKC 2000 kun je een aantal dingen doen.</p>
                                             <p><ul>
@@ -114,20 +150,8 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                             </ul></p>
                                             <p>Natuurlijk worden er nog meer dingen met de accounts gedaan, maar dat is vooral achter de schermen.</p>
                                             <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
-                                    email($to, $subject, $title, $text);
-                                } else {
-                                    echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
-                                    echo "<p>Er is wat mis gegaan bij het uploaden. Probeer het opnieuw.</p><br>";
-                                }
-                            } else {
-                                echo "<b>" . $file_name . "</b> <font color='red'>>Is te groot: </font>" . formatSizeUnits($file_size) . " / " . formatSizeUnits($size) . "<br>";
-                            }
-                        } else {
-                            echo "<b>" . $file_name . "</b> <font color='red'>>Error: </font>" . $file_error . "<br>";
-                        }
-                    } else {
-                        echo "<b>" . $file_name . "</b> <font color='red'>>Kies een ander bestand type dan: </font>" . $file_ext . "<br>";
-                    }
+                    email($to, $subject, $title, $text);
+
                 } else {
                     echo "<h3>Er is wat mis gegaan bij de geboortedatum. Probeer het opnieuw.</h3><br>";
                 }
