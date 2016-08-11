@@ -33,18 +33,22 @@
                     <?php
                     $users = $db->query("SELECT * FROM users");
                     if ($users->count()) {
-                        foreach ($users->results() as $user) {
+                        foreach ($users->results() as $userdb) {
+                            $tempUser = new User($userdb->id);
+                            if($tempUser->hasPermission('dev')){
+                                continue;
+                            }
                             echo '
                             <tr>
-                                <td>' . escape($user->id) . '</td>
-                                <td><span class="username" id="' . escape($user->id) . '">' . escape($user->username) . '</span></td>
-                                <td><span class="mail" id="' . escape($user->id) . '">' . escape($user->mail) . '</span></td>
-                                <td><span class="name" id="' . escape($user->id) . '">' . escape($user->name) . '</span></td>
-                                <td><span class="surname_prefix" id="' . escape($user->id) . '">' . escape($user->surname_prefix) . '</span></td>
-                                <td><span class="surname" id="' . escape($user->id) . '">' . escape($user->surname) . '</span></td>
-                                <td><span class="gender" id="' . escape($user->id) . '" data-type="select">'; if(escape($user->gender == 'M')){echo 'Man';} if(escape($user->gender == 'F')){echo 'Vrouw';} echo '</span></td>
-                                <td><span class="team" id="' . escape($user->id) . '" data-type="select">';
-                                    $getTeams = $db->query("SELECT teams.name FROM users INNER JOIN players ON users.id = players.user_id INNER JOIN teams ON players.team_id = teams.id WHERE users.id = '$user->id'");
+                                <td>' . escape($userdb->id) . '</td>
+                                <td><span class="username" id="' . escape($userdb->id) . '">' . escape($userdb->username) . '</span></td>
+                                <td><span class="mail" id="' . escape($userdb->id) . '">' . escape($userdb->mail) . '</span></td>
+                                <td><span class="name" id="' . escape($userdb->id) . '">' . escape($userdb->name) . '</span></td>
+                                <td><span class="surname_prefix" id="' . escape($userdb->id) . '">' . escape($userdb->surname_prefix) . '</span></td>
+                                <td><span class="surname" id="' . escape($userdb->id) . '">' . escape($userdb->surname) . '</span></td>
+                                <td><span class="gender" id="' . escape($userdb->id) . '" data-type="select">'; if(escape($userdb->gender == 'M')){echo 'Man';} if(escape($userdb->gender == 'F')){echo 'Vrouw';} echo '</span></td>
+                                <td><span class="team" id="' . escape($userdb->id) . '" data-type="select">';
+                                    $getTeams = $db->query("SELECT teams.name FROM users INNER JOIN players ON users.id = players.user_id INNER JOIN teams ON players.team_id = teams.id WHERE users.id = '$userdb->id'");
                                     if ($getTeams->count()) {
                                         foreach ($getTeams->results() as $getTeam) {
                                             echo escape($getTeam->name);
@@ -53,8 +57,8 @@
                                         echo 'Geen';
                                     } echo '
                                 </span></td>
-                                <td><span class="trainer" id="' . escape($user->id) . '" data-type="select">';
-                                    $getTrainers = $db->query("SELECT teams.name FROM users INNER JOIN trainers ON users.id = trainers.user_id INNER JOIN teams ON trainers.team_id = teams.id WHERE users.id = '$user->id'");
+                                <td><span class="trainer" id="' . escape($userdb->id) . '" data-type="select">';
+                                    $getTrainers = $db->query("SELECT teams.name FROM users INNER JOIN trainers ON users.id = trainers.user_id INNER JOIN teams ON trainers.team_id = teams.id WHERE users.id = '$userdb->id'");
                                     if ($getTrainers->count()) {
                                         foreach ($getTrainers->results() as $getTrainer) {
                                             echo escape($getTrainer->name);
@@ -63,9 +67,9 @@
                                         echo 'Geen';
                                     } echo '
                                 </span></td>
-                                <td><span class="birthdate" id="' . escape($user->id) . '">' . escape($user->birthdate) . '</span></td>';
-                                    if ($db->query("SELECT * FROM `commissions` WHERE members LIKE '%,$user->id,%'")->count()) {
-                                        $getCommissions = $db->query("SELECT `name` FROM `commissies` WHERE members LIKE '%,$user->id,%'");
+                                <td><span class="birthdate" id="' . escape($userdb->id) . '">' . escape($userdb->birthdate) . '</span></td>';
+                                    if ($db->query("SELECT * FROM `commissions` WHERE members LIKE '%,$userdb->id,%'")->count()) {
+                                        $getCommissions = $db->query("SELECT `name` FROM `commissies` WHERE members LIKE '%,$userdb->id,%'");
                                         $commission = "";
                                         $count = count($getCommissions->results());
                                         $b = 0;
@@ -96,16 +100,16 @@
                                         $commission = '{"":0}';
                                     }
                                     echo '
-                                <td><span class="commissions" onclick="makeChecked(' . escape($commission) . ')" id="' . escape($user->id) . '" data-type="checklist">Commissies</span></td>';
-                                    if ($db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->count()) {
-                                        $getPermissions = $db->query("SELECT * FROM `permissions` WHERE `user_id` = '$user->id'")->first();
+                                <td><span class="commissions" onclick="makeChecked(' . escape($commission) . ')" id="' . escape($userdb->id) . '" data-type="checklist">Commissies</span></td>';
+                                    if ($db->query("SELECT * FROM `permissions` WHERE `user_id` = '$userdb->id'")->count()) {
+                                        $getPermissions = $db->query("SELECT * FROM `permissions` WHERE `user_id` = '$userdb->id'")->first();
                                         $getPermissions = $getPermissions->permissions;
                                     } else {
                                         $getPermissions = '{"":0}';
                                     }
                                     echo '
-                                <td><span class="permissions" onclick="makeChecked(' . escape($getPermissions) . ')" id="' . escape($user->id) . '" data-type="checklist">Permissies</span></td>
-                                <td><span class="delete" id="' . escape($user->id) . '" onclick="removeUser(' . escape($user->id) . ')"><i title="Verwijderen" style="padding-left: 7px;" class="fa fa-trash-o"></i></span></td>
+                                <td><span class="permissions" onclick="makeChecked(' . escape($getPermissions) . ')" id="' . escape($userdb->id) . '" data-type="checklist">Permissies</span></td>
+                                <td><span class="delete" id="' . escape($userdb->id) . '" onclick="removeUser(' . escape($userdb->id) . ')"><i title="Verwijderen" style="padding-left: 7px;" class="fa fa-trash-o"></i></span></td>
                             </tr>
                              ';
                         }
