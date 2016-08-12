@@ -111,9 +111,11 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                         ));
                     }
                     $perms = null;
+                    $hasperms = false;
                     if (isset($_POST['permissions'])) {
                         $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
                         $perms = json_encode(array_map("intval", $_POST['permissions']));
+                        $hasperms = true;
                         $db->insert('permissions', array(
                             'user_id' => $newuser->id,
                             'permissions' => $perms
@@ -133,10 +135,12 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             $db->query("update commissions set `members`='$members' where `name`='$key'");
                         }
                     }
-                    $permsdesc = json_decode('{"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsedit":"Nieuws bewerken","newsremove":"Nieuws verwijderen","imageupload":"Foto\'s/albums uploaden","imageremove":"Foto\'s/albums verwijderen","activityupload":"Activiteiten uploaden","activityedit":"Activiteiten bewerken","activityremove":"Activiteiten verwijderen","reportupload":"Wedstrijdverslagen uploaden","reportedit":"Wedstrijdverslagen bewerken","reportremove":"Wedstrijdverslagen verwijderen","usercreate":"Gebruikers aanmaken","useredit":"Gebruikers bewerken","userremove":"Gebruikers verwijderen","teamcreate":"Team aanmaken","teamedit":"Team bewerken","teamremove":"Team verwijderen","commissioncreate":"Commissie aanmaken","commissionedit":"Commissie bewerken","commissionremove":"Commissie verwijderen","ideas":"Ideeën inzien","Geen":"Geen"}', true);
-                    $permnames = "";
-                    foreach (json_decode($perms,true) as $key => $val){
-                        $permnames .= "<li>" . $permsdesc[$key] . "</li>";
+                    if($hasperms){
+                        $permsdesc = json_decode('{"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsedit":"Nieuws bewerken","newsremove":"Nieuws verwijderen","imageupload":"Foto\'s/albums uploaden","imageremove":"Foto\'s/albums verwijderen","activityupload":"Activiteiten uploaden","activityedit":"Activiteiten bewerken","activityremove":"Activiteiten verwijderen","reportupload":"Wedstrijdverslagen uploaden","reportedit":"Wedstrijdverslagen bewerken","reportremove":"Wedstrijdverslagen verwijderen","usercreate":"Gebruikers aanmaken","useredit":"Gebruikers bewerken","userremove":"Gebruikers verwijderen","teamcreate":"Team aanmaken","teamedit":"Team bewerken","teamremove":"Team verwijderen","commissioncreate":"Commissie aanmaken","commissionedit":"Commissie bewerken","commissionremove":"Commissie verwijderen","ideas":"Ideeën inzien","Geen":"Geen"}', true);
+                        $permlist = "";
+                        foreach (json_decode($perms,true) as $key => $val){
+                            $permlist .= "<li>" . $permsdesc[$key] . "</li>";
+                        }
                     }
 
                     echo "<h3>Nieuw account gemaakt:</h3>";
@@ -158,15 +162,17 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                     <li>Uw profiel pagina bezoeken</li>
                                     <li>Uw wachtwoord veranderen</li>
                                 </ul>
-                            </p>
-                            <p>Uw permissies zijn:</p>
+                            </p>';
+                    if($hasperms){
+                        $text .= '<p>Uw permissies zijn:</p>
                             <p>
-                                <ul>' . $permnames . '</ul>
+                                <ul>' . $permlist . '</ul>
                             </p>
-                            <p>Kloppen de permissies niet neem dan contact op met de PR&#45; &amp; Communicatie&#45;commissie commissie.</p>
-                            <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                            <p>Kloppen de permissies niet neem dan contact op met de PR&#45; &amp; Communicatie&#45;commissie commissie.</p>';
+                    }
+                    $text .= '<p>Log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                     email($to, $subject, $title, $text);
-
+                    echo $text;
                 } else {
                     echo "<h3>Er is wat mis gegaan bij de geboortedatum. Probeer het opnieuw.</h3><br>";
                 }
