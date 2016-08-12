@@ -756,3 +756,9 @@ table .datum {
 .editable-click {
     border-bottom: none !important;
 }
+
+@media (min-width: 992px) {
+    .commissieRow {
+        display: flex;
+    }
+}
