@@ -209,7 +209,7 @@
                 });
                 $('.birthdate').editable();
                 $('.permissions').editable({
-                    source: {"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newschange":"Nieuws bewerken","newsremove":"Nieuws verwijderen","imageupload":"Foto's/albums uploaden","imageremove":"Foto's/albums verwijderen","activityupload":"Activiteiten uploaden","activitychange":"Activiteiten bewerken","activityremove":"Activiteiten verwijderen","reportupload":"Wedstrijdverslagen uploaden","reportchange":"Wedstrijdverslagen bewerken","reportremove":"Wedstrijdverslagen verwijderen","usercreate":"Gebruikers aanmaken","useredit":"Gebruikers bewerken","userremove":"Gebruikers verwijderen","teamcreate":"Team aanmaken","teamedit":"Team bewerken","teamremove":"Team verwijderen","commissioncreate":"Commissie aanmaken","commissionedit":"Commissie bewerken","commissionremove":"Commissie verwijderen","Geen":"Geen"}
+                    source: {"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsedit":"Nieuws bewerken","newsremove":"Nieuws verwijderen","imageupload":"Foto's/albums uploaden","imageremove":"Foto's/albums verwijderen","activityupload":"Activiteiten uploaden","activityedit":"Activiteiten bewerken","activityremove":"Activiteiten verwijderen","reportupload":"Wedstrijdverslagen uploaden","reportedit":"Wedstrijdverslagen bewerken","reportremove":"Wedstrijdverslagen verwijderen","usercreate":"Gebruikers aanmaken","useredit":"Gebruikers bewerken","userremove":"Gebruikers verwijderen","teamcreate":"Team aanmaken","teamedit":"Team bewerken","teamremove":"Team verwijderen","commissioncreate":"Commissie aanmaken","commissionedit":"Commissie bewerken","commissionremove":"Commissie verwijderen","ideas":"Ideeën inzien","Geen":"Geen"}
                 });
                 $('.commissions').editable({
                    source: {
@@ -252,10 +252,6 @@
                     });
                 }
             });
-
-            /*if(this.val == "Geen" && this.checked){
-                alert("asdads");
-            }*/
         });
 
         $(document).on('click', '.editable-submit', function () {

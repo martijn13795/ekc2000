@@ -6,7 +6,7 @@
         <hr>
         <?php
         $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
+        if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('activityupload'))) {
         ?>
         <div class="hidden visible-lg">
             <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
@@ -33,8 +33,9 @@
                 if ($activities->count()) {
                     foreach ($activities->results() as $activity) {
                         echo '<div class="well activiteitDiv">';
-                        if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("admin"))) {
-                            echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';
+                        if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("dev") || $user->hasPermission('activityremove'))) {
+                            echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';}
+                        if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("dev") || $user->hasPermission('activityedit'))) {
                             echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`activities`, ' . escape($activity->id) . ')"></i></div>';
                         }
                         echo '<a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(rawurldecode($activity->name)) . '</h3></a>

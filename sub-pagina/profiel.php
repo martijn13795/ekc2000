@@ -188,6 +188,9 @@ if ($user->isLoggedIn()) {
                     <br>
                     <label>Permissies:</label><br>
                     <div id="permissions" class="row">
+                        <?php
+                        if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
+                        ?>
                         <div class="col-md-12">
                             <div class="col-md-3">
                                 <div class="checkbox checkbox-success">
@@ -197,6 +200,7 @@ if ($user->isLoggedIn()) {
                             </div>
                         </div>
                         <?php
+                        }
                         if($user->hasPermission('dev') || $user->hasPermission('chatapprove')) {
                         ?>
                         <div class="col-md-12">
@@ -265,11 +269,11 @@ if ($user->isLoggedIn()) {
                             </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('newschange')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('newsedit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="newschange" type="checkbox" value="1" name="permissions[newschange]">
-                                <label for="newschange" style="font-weight: normal;">Nieuws bewerken</label>
+                                <input id="newsedit" type="checkbox" value="1" name="permissions[newsedit]">
+                                <label for="newsedit" style="font-weight: normal;">Nieuws bewerken</label>
                             </div>
                         <?php
                         }
@@ -313,11 +317,11 @@ if ($user->isLoggedIn()) {
                             </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('activitychange')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('activityedit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="activitychange" type="checkbox" value="1" name="permissions[activitychange]">
-                                <label for="activitychange" style="font-weight: normal;">Activiteiten bewerken</label>
+                                <input id="activityedit" type="checkbox" value="1" name="permissions[activityedit]">
+                                <label for="activityedit" style="font-weight: normal;">Activiteiten bewerken</label>
                             </div>
                         <?php
                         }
@@ -340,11 +344,11 @@ if ($user->isLoggedIn()) {
                             </div>
                         <?php
                         }
-                        if($user->hasPermission('dev') || $user->hasPermission('reportchange')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('reportedit')) {
                         ?>
                             <div class="checkbox checkbox-warning">
-                                <input id="reportchange" type="checkbox" value="1" name="permissions[reportchange]">
-                                <label for="reportchange" style="font-weight: normal;">Wedstrijdverslagen bewerken</label>
+                                <input id="reportedit" type="checkbox" value="1" name="permissions[reportedit]">
+                                <label for="reportedit" style="font-weight: normal;">Wedstrijdverslagen bewerken</label>
                             </div>
                         <?php
                         }
@@ -438,10 +442,22 @@ if ($user->isLoggedIn()) {
                                  <label for="commissionremove" style="font-weight: normal;">Commissie verwijderen</label>
                                  </div>
                              </div>
-                        </div>
+
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('ideas')) {
+                        ?>
+                            <div class="col-md-3">
+                            <label>Idee&euml;nbus</label><br>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="ideas" type="checkbox" value="1" name="permissions[ideas]">
+                                    <label for="ideas" style="font-weight: normal;">Idee&euml;n inzien</label>
+                                </div>
+                            </div>
                         <?php
                         }
                         ?>
+                        </div>
                     </div>
                     <br><br>
                     <input class="btn btn-primary submit" id="submit" type="submit">

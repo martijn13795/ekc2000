@@ -5,7 +5,7 @@
         <div class="col-md-12 col-xs-12">
             <h1>Wedstrijdverslagen</h1>
             <hr>
-            <?php if ($user->isLoggedIn()) { ?>
+            <?php if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('reportupload'))) { ?>
                     <div class="hidden visible-lg">
                         <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
                         <div id="uploadContainer" hidden>

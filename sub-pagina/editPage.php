@@ -1,28 +1,45 @@
-<?php include '../includes/html.php'; ?>
+<?php include '../includes/html.php';
+$user = new User();
+if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission("dev") || $user->hasPermission("newsedit") || $user->hasPermission("activityedit") || $user->hasPermission("reportedit"))) {
+?>
     <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/ckeditor/ckeditor.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container">
         <?php
-        $user = new User();
+
         $updateThing = $_GET['updateThing'];
-        $updateId = $_GET['updateId'];
-            $location = "";
-            $datas = $db->query("SELECT * FROM `".$updateThing."` WHERE `id` = '".$updateId."'");
-            if ($datas->count()) {
-                foreach ($datas->results() as $data) {
-                    $userId = $data->user_id;
-                    $name = $data->name;
-                    $text = $data->text;
-                }
+        if ($updateThing == "news"){
+            if(!$user->hasPermission("newsedit")){
+                include_once '403.php';
+                return;
             }
-        if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission("admin"))) {
-                if ($updateThing == "news"){
-                    $location = "/nieuws";
-                } else if ($updateThing == "activities") {
-                    $location = "/activiteiten";
-                } else if ($updateThing == "reports") {
-                    $location = "/wedstrijdverslagen";
-                }
+            $location = "/nieuws";
+        } else if ($updateThing == "activities") {
+            if(!$user->hasPermission("activityedit")){
+                include_once '403.php';
+                return;
+            }
+            $location = "/activiteiten";
+        } else if ($updateThing == "reports") {
+            if(!$user->hasPermission("reportedit")){
+                include_once '403.php';
+                return;
+            }
+            $location = "/wedstrijdverslagen";
+        } else {
+            include_once '404.php';
+            return;
+        }
+
+        $updateId = $_GET['updateId'];
+        $datas = $db->query("SELECT * FROM `".$updateThing."` WHERE `id` = '".$updateId."'");
+        if ($datas->count()) {
+            foreach ($datas->results() as $data) {
+                $userId = $data->user_id;
+                $name = $data->name;
+                $text = $data->text;
+            }
+        }
         ?>
             <h1>Bewerk - <?php echo escape(rawurldecode($name)); ?></h1>
             <hr>
@@ -39,10 +56,11 @@
                 </div>
             </div>
         <br>
-        <?php
-        }
-        ?>
+
     </div>
+    <?php
+    }
+    ?>
     <script>
         function CKupdate(){
             for ( var instance in CKEDITOR.instances )

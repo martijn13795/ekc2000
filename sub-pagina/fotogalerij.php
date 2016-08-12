@@ -6,33 +6,38 @@
             <hr>
             <?php
             $user = new User();
-            if ($user->isLoggedIn() && $user->hasPermission('admin')) {
-            ?>
-            <div class="hidden visible-lg">
-                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
-                <div id="uploadContainer" hidden>
-                    <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
-                          enctype="multipart/form-data">
-                        <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="256" REQUIRED><br>
-                        <input type="file" id="file" name="files[]" multiple REQUIRED><br>
-                        <input class="btn btn-success" id="submit" type="submit" value="Upload">
-                    </form>
-                    <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
-                    <br>
-                    <br>
-                    <div id="error"></div>
-                    <br>
+            if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('imageupload'))) {
+                ?>
+                <div class="hidden visible-lg">
+                    <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button>
+                    <br><br>
+                    <div id="uploadContainer" hidden>
+                        <form action="../includes/fotoUpload.php" method="post" class="myForm" name="myForm"
+                              enctype="multipart/form-data">
+                            <label>Naam van album:</label><input type="text" id="name" class="form-control" name="name"
+                                                                 placeholder="Naam" maxlength="256" REQUIRED><br>
+                            <input type="file" id="file" name="files[]" multiple REQUIRED><br>
+                            <input class="btn btn-success" id="submit" type="submit" value="Upload">
+                        </form>
+                        <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+                        <br>
+                        <br>
+                        <div id="error"></div>
+                        <br>
 
-                    <div class="progress progress-striped active">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                                 aria-valuemax="100" style="width: 0%;"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br>
+                <br>
+                <?php
+            }
+            ?>
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <?php
-                    }
                     $db = DB::getInstance();
                     $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
                     if ($albums->count()) {
@@ -42,7 +47,7 @@
                                 $album_name = str_replace("XY","%",$album->name);
                                 $img_path = $album_data->first()->pathMobile;
                                 echo '<div class="well albumsDiv">';
-                                if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
+                                if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("dev") || $user->hasPermission("imageremove"))) {
                                     echo '<i title="Verijderen" class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
                                     echo '<div class="hidden visible-lg"><i title="Toevoegen" class="fa fa-plus-square-o" style="float: right; color: green;" onclick="update(\''.escape(rawurldecode($album_name)).'\')"></i></div>';
                                 }
@@ -52,7 +57,7 @@
                             } else {
                                 $album_name = str_replace("XY","%",$album->name);
                                 echo '<div class="well albumsDiv">';
-                                if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("admin"))) {
+                                if ($user->isLoggedIn() && ($user->data()->id == $album->user_id || $user->hasPermission("dev") || $user->hasPermission("imageremove"))) {
                                     echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeAlbum(' . escape($album->id) . ')"></i>';
                                     echo '<div class="hidden visible-lg"><i title="Toevoegen" class="fa fa-plus-square-o" style="float: right; color: green;" onclick="update(\''.escape(rawurldecode($album_name)).'\')"></i></div>';
                                 }

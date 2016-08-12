@@ -6,11 +6,11 @@ if ($user->isLoggedIn()) { ?>
         <hr>
         <div class="col-md-12 col-xs-12">
             <?php
-            $user = new User();
-            if ($user->isLoggedIn() && $user->hasPermission('admin')) {
+            if ($user->hasPermission('dev') || $user->hasPermission('documentupload')) {
             ?>
             <div class="hidden visible-lg">
-                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
+                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button>
+                <br><br>
                 <div id="uploadContainer" hidden>
                     <form method="post" action="../includes/documentUpload.php" name="myForm" class="myForm"
                           enctype="multipart/form-data">
@@ -30,7 +30,7 @@ if ($user->isLoggedIn()) { ?>
                 <div class="col-md-12 col-xs-12">
                     <?php
                     }
-                    }
+
                     $db = DB::getInstance();
                     $documents = $db->query("SELECT * FROM documents ORDER BY date DESC");
                     if ($documents->count()) {
@@ -50,7 +50,7 @@ if ($user->isLoggedIn()) { ?>
                                 $image = "../images/pdf.png";
                             }
                             echo '<div class="well albumsDiv">';
-                            if ($user->isLoggedIn() && ($user->data()->id == $document->user_id || $user->hasPermission("admin"))) {
+                            if ($user->data()->id == $document->user_id || $user->hasPermission("dev") || $user->hasPermission("documentremove")) {
                                 echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeDocument(' . escape($document->id) . ')"></i>';
                             }
                             echo '<a href="/' . $document->path . '"><img class="roundImg" src="' . $image . '"/><h3>'
@@ -59,6 +59,9 @@ if ($user->isLoggedIn()) { ?>
                     } else {
                         echo '<div class="well albumsDiv"><br/><h3>Er zijn nog geen documenten beschikbaar</h3></div>';
                     }
+                } else {
+                        include_once '403.php';
+                }
                     ?>
                 </div>
             </div>

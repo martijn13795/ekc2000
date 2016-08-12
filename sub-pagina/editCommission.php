@@ -1,4 +1,7 @@
-<?php include '../includes/html.php'; ?>
+<?php include '../includes/html.php';
+$user = new User();
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('commissionedit'))) {
+    ?>
     <link href="../css/bootstrap-editable.css" rel="stylesheet">
     <script src="../js/bootstrap-editable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
@@ -7,43 +10,41 @@
     <div class="container">
         <h1>Bewerk commissies</h1>
         <hr>
-        <?php
-        $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
-            ?>
-            <table class="table table-striped table-bordered myTable">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Naam</th>
-                    <th>Email</th>
-                    <th>Telefoonnummer</th>
-                    <th><i title="Verwijderen" style="cursor: auto; padding-left: 7px;" class="fa fa-trash-o"></i></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                $commissions = $db->query("SELECT * FROM commissions");
-                if ($commissions->count()) {
-                    foreach ($commissions->results() as $commission) {
-                        echo '
+        <table class="table table-striped table-bordered myTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naam</th>
+                <th>Email</th>
+                <th>Telefoonnummer</th>
+                <th><i title="Verwijderen" style="cursor: auto; padding-left: 7px;" class="fa fa-trash-o"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $commissions = $db->query("SELECT * FROM commissions");
+            if ($commissions->count()) {
+                foreach ($commissions->results() as $commission) {
+                    echo '
                             <tr>
                                 <td>' . escape($commission->id) . '</td>
                                 <td><span class="name" id="' . escape($commission->id) . '">' . escape($commission->name) . '</span></td>
                                 <td><span class="mail" id="' . escape($commission->id) . '">' . escape($commission->mail) . '</span></td>
-                                <td><span class="phone" id="' . escape($commission->id) . '">' . escape($commission->phone) . '</span></td>
-                                <td><span class="delete" id="' . escape($commission->id) . '" onclick="removeCommission(' . escape($commission->id) . ')"><i title="Verwijderen" style="padding-left: 7px; margin: 0 auto;" class="fa fa-trash-o"></i></span></td>
-                            </tr>
-                             ';
+                                <td><span class="phone" id="' . escape($commission->id) . '">' . escape($commission->phone) . '</span></td>';
+                    if ($user->hasPermission('dev') || $user->hasPermission('commissionremove')) {
+                        echo '<td><span class="delete" id="' . escape($commission->id) . '" onclick="removeCommission(' . escape($commission->id) . ')"><i title="Verwijderen" style="padding-left: 7px; margin: 0 auto;" class="fa fa-trash-o"></i></span></td>';
                     }
+                    echo '</tr>';
                 }
-                ?>
-                </tbody>
-            </table>
-            <?php
-        }
-        ?>
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
+    <?php
+    } else {
+        include_once "403.php";
+    }?>
     <script>
         $(document).ready(function() {
             $('.myTable').dataTable({

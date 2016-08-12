@@ -1,6 +1,7 @@
-<?php include '../includes/html.php';?>
+<?php include '../includes/html.php';
+if ($user->isLoggedIn()) {
+?>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-<?php if ($user->isLoggedIn()) { ?>
     <div class="container">
         <h1>Idee&euml;nbus</h1>
         <hr>
@@ -20,13 +21,13 @@
         </div>
         <div class="col-md-12 col-xs-12">
             <?php
-            if ($user->isLoggedIn() && $user->hasPermission('dev')) {
+            if ($user->hasPermission('dev') || $user->hasPermission('ideas')) {
                 $db = DB::getInstance();
                 $ideas = $db->query("SELECT * FROM ideas ORDER BY date DESC");
                 if ($ideas->count()) {
                     foreach ($ideas->results() as $idea) {
                         echo '<div class="well activiteitDiv"><h3>' . escape(str_replace('-', ' ', $idea->name)) . '</h3><p>' . escape($idea->text) . '</p><br><p>Upload datum: ' . escape(explode(" ", $idea->date)[0]) . '</p>';
-                        if ($user->isLoggedIn() && $user->hasPermission("dev")) {
+                        if ($user->hasPermission("dev")) {
                             $names = $db->query("SELECT * FROM users WHERE id = '$idea->user_id'");
                             if ($names->count()) {
                                 foreach ($names->results() as $name) {
@@ -38,7 +39,7 @@
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen idee&euml;n beschikbaar</h3></div>';
                 }
-            } elseif ($user->isLoggedIn()) {
+            } else {
                 $db = DB::getInstance();
                 $userID = $user->data()->id;
                 $ideas = $db->query("SELECT * FROM ideas WHERE user_id = '$userID' ORDER BY date DESC");
@@ -55,17 +56,7 @@
     </div>
     <?php
 }else{
-    ?>
-    <div class="container">
-        <div class="col-md-12 col-xs-12">
-            <h1>Oeps! - U heeft niet het rechten om deze pagina te bezoeken</h1>
-        </div>
-        <div class="col-md-12 col-xs-12">
-            <img class="img-responsive errorImg" src="../images/403Error.png" alt="403 Error"/>
-            <a onclick="history.back()" class="btn btn-primary">Ga terug</a>
-        </div>
-    </div>
-    <?php
+    include_once '403.php';
 }
 ?>
 <script>

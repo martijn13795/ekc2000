@@ -3,7 +3,7 @@
     <div class="container">
         <?php
         $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
+        if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('sponsorupload'))) {
             ?>
             <div class="hidden visible-lg">
                 <br>
@@ -45,7 +45,7 @@
                 if ($sponsoren->count()) {
                     foreach ($sponsoren->results() as $sponsor) {
                         echo '<div class="col-md-2 col-xs-2 sponsorenImg">';
-                        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
+                        if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('sponsorremove'))) {
                             echo '<div class="imageDel"><i class="fa fa-trash-o imageDelButton" onclick="imageDel(\'' . escape($sponsor->id) . '\', \'' . escape($sponsor->pathMobile) . '\');"></i></div>';
                         }
                         echo '<img onclick="window.open(\'' . escape($sponsor->link) . '\', \'_blank\');" title="' . escape($sponsor->title) . '" style="cursor: pointer;" class="img-responsive" src="' . escape($sponsor->path) . '" alt="' . escape($sponsor->name) . '"/>

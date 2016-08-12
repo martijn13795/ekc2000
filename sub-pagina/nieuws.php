@@ -6,41 +6,46 @@
         <hr>
         <?php
         $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
-        ?>
-        <div class="hidden visible-lg">
-            <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button><br><br>
-            <div id="uploadContainer" hidden>
-                <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">
-                    <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" maxlength="256" REQUIRED><br>
-                    <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
-                    <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
-                </form>
-                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
-                <br>
-                <div id="error"></div>
+        if ($user->isLoggedIn() && ($user->hasPermission('admin') || $user->hasPermission('newsupload'))) {
+            ?>
+            <div class="hidden visible-lg">
+                <button class="btn btn-primary" id="upload" onclick="showUpload()">Upload</button>
+                <br><br>
+                <div id="uploadContainer" hidden>
+                    <form action="../includes/nieuwsUpload.php" method="POST" class="myForm" name="myForm">
+                        <label>Naam van artikel:</label><input type="text" id="artikelName" class="form-control"
+                                                               name="artikelName" placeholder="Naam" maxlength="256"
+                                                               REQUIRED><br>
+                        <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
+                        <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
+                    </form>
+                    <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
+                    <br>
+                    <div id="error"></div>
+                </div>
             </div>
-        </div>
-        <br>
-
+            <br>
+            <?php
+        }
+        ?>
         <div class="row">
             <div class="col-md-12 col-xs-12">
                 <?php
-                }
                 $db = DB::getInstance();
                 $newsdata = $db->query("SELECT date, name, id, user_id FROM news ORDER BY date DESC");
                 if ($newsdata->count()) {
                     foreach ($newsdata->results() as $news) {
                         echo '<div class="well nieuwsDiv">';
-                        if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("admin"))) {
-                            echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';
+                        if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("dev") || $user->hasPermission("newsremove"))) {
+                            echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';}
+                        if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("dev") || $user->hasPermission("newsedit"))) {
                             echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`news`, ' . escape($news->id) . ')"></i></div>';
                         }
-                                    echo '<a href="/artikel/' . escape($news->name) . '">
-                                        <h3>' . escape(rawurldecode($news->name)) . '</h3>
-                                    </a>
-                                    <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>
-                              </div>';
+                        echo '<a href="/artikel/' . escape($news->name) . '">
+                            <h3>' . escape(rawurldecode($news->name)) . '</h3>
+                        </a>
+                        <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>
+                          </div>';
                     }
                 } else {
                     echo '<div class="well nieuwsDiv"><br><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';
