@@ -35,14 +35,14 @@ if ($message == null || $message == "" || $message == " ") {
                         'user_id' => $user->data()->id,
                         'message' => $message,
                         'date' => $date,
-                        'approved' => true
+                        'approved' => 1
                     ));
                 } else {
                     $db->insert('messages', array(
                         'user_id' => $user->data()->id,
                         'message' => $message,
                         'date' => $date,
-                        'approved' => false
+                        'approved' => 0
                     ));
                 }
                 ?>
