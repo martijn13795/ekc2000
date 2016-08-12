@@ -29,6 +29,8 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
         $username = $surname_prefix ? $name.'.'.$surname_prefix.'.'.$surname : $name.'.'.$surname;
         $username = strtolower($username);
 
+        $password = randomPassword();
+
         $users = $db->query("SELECT * FROM users WHERE username = '". escape($username) ."'");
         if(!$users->count()){
             if($gender === 'M' || $gender === 'F'){
@@ -51,7 +53,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                                         $salt = Hash::salt(32);
                                         $db->insert('users', array(
                                             'username' => $username,
-                                            'password' => Hash::make($birthday, $salt),
+                                            'password' => Hash::make($password, $salt),
                                             'mail' => $email,
                                             'salt' => $salt,
                                             'name' => $name,
@@ -80,7 +82,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                         $salt = Hash::salt(32);
                         $db->insert('users', array(
                             'username' => $username,
-                            'password' => Hash::make($birthday, $salt),
+                            'password' => Hash::make($password, $salt),
                             'mail' => $email,
                             'salt' => $salt,
                             'name' => $name,
@@ -108,6 +110,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             'user_id' => $newuser->id
                         ));
                     }
+                    $perms = null;
                     if (isset($_POST['permissions'])) {
                         $newuser = $db->query("SELECT id FROM users WHERE username = '" . escape($username) . "'")->first();
                         $perms = json_encode(array_map("intval", $_POST['permissions']));
@@ -130,15 +133,21 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             $db->query("update commissions set `members`='$members' where `name`='$key'");
                         }
                     }
-                    echo "<h3>New account gemaakt:</h3>";
+                    $permsdesc = json_decode('{"chatapprove":"Chatbericht goedkeuring","chatremove":"Chatbericht verwijderen","sponsorupload":"Sponsoren uploaden","sponsorremove":"Sponsoren verwijderen","documentupload":"Documenten uploaden","documentremove":"Documenten verwijderen","newsupload":"Nieuws uploaden","newsedit":"Nieuws bewerken","newsremove":"Nieuws verwijderen","imageupload":"Foto\'s/albums uploaden","imageremove":"Foto\'s/albums verwijderen","activityupload":"Activiteiten uploaden","activityedit":"Activiteiten bewerken","activityremove":"Activiteiten verwijderen","reportupload":"Wedstrijdverslagen uploaden","reportedit":"Wedstrijdverslagen bewerken","reportremove":"Wedstrijdverslagen verwijderen","usercreate":"Gebruikers aanmaken","useredit":"Gebruikers bewerken","userremove":"Gebruikers verwijderen","teamcreate":"Team aanmaken","teamedit":"Team bewerken","teamremove":"Team verwijderen","commissioncreate":"Commissie aanmaken","commissionedit":"Commissie bewerken","commissionremove":"Commissie verwijderen","ideas":"Ideeën inzien","Geen":"Geen"}', true);
+                    $permnames = "";
+                    foreach (json_decode($perms,true) as $key => $val){
+                        $permnames .= "<li>" . $permsdesc[$key] . "</li>";
+                    }
+
+                    echo "<h3>Nieuw account gemaakt:</h3>";
                     echo "<p>Gebruikersnaam: " . $username . "</p>";
-                    echo "<p>Wachtwoord: " . $birthday . "</p>";
-                    $to = "martijn13795@hotmail.com";
+                    echo "<p>Wachtwoord: " . $password . "</p>";
+                    $to = $email;
                     $subject = "Uw account voor EKC 2000 is aangemaakt";
-                    $title = "Hallo " . $name . " " . $surname . ",";
+                    $title = "Hallo " . $surname_prefix ? $name.' '.$surname_prefix.' '.$surname : $name.' '.$surname . ",";
                     $text = '<h3>Uw account voor de website van EKC 2000 is aangemaakt.</h3>
                             <p>Uw gebruikersnaam is: ' . $username . '</p>
-                            <p>Uw wachtwoord is: ' . $birthday . '</p><br>
+                            <p>Uw wachtwoord is: ' . $password . '</p><br>
                             <h3>Waarom heb ik een account?</h3>
                             <p>Met het account voor de website van EKC 2000 kun je een aantal dingen doen.</p>
                             <p>
@@ -152,9 +161,7 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                             </p>
                             <p>Uw permissies zijn:</p>
                             <p>
-                                <ul>
-                                    <li>Test</li>
-                                </ul>
+                                <ul>' . $permnames . '</ul>
                             </p>
                             <p>Kloppen de permissies niet neem dan contact op met de PR&#45; &amp; Communicatie&#45;commissie commissie.</p>
                             <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
@@ -209,4 +216,15 @@ function formatSizeUnits($bytes)
     }
 
     return $bytes;
+}
+
+function randomPassword(){
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $pass = array();
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass);
 }
