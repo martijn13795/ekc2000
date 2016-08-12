@@ -1,4 +1,7 @@
-<?php include '../includes/html.php'; ?>
+<?php include '../includes/html.php';
+$user = new User();
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('useredit'))) {
+?>
 <link href="../css/bootstrap-editable.css" rel="stylesheet">
 <script src="../js/bootstrap-editable.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css"/>
@@ -7,10 +10,6 @@
     <div style="width: 90%; margin: 0 auto;">
         <h1>Bewerk gebruikers</h1>
         <hr>
-        <?php
-        $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
-        ?>
                 <table class="table table-striped table-bordered myTable">
                     <thead>
                     <tr>
@@ -109,15 +108,19 @@
                                     }
                                     echo '
                                 <td><span class="permissions" onclick="makeChecked(' . escape($getPermissions) . ')" id="' . escape($userdb->id) . '" data-type="checklist">Permissies</span></td>
-                                <td><span class="delete" id="' . escape($userdb->id) . '" onclick="removeUser(' . escape($userdb->id) . ')"><i title="Verwijderen" style="padding-left: 7px;" class="fa fa-trash-o"></i></span></td>
-                            </tr>
-                             ';
+                                <td>';
+                            if($user->hasPermission('dev') || $user->hasPermission('userremove')){
+                                echo '<span class="delete" id="' . escape($userdb->id) . '" onclick="removeUser(' . escape($userdb->id) . ')"><i title="Verwijderen" style="padding-left: 7px;" class="fa fa-trash-o"></i></span>';
+                            }
+                            echo '</td></tr>';
                         }
                     }
                     ?>
                     </tbody>
                 </table>
         <?php
+        } else {
+            include_once '403.php';
         }
         ?>
     </div>

@@ -1,7 +1,9 @@
 <?php include '../includes/html.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
-?>
+$user = new User();
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('teamedit'))) {
+    ?>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <div class="container">
         <h1>Bewerk teams</h1>
@@ -18,7 +20,7 @@ $db = DB::getInstance();
                         $teamsArray[escape($team->id)] = escape($team->name);
                     }
                     asort($teamsArray);
-                    foreach ($teamsArray as $id => $name){
+                    foreach ($teamsArray as $id => $name) {
                         echo '<option value="' . escape($id) . '">' . escape($name) . '</option>';
                     }
                 } else {
@@ -26,15 +28,14 @@ $db = DB::getInstance();
                 }
                 ?>
             </select>
-        </form><br>
+        </form>
+        <br>
+        <div id="teamData">
+            <!-- Wordt ingeladen -->
+        </div>
         <?php
-        $user = new User();
-        if ($user->isLoggedIn() && $user->hasPermission('admin')) {
-            ?>
-            <div id="teamData">
-                <!-- Wordt ingeladen -->
-            </div>
-        <?php
+        } else {
+            include_once '403.php';
         }
         ?>
     </div>
