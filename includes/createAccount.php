@@ -137,19 +137,27 @@ if($user->isLoggedIn() && $user->hasPermission('admin')){
                     $subject = "Uw account voor EKC 2000 is aangemaakt";
                     $title = "Hallo " . $name . " " . $surname . ",";
                     $text = '<h3>Uw account voor de website van EKC 2000 is aangemaakt.</h3>
-                                            <p>Uw gebruikersnaam is: ' . $username . '</p>
-                                            <p>Uw wachtwoord is: ' . $birthday . '</p><br>
-                                            <h3>Waarom heb ik een account?</h3>
-                                            <p>Met het account voor de website van EKC 2000 kun je een aantal dingen doen.</p>
-                                            <p><ul>
-                                              <li>Chatten in de chatbox</li>
-                                              <li>Idee&euml;n uploaden</li>
-                                              <li>Documenten bekijken</li>
-                                              <li>Uw profiel pagina bezoeken</li>
-                                              <li>Uw wachtwoord veranderen</li>
-                                            </ul></p>
-                                            <p>Natuurlijk worden er nog meer dingen met de accounts gedaan, maar dat is vooral achter de schermen.</p>
-                                            <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                            <p>Uw gebruikersnaam is: ' . $username . '</p>
+                            <p>Uw wachtwoord is: ' . $birthday . '</p><br>
+                            <h3>Waarom heb ik een account?</h3>
+                            <p>Met het account voor de website van EKC 2000 kun je een aantal dingen doen.</p>
+                            <p>
+                                <ul>
+                                    <li>Chatten in de chatbox</li>
+                                    <li>Idee&euml;n uploaden</li>
+                                    <li>Documenten bekijken</li>
+                                    <li>Uw profiel pagina bezoeken</li>
+                                    <li>Uw wachtwoord veranderen</li>
+                                </ul>
+                            </p>
+                            <p>Uw permissies zijn:</p>
+                            <p>
+                                <ul>
+                                    <li>Test</li>
+                                </ul>
+                            </p>
+                            <p>Kloppen de permissies niet neem dan contact op met de PR&#45; &amp; Communicatie&#45;commissie commissie.</p>
+                            <p>log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                     email($to, $subject, $title, $text);
 
                 } else {
