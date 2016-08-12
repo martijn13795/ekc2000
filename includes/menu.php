@@ -24,7 +24,6 @@
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
                         <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
-                        <li <?=activeClass("bestuur")?>><a href="/bestuur">Bestuur</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
                         <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
                         <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("ideeenbus")?>><a href="/ideeenbus">Idee&euml;nbus</a></li><?php } ?>
