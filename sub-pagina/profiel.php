@@ -76,23 +76,43 @@ if ($user->isLoggedIn()) {
 
                         </div>
                         <?php
-                        if ($user->hasPermission('admin')) {
+                        if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
                         ?>
                             <div class="col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="upload" style="width: 200px;" onclick="showUpload()">Nieuw account maken</button>
                             </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('useredit')) {
+                        ?>
                             <div class="hidden visible-lg col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="editUser" style="width: 200px;" onclick="window.location='/bewerk-gebruikers'">Bewerk gebruikers</button>
                             </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('teamcreate')) {
+                        ?>
                             <div class="col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="uploadTeam" style="width: 200px;" onclick="showTeam()">Nieuw team maken</button>
                             </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('teamedit')) {
+                        ?>
                             <div class="hidden visible-lg col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="editTeam" style="width: 200px;" onclick="window.location='/bewerk-teams'">Bewerk teams</button>
                             </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('commissioncreate')) {
+                        ?>
                             <div class="col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="uploadCommission" style="width: 200px;" onclick="showCommission()">Nieuwe commissie maken</button>
                             </div>
+                        <?php
+                        }
+                        if($user->hasPermission('dev') || $user->hasPermission('commissionedit')) {
+                        ?>
                             <div class="hidden visible-lg col-md-6 col-xs-12">
                                 <br><button class="btn btn-primary" id="editCommission" style="width: 200px;" onclick="window.location='/bewerk-commissies'">Bewerk commissies</button>
                             </div>
