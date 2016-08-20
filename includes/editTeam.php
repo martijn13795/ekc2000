@@ -8,12 +8,14 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         $data = $_GET['data'];
         $colum = $_GET['colum'];
         if ($colum == "delete"){
-            $query = $db->query("SELECT * FROM teams WHERE id = '$id'")->first();
-            unlink($query->path);
-            $deleteTeams = $db->query("DELETE FROM `teams` WHERE `teams`.`id` = '$id'");
-            $deleteSchedule = $db->query("DELETE FROM `schedules` WHERE `schedules`.`team_id` = '$id'");
-            $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`team_id` = '$id'");
-            $deleteSession = $db->query("DELETE FROM `players` WHERE `players`.`team_id` = '$id'");
+            if ($user->hasPermission('dev') || $user->hasPermission('teamremove')) {
+                $query = $db->query("SELECT * FROM teams WHERE id = '$id'")->first();
+                unlink($query->path);
+                $deleteTeams = $db->query("DELETE FROM `teams` WHERE `teams`.`id` = '$id'");
+                $deleteSchedule = $db->query("DELETE FROM `schedules` WHERE `schedules`.`team_id` = '$id'");
+                $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`team_id` = '$id'");
+                $deleteSession = $db->query("DELETE FROM `players` WHERE `players`.`team_id` = '$id'");
+            }
         }else {
             $size = 5242880;
                 if(!empty($_POST['name']) && isset($_POST['name'])

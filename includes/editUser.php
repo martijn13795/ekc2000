@@ -26,19 +26,21 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 ));
             };
         }else if ($colum == "delete"){
-            $query = $db->query("SELECT * FROM users WHERE id = '$id'")->first();
-            unlink($query->IconPath);
-            $deleteUser = $db->query("DELETE FROM `users` WHERE `users`.`id` = '$id'");
-            $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
-            $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
-            $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
-            $deletePermission = $db->query("DELETE FROM `permissions` WHERE `users_id` = '$id'");
-            $deleteMessages = $db->query("DELETE FROM `messages` WHERE `users_id` = '$id'");
-            $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
-            foreach ($removeMembers->results() as $removeMember) {
-                $members = $removeMember->members;
-                $members = str_replace(",$id,", "", $members);
-                $db->query("update commissions set `members`='$members' WHERE members LIKE '%,$id,%' AND id = '$removeMember->id'");
+            if ($user->hasPermission('dev') || $user->hasPermission('userremove')) {
+                $query = $db->query("SELECT * FROM users WHERE id = '$id'")->first();
+                unlink($query->IconPath);
+                $deleteUser = $db->query("DELETE FROM `users` WHERE `users`.`id` = '$id'");
+                $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
+                $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
+                $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
+                $deletePermission = $db->query("DELETE FROM `permissions` WHERE `users_id` = '$id'");
+                $deleteMessages = $db->query("DELETE FROM `messages` WHERE `users_id` = '$id'");
+                $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
+                foreach ($removeMembers->results() as $removeMember) {
+                    $members = $removeMember->members;
+                    $members = str_replace(",$id,", "", $members);
+                    $db->query("update commissions set `members`='$members' WHERE members LIKE '%,$id,%' AND id = '$removeMember->id'");
+                }
             }
         }else if ($colum == "permissions"){
             $val = $_GET['val'];

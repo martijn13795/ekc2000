@@ -387,6 +387,7 @@ if ($user->isLoggedIn()) {
                             <label>Gebruikers (alleen admins):</label><br>
                             <div class="checkbox checkbox-primary">
                                 <input id="usercreate" type="checkbox" value="1" name="permissions[usercreate]" disabled>
+                                <input id="usercreate" type="checkbox" value="1" name="permissions[usercreate]" hidden>
                                 <label for="usercreate" style="font-weight: normal;">Gebruikers aanmaken</label>
                             </div>
                         <?php
@@ -395,6 +396,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-warning">
                                 <input id="useredit" type="checkbox" value="1" name="permissions[useredit]" disabled>
+                                <input id="useredit" type="checkbox" value="1" name="permissions[useredit]" hidden>
                                 <label for="useredit" style="font-weight: normal;">Gebruikers bewerken</label>
                             </div>
                         <?php
@@ -403,6 +405,7 @@ if ($user->isLoggedIn()) {
                         ?>
                             <div class="checkbox checkbox-danger">
                                 <input id="userremove" type="checkbox" value="1" name="permissions[userremove]" disabled>
+                                <input id="userremove" type="checkbox" value="1" name="permissions[userremove]" hidden>
                                 <label for="userremove" style="font-weight: normal;">Gebruikers verwijderen</label>
                             </div>
                         </div>
@@ -556,6 +559,8 @@ if ($user->isLoggedIn()) {
         <div id="error"></div>
     </div>
     <?php
+} else {
+    include_once '403.php';
 }
 ?>
     <script>

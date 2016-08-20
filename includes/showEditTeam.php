@@ -56,8 +56,12 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
         </form>
         <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button><br><br>
         <div id="error"></div>
-        <button class="btn btn-danger" onclick="removeTeam(<?php echo $id; ?>)" style="float: right; margin-top: -73px;">Team "<?php echo $team->name; ?>" verwijderen</button>
         <?php
+        if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('teamremove'))) {
+            ?>
+            <button class="btn btn-danger" onclick="removeTeam(<?php echo $id; ?>)" style="float: right; margin-top: -73px;">Team "<?php echo $team->name; ?>" verwijderen</button>
+            <?php
+        }
     } else {
         echo "<p>Er is iets mis gegaan. Dit team bestaat niet.</p>";
     }
