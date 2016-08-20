@@ -33,7 +33,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 }
                 $deleteTeam = $db->query("DELETE FROM `players` WHERE `user_id` = '$id'");
                 $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `user_id` = '$id'");
-                $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `user_id` = '$id'");
+                $deleteSession = $db->query("DELETE FROM `users_session` WHERE `user_id` = '$id'");
                 $deletePermission = $db->query("DELETE FROM `permissions` WHERE `user_id` = '$id'");
                 $deleteMessages = $db->query("DELETE FROM `messages` WHERE `user_id` = '$id'");
                 $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
