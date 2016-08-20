@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
-if($user->isLoggedIn() && $user->hasPermission('admin')) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('newsupload'))) {
     if (isset($_POST['artikelName']) && !empty($_POST['artikelName'])) {
         if (isset($_POST['editor1']) && !empty($_POST['editor1'])) {
             $name = $_POST['artikelName'];

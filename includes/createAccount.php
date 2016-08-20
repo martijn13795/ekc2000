@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
 $size = 5242880;
-if($user->isLoggedIn() && $user->hasPermission('admin')){
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('usercreate'))) {
     if(!empty($_POST['name']) && isset($_POST['name'])
                             && !empty($_POST['surname']) && isset($_POST['surname'])
                             && !empty($_POST['email']) && isset($_POST['email'])

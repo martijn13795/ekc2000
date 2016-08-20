@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
-if($user->isLoggedIn() && $user->hasPermission('admin')){
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('commissioncreate'))) {
     if(!empty($_POST['name']) && isset($_POST['name'])
         && !empty($_POST['mail']) && isset($_POST['mail'])){
         $name = $_POST['name'];

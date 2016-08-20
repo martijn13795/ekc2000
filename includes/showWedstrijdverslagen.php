@@ -8,8 +8,9 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     if ($reports->count()) {
         foreach ($reports->results() as $report) {
             echo '<div class="well activiteitDiv">';
-            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("admin"))) {
+            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("reportremove"))) {
                 echo '<i title="Verijderen" class="fa fa-trash-o" style="float: right;" onclick="removeReport(' . escape($report->id) . ')"></i>';
+            } if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("reportedit"))){
                 echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`reports`, ' . escape($report->id) . ')"></i></div>';
             }
             echo '<a href="/verslag/' . escape($report->name) . '"><h3>' . escape(rawurldecode($report->name)) . '</h3></a><p>Wedstrijd datum: ' . escape($report->date_match) . '</p></div>';
@@ -22,8 +23,9 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     if ($reports->count()) {
         foreach ($reports->results() as $report) {
             echo '<div class="well activiteitDiv">';
-            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("admin"))) {
+            if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("reportremove"))) {
                 echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeReport(' . escape($report->id) . ')"></i>';
+            } if ($user->isLoggedIn() && ($user->data()->id == $report->user_id || $user->hasPermission("reportedit"))) {
                 echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`reports`, ' . escape($report->id) . ')"></i></div>';
             }
             echo '<a href="/verslag/' . escape($report->name) . '"><h3>' . escape(rawurldecode($report->name)) . '</h3></a><p>Wedstrijd datum: ' . escape($report->date_match) . '</p></div>';

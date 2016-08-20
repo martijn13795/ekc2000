@@ -5,7 +5,7 @@ $user = new User();
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $id = $_GET['id'];
     $userID = $user->data()->id;
-    if($user->isLoggedIn() && $user->hasPermission('admin')){
+    if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('activityremove'))) {
         if($db->query("SELECT * FROM activities WHERE id = '$id'")->count()){
             $db->query("DELETE FROM activities WHERE id = '$id'");
         }

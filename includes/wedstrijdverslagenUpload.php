@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
 
-if($user->isLoggedIn()) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('reportupload'))) {
     if (!empty($_POST['name']) && isset($_POST['name'])) {
         if (isset($_POST['editor1']) && !empty($_POST['editor1'])) {
             if (!empty($_POST['team']) && is_numeric($_POST['team'])) {

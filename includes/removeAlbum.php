@@ -5,7 +5,7 @@ $user = new User();
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $id = $_GET['id'];
     $userID = $user->data()->id;
-    if($user->isLoggedIn() && $user->hasPermission('admin')){
+    if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('imageremove'))) {
         if($db->query("SELECT * FROM albums WHERE id = '$id'")->count()){
             $names = $db->query("SELECT name, id FROM albums WHERE id = '$id'");
             foreach ($names->results() as $name) {

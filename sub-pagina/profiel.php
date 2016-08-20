@@ -142,7 +142,7 @@ if ($user->isLoggedIn()) {
 
 
         <?php
-        if ($user->hasPermission('admin')) {
+        if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
             ?>
 
             <div class="col-md-12 col-xs-12" id="uploadContainer" hidden><br>
@@ -485,7 +485,7 @@ if ($user->isLoggedIn()) {
             </div>
             <?php
         }
-        if ($user->hasPermission('admin')) {
+        if($user->hasPermission('dev') || $user->hasPermission('teamcreate')) {
             ?>
 
             <div class="col-md-12 col-xs-12" id="uploadTeamDiv" hidden><br>
@@ -534,7 +534,10 @@ if ($user->isLoggedIn()) {
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
             </div>
-
+            <?php
+            }
+            if($user->hasPermission('dev') || $user->hasPermission('commissioncreate')) {
+            ?>
         <div class="col-md-12 col-xs-12" id="uploadCommissionDiv" hidden><br>
 
             <h1>Maak een nieuwe commissie</h1>

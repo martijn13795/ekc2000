@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
 $size = 5242880;
-if($user->isLoggedIn() && $user->hasPermission('admin')){
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('teamcreate'))) {
     if(!empty($_POST['name']) && isset($_POST['name'])
         && !empty($_POST['day1']) && isset($_POST['day1'])
         && !empty($_POST['begin1']) && isset($_POST['begin1'])

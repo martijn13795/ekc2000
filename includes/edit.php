@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
-if($user->isLoggedIn() && $user->hasPermission('admin')) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('newsedit') || $user->hasPermission('activityedit') || $user->hasPermission('reportedit'))) {
     $updateThing = $_GET['updateThing'];
     $updateId = $_GET['updateId'];
     if (isset($_POST['artikelName']) && !empty($_POST['artikelName'])) {

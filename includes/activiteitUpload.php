@@ -3,7 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
 
-if($user->isLoggedIn() && $user->hasPermission('admin')) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('activityupload'))) {
     if (isset($_POST['activiteitName']) && !empty($_POST['activiteitName'])) {
         if (isset($_POST['editor1']) && !empty($_POST['editor1'])) {
             if (isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {

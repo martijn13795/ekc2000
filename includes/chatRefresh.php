@@ -41,7 +41,7 @@ if ($messages->count()) {
                     <div class="chat-body clearfix">
                         <div class="header">
                             <strong class="primary-font">' . escape($user_id->name) . '</strong> <small class="pull-right text-muted">';
-                if ($user->isLoggedIn() && $user->hasPermission("admin")) {
+                if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('chatapprove'))) {
                     if ($message->approved == 0){
                         echo '<i title="Goedkeuren" class="fa fa-check" style="font-size: 15px; color: green; cursor: pointer;" onclick="approveMes(' . escape($message->id) . ')"></i> ';
                     }
@@ -49,7 +49,7 @@ if ($messages->count()) {
                         echo '<i title="Afkeuren" class="fa fa-close" style="font-size: 15px; color: red; cursor: pointer;" onclick="disapproveMes(' . escape($message->id) . ')"></i> ';
                     }
                 }
-                if ($user->isLoggedIn() && ($user->data()->id == $user_id->id || $user->hasPermission("admin"))) {
+                if ($user->isLoggedIn() && ($user->data()->id == $user_id->id || $user->hasPermission("chatapprove"))) {
                     echo '<i title="Verwijderen" class="fa fa-trash-o" onclick="removeMes(' . escape($message->id) . ') & del();"></i>';
                 }
                 echo '<span class="glyphicon glyphicon-time"></span>' . escape($message->date) . '</small>
