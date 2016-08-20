@@ -28,14 +28,16 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         }else if ($colum == "delete"){
             if ($user->hasPermission('dev') || $user->hasPermission('userremove')) {
                 $query = $db->query("SELECT * FROM users WHERE id = '$id'")->first();
-                unlink($query->IconPath);
-                $deleteUser = $db->query("DELETE FROM `users` WHERE `users`.`id` = '$id'");
-                $deleteTeam = $db->query("DELETE FROM `players` WHERE `players`.`user_id` = '$id'");
-                $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `trainers`.`user_id` = '$id'");
-                $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `users_sessions`.`user_id` = '$id'");
-                $deletePermission = $db->query("DELETE FROM `permissions` WHERE `users_id` = '$id'");
-                $deleteMessages = $db->query("DELETE FROM `messages` WHERE `users_id` = '$id'");
+                if ($query->IconPath != "../images/icons/default.jpg") {
+                    unlink($query->IconPath);
+                }
+                $deleteTeam = $db->query("DELETE FROM `players` WHERE `user_id` = '$id'");
+                $deleteTrainer = $db->query("DELETE FROM `trainers` WHERE `user_id` = '$id'");
+                $deleteSession = $db->query("DELETE FROM `users_sessions` WHERE `user_id` = '$id'");
+                $deletePermission = $db->query("DELETE FROM `permissions` WHERE `user_id` = '$id'");
+                $deleteMessages = $db->query("DELETE FROM `messages` WHERE `user_id` = '$id'");
                 $removeMembers = $db->query("SELECT * FROM commissions WHERE members LIKE '%,$id,%'");
+                $deleteUser = $db->query("DELETE FROM `users` WHERE `id` = '$id'");
                 foreach ($removeMembers->results() as $removeMember) {
                     $members = $removeMember->members;
                     $members = str_replace(",$id,", "", $members);
