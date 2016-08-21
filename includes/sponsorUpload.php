@@ -49,7 +49,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         $title = $_POST['title'];
         $link = $_POST['link'];
         if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $title)) {
-            if (substr($link, 0, 6) === 'http://' | substr($link, 0, 7) === 'https://') {
+            if (substr($link, 0, 7) === 'http://' | substr($link, 0, 8) === 'https://') {
                 if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $album_name)) {
                     $album_name = rawurlencode($album_name);
                     $album_name = str_replace("%", "XY", $album_name);
