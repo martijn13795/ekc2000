@@ -135,8 +135,22 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                 ?>
                 </tbody>
             </table>
-            <iframe style="width: 100%; height: 320px;" border="0" frameborder="0"
-                    src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=<?php echo escape($team->name); ?>"></iframe>
+            <?php
+            $teamName = escape($team->name);
+            if ($teamName == "1e") {
+                $teamName = "1";
+            }
+            if ($teamName == "2e") {
+                $teamName = "2";
+            }
+            if ($teamName == "3e") {
+                $teamName = "3";
+            }
+            if ($teamName == "4e") {
+                $teamName = "4";
+            }
+            ?>
+            <iframe style="width: 100%; height: 320px;" border="0" frameborder="0" src="http://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=<?php echo $teamName; ?>"></iframe>
         </div>
 
         <?php

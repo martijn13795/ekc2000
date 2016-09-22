@@ -34,6 +34,8 @@ if ($user->isLoggedIn()) {
                                     echo '<p>Ge&#252;pload door: ' . escape($name->name) . ' ' . escape($name->surname) . '</p></div>';
                                 }
                             }
+                        } else {
+                            echo '</div>';
                         }
                     }
                 } else {

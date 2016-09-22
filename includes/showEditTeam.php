@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
     $db = DB::getInstance();
+    $user = new User();
     $id = escape($_GET['id']);
     $team = $db->query("SELECT * FROM teams WHERE id = '$id'");
     if ($team->count()) {
