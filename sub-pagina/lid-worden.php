@@ -1,10 +1,20 @@
 <?php include '../includes/html.php';?>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+</style>
     <div class="container">
         <div class="col-md-12 col-xs-12">
             <h1>Lid worden</h1><hr>
-            <p>EKC 2000 is een korfbalvereniging waar zowel wedstrijd- als breedtekorfbal wordt gespeeld. Hierdoor is er voor iedereen ruimte om te korfballen, ongeacht niveau of leeftijd. Om lid te worden kan het onderstaande aanmeldformulier worden gedownload. Vul het formulier in en stuur het op naar ledenadministratie@ekc2000.nl. Mocht je nog niet zeker weten of je lid wilt worden, doe dan eens mee met een proeftraining. Voor mogelijkheden en meer informatie over proeftrainingen kan je ook een mail sturen naar ledenadministratie@ekc2000.nl.
-                We hopen je snel te mogen begroeten als nieuw EKC 2000-lid!
-            <p/><br>
+            <p>EKC 2000 is een korfbalvereniging waar zowel wedstrijd- als breedtekorfbal wordt gespeeld.
+                Hierdoor is er voor iedereen ruimte om te korfballen, ongeacht niveau of leeftijd.
+                Om lid te worden kun je het onderstaande aanmeldformulier downloaden, invullen en mailen naar <a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a>.
+                Wil je eerst eens vrijblijvend meetrainen of meer informatie? Dat kan.
+                Bel/mail ons of laat hieronder je contactgegevens achter. We hopen je snel te mogen begroeten als nieuw EKC 2000-lid!<p/><br>
         </div>
         <div class="col-md-6 col-xs-12">
             <table class="table table-bordered">
@@ -26,90 +36,75 @@
                     <th scope="row">E-mail adres:</th>
                     <td><a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a></td>
                 </tr>
+                <tr>
+                    <th scope="row">Download hier het inschrijfformulier:</th>
+                    <td><a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></td>
+                </tr>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-12 col-xs-12">
-            <table class="table table-bordered table-hover">
+        <div class="col-md-6 col-xs-12">
+            <form method="post" name="myForm" class="myForm" action="../includes/memberContact.php">
+            <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th colspan="4" class="tableHeader">Contributie</th>
-                </tr>
-                <tr>
-                    <th scope="row" class="tableHeader">Team categorie</th>
-                    <th scope="row" class="tableHeader">Leeftijd</th>
-                    <th scope="row" class="tableHeader">Lid contributie per maand</th>
-                    <th scope="row" class="tableHeader">Bondscontributie per jaar</th>
+                    <th colspan="2" class="tableHeader">Laat ons contact met u opnemen</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">senioren</th>
-                    <td>18+</td>
-                    <td>&euro; 19,75</td>
-                    <td>&euro; 35,00</td>
+                    <th scope="row">Naam:</th>
+                    <td style="padding: 2px;"><input type="text" style="height: 32px;" class="form-control" placeholder="Naam" id="name" name="name" REQUIRED/></td>
                 </tr>
                 <tr>
-                    <th scope="row">Junioren A's</th>
-                    <td>15-17</td>
-                    <td>&euro; 15,60</td>
-                    <td>&euro; 28,00</td>
+                    <th scope="row">Telefoonnummer:</th>
+                    <td style="padding: 2px;"><input type="number" style="height: 32px;" class="form-control" placeholder="Telefoonnummer" id="phoneNumber" name="phoneNumber" REQUIRED/></td>
                 </tr>
                 <tr>
-                    <th scope="row">Aspiranten B's</th>
-                    <td>13-14</td>
-                    <td>&euro; 11,50</td>
-                    <td>&euro; 21,00</td>
+                    <th scope="row">E-mail adres:</th>
+                    <td style="padding: 2px;"><input type="email" style="height: 32px;" class="form-control" placeholder="Email" id="email" name="email" REQUIRED/></td>
                 </tr>
                 <tr>
-                    <th scope="row">Aspiranten C's</th>
-                    <td>11-12</td>
-                    <td>&euro; 11,50</td>
-                    <td>&euro; 21,00</td>
-                </tr>
-                <tr>
-                    <th scope="row">Pupillen D's</th>
-                    <td>9-10</td>
-                    <td>&euro; 10,50</td>
-                    <td>&euro; 17,50</td>
-                </tr>
-                <tr>
-                    <th scope="row">Pupillen E's</th>
-                    <td>7-8</td>
-                    <td>&euro; 10,50</td>
-                    <td>&euro; 17,50</td>
-                </tr>
-                <tr>
-                    <th scope="row">Welpen F's</th>
-                    <td>5-6</td>
-                    <td>&euro; 9,40</td>
-                    <td>&euro; 17,50</td>
-                </tr>
-                <tr>
-                    <th scope="row">Welpen kangaroes</th>
-                    <td>0-4</td>
-                    <td>&euro; 4,50</td>
-                    <td>&euro; 17,50</td>
-                </tr>
-                <tr>
-                    <th scope="row">Niet spelende leden</th>
-                    <td></td>
-                    <td>50% van leefdtijdscategorie</td>
-                    <td>&euro; 5,00</td>
-                </tr>
-                <tr>
-                    <th scope="row">Donateurs</th>
-                    <td></td>
-                    <td>&euro; 25,00 per jaar</td>
-                    <td></td>
+                    <th scope="row">Versturen:</th>
+                    <td style="padding: 2px;"><input type="submit" id="submit" class="btn btn-success"><button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button></td>
                 </tr>
                 </tbody>
             </table>
-            <p>De contributie wordt bepaald doormiddel van de leeftijd (peildatum 1 oktober).
-                Elk jaar dient er in oktober bondscontributie te worden betaald.
-                Elk nieuw lid betaalt de eerste keer ook bondscontributie.
-                Het lidmaatschap dient voor 30 mei te worden afgemeld, tot 30 juni blijft het lid contributie plichtig.</p>
-            <p>Download hier het inschrijfformulier: <a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></p>
+            </form>
+            <div id="error"></div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('.myForm').ajaxForm({
+                beforeSend: function () {
+                    $("#submit").hide();
+                    $("#error").show();
+                    $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
+                },
+                success: function (response) {
+                    $("#refresh").show();
+                    $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                        '<button class="close" data-dismiss="alert">&times;</button>' +
+                        'Er wordt zo spoedig mogelijk contact met u opgenomen' +
+                        '</div>');
+                    setTimeout(function () {
+                        $('.alerts').children('.alert:last-child').addClass('on');
+                        setTimeout(function () {
+                            $('.alerts').children('.alert:first-child').removeClass('on');
+                            setTimeout(function () {
+                                $('.alerts').children('.alert:first-child').remove();
+                            }, 900);
+                        }, 5000);
+                    }, 10);
+                    $("#error").show();
+                    $("#error").html(response);
+                    $("#name").val('');
+                    $("#idea").val('');
+                }
+            });
+            $("#refresh").hide();
+            $("#error").hide();
+        });
+    </script>
 <?php include '../includes/htmlUnder.php'; ?>

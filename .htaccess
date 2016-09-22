@@ -85,3 +85,7 @@ RewriteRule ^bewerk-gebruiker sub-pagina/editUser.php [NC,L]
 RewriteRule ^bewerk-teams sub-pagina/editTeam.php [NC,L]
 
 RewriteRule ^bewerk-commissies sub-pagina/editCommission.php [NC,L]
+
+RewriteRule ^kangoeroeklup sub-pagina/kangoeroeklup.php [NC,L]
+
+RewriteRule ^contributie sub-pagina/contributie.php [NC,L]
