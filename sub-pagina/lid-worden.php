@@ -100,7 +100,8 @@
                     $("#error").show();
                     $("#error").html(response);
                     $("#name").val('');
-                    $("#idea").val('');
+                    $("#phoneNumber").val('');
+                    $("#email").val('');
                 }
             });
             $("#refresh").hide();
