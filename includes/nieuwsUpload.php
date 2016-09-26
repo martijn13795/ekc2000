@@ -6,7 +6,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
     if (isset($_POST['artikelName']) && !empty($_POST['artikelName'])) {
         if (isset($_POST['editor1']) && !empty($_POST['editor1'])) {
             $name = $_POST['artikelName'];
-            if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $name)) {
+            if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '\'' '\"' '%']+$#", $name)) {
                 $name = rawurlencode($name);
                 $text = $_POST['editor1'];
                 $db->insert('news', array(
@@ -19,7 +19,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 echo "Refresh de pagina<br><br>";
             } else {
                 echo "<h3>Voer een geldig bericht in</h3><br>";
-                echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ * ' \" %<br><br>";
+                echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ ' \" %<br><br>";
             }
         } else {
             echo "<h3>Het tekst vlak is leeg</h3><br>";

@@ -69,7 +69,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
 
     if (!empty(trim($_POST['name'])) && isset($_POST['name'])) {
         $album_name = $_POST['name'];
-        if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $album_name)) {
+        if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '\'' '\"' '%']+$#", $album_name)) {
             if (count($_FILES['files']['name']) <= 50) {
                 $album_name = rawurlencode($album_name);
                 $album_name = str_replace("%", "XY", $album_name);
@@ -162,7 +162,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         } else {
             $album_name = null;
             echo "<h3>Voer een geldig bericht in</h3><br>";
-            echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ * ' \" %<br><br>";
+            echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ ' \" %<br><br>";
         }
     } else {
         echo "<h3>Voer een geldig bericht in</h3><br>";

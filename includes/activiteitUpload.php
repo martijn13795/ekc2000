@@ -8,7 +8,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         if (isset($_POST['editor1']) && !empty($_POST['editor1'])) {
             if (isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {
                 $name = $_POST['activiteitName'];
-                if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $name)) {
+                if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '\'' '\"' '%']+$#", $name)) {
                     $name = rawurlencode($name);
                     $text = $_POST['editor1'];
                     $date = date("Y-m-d", strtotime(trim($_POST['activiteitDate'])));
@@ -27,7 +27,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     }
                 } else {
                     echo "<h3>Voer een geldig bericht in</h3><br>";
-                    echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ * ' \" %<br><br>";
+                    echo "Karakters die u kunt gebruiken zijn: a-z A-Z 0-9 . , ? ! ( ) : = - _ ' \" %<br><br>";
                 }
             } else {
                 echo "<h3>Vul een datum in</h3><br>";

@@ -13,7 +13,7 @@
             <p>EKC 2000 is een korfbalvereniging waar zowel wedstrijd- als breedtekorfbal wordt gespeeld.
                 Hierdoor is er voor iedereen ruimte om te korfballen, ongeacht niveau of leeftijd.
                 Om lid te worden kun je het onderstaande aanmeldformulier downloaden, invullen en mailen naar <a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a>.
-                Wil je eerst eens vrijblijvend meetrainen of meer informatie? Dat kan.
+                Wil je eerst eens vrijblijvend meetrainen of meer informatie?
                 Bel/mail ons of laat hieronder je contactgegevens achter. We hopen je snel te mogen begroeten als nieuw EKC 2000-lid!<p/><br>
         </div>
         <div class="col-md-6 col-xs-12">

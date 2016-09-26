@@ -1,6 +1,5 @@
 <?php include '../includes/html.php';
 $user = new User();
-if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission("dev") || $user->hasPermission("newsedit") || $user->hasPermission("activityedit") || $user->hasPermission("reportedit"))) {
 ?>
     <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/ckeditor/ckeditor.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
@@ -9,19 +8,19 @@ if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission
 
         $updateThing = $_GET['updateThing'];
         if ($updateThing == "news"){
-            if(!$user->hasPermission("newsedit")){
+            if(!$user->hasPermission("newsedit") && !$user->hasPermission("dev")){
                 include_once '403.php';
                 return;
             }
             $location = "/nieuws";
         } else if ($updateThing == "activities") {
-            if(!$user->hasPermission("activityedit")){
+            if(!$user->hasPermission("activityedit") && !$user->hasPermission("dev")){
                 include_once '403.php';
                 return;
             }
             $location = "/activiteiten";
         } else if ($updateThing == "reports") {
-            if(!$user->hasPermission("reportedit")){
+            if(!$user->hasPermission("reportedit") && !$user->hasPermission("dev")){
                 include_once '403.php';
                 return;
             }
@@ -40,6 +39,7 @@ if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission
                 $text = $data->text;
             }
         }
+        if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission("dev") || $user->hasPermission("newsedit") || $user->hasPermission("activityedit") || $user->hasPermission("reportedit"))) {
         ?>
             <h1>Bewerk - <?php echo escape(rawurldecode($name)); ?></h1>
             <hr>
