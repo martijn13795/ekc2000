@@ -26,11 +26,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">Naam:</th>
-                    <td>Jolanda ten Broeke</td>
+                    <td>Linda Kleine</td>
                 </tr>
                 <tr>
                     <th scope="row">Telefoonnummer:</th>
-                    <td>0591-634459</td>
+                    <td>06-25381423</td>
                 </tr>
                 <tr>
                     <th scope="row">E-mail adres:</th>

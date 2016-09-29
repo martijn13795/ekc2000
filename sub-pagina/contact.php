@@ -21,13 +21,12 @@
                     </p><hr>
                     <h3><strong>Overig</strong></h3>
                     <p class="lead">
-                        Bestuur:<br>
-                        ekc2000.emmen@knkv.nl<br><br>
+                        Bestuur: <a href="mailto:ekc2000.emmen@knkv.net">ekc2000.emmen@knkv.net</a><br><br>
+                        TC: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
                         Wedstrijdsecretariaat:<br>
-                        Senioren: Petra Bethlehem: 0591-642123<br>
-                        Jeugd: Ilse Schuttrups: 06-10433293<br><br>
+                        Ilse Schuttrups: 06-10433293 / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Scheidsrechteraanwijzer:<br>
-                        Michael Beekman: 06-49077377<br><br>
+                        Michael Beekman: 06-49077377 / <a href="mailto:scheidsrechters.ekc2000.nl">scheidsrechters.ekc2000.nl</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
                 </div>
