@@ -11,12 +11,40 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
             if (preg_match("#^[a-zA-Z0-9 '!' '?' ',' '.' ' ' '(' ')' ':' '\-' '_' '=' '*' '\'' '\"' '%']+$#", $name)) {
                 $name = rawurlencode($name);
                 $text = $_POST['editor1'];
-                $db->update($updateThing, $updateId, array(
-                    'user_id' => $user->data()->id,
-                    'name' => $name,
-                    'text' => $text,
-                    'date' => date("Y-m-d H:i:s")
-                ));
+                if ($updateThing == "activities"){
+                    if (isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {
+                        $date = $_POST['activiteitDate'];
+                        $db->update($updateThing, $updateId, array(
+                            'user_id' => $user->data()->id,
+                            'name' => $name,
+                            'text' => $text,
+                            'date' => date("Y-m-d H:i:s"),
+                            'date_activity' => $date
+                        ));
+                    } else {
+                        echo "<h3>Vul een datum in</h3><br>";
+                    }
+                } else if ($updateThing == "reports"){
+                    if (isset($_POST['reportsDate']) && !empty($_POST['reportsDate'])) {
+                        $date = $_POST['reportsDate'];
+                        $db->update($updateThing, $updateId, array(
+                            'user_id' => $user->data()->id,
+                            'name' => $name,
+                            'text' => $text,
+                            'date' => date("Y-m-d H:i:s"),
+                            'date_match' => $date
+                        ));
+                    } else {
+                        echo "<h3>Vul een datum in</h3><br>";
+                    }
+                } else {
+                    $db->update($updateThing, $updateId, array(
+                        'user_id' => $user->data()->id,
+                        'name' => $name,
+                        'text' => $text,
+                        'date' => date("Y-m-d H:i:s")
+                    ));
+                }
                 echo "<h3>Het bewerken is voltooid</h3>";
                 echo "Ga terug naar de pagina<br><br>";
             } else {

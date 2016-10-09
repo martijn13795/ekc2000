@@ -37,6 +37,8 @@ $user = new User();
                 $userId = $data->user_id;
                 $name = $data->name;
                 $text = $data->text;
+                if ($updateThing == "activities") { $date = $data->date_activity;};
+                if ($updateThing == "reports") { $date = $data->date_match;};
             }
         }
         if ($user->isLoggedIn() && ($user->data()->id == $userId || $user->hasPermission("dev") || $user->hasPermission("newsedit") || $user->hasPermission("activityedit") || $user->hasPermission("reportedit"))) {
@@ -47,6 +49,8 @@ $user = new User();
                 <div id="uploadContainer">
                     <form action="../../includes/edit.php?updateThing=<?php echo $updateThing; ?>&updateId=<?php echo $updateId; ?>" method="POST" class="myForm" name="myForm">
                         <label>Bewerk naam:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" value="<?php echo escape(rawurldecode($name)); ?>" maxlength="256" REQUIRED><br>
+                        <?php if ($updateThing == "activities") { ?><label>Bewerk datum:</label><input type="text" id="activiteitDate" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" value="<?php echo escape(rawurldecode($date)); ?>" maxlength="20" REQUIRED><br><?php } ?>
+                        <?php if ($updateThing == "reports") { ?><label>Bewerk datum:</label><input type="text" id="reportsDate" class="form-control" name="reportsDate" placeholder="YYYY-MM-DD" value="<?php echo escape(rawurldecode($date)); ?>" maxlength="20" REQUIRED><br><?php } ?>
                         <textarea class="ckeditor" id="editor1" name="editor1"><?php echo $text; ?></textarea><br>
                         <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Bewerken"/>
                     </form>
