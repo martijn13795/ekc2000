@@ -20,7 +20,7 @@ if ($user->isLoggedIn() && $user->hasPermission('dev')) {
             </thead>
             <tbody>
             <?php
-            $visitors = $db->query("SELECT * FROM visitors WHERE country = 'Netherlands' ORDER BY id DESC");
+            $visitors = $db->query("SELECT * FROM visitors WHERE country = 'Netherlands' AND name != '' ORDER BY id DESC");
             if ($visitors->count()) {
                 $totalNL = 0;
                 foreach ($visitors->results() as $visitor) {
