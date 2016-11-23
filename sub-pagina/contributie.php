@@ -21,50 +21,50 @@
                 <tr>
                     <th scope="row">senioren</th>
                     <td>18+</td>
-                    <td>&euro; 19,75</td>
+                    <td>&euro; 20,50</td>
                     <td>&euro; 35,00</td>
                 </tr>
                 <tr>
                     <th scope="row">Junioren A's</th>
                     <td>15-17</td>
-                    <td>&euro; 15,60</td>
+                    <td>&euro; 16,20</td>
                     <td>&euro; 28,00</td>
                 </tr>
                 <tr>
                     <th scope="row">Aspiranten B's</th>
                     <td>13-14</td>
-                    <td>&euro; 11,50</td>
+                    <td>&euro; 12,00</td>
                     <td>&euro; 21,00</td>
                 </tr>
                 <tr>
                     <th scope="row">Aspiranten C's</th>
                     <td>11-12</td>
-                    <td>&euro; 11,50</td>
+                    <td>&euro; 12,00</td>
                     <td>&euro; 21,00</td>
                 </tr>
                 <tr>
                     <th scope="row">Pupillen D's</th>
                     <td>9-10</td>
-                    <td>&euro; 10,50</td>
+                    <td>&euro; 11,00</td>
                     <td>&euro; 17,50</td>
                 </tr>
                 <tr>
                     <th scope="row">Pupillen E's</th>
                     <td>7-8</td>
-                    <td>&euro; 10,50</td>
+                    <td>&euro; 11,00</td>
                     <td>&euro; 17,50</td>
                 </tr>
                 <tr>
                     <th scope="row">Welpen F's</th>
                     <td>5-6</td>
-                    <td>&euro; 9,40</td>
-                    <td>&euro; 17,50</td>
+                    <td>&euro; 9,80</td>
+                    <td>&euro; 10,50</td>
                 </tr>
                 <tr>
                     <th scope="row">Welpen kangoeroes</th>
                     <td>0-4</td>
-                    <td>&euro; 4,50</td>
-                    <td>&euro; 17,50</td>
+                    <td>&euro; 5,00</td>
+                    <td>&euro; 10,50</td>
                 </tr>
                 <tr>
                     <th scope="row">Niet spelende leden</th>
