@@ -91,26 +91,29 @@
     </div>
 <script>
     $('#birthday').on("change", function () {
-        var value = $(this).val();
-
+        var getValue = $(this).val();
+        var value = getValue.split("-").join("/");
         var referenceDate = "";
         var year = new Date().getFullYear();
         var changeDate = "01-07-" + year;
 
-        var inputDate = new Date(changeDate);
-        var todaysDate = new Date();
+        var changeDate = new Date(changeDate);
+        var today = new Date();
 
-        if (inputDate.setHours(0,0,0,0) <= todaysDate.setHours(0,0,0,0)) {
+        if (changeDate.setHours(0,0,0,0) <= today.setHours(0,0,0,0)) {
             referenceDate = "01-10-" + year;
         } else {
             referenceDate = "01-10-" + (year - 1);
         }
+        referenceDate = referenceDate.split("-").reverse().join("/");
+        referenceDate = new Date(referenceDate);
 
-        value = Date.parse(value);
-        referenceDate = Date.parse(referenceDate);
-        var ageDifferenceInMilliseconds = referenceDate - value;
-        var ageMillisecondsToDate = new Date(ageDifferenceInMilliseconds);
-        var age = Math.abs(ageMillisecondsToDate.getUTCFullYear() - 1969);
+        var birthDate = new Date(value);
+        var age = referenceDate.getFullYear() - birthDate.getFullYear();
+        var m = referenceDate.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && referenceDate.getDate() < birthDate.getDate())) {
+            age--;
+        }
 
         $(".reset").removeAttr("style");
         if (new Date(value).setHours(0,0,0,0) <= new Date().setHours(0,0,0,0) && new Date(value).getFullYear() > 1900) {
