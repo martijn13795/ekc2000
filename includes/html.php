@@ -58,9 +58,9 @@ Cas van Dinter
     <!--    snowflakes begin -->
     <style>
         #snowflakeContainer {
-                position: absolute;
-                left: 0px;
-                top: 0px;
+                position: absolute !important;
+                left: 0px !important;
+                top: 0px !important;
         }
         .snowflake {
                 padding-left: 15px;
