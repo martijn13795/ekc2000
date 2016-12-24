@@ -245,7 +245,7 @@ Cas van Dinter
             resetPosition = true;
         }
     </script>
-<div iid="snowflakeContainer"><p class="snowflake">*</p></div>
+<div id="snowflakeContainer"><p class="snowflake">*</p></div>
 <?php
 $user_ip = getenv('REMOTE_ADDR');
 $info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
