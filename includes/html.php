@@ -55,45 +55,7 @@ Cas van Dinter
     <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-70316339-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-<?php
-$user_ip = getenv('REMOTE_ADDR');
-$info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-$date = $mysql_date_now = date("Y-m-d H:i:s");
-
-$db = DB::getInstance();
-$user = new User();
-if($user->isLoggedIn() && !$user->hasPermission('dev')){
-    $name = $user->data()->name;
-} else {
-    $name = null;
-}
-if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND ip='$user_ip' AND info='$info' AND name='$name'")->count()){
-    if ($user_ip != '127.0.0.1') {
-        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
-        $city = $geo["geoplugin_city"];
-        $region = $geo["geoplugin_regionName"];
-        $country = $geo["geoplugin_countryName"];
-    } else {
-        $city = "LocalHost";
-        $region = "LocalHost";
-        $country = "LocalHost";
-    }
-    $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
-}
-?>
-<?php include 'nav.php';?>
-<?php include 'menu.php';?>
-<!--    snowflakes begin -->
+    <!--    snowflakes begin -->
     <style>
         #snowflakeContainer {
                 position: absolute;
@@ -299,4 +261,42 @@ if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND
     <div id="snowflakeContainer">
             <p class="snowflake">*</p>
     </div>
-<!--snowflakes end -->
+    <!--snowflakes end -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-70316339-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+<?php
+$user_ip = getenv('REMOTE_ADDR');
+$info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+$date = $mysql_date_now = date("Y-m-d H:i:s");
+
+$db = DB::getInstance();
+$user = new User();
+if($user->isLoggedIn() && !$user->hasPermission('dev')){
+    $name = $user->data()->name;
+} else {
+    $name = null;
+}
+if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND ip='$user_ip' AND info='$info' AND name='$name'")->count()){
+    if ($user_ip != '127.0.0.1') {
+        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+        $city = $geo["geoplugin_city"];
+        $region = $geo["geoplugin_regionName"];
+        $country = $geo["geoplugin_countryName"];
+    } else {
+        $city = "LocalHost";
+        $region = "LocalHost";
+        $country = "LocalHost";
+    }
+    $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
+}
+?>
+<?php include 'nav.php';?>
+<?php include 'menu.php';?>
