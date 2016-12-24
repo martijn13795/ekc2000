@@ -64,6 +64,57 @@ Cas van Dinter
         ga('create', 'UA-70316339-1', 'auto');
         ga('send', 'pageview');
 
+    </script>
+<?php
+$user_ip = getenv('REMOTE_ADDR');
+$info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+$date = $mysql_date_now = date("Y-m-d H:i:s");
+
+$db = DB::getInstance();
+$user = new User();
+if($user->isLoggedIn() && !$user->hasPermission('dev')){
+    $name = $user->data()->name;
+} else {
+    $name = null;
+}
+if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND ip='$user_ip' AND info='$info' AND name='$name'")->count()){
+    if ($user_ip != '127.0.0.1') {
+        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+        $city = $geo["geoplugin_city"];
+        $region = $geo["geoplugin_regionName"];
+        $country = $geo["geoplugin_countryName"];
+    } else {
+        $city = "LocalHost";
+        $region = "LocalHost";
+        $country = "LocalHost";
+    }
+    $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
+}
+?>
+<?php include 'nav.php';?>
+<?php include 'menu.php';?>
+<!--    snowflakes begin -->
+    <style>
+        #snowflakeContainer {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+        }
+        .snowflake {
+                padding-left: 15px;
+                font-family: Cambria, Georgia, serif;
+                font-size: 14px;
+                line-height: 24px;
+                position: fixed;
+                color: #FFFFFF;
+                user-select: none;
+                z-index: 1000;
+        }
+        .snowflake:hover {
+                cursor: default;
+        }
+    </style>
+    <script>
         // The star of every good animation
         var requestAnimationFrame = window.requestAnimationFrame ||
             window.mozRequestAnimationFrame ||
@@ -245,32 +296,7 @@ Cas van Dinter
             resetPosition = true;
         }
     </script>
-<div id="snowflakeContainer"><p class="snowflake">*</p></div>
-<?php
-$user_ip = getenv('REMOTE_ADDR');
-$info = $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-$date = $mysql_date_now = date("Y-m-d H:i:s");
-
-$db = DB::getInstance();
-$user = new User();
-if($user->isLoggedIn() && !$user->hasPermission('dev')){
-    $name = $user->data()->name;
-} else {
-    $name = null;
-}
-if(!$db->query("SELECT ip FROM visitors WHERE date > NOW() - INTERVAL 1 HOUR AND ip='$user_ip' AND info='$info' AND name='$name'")->count()){
-    if ($user_ip != '127.0.0.1') {
-        $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
-        $city = $geo["geoplugin_city"];
-        $region = $geo["geoplugin_regionName"];
-        $country = $geo["geoplugin_countryName"];
-    } else {
-        $city = "LocalHost";
-        $region = "LocalHost";
-        $country = "LocalHost";
-    }
-    $db->query("INSERT INTO visitors (ip, name, city, region, country, date, info) VALUES ('$user_ip', '$name',  '$city', '$region', '$country', '$date', '$info')");
-}
-?>
-<?php include 'nav.php';?>
-<?php include 'menu.php';?>
+    <div id="snowflakeContainer">
+            <p class="snowflake">*</p>
+    </div>
+<!--snowflakes end -->
