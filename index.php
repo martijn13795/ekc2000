@@ -1,9 +1,9 @@
 <?php include 'includes/html.php';?>
 <div id="snowflakeContainer">
+<p class="snowflake">*</p>
 <script src="js/jquery.dotdotdot.min.js"></script>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
 	    <div class="container">
-            <p class="snowflake">*</p>
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
             <div class="col-xs-12 col-md-12">
                 <h1>Welkom bij <strong>EKC 2000</strong><?php
