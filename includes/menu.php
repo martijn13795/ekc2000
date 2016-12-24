@@ -287,6 +287,5 @@
 </script>
 <div id="snowflakeContainer">
         <p class="snowflake">*</p>
-</div>
 <!--snowflakes end -->
 <div class="header-line"></div>
