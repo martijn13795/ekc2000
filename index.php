@@ -202,7 +202,7 @@
             resetPosition = true;
         }
     </script>
-    <div id="snowflakeContainer">
+    <div id="snowflakeContainer" style="height: 0px;">
             <p class="snowflake">*</p>
     </div>
     <!--snowflakes end -->
