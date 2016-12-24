@@ -1,7 +1,8 @@
 <?php include 'includes/html.php';?>
+<div id="snowflakeContainer">
 <script src="js/jquery.dotdotdot.min.js"></script>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
-	    <div class="container" id="snowflakeContainer">
+	    <div class="container">
             <p class="snowflake">*</p>
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
             <div class="col-xs-12 col-md-12">
@@ -494,4 +495,5 @@
         resetPosition = true;
     }
 </script>
+</div>
 <?php include 'includes/htmlUnder.php';?>
