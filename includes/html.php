@@ -57,21 +57,6 @@ Cas van Dinter
 <body>
     <!--    snowflakes begin -->
     <style>
-        #snowflakeContainer {
-                position: absolute !important;
-                left: 0px !important;
-                top: 0px !important;
-        }
-        .snowflake {
-                padding-left: 15px;
-                font-family: Cambria, Georgia, serif;
-                font-size: 14px;
-                line-height: 24px;
-                position: fixed;
-                color: #FFFFFF;
-                user-select: none;
-                z-index: 1000;
-        }
         .snowflake:hover {
                 cursor: default;
         }
@@ -258,8 +243,8 @@ Cas van Dinter
             resetPosition = true;
         }
     </script>
-    <div id="snowflakeContainer" style="height: 0px;">
-            <p class="snowflake">*</p>
+    <div id="snowflakeContainer" style="height: 0px; position: absolute !important; left: 0px !important; top: 0px !important;">
+            <p class="snowflake" style="padding-left: 15px; font-family: Cambria, Georgia, serif; font-size: 14px; line-height: 24px; position: fixed; color: #FFFFFF; user-select: none; z-index: 1000 !important;">*</p>
     </div>
     <!--snowflakes end -->
     <script>
