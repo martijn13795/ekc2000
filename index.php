@@ -204,7 +204,7 @@
     </script>
     <div id="snowflakeContainer">
             <p class="snowflake">*</p>
-
+    </div>
     <!--snowflakes end -->
 <script src="js/jquery.dotdotdot.min.js"></script>
   <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
@@ -519,5 +519,4 @@
         }, 10);
     }
 </script>
-    </div>
 <?php include 'includes/htmlUnder.php';?>
