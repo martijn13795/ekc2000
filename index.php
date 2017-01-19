@@ -60,7 +60,7 @@
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 6");
+                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 4");
                                     if ($albums->count()) {
                                         foreach ($albums->results() as $album) {
                                             $album_name = str_replace("XY","%",$album->name);
@@ -73,6 +73,32 @@
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-md-2 col-xs-2" style="margin-top: 5px;">
+                                <a href="/wedstrijdverslagen"><i class="icon smallMajor fa-futbol-o link"></i></a>
+                            </div>
+                            <div class="col-md-10 col-xs-10" style="margin-top: 5px;">
+                                <a href="/wedstrijdverslagen"><h4>Laatste wedstrijdverslag</h4></a>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                <p>
+                                    <?php
+                                    $reports = $db->query("SELECT * FROM reports ORDER BY date DESC LIMIT 1");
+                                    if ($reports->count()) {
+                                        foreach ($reports->results() as $report) {
+                                            $report_name = str_replace("XY","%",$report->name);
+                                            $reportDate = new DateTime($report->date);
+                                            if ($reportDate >= $datetime) {
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/verslag/<?php echo escape($report->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $report->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($report_name)) ?></p></div></div> <?php
+                                            } else {
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/verslag/<?php echo escape($report->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $report->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($report_name)) ?></p></div></div> <?php
+                                            }
+                                        }
+                                    } else {
+                                        echo '<p class="fotoLink">Er is geen wedstrijdverslag beschikbaar.</p>';
                                     }
                                     ?>
                                 </p>
