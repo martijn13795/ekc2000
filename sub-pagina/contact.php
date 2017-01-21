@@ -10,25 +10,26 @@
                         Plaats: Emmen<br>
                         Straat: zwanenveld 5<br>
                         Postcode: 7827 XA<br>
-                        Telefoonnummer: 0591-617979
+                        Telefoonnummer: 0591-617979&#42;
                     </p><hr>
                     <h3><strong>Zaal</strong></h3>
                     <p class="lead">
                         Plaats: Bargeres<br>
                         Straat: Calthornerbrink<br>
                         Postcode: 7812 HS Emmen<br>
-                        Telefoonnummer: 0591-618868
+                        Telefoonnummer: 0591-618868&#42;
                     </p><hr>
                     <h3><strong>Overig</strong></h3>
                     <p class="lead">
                         Bestuur: <a href="mailto:ekc2000.emmen@knkv.net">ekc2000.emmen@knkv.net</a><br><br>
                         TC: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
                         Wedstrijdsecretariaat:<br>
-                        Ilse Schuttrups: 06-10433293 / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
+                        Ilse Schuttrups: 06-10433293&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Scheidsrechteraanwijzer:<br>
-                        Michael Beekman: 06-49077377 / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
+                        Michael Beekman: 06-49077377&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
+                    <sub>Telefoonnummers mogen niet voor commerci&#235;le doeleinden gebruikt worden.</sub>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">
