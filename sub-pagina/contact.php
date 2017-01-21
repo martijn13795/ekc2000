@@ -29,7 +29,7 @@
                         Michael Beekman: 06-49077377&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
-                    <sub>Telefoonnummers mogen niet voor commerci&#235;le doeleinden gebruikt worden.</sub>
+                    <sub>&#42;Telefoonnummers mogen niet voor commerci&#235;le doeleinden gebruikt worden.</sub>
                 </div>
             </div>
             <div class="col-md-5 col-xs-12">
