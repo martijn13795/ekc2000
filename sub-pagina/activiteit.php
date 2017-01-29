@@ -29,8 +29,8 @@
                 <form action="../includes/activiteitRegistration.php" method="POST" class="myForm" name="myForm">
                     <label>Naam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="256" REQUIRED><br>
                     <label>Eventuale toevoeging:</label><textarea id="optionalText" class="form-control" name="optionalText" maxlength="512"></textarea><br>
-                    <input type="text" name="activiteitName" id="activiteitName" value="<?php $name ?>" hidden>
-                    <input type="text" name="userName" id="userName" value="<?php $user->name . ' ' . $user->surname_prefix . ' ' . $user->surname ?>" hidden>
+                    <input type="text" name="activiteitName" id="activiteitName" value="<?php echo $name; ?>" hidden>
+                    <input type="text" name="userName" id="userName" value="<?php echo $user->data()->name . ' '; if ($user->data()->surname_prefix != ""){echo $user->data()->surname_prefix . ' ';}  echo $user->data()->surname; ?>" hidden>
                     <input type="submit" id="submit" class="btn btn-success" value="Inschrijven"/>
                 </form>
                 <br>
