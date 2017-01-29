@@ -42,8 +42,8 @@
                     $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC");
                     if ($albums->count()) {
                         foreach ($albums->results() as $album) {
-                            $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
                             $userName = $db->query("SELECT name, surname FROM users WHERE id = $album->user_id")->first();
+                            $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
                             if ($count = $album_data->count()) {
                                 $album_name = str_replace("XY","%",$album->name);
                                 $img_path = $album_data->first()->pathMobile;
