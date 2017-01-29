@@ -39,6 +39,7 @@
                                     . escape(explode(":", $schedule->first()->start)[0] . ":" . explode(":", $schedule->first()->start)[1])
                                     . " t/m "
                                     . escape(explode(":", $schedule->first()->end)[0] . ":" . explode(":", $schedule->first()->end)[1])
+                                    . " " . $schedule->first()->location
                                     . "</td>";
                             } else {
                                 echo "<td></td>";

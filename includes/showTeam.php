@@ -126,6 +126,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                                 . escape(explode(":", $schedule->start)[0] . ":" . explode(":", $schedule->start)[1])
                                 . " t/m "
                                 . escape(explode(":", $schedule->end)[0] . ":" . explode(":", $schedule->end)[1])
+                                . " " . $schedule->location
                                 . "</td></tr>";
                         }
                     }

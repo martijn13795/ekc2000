@@ -21,18 +21,22 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 if(!empty($_POST['name']) && isset($_POST['name'])
                     && !empty($_POST['day1']) && isset($_POST['day1'])
                     && !empty($_POST['begin1']) && isset($_POST['begin1'])
-                    && !empty($_POST['end1']) && isset($_POST['end1'])){
+                    && !empty($_POST['end1']) && isset($_POST['end1'])
+                    && !empty($_POST['location1']) && isset($_POST['location1'])){
                     $name = $_POST['name'];
                     if (!empty($_FILES['icon']) && isset($_FILES['icon'])) {$icon = $_FILES['icon'];}
                     $day1 = $_POST['day1'];
                     $begin1 = $_POST['begin1'];
                     $end1 = $_POST['end1'];
+                    $location1 = $_POST['location1'];
                     $day2 = isset($_POST['day2']) ? $_POST['day2'] : false;
                     $begin2 = isset($_POST['begin2']) ? $_POST['begin2'] : false;
                     $end2 = isset($_POST['end2']) ? $_POST['end2'] : false;
+                    $location2 = isset($_POST['location2']) ? $_POST['location2'] : false;
                     $day3 = isset($_POST['day3']) ? $_POST['day3'] : false;
                     $begin3 = isset($_POST['begin3']) ? $_POST['begin3'] : false;
                     $end3 = isset($_POST['end3']) ? $_POST['end3'] : false;
+                    $location3 = isset($_POST['location3']) ? $_POST['location3'] : false;
 
                     if (!empty($_FILES['icon']) && isset($_FILES['icon'])) {
                         $allowed = array('jpg', 'jpeg', 'pjpeg', 'png');
@@ -77,7 +81,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             $db->update('schedules', $schedules1->id, array(
                                 'day_id' => $day1,
                                 'start' => $begin1,
-                                'end' => $end1
+                                'end' => $end1,
+                                'location' => $location1
                             ));
                         }
                         if ($day2) {
@@ -92,7 +97,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                     $db->update('schedules', $schedules2->id, array(
                                         'day_id' => $day2,
                                         'start' => $begin2,
-                                        'end' => $end2
+                                        'end' => $end2,
+                                        'location' => $location2
                                     ));
                                 } else {
                                     $team = $db->query("SELECT id FROM teams WHERE name = '" . escape($name) . "'")->first();
@@ -100,7 +106,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                         'team_id' => $team->id,
                                         'day_id' => $day2,
                                         'start' => $begin2,
-                                        'end' => $end2
+                                        'end' => $end2,
+                                        'location' => $location2
                                     ));
                                 }
                             }
@@ -117,7 +124,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                     $db->update('schedules', $schedules3->id, array(
                                         'day_id' => $day3,
                                         'start' => $begin3,
-                                        'end' => $end3
+                                        'end' => $end3,
+                                        'location' => $location3
                                     ));
                                 } else {
                                     $team = $db->query("SELECT id FROM teams WHERE name = '" . escape($name) . "'")->first();
@@ -125,7 +133,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                         'team_id' => $team->id,
                                         'day_id' => $day3,
                                         'start' => $begin3,
-                                        'end' => $end3
+                                        'end' => $end3,
+                                        'location' => $location3
                                     ));
                                 }
                             }

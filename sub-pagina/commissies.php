@@ -20,11 +20,15 @@
                                     $tags2 = explode(',',$key);
                                     foreach($tags2 as $key2) {
                                         if ($key2 != "") {
-                                            $getMembers = $db->query("SELECT * FROM users WHERE id='$key2'")->first();
-                                            echo "<p style='margin-bottom: -15px;'>&bull; ";
-                                            echo $getMembers->name.' ';
-                                            echo $getMembers->surname_prefix.' ';
-                                            echo $getMembers->surname.'</p><br>';
+                                            if ($count = $db->query("SELECT * FROM users WHERE id='$key2'")->count()) {
+                                                $getMembers = $db->query("SELECT * FROM users WHERE id='$key2'")->first();
+                                                echo "<p style='margin-bottom: -15px;'>&bull; ";
+                                                echo $getMembers->name . ' ';
+                                                if ($getMembers->surname_prefix != "") {
+                                                    echo $getMembers->surname_prefix . ' ';
+                                                }
+                                                echo $getMembers->surname . '</p><br>';
+                                            }
                                         }
                                     }
                                 }
@@ -43,11 +47,15 @@
                                     $tags2 = explode(',',$key);
                                     foreach($tags2 as $key2) {
                                         if ($key2 != "") {
-                                            $getMembers = $db->query("SELECT * FROM users WHERE id='$key2'")->first();
-                                            echo "<p style='margin-bottom: -15px;'>&bull; ";
-                                            echo $getMembers->name.' ';
-                                            echo $getMembers->surname_prefix.' ';
-                                            echo $getMembers->surname.'</p><br>';
+                                            if ($count = $db->query("SELECT * FROM users WHERE id='$key2'")->count()) {
+                                                $getMembers = $db->query("SELECT * FROM users WHERE id='$key2'")->first();
+                                                echo "<p style='margin-bottom: -15px;'>&bull; ";
+                                                echo $getMembers->name . ' ';
+                                                if ($getMembers->surname_prefix != "") {
+                                                    echo $getMembers->surname_prefix . ' ';
+                                                }
+                                                echo $getMembers->surname . '</p><br>';
+                                            }
                                         }
                                     }
                                 }

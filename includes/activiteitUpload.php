@@ -12,16 +12,33 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     $name = rawurlencode($name);
                     $text = $_POST['editor1'];
                     $date = date("Y-m-d", strtotime(trim($_POST['activiteitDate'])));
+                    $registration = false;
+                    if(isset($_POST['activiteitRegistration']) && $_POST['activiteitRegistration'] == "1"){
+                        $registration = true;
+                    }
                     if ($date) {
-                        $db->insert('activities', array(
-                            'name' => $name,
-                            'user_id' => $user->data()->id,
-                            'text' => $text,
-                            'date' => date("Y-m-d H:i:s"),
-                            'date_activity' => $date
-                        ));
-                        echo "<h3>De activiteit is geupload</h3>";
-                        echo "Refresh de pagina<br><br>";
+                        if ($registration){
+                            $db->insert('activities', array(
+                                'name' => $name,
+                                'user_id' => $user->data()->id,
+                                'text' => $text,
+                                'date' => date("Y-m-d H:i:s"),
+                                'date_activity' => $date,
+                                'registration' => $registration
+                            ));
+                            echo "<h3>De activiteit is geupload</h3>";
+                            echo "Refresh de pagina<br><br>";
+                        } else  {
+                            $db->insert('activities', array(
+                                'name' => $name,
+                                'user_id' => $user->data()->id,
+                                'text' => $text,
+                                'date' => date("Y-m-d H:i:s"),
+                                'date_activity' => $date
+                            ));
+                            echo "<h3>De activiteit is geupload</h3>";
+                            echo "Refresh de pagina<br><br>";
+                        }
                     } else {
                         echo '<h3>Er is wat mis gegaan bij de datum</h3><br>';
                     }

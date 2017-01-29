@@ -43,6 +43,7 @@
                     if ($albums->count()) {
                         foreach ($albums->results() as $album) {
                             $album_data = $db->query("SELECT * FROM pictures WHERE album_id = '$album->id'");
+                            $userName = $db->query("SELECT name, surname FROM users WHERE id = $album->user_id")->first();
                             if ($count = $album_data->count()) {
                                 $album_name = str_replace("XY","%",$album->name);
                                 $img_path = $album_data->first()->pathMobile;
@@ -53,7 +54,7 @@
                                 }
                                 echo '<a href="/album/' . $album->name . '"><img class="roundImg" src="' . $img_path . '"/><h3>'
                                     . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
+                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p>'; if ($user->isLoggedIn() && $user->hasPermission("dev")) {echo '<p>'.$userName->name . ' ' . $userName->surname .'</p>';} echo'</div>';
                             } else {
                                 $album_name = str_replace("XY","%",$album->name);
                                 echo '<div class="well albumsDiv">';
@@ -63,7 +64,7 @@
                                 }
                                 echo '<a href="/album/' . $album->name . '"><h3>'
                                     . escape(rawurldecode($album_name)) . '</h3></a><p>Laatste update: ' . escape(explode(" ", $album->date)[0]) . '</p>'
-                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p></div>';
+                                    . '<p>Aantal afbeeldingen: ' . escape($count) . '</p>'; if ($user->isLoggedIn() && $user->hasPermission("dev")) {echo '<p>'.$userName->name . ' ' . $userName->surname .'</p>';} echo'</div>';
                             }
                         }
                     } else {

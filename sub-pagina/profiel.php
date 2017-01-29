@@ -510,7 +510,8 @@ if ($user->isLoggedIn()) {
                             <option value="5">Vrijdag</option>
                         </select>
                         <label>Begin:</label><input type="time" id="begin1" class="form-control" name="begin1" REQUIRED>
-                        <label>Eind:</label><input type="time" id="end1" class="form-control" name="end1" REQUIRED><br><br>
+                        <label>Eind:</label><input type="time" id="end1" class="form-control" name="end1" REQUIRED>
+                        <label>Locatie:</label><input type="text" id="location1" class="form-control" name="location1" REQUIRED><br><br>
                         <label>Dag:</label>
                         <select class="form-control" name="day2" id="day2">
                             <option disabled selected value="">Kies een dag</option>
@@ -521,7 +522,8 @@ if ($user->isLoggedIn()) {
                             <option value="5">Vrijdag</option>
                         </select>
                         <label>Begin:</label><input type="time" id="begin2" class="form-control" name="begin2">
-                        <label>Eind:</label><input type="time" id="end2" class="form-control" name="end2"><br><br>
+                        <label>Eind:</label><input type="time" id="end2" class="form-control" name="end2">
+                        <label>Locatie:</label><input type="text" id="location2" class="form-control" name="location2"><br><br>
                         <label>Dag:</label>
                         <select class="form-control" name="day3" id="day3">
                             <option disabled selected value="">Kies een dag</option>
@@ -532,7 +534,8 @@ if ($user->isLoggedIn()) {
                             <option value="5">Vrijdag</option>
                         </select>
                         <label>Begin:</label><input type="time" id="begin3" class="form-control" name="begin3">
-                        <label>Eind:</label><input type="time" id="end3" class="form-control" name="end3"><br><br>
+                        <label>Eind:</label><input type="time" id="end3" class="form-control" name="end3">
+                        <label>Locatie:</label><input type="text" id="location3" class="form-control" name="location3"><br><br>
                     </div>
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>

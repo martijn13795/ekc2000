@@ -33,6 +33,7 @@
                 $newsdata = $db->query("SELECT date, name, id, user_id FROM news ORDER BY date DESC");
                 if ($newsdata->count()) {
                     foreach ($newsdata->results() as $news) {
+                        $userName = $db->query("SELECT name, surname FROM users WHERE id = $news->user_id")->first();
                         echo '<div class="well nieuwsDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $news->user_id || $user->hasPermission("dev") || $user->hasPermission("newsremove"))) {
                             echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeNews(' . escape($news->id) . ')"></i>';}
@@ -42,8 +43,7 @@
                         echo '<a href="/artikel/' . escape($news->name) . '">
                             <h3>' . escape(rawurldecode($news->name)) . '</h3>
                         </a>
-                        <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>
-                          </div>';
+                        <p>Upload datum: ' . escape(explode(" ", $news->date)[0]) . '</p>'; if ($user->isLoggedIn() && $user->hasPermission("dev")) {echo '<p>'.$userName->name . ' ' . $userName->surname .'</p>';} echo'</div>';
                     }
                 } else {
                     echo '<div class="well nieuwsDiv"><br><h3>Er zijn nog geen artikelen beschikbaar.</h3></div>';

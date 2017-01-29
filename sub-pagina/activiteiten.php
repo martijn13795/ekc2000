@@ -14,6 +14,7 @@
                 <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
                     <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="256" REQUIRED><br>
                     <label>Datum van activiteit:</label><input type="text" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" REQUIRED><br>
+                        <label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1"></label><br><br>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                     <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
                 </form>
@@ -32,6 +33,7 @@
                 $activities = $db->query("SELECT date, date_activity, name, id, user_id FROM activities ORDER BY date_activity DESC");
                 if ($activities->count()) {
                     foreach ($activities->results() as $activity) {
+                        $userName = $db->query("SELECT name, surname FROM users WHERE id = $activity->user_id")->first();
                         echo '<div class="well activiteitDiv">';
                         if ($user->isLoggedIn() && ($user->data()->id == $activity->user_id || $user->hasPermission("dev") || $user->hasPermission('activityremove'))) {
                             echo '<i title="Verwijderen" class="fa fa-trash-o" style="float: right;" onclick="removeActivity(' . escape($activity->id) . ')"></i>';}
@@ -39,7 +41,7 @@
                             echo '<div class="hidden visible-lg"><i title="Bewerken" class="fa fa-pencil-square-o" style="float: right; color: green;" onclick="update(`activities`, ' . escape($activity->id) . ')"></i></div>';
                         }
                         echo '<a href="/activiteit/' . escape($activity->name) . '"><h3>' . escape(rawurldecode($activity->name)) . '</h3></a>
-                    <p>Activiteit datum: ' . escape($activity->date_activity) . '</p></div>';
+                    <p>Activiteit datum: ' . escape($activity->date_activity) . '</p>'; if ($user->isLoggedIn() && $user->hasPermission("dev")) {echo '<p>'.$userName->name . ' ' . $userName->surname .'</p>';} echo'</div>';
                     }
                 } else {
                     echo '<div class="well activiteitDiv"><br><h3>Er zijn nog geen activiteiten beschikbaar</h3></div>';

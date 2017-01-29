@@ -35,6 +35,7 @@ if ($user->isLoggedIn()) { ?>
                     $documents = $db->query("SELECT * FROM documents ORDER BY date DESC");
                     if ($documents->count()) {
                         foreach ($documents->results() as $document) {
+                            $userName = $db->query("SELECT name, surname FROM users WHERE id = $document->user_id")->first();
                             $image = $document->path;
                             $type = substr($document->path, -3);
                             if ($type == "doc" OR $type == "ocx") {
@@ -54,7 +55,7 @@ if ($user->isLoggedIn()) { ?>
                                 echo '<i class="fa fa-trash-o" style="float: right;" onclick="removeDocument(' . escape($document->id) . ')"></i>';
                             }
                             echo '<a href="/' . $document->path . '"><img class="roundImg" src="' . $image . '"/><h3>'
-                                . escape(str_replace('-', ' ', $document->name)) . '</h3></a><p>Geupload op: ' . escape(explode(" ", $document->date)[0]) . '</p><br></div>';
+                                . escape(str_replace('-', ' ', $document->name)) . '</h3></a><p>Geupload op: ' . escape(explode(" ", $document->date)[0]) . '</p>'; if ($user->isLoggedIn() && $user->hasPermission("dev")) {echo '<p>'.$userName->name . ' ' . $userName->surname .'</p>';} echo'<br></div>';
                         }
                     } else {
                         echo '<div class="well albumsDiv"><br/><h3>Er zijn nog geen documenten beschikbaar</h3></div>';
