@@ -31,10 +31,8 @@
                     <label>Eventuale toevoeging:</label><textarea id="optionalText" class="form-control" name="optionalText" maxlength="512"></textarea><br>
                     <input type="text" name="activiteitName" id="activiteitName" value="<?php $name ?>" hidden>
                     <input type="text" name="userName" id="userName" value="<?php $user->name . ' ' . $user->surname_prefix . ' ' . $user->surname ?>" hidden>
-                    <input type="text" name="userBirthdate" id="userBirthdate" value="<?php $user->birthdate ?>" hidden>
                     <input type="submit" id="submit" class="btn btn-success" value="Inschrijven"/>
                 </form>
-                <button class="btn btn-info" id="refresh" onclick="history.go(0)">Refresh</button>
                 <br>
                 <div id="error"></div>
             </div>
@@ -56,38 +54,37 @@
         $("#registration").hide();
 
         $("#registrationContainer").show();
-
-        $(document).ready(function () {
-            $('.myForm').ajaxForm({
-                beforeSend: function () {
-                    $("#error").show();
-                    $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
-                },
-                success: function (response) {
-                    if (response == "<h3>De activiteit is geupload</h3>Refresh de pagina<br><br>"){
-                        $("#submit").hide();
-                        $("#refresh").show();
-                        $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
-                            '<button class="close" data-dismiss="alert">&times;</button>' +
-                            'De activiteit is geupload' +
-                            '</div>');
-                    }
-                    setTimeout(function () {
-                        $('.alerts').children('.alert:last-child').addClass('on');
-                        setTimeout(function () {
-                            $('.alerts').children('.alert:first-child').removeClass('on');
-                            setTimeout(function () {
-                                $('.alerts').children('.alert:first-child').remove();
-                            }, 900);
-                        }, 5000);
-                    }, 10);
-                    $("#error").show();
-                    $("#error").html(response);
-                }
-            });
-            $("#error").hide();
-            $("#refresh").hide();
-        });
     }
+
+    $(document).ready(function () {
+        $('.myForm').ajaxForm({
+            beforeSend: function () {
+                $("#error").show();
+                $("#error").html('<h3>Even geduld alstublieft</h3><p>Refresh de pagina niet</p>');
+            },
+            success: function (response) {
+                if (response == "<h3>De inschrijving is gelukt</h3><br>"){
+                    $("#submit").hide();
+                    $('.alerts').append('<div class="alert alert-success alert-dismissable">' +
+                        '<button class="close" data-dismiss="alert">&times;</button>' +
+                        'De inschrijving is gelukt' +
+                        '</div>');
+                }
+                setTimeout(function () {
+                    $('.alerts').children('.alert:last-child').addClass('on');
+                    setTimeout(function () {
+                        $('.alerts').children('.alert:first-child').removeClass('on');
+                        setTimeout(function () {
+                            $('.alerts').children('.alert:first-child').remove();
+                            $("#registrationContainer").hide();
+                        }, 900);
+                    }, 5000);
+                }, 10);
+                $("#error").show();
+                $("#error").html(response);
+            }
+        });
+        $("#error").hide();
+    });
 </script>
 <?php include '../includes/htmlUnder.php'; ?>

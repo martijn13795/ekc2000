@@ -14,7 +14,7 @@
                 <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
                     <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="256" REQUIRED><br>
                     <label>Datum van activiteit:</label><input type="text" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" REQUIRED><br>
-                        <label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1"></label><br><br>
+                    <label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1"></label><br><br>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                     <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
                 </form>
