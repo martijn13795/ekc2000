@@ -30,7 +30,7 @@ RewriteRule ^inloggen sub-pagina/inloggen.php [NC,L]
 
 RewriteRule ^nieuws sub-pagina/nieuws.php [NC,L]
 
-RewriteRule ^over-de-club sub-pagina/over-de-club.php [NC,L]
+RewriteRule ^VOG sub-pagina/VOG.php [NC,L]
 
 RewriteRule ^sponsoren sub-pagina/sponsoren.php [NC,L]
 

@@ -19,10 +19,10 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=activeClass("home"),activeClass("index"),activeClass("")?>><a href="/home">Home</a></li>
 
-                <li <?=activeClass("over-de-club"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("contact"),activeClass("ideeenbus"),activeClass("documenten")?> class="closed">
+                <li <?=activeClass("VOG"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("contact"),activeClass("ideeenbus"),activeClass("documenten")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li <?=activeClass("over-de-club")?>><a href="/over-de-club">Over de club</a></li>
+                        <li <?=activeClass("VOG")?>><a href="/VOG">VOG</a></li>
                         <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
                         <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("ideeenbus")?>><a href="/ideeenbus">Idee&euml;nbus</a></li><?php } ?>
