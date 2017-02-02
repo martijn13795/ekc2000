@@ -4,7 +4,7 @@
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
             <div class="col-xs-12 col-md-12">
-                <h1>Welkom bij <strong>EKC 2000</strong><?php print_r($_COOKIE);
+                <h1>Welkom bij <strong>EKC 2000</strong><?php
                     $user = new User();
                     if ($user->isLoggedIn()){
                         echo ", " . escape($user->data()->name) . " ";
