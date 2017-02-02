@@ -72,10 +72,18 @@ if ($user->isLoggedIn()) {
                         <div class="col-md-6 col-xs-12">
                             <br><button class="btn btn-primary" id="password" style="width: 200px;" onclick="showPassword()">Wachtwoord veranderen</button>
                         </div>
-                        <div class="col-md-6 col-xs-12" style="height: 54px;">
-
-                        </div>
                         <?php
+                        if($user->hasPermission('dev')) {
+                            ?>
+                            <div class="col-md-6 col-xs-12">
+                                <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>
+                                <br><button class="btn btn-primary" id="darkTheme" style="width: 200px;" onclick="document.cookie = 'darkTheme=true; expires=2592000'; location.reload();">Dark theme aan</button>
+                                <?php } else { ?>
+                                    <br><button class="btn btn-primary" id="darkTheme" style="width: 200px;" onclick="document.cookie = 'darkTheme=false; expires=-1'; location.reload();">Dark theme uit</button>
+                                <?php } ?>
+                            </div>
+                            <?php
+                        }
                         if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
                         ?>
                             <div class="col-md-6 col-xs-12">

@@ -42,7 +42,7 @@ Cas van Dinter
     <link rel="stylesheet" href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/fonts/font-awesome/css/font-awesome.min.css">
     <!-- Bootstrap -->
     <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/style.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/<?php if(isset($_COOKIE["darkTheme"]) && $_COOKIE["darkTheme"] === "true") { echo "dark-"; }?>style.css" rel="stylesheet">
     <link href="http://<?php echo $_SERVER['SERVER_NAME']; ?>/css/awesome-bootstrap-checkbox.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
