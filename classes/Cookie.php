@@ -10,11 +10,17 @@ class Cookie {
         return $_COOKIE[$name];
     }
     
-    public static function put($name, $value, $expiry) {
-        if(setcookie($name, $value, time() + $expiry, '/')){
-            return true;
-        }
-        return false;
+    public static function put($name, $value, $expiry)
+    {
+        ?>
+        <script>
+            var date = new Date();
+            date.setTime(date.getTime() + <?php echo $expiry; ?>);
+            expires = "; expires=" + date.toUTCString();
+            document.cookie = "<?php echo $name; ?>=<?php echo $value; ?>" + expires + "; path=/";
+        </script>
+        <?php
+        return true;
     }
     
     public static function delete($name) {

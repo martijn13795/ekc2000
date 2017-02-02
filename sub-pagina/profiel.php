@@ -77,7 +77,7 @@ if ($user->isLoggedIn()) {
                             ?>
                             <div class="col-md-6 col-xs-12">
                                 <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>
-                                <br><button class="btn btn-primary" id="darkTheme" style="width: 200px;" onclick="document.cookie = 'darkTheme=true; expires=2592000'; location.reload();">Dark theme aan</button>
+                                <br><button class="btn btn-primary" id="darkTheme" style="width: 200px;" onclick="setCookie(); location.reload();">Dark theme aan</button>
                                 <?php } else { ?>
                                     <br><button class="btn btn-primary" id="darkTheme" style="width: 200px;" onclick="document.cookie = 'darkTheme=false; expires=-1'; location.reload();">Dark theme uit</button>
                                 <?php } ?>
@@ -591,6 +591,13 @@ if ($user->isLoggedIn()) {
             $("#refresh").hide();
             $("#error").hide();
         });
+
+        function setCookie() {
+            var date = new Date();
+            date.setTime(date.getTime() + 2678400000);
+            expires = "; expires=" + date.toUTCString();
+            document.cookie = "darkTheme=true" + expires + "; path=/";
+        }
 
         function showUpload() {
             $("#upload").attr("onclick", "hideUpload()");

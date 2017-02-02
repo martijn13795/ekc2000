@@ -65,7 +65,7 @@ if(!$user->isLoggedIn()) {
                         <input type="password" id="password" class="form-control" name="password"
                                placeholder="Wachtwoord" REQUIRED><br/>
                         <label for="remember">
-                            <input type="checkbox" name="remember" value="on" id="remember"/>
+                            <input type="checkbox" name="remember" id="remember"/>
                             Ingelogd blijven
                         </label><br/>
                         <input type="hidden" name="token" value="<?php echo Token::generate(); ?>"/>
