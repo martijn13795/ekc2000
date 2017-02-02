@@ -57,7 +57,7 @@ Menu
 
 #menu.navbar-default .navbar-toggle:hover .icon-bar,
 #menu.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: red;
+    background-color: #333333;
 }
 
 .header-line {
