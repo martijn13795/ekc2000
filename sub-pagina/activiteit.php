@@ -31,6 +31,7 @@
                     <label>Eventuele toevoeging:</label><textarea id="optionalText" class="form-control" name="optionalText" maxlength="512"></textarea><br>
                     <input type="text" name="activiteitName" id="activiteitName" value="<?php echo $name; ?>" hidden>
                     <input type="text" name="userName" id="userName" value="<?php echo $user->data()->name . ' '; if ($user->data()->surname_prefix != ""){echo $user->data()->surname_prefix . ' ';}  echo $user->data()->surname; ?>" hidden>
+                    <input type="text" name="userEmail" id="userEmail" value="<?php echo $user->data()->mail; ?>" hidden>
                     <input type="submit" id="submit" class="btn btn-success" value="Inschrijven"/>
                 </form>
                 <br>
