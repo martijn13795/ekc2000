@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $activiteitName = $_POST['activiteitName'];
-$activiteitName = rawurlencode($activiteitName);
+$activiteitName = rawurldecode($activiteitName);
 $name = $_POST['name'];
 $userName = $_POST['userName'];
 $userEmail = $_POST['userEmail'];

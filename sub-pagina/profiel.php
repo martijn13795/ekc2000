@@ -83,6 +83,10 @@ if ($user->isLoggedIn()) {
                                 <?php } ?>
                             </div>
                             <?php
+                        } else {
+                            ?>
+                            <div class="col-md-6 col-xs-12" style="height: 54px;"></div>
+                            <?php
                         }
                         if($user->hasPermission('dev') || $user->hasPermission('usercreate')) {
                         ?>
