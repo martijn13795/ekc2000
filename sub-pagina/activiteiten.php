@@ -14,7 +14,10 @@
                 <form action="../includes/activiteitUpload.php" method="POST" class="myForm" name="myForm">
                     <label>Naam van activiteit:</label><input type="text" id="activiteitName" class="form-control" name="activiteitName" placeholder="Naam" maxlength="256" REQUIRED><br>
                     <label>Datum van activiteit:</label><input type="text" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" REQUIRED><br>
-                    <label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1"></label><br><br>
+                    <label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1"></label><br>
+                    <div id="emailHidder" hidden>
+                        <label>Email waar de inschrijvingen naar worden gestuurd: <input type="email" class="form-control" placeholder="Email" id="email" name="email"/></label><br><br>
+                    </div>
                     <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
                     <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Upload"/>
                 </form>
@@ -53,6 +56,16 @@
             function update(updateThing, updateId){
                 window.location = '/bewerk/' + updateThing + '/' + updateId;
             }
+
+            $('#activiteitRegistration').change(function() {
+                if ($("#emailHidder").is(":visible") && !$("#activiteitRegistration").checked){
+                    $('#email').removeAttr('required');
+                    $("#emailHidder").hide();
+                } else {
+                    $('#email').attr('required', 'required');
+                    $("#emailHidder").show();
+                }
+            });
 
             function showUpload() {
                 $("#upload").attr("onclick", "hideUpload()");

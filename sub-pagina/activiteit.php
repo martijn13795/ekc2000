@@ -19,8 +19,8 @@
         ?>
         <br></div>
     <?php
-    $registration = $db->query("SELECT registration FROM activities WHERE name = '" . $name . "'")->first();
-    if ($registration->registration == true){
+    $email = $db->query("SELECT email FROM activities WHERE name = '" . $name . "'")->first();
+    if ($email->email != ""){
         $user = new User();
         if ($user->isLoggedIn()) {
             ?>
@@ -32,6 +32,7 @@
                     <input type="text" name="activiteitName" id="activiteitName" value="<?php echo $name; ?>" hidden>
                     <input type="text" name="userName" id="userName" value="<?php echo $user->data()->name . ' '; if ($user->data()->surname_prefix != ""){echo $user->data()->surname_prefix . ' ';}  echo $user->data()->surname; ?>" hidden>
                     <input type="text" name="userEmail" id="userEmail" value="<?php echo $user->data()->mail; ?>" hidden>
+                    <input type="text" name="email" id="email" value="<?php echo $email->email; ?>" hidden>
                     <input type="submit" id="submit" class="btn btn-success" value="Inschrijven"/>
                 </form>
                 <br>

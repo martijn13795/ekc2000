@@ -50,7 +50,10 @@ $user = new User();
                     <form action="../../includes/edit.php?updateThing=<?php echo $updateThing; ?>&updateId=<?php echo $updateId; ?>" method="POST" class="myForm" name="myForm">
                         <label>Bewerk naam:</label><input type="text" id="artikelName" class="form-control" name="artikelName" placeholder="Naam" value="<?php echo escape(rawurldecode($name)); ?>" maxlength="256" REQUIRED><br>
                         <?php if ($updateThing == "activities") { ?><label>Bewerk datum:</label><input type="text" id="activiteitDate" class="form-control" name="activiteitDate" placeholder="YYYY-MM-DD" value="<?php echo escape(rawurldecode($date)); ?>" maxlength="20" REQUIRED><br><?php } ?>
-                        <?php if ($updateThing == "activities") { ?><label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1" <?php if ($data->registration == true) {echo "checked";} ?>></label><br><br><?php } ?>
+                        <?php if ($updateThing == "activities") { ?><label>Inschrijfformulier bij activiteit?: <input type="checkbox" name="activiteitRegistration" id="activiteitRegistration" value="1" <?php if ($data->email != "") {echo "checked";} ?>></label><br>
+                            <div id="emailHidder" <?php if ($data->email == "") {echo "hidden";} ?>>
+                                <label>Email waar de inschrijvingen naar worden gestuurd: <input type="email" class="form-control" placeholder="Email" id="email" name="email" value="<?php if ($data->email != "") {echo $data->email;} ?>" <?php if ($data->email != "") {echo "required";} ?>/></label><br><br>
+                            </div><?php } ?>
                         <?php if ($updateThing == "reports") { ?><label>Bewerk datum:</label><input type="text" id="reportsDate" class="form-control" name="reportsDate" placeholder="YYYY-MM-DD" value="<?php echo escape(rawurldecode($date)); ?>" maxlength="20" REQUIRED><br><?php } ?>
                         <textarea class="ckeditor" id="editor1" name="editor1"><?php echo $text; ?></textarea><br>
                         <input type="submit" onClick="CKupdate()" id="submit" class="btn btn-primary" value="Bewerken"/>
@@ -71,6 +74,17 @@ $user = new User();
             for ( var instance in CKEDITOR.instances )
                 CKEDITOR.instances[instance].updateElement();
         }
+
+
+        $('#activiteitRegistration').change(function() {
+            if ($("#emailHidder").is(":visible") && !$("#activiteitRegistration").checked){
+                $('#email').removeAttr('required');
+                $("#emailHidder").hide();
+            } else {
+                $('#email').attr('required', 'required');
+                $("#emailHidder").show();
+            }
+        });
 
         $(document).ready(function () {
             $('.myForm').ajaxForm({

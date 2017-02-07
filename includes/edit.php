@@ -14,9 +14,9 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 if ($updateThing == "activities"){
                     if (isset($_POST['activiteitDate']) && !empty($_POST['activiteitDate'])) {
                         $date = $_POST['activiteitDate'];
-                        $registration = "0";
-                        if(isset($_POST['activiteitRegistration']) && $_POST['activiteitRegistration'] == "1"){
-                            $registration = "1";
+                        $email = "";
+                        if(isset($_POST['email']) && $_POST['email'] != ""){
+                            $email = $_POST['email'];
                         }
                         $db->update($updateThing, $updateId, array(
                             'user_id' => $user->data()->id,
@@ -24,7 +24,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             'text' => $text,
                             'date' => date("Y-m-d H:i:s"),
                             'date_activity' => $date,
-                            'registration' => $registration
+                            'email' => $email
                         ));
                     } else {
                         echo "<h3>Vul een datum in</h3><br>";

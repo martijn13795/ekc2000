@@ -12,9 +12,9 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     $name = rawurlencode($name);
                     $text = $_POST['editor1'];
                     $date = date("Y-m-d", strtotime(trim($_POST['activiteitDate'])));
-                    $registration = "0";
-                    if(isset($_POST['activiteitRegistration']) && $_POST['activiteitRegistration'] == "1"){
-                        $registration = "1";
+                    $email = "";
+                    if(isset($_POST['email']) && $_POST['email'] != ""){
+                        $email = $_POST['email'];
                     }
                     if ($date) {
                         $db->insert('activities', array(
@@ -23,7 +23,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             'text' => $text,
                             'date' => date("Y-m-d H:i:s"),
                             'date_activity' => $date,
-                            'registration' => $registration
+                            'email' => $email
                         ));
                         echo "<h3>De activiteit is geupload</h3>";
                         echo "Refresh de pagina<br><br>";
