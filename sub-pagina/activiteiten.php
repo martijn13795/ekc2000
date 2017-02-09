@@ -60,6 +60,7 @@
             $('#activiteitRegistration').change(function() {
                 if ($("#emailHidder").is(":visible") && !$("#activiteitRegistration").checked){
                     $('#email').removeAttr('required');
+                    $('#email').removeAttr('value');
                     $("#emailHidder").hide();
                 } else {
                     $('#email').attr('required', 'required');

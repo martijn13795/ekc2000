@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <th scope="row">Download hier het inschrijfformulier:</th>
-                    <td><a href="../documents/Inschrijfformulier EKC 2000.pdf">Inschrijfformulier</a></td>
+                    <td><a href="../documents/Inschrijfformulier EKC 2000.pdf" target="_blank">Inschrijfformulier</a></td>
                 </tr>
                 </tbody>
             </table>
