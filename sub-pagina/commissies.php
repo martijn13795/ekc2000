@@ -34,6 +34,58 @@
                                             }
                                         }
                                     }
+                                    if ($commission->name == "Bestuur") {
+                                        ?>
+                                        <p>Er zijn meedere vacantie posities</p>
+                                        <button type="button" class="btn btn-success" data-toggle="modal"
+                                                data-target="#myModal2">Extra info
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div id="myModal2" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Functieomschrijving
+                                                            sponsorcommissie</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Functies:<br><br>
+                                                            • Medeverantwoordelijk voor het onderhouden van het
+                                                            Sponsorbeleid<br>
+                                                            • Houdt het archief bij van de afspraken met sponsoren en
+                                                            adverteerders<br>
+                                                            • Onderhoudt contacten met actuele sponsoren<br>
+                                                            • Organiseert regelmatige bijeenkomsten voor de
+                                                            sponsorcommissie<br>
+                                                            • Organiseert sponsorwervingsacties<br>
+                                                            • Gestructureerd kunnen werken<br>
+                                                            • Communicatief vaardig (mondeling en schriftelijk)<br>
+                                                            • Goed contacten kunnen onderhouden (met andere
+                                                            vrijwilligers, leden, maar vooral de sponsoren)<br>
+                                                            • Interesse hebben in bedrijven als (potentiële) sponsor<br>
+                                                            • Formeel en informeel kunnen afwisselen<br>
+                                                            • Regelmatig email behandelen (minimaal eens in de week)<br>
+                                                            • In team kunnen werken<br>
+                                                            • Affiniteit met EKC 2000 (en de korfbalsport) is een
+                                                            pré<br>
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">Sluit
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
                                 } else {
                                     ?>
                                     <p>Hier kan eventuele tekst staan</p>
