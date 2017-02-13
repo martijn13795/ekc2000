@@ -33,8 +33,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                 <td><span class="name" id="' . escape($commission->id) . '">' . escape($commission->name) . '</span></td>
                                 <td><span class="mail" id="' . escape($commission->id) . '">' . escape($commission->mail) . '</span></td>
                                 <td><span class="phone" id="' . escape($commission->id) . '">' . escape($commission->phone) . '</span></td>
-                                <td><span class="vacancy" id="' . escape($commission->id) . '">' . escape($commission->vacancy) . '</span></td>
-                                <td><span class="vacancyText" id="' . escape($commission->id) . '">' . escape($commission->vacancyText) . '</span></td>';
+                                <td><span class="vacancy" data-type="select" id="' . escape($commission->id) . '">'; if ($commission->vacancy == "0") { echo 'Nee'; } else { echo 'Ja'; } echo '</span></td>
+                                <td><button type="button" class="btn btn-success" onclick="window.location = \'/commissie/' . escape($commission->id) . '\';">Bewerk extra info</button></td>';
                     if ($user->hasPermission('dev') || $user->hasPermission('commissionremove')) {
                         echo '<td><span class="delete" id="' . escape($commission->id) . '" onclick="removeCommission(' . escape($commission->id) . ')"><i title="Verwijderen" style="padding-left: 7px; margin: 0 auto;" class="fa fa-trash-o"></i></span></td>';
                     }
@@ -90,7 +90,12 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 $('.name').editable();
                 $('.mail').editable();
                 $('.phone').editable();
-                $('.vacancy').editable();
+                $('.vacancy').editable({
+                    source: [
+                        {value: '1', text: 'Ja'},
+                        {value: '0', text: 'Nee'}
+                    ]
+                });
                 $('.vacancyText').editable();
             });
         }

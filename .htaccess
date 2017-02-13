@@ -89,3 +89,5 @@ RewriteRule ^bewerk-commissies sub-pagina/editCommission.php [NC,L]
 RewriteRule ^kangoeroeklup sub-pagina/kangoeroeklup.php [NC,L]
 
 RewriteRule ^contributie sub-pagina/contributie.php [NC,L]
+
+RewriteRule ^commissie/([0-9]+.*) sub-pagina/editVacancyText.php?id=$1 [NC,L]

@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $user = new User(); if ($user->isLoggedIn()) {
+    //$to = "vrijwilligers@ekc2000.nl";
     $to = "martijn13795@hotmail.com";
     $commissionName = $_GET['commissionName'];
     $name = $user->data()->name . " ";

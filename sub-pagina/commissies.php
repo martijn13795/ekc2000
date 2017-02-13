@@ -58,7 +58,7 @@
                                 }
                                 if ($commission->members == "" || $commission->vacancy == "1") {
                                     ?>
-                                    <h4>Er zijn 1 of meerdere vacante posities beschikbaar binnen deze commissie:</h4>
+                                    <p style="font-weight: bold;">E&eacute;n of meerdere posities binnen deze commissie zijn vacant</p>
                                     <button type="button" class="btn btn-success" <?php $user = new User(); if ($user->isLoggedIn()) { ?> onclick="modalToggle(<?php echo "`" . $commission->name . "`,"; echo "`" . $commission->vacancyText . "`"; ?>)" <?php } else { ?> onclick="window.location = '/inloggen';" <?php } ?>>Extra info</button>
                                     <?php
                                 }
@@ -94,7 +94,7 @@
                                 }
                                 if ($commission->members == "" || $commission->vacancy == "1") {
                                     ?>
-                                    <h4>Er zijn 1 of meerdere vacante posities beschikbaar binnen deze commissie:</h4>
+                                    <p style="font-weight: bold;">E&eacute;n of meerdere posities binnen deze commissie zijn vacant</p>
                                     <button type="button" class="btn btn-success" <?php $user = new User(); if ($user->isLoggedIn()) { ?> onclick="modalToggle(<?php echo "`" . $commission->name . "`,"; echo "`" . $commission->vacancyText . "`"; ?>)" <?php } else { ?> onclick="window.location = '/inloggen';" <?php } ?>>Extra info</button>
                                     <?php
                                 }
