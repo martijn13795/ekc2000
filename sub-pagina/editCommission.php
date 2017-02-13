@@ -17,6 +17,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 <th>Naam</th>
                 <th>Email</th>
                 <th>Telefoonnummer</th>
+                <th>Vacante positie?</th>
+                <th>Extra info</th>
                 <th><i title="Verwijderen" style="cursor: auto; padding-left: 7px;" class="fa fa-trash-o"></i></th>
             </tr>
             </thead>
@@ -30,7 +32,9 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                 <td>' . escape($commission->id) . '</td>
                                 <td><span class="name" id="' . escape($commission->id) . '">' . escape($commission->name) . '</span></td>
                                 <td><span class="mail" id="' . escape($commission->id) . '">' . escape($commission->mail) . '</span></td>
-                                <td><span class="phone" id="' . escape($commission->id) . '">' . escape($commission->phone) . '</span></td>';
+                                <td><span class="phone" id="' . escape($commission->id) . '">' . escape($commission->phone) . '</span></td>
+                                <td><span class="vacancy" id="' . escape($commission->id) . '">' . escape($commission->vacancy) . '</span></td>
+                                <td><span class="vacancyText" id="' . escape($commission->id) . '">' . escape($commission->vacancyText) . '</span></td>';
                     if ($user->hasPermission('dev') || $user->hasPermission('commissionremove')) {
                         echo '<td><span class="delete" id="' . escape($commission->id) . '" onclick="removeCommission(' . escape($commission->id) . ')"><i title="Verwijderen" style="padding-left: 7px; margin: 0 auto;" class="fa fa-trash-o"></i></span></td>';
                     }
@@ -53,7 +57,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 },
                 "aoColumnDefs" : [ {
                     'bSortable' : false,
-                    'aTargets' : [ 4 ]
+                    'aTargets' : [ 6 ]
                 } ]
             });
         });
@@ -86,6 +90,8 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 $('.name').editable();
                 $('.mail').editable();
                 $('.phone').editable();
+                $('.vacancy').editable();
+                $('.vacancyText').editable();
             });
         }
 

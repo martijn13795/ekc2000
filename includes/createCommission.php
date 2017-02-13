@@ -7,22 +7,28 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
         && !empty($_POST['mail']) && isset($_POST['mail'])){
         $name = $_POST['name'];
         $mail = $_POST['mail'];
+        $vacancy = $_POST['vacancy'];
+        $vacancyText = isset($_POST['editor1']) ? $_POST['editor1'] : false;
         $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
 
         $commissions = $db->query("SELECT * FROM commissions WHERE name = '". escape($name) ."'");
         if(!$commissions->count()){
-            if ($name && $mail && $phone == false) {
+            if ($name && $mail && $phone == false && $vacancy && $vacancyText) {
                 $db->insert('commissions', array(
                     'name' => $name,
-                    'mail' => $mail
+                    'mail' => $mail,
+                    'vacancy' => $vacancy,
+                    'vacancyText' => $vacancyText
                 ));
                 echo "<h3>Commissie aangemaakt</h3>";
-            } else if ($name && $mail && $phone) {
+            } else if ($name && $mail && $phone && $vacancy && $vacancyText) {
                 if (is_numeric($phone)) {
                     $db->insert('commissions', array(
                         'name' => $name,
                         'mail' => $mail,
-                        'phone' => $phone
+                        'phone' => $phone,
+                        'vacancy' => $vacancy,
+                        'vacancyText' => $vacancyText
                     ));
                     echo "<h3>Commissie aangemaakt</h3>";
                 } else {

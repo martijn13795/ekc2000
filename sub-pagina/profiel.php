@@ -1,5 +1,6 @@
 <?php include '../includes/html.php'; ?>
     <script src="http://malsup.github.com/jquery.form.js" xmlns="http://www.w3.org/1999/html"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
 <?php
 $user = new User();
 if ($user->isLoggedIn()) {
@@ -564,7 +565,12 @@ if ($user->isLoggedIn()) {
                 <label>Naam:</label><input type="text" id="name" class="form-control" name="name" placeholder="Naam" maxlength="60" REQUIRED><br>
                 <label>Email:</label><input type="email" id="mail" class="form-control" name="mail" placeholder="Email" maxlength="256" REQUIRED><br>
                 <label>Telefoonnummer:</label><input type="text" id="phone" class="form-control" name="phone" placeholder="Telefoonnummer" maxlength="10"><br>
-                <input class="btn btn-primary submit" id="submit" type="submit">
+                <label>Vacante positie?: <input type="checkbox" name="vacancy" id="vacancy" value="1"></label><br>
+                <div id="vacancyHidder" hidden>
+                    <label>Extra info over de vacante positie: </label><br>
+                    <textarea class="ckeditor" id="editor1" name="editor1"></textarea><br>
+                </div>
+                <input class="btn btn-primary submit" onClick="CKupdate()" id="submit" type="submit">
             </form>
         </div>
         <?php
@@ -595,6 +601,22 @@ if ($user->isLoggedIn()) {
             $("#refresh").hide();
             $("#error").hide();
         });
+
+        $('#vacancy').change(function() {
+            if ($("#vacancyHidder").is(":visible") && !$("#vacancy").checked){
+                $('#vacancy').removeAttr('required');
+                $('#vacancy').removeAttr('value');
+                $("#vacancyHidder").hide();
+            } else {
+                $('#vacancy').attr('required', 'required');
+                $("#vacancyHidder").show();
+            }
+        });
+
+        function CKupdate(){
+            for ( var instance in CKEDITOR.instances )
+                CKEDITOR.instances[instance].updateElement();
+        }
 
         function setCookie() {
             var date = new Date();

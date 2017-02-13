@@ -1,10 +1,9 @@
 <?php
-    $to = "ac@ekc2000.nl";
-    $subject = "Nieuwe opgave: Filmavond";
-    $title = "Nieuwe opgave: Filmavond";
-    $text = 'Er is een nieuwe opgave voor de activiteit: Filmavond.<br>
-                 <h2>Martijn Posthuma</h2>
-                 <h4>Eventuele toevoegingen:</h4><p>- Dit is optioneel</p><br><sub>(Martijn13795, Martijn13795@hotmail.com)</sub>';
+    $subject = "Name heeft op extra info geklikt";
+    $title = "Name heeft op extra info geklikt";
+    $text = 'Er is op extra info geklikt bij de commissie: CommissionName.<br>
+                 <h2>Name</h2>
+                 <p>Gebruikersnaam: Username<br><br>Email: Email</p>';
 
     $from = "website@ekc2000.nl";
     $message = '
