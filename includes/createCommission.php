@@ -13,27 +13,31 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
 
         $commissions = $db->query("SELECT * FROM commissions WHERE name = '". escape($name) ."'");
         if(!$commissions->count()){
-            if ($name && $mail && $phone == false && $vacancy && $vacancyText) {
-                $db->insert('commissions', array(
-                    'name' => $name,
-                    'mail' => $mail,
-                    'vacancy' => $vacancy,
-                    'vacancyText' => $vacancyText
-                ));
-                echo "<h3>Commissie aangemaakt</h3>";
-            } else if ($name && $mail && $phone && $vacancy && $vacancyText) {
-                if (is_numeric($phone)) {
+            if (strlen($vacancyText) <= 7900) {
+                if ($name && $mail && $phone == false && $vacancy && $vacancyText) {
                     $db->insert('commissions', array(
                         'name' => $name,
                         'mail' => $mail,
-                        'phone' => $phone,
                         'vacancy' => $vacancy,
                         'vacancyText' => $vacancyText
                     ));
                     echo "<h3>Commissie aangemaakt</h3>";
-                } else {
-                    echo "<h3>Gebruik alleen nummers bij het telefoonnummer</h3>";
+                } else if ($name && $mail && $phone && $vacancy && $vacancyText) {
+                    if (is_numeric($phone)) {
+                        $db->insert('commissions', array(
+                            'name' => $name,
+                            'mail' => $mail,
+                            'phone' => $phone,
+                            'vacancy' => $vacancy,
+                            'vacancyText' => $vacancyText
+                        ));
+                        echo "<h3>Commissie aangemaakt</h3>";
+                    } else {
+                        echo "<h3>Gebruik alleen nummers bij het telefoonnummer</h3>";
+                    }
                 }
+            } else {
+                echo "<h3>Gebruik maximaal 7900 karakters</h3>";
             }
         } else {
             echo "<h3>Deze commissie bestaat al</h3>";
