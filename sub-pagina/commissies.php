@@ -113,7 +113,9 @@
     </div>
 <script>
     function modalToggle(vacancyTitle, vacancyText) {
-        $.ajax({ url: '../includes/vacancyMail.php?commissionName=' + vacancyTitle });
+        if (<?php if ($user->hasPermission('dev')) {echo "false"; } else { echo "true"; } ?>) {
+            $.ajax({url: '../includes/vacancyMail.php?commissionName=' + vacancyTitle});
+        }
         if (vacancyText == "") {
             vacancyText = "Er is geen extra info beschikbaar";
         }
