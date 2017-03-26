@@ -19,23 +19,23 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=activeClass("home"),activeClass("index"),activeClass("")?>><a href="/home">Home</a></li>
 
-                <li <?=activeClass("VOG"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("contact"),activeClass("ideeenbus"),activeClass("documenten")?> class="closed">
+                <li <?=activeClass("VOG"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("kangoeroeklup"),activeClass("contact"),activeClass("ideeenbus"),activeClass("documenten")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("VOG")?>><a href="/VOG">VOG</a></li>
                         <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
                         <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
+                        <li <?=activeClass("kangoeroeklup")?>><a href="/kangoeroeklup">Kangoeroeklup</a></li>
                         <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("ideeenbus")?>><a href="/ideeenbus">Idee&euml;nbus</a></li><?php } ?>
                         <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li><?php } ?>
                         <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
                     </ul>
                 </li>
 
-                <li <?=activeClass("lid-worden"),activeClass("kangoeroeklup"),activeClass("contributie")?> class="closed">
+                <li <?=activeClass("lid-worden"),activeClass("contributie")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lid worden<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
-                        <li <?=activeClass("kangoeroeklup")?>><a href="/kangoeroeklup">Kangoeroeklup</a></li>
                         <li <?=activeClass("contributie")?>><a href="/contributie">Contributie</a></li>
                     </ul>
                 </li>
