@@ -21,25 +21,18 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     echo "Refresh de pagina<br><br>";
 
                     $emails = $db->query("SELECT mail FROM users WHERE news = '1'");
-                    $emailString = "";
-                    $i = 1;
                     if ($emails->count()) {
+                        $name = rawurldecode($name);
+                        $subject = "Nieuw artikel: " . $name;
+                        $title = "Nieuw artikel: " . $name;
+                        $text = 'Er is een nieuw artikel geüpload: ' . $name . '.<br>';
+
                         foreach ($emails->results() as $email) {
-                            if ($i == 1) {
-                                $emailString = $emailString . $email->mail;
-                            } else {
-                                $emailString = $emailString . ", " . $email->mail;
-                            }
-                            $i++;
+                            $to = $email->mail;
+                            email($to, $subject, $title, $text);
                         }
                     }
 
-                    $name = rawurldecode($name);
-                    $to = $emailString;
-                    $subject = "Nieuw artikel: " . $name;
-                    $title = "Nieuwe artikel: ". $name;
-                    $text = 'Er is een nieuw artikel geüpload: "' . $name . '".<br>';
-                    email($to, $subject, $title, $text);
                 } else {
                     echo "<h3>Begin de text met een 'Kop 1'</h3><br>";
                 }

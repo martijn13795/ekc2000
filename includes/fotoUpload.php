@@ -139,6 +139,20 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                             'date' => date("Y-m-d H:i:s")
                                         ));
                                         echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font><br>";
+
+                                        $emails = $db->query("SELECT mail FROM users WHERE albums = '1'");
+                                        if ($emails->count()) {
+                                            $name = rawurldecode($name);
+                                            $subject = "Nieuw album: " . $name;
+                                            $title = "Nieuw album: " . $name;
+                                            $text = 'Er is een nieuw album geüpload: ' . $name . '.<br>';
+
+                                            foreach ($emails->results() as $email) {
+                                                $to = $email->mail;
+                                                email($to, $subject, $title, $text);
+                                            }
+                                        }
+
                                     } else {
                                         echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
                                     }

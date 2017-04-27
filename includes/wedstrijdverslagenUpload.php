@@ -25,6 +25,20 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             ));
                             echo "<h3>Het verslag is geupload</h3>";
                             echo "Refresh de pagina<br><br>";
+
+                            $emails = $db->query("SELECT mail FROM users WHERE reports = '1'");
+                            if ($emails->count()) {
+                                $name = rawurldecode($name);
+                                $subject = "Nieuw wedstrijdverslag: " . $name;
+                                $title = "Nieuw wedstrijdverslag: " . $name;
+                                $text = 'Er is een nieuw wedstrijdverslag geüpload: ' . $name . '.<br>';
+
+                                foreach ($emails->results() as $email) {
+                                    $to = $email->mail;
+                                    email($to, $subject, $title, $text);
+                                }
+                            }
+
                         } else {
                             echo '<h3>Er is wat mis gegaan bij de datum</h3><br>';
                         }
