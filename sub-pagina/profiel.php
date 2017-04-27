@@ -132,6 +132,61 @@ if ($user->isLoggedIn()) {
                         <?php
                         }
                         ?>
+                        <div class="col-md-12 col-xs-12"><hr style="margin-bottom: 0px;"><h4>Zet notificaties aan of uit:</h4></div>
+                        <div class="col-md-6 col-xs-12">
+                            <?php
+                            if($user->data()->news) {
+                            ?>
+                                <br><button class="btn btn-primary" id="notifyNewsOff" style="width: 200px;" onclick="setNotify('off','news', 'notifyNewsOff')">Nieuws uit</button>
+                            <?php
+                            } else {
+                            ?>
+                                <br><button class="btn btn-primary" id="notifyNewsOn" style="width: 200px;" onclick="setNotify('on','news', 'notifyNewsOn')">Nieuws aan</button>
+                            <?php
+                            }
+                            ?>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <?php
+                            if($user->data()->activities) {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyActivitiesOff" style="width: 200px;" onclick="setNotify('off','activities', 'notifyActivitiesOff')">Activiteiten uit</button>
+                                <?php
+                            } else {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyActivitiesOn" style="width: 200px;" onclick="setNotify('on','activities', 'notifyActivitiesOn')">Activiteiten aan</button>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <?php
+                            if($user->data()->albums) {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyPhotoOff" style="width: 200px;" onclick="setNotify('off','albums', 'notifyPhotoOff')">Fotoalbums uit</button>
+                                <?php
+                            } else {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyPhotoOn" style="width: 200px;" onclick="setNotify('on','albums', 'notifyPhotoOn')">Fotoalbums aan</button>
+                                <?php
+                            }
+                            ?>
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <?php
+                            if($user->data()->reports) {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyReportOff" style="width: 200px;" onclick="setNotify('off','reports', 'notifyReportOff')">Wedstrijdverslagen uit</button>
+                                <?php
+                            } else {
+                                ?>
+                                <br><button class="btn btn-primary" id="notifyReportOn" style="width: 200px;" onclick="setNotify('on','reports', 'notifyReportOn')">Wedstrijdverslagen aan</button>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -616,6 +671,20 @@ if ($user->isLoggedIn()) {
         function CKupdate(){
             for ( var instance in CKEDITOR.instances )
                 CKEDITOR.instances[instance].updateElement();
+        }
+
+        function setNotify(onOff, colum, id) {
+            //window.location='/includes/setNotify.php?onoff=1&colum=activities'"
+            id = "#" + id;
+            if (onOff == 'on') {
+                $(id).html($(id).html().replace('aan','uit'));
+            }
+            if (onOff == 'off') {
+                $(id).html($(id).html().replace('uit','aan'));
+            }
+            $.ajax({
+                url: "/includes/setNotify.php?onoff="+onOff+"&colum="+colum+""
+            })
         }
 
         function setCookie() {

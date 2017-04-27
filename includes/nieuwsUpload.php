@@ -19,6 +19,27 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     ));
                     echo "<h3>Het artikel is geupload</h3>";
                     echo "Refresh de pagina<br><br>";
+
+                    $emails = $db->query("SELECT mail FROM users WHERE news = '1'");
+                    $emailString = "";
+                    $i = 1;
+                    if ($emails->count()) {
+                        foreach ($emails->results() as $email) {
+                            if ($i == 1) {
+                                $emailString = $emailString . $email->mail;
+                            } else {
+                                $emailString = $emailString . ", " . $email->mail;
+                            }
+                            $i++;
+                        }
+                    }
+
+                    $name = rawurldecode($name);
+                    $to = $emailString;
+                    $subject = "Nieuw artikel: " . $name;
+                    $title = "Nieuwe artikel: ". $name;
+                    $text = 'Er is een nieuw artikel geüpload: "' . $name . '".<br>';
+                    email($to, $subject, $title, $text);
                 } else {
                     echo "<h3>Begin de text met een 'Kop 1'</h3><br>";
                 }
