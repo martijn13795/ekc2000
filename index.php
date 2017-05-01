@@ -117,7 +117,22 @@
                             <p>
                                 <?php
                                 $dateNow = new DateTimeImmutable();
-                                $activities = $db->query("SELECT date, date_activity, name FROM activities ORDER BY date_activity DESC LIMIT 6");
+                                $dateNow = $dateNow->modify('-1 day');
+
+                                $upcomingActivities = $db->query("SELECT date, date_activity, name FROM activities WHERE date_activity >= NOW() ORDER BY date_activity ASC LIMIT 6");
+                                if ($upcomingActivities->count()) {
+                                    foreach ($upcomingActivities->results() as $upcomingActivity) {
+                                        $activityDate = new DateTime($upcomingActivity->date_activity);
+                                        if ($activityDate >= $dateNow) {
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($upcomingActivity->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape($upcomingActivity->date_activity) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($upcomingActivity->name)) ?></p></div></div> <?php
+                                        } else {
+                                            ?> <div class="fotoLink artikleDiv row" onclick="window.location='/activiteit/<?php echo escape($upcomingActivity->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape($upcomingActivity->date_activity) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($upcomingActivity->name)) ?></p></div></div> <?php
+                                        }
+                                    }
+                                }
+
+                                $limit = 6 - $upcomingActivities->count();
+                                $activities = $db->query("SELECT date, date_activity, name FROM activities WHERE date_activity < NOW() ORDER BY date_activity DESC LIMIT $limit");
                                 if ($activities->count()) {
                                     foreach ($activities->results() as $activity) {
                                         $activityDate = new DateTime($activity->date_activity);
