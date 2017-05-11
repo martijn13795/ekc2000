@@ -26,14 +26,15 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             echo "<h3>Het verslag is geupload</h3>";
                             echo "Refresh de pagina<br><br>";
 
-                            $emails = $db->query("SELECT mail FROM users WHERE reports = '1'");
+                            $emails = $db->query("SELECT mail, name FROM users WHERE reports = '1'");
                             if ($emails->count()) {
                                 $name = rawurldecode($name);
                                 $subject = "Nieuw wedstrijdverslag: " . $name;
-                                $title = "Nieuw wedstrijdverslag: " . $name;
-                                $text = 'Er is een nieuw wedstrijdverslag geüpload: ' . $name . '.<br>';
+                                $title = $name . ".";
 
                                 foreach ($emails->results() as $email) {
+                                    $userName = $email->name;
+                                    $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw wedstrijdverslag geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/verslag/' . rawurlencode($name) . '">http://ekc2000.nl/verslag/' . rawurlencode($name) . '</a><br>';
                                     $to = $email->mail;
                                     email($to, $subject, $title, $text);
                                 }

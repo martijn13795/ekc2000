@@ -20,14 +20,15 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                     echo "<h3>Het artikel is geupload</h3>";
                     echo "Refresh de pagina<br><br>";
 
-                    $emails = $db->query("SELECT mail FROM users WHERE news = '1'");
+                    $emails = $db->query("SELECT mail, name FROM users WHERE news = '1'");
                     if ($emails->count()) {
                         $name = rawurldecode($name);
                         $subject = "Nieuw artikel: " . $name;
-                        $title = "Nieuw artikel: " . $name;
-                        $text = 'Er is een nieuw artikel geüpload: ' . $name . '.<br>';
+                        $title = $name . ".";
 
                         foreach ($emails->results() as $email) {
+                            $userName = $email->name;
+                            $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw artikel geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/artikel/' . rawurlencode($name) . '">http://ekc2000.nl/artikel/' . rawurlencode($name) . '</a><br>';
                             $to = $email->mail;
                             email($to, $subject, $title, $text);
                         }

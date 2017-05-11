@@ -28,14 +28,15 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                         echo "<h3>De activiteit is geupload</h3>";
                         echo "Refresh de pagina<br><br>";
 
-                        $emails = $db->query("SELECT mail FROM users WHERE activities = '1'");
+                        $emails = $db->query("SELECT mail, name FROM users WHERE activities = '1'");
                         if ($emails->count()) {
                             $name = rawurldecode($name);
                             $subject = "Nieuwe activiteit: " . $name;
-                            $title = "Nieuwe activiteit: " . $name;
-                            $text = 'Er is een nieuwe activiteit geüpload: ' . $name . '.<br>';
+                            $title = $name . ".";
 
                             foreach ($emails->results() as $email) {
+                                $userName = $email->name;
+                                $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuwe activiteit geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/activiteit/' . rawurlencode($name) . '">http://ekc2000.nl/activiteit/' . rawurlencode($name) . '</a><br>';
                                 $to = $email->mail;
                                 email($to, $subject, $title, $text);
                             }

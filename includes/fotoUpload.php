@@ -140,14 +140,15 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                         ));
                                         echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font><br>";
 
-                                        $emails = $db->query("SELECT mail FROM users WHERE albums = '1'");
+                                        $emails = $db->query("SELECT mail, name FROM users WHERE albums = '1'");
                                         if ($emails->count()) {
-                                            $name = rawurldecode($name);
+                                            $name = $_POST['name'];
                                             $subject = "Nieuw album: " . $name;
-                                            $title = "Nieuw album: " . $name;
-                                            $text = 'Er is een nieuw album geüpload: ' . $name . '.<br>';
+                                            $title = $name . ".";
 
                                             foreach ($emails->results() as $email) {
+                                                $userName = $email->name;
+                                                $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw album geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/album/' . $album_name . '">http://ekc2000.nl/album/' . $album_name . '</a><br>';
                                                 $to = $email->mail;
                                                 email($to, $subject, $title, $text);
                                             }
