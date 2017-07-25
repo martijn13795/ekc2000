@@ -52,41 +52,15 @@
                     <div class="col-md-4 col-xs-12 homeInfoDiv">
                         <div class="col-xs-12 col-md-12 well infoDiv">
                             <div class="col-md-4 col-xs-4">
-                                <a href="/fotogalerij"><i class="icon major fa-camera link"></i></a>
+                                <a href="/wedstrijdverslagen"><i class="icon major fa-futbol-o link"></i></a>
                             </div>
                             <div class="col-md-8 col-xs-8">
-                                <a href="/fotogalerij"><h3>Laatste foto albums</h3></a>
+                                <a href="/wedstrijdverslagen"><h3 style="width: 200px;">Laatste wedstrijdverslagen</h3></a>
                             </div>
                             <div class="col-md-12 col-xs-12">
                                 <p>
                                     <?php
-                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 4");
-                                    if ($albums->count()) {
-                                        foreach ($albums->results() as $album) {
-                                            $album_name = str_replace("XY","%",$album->name);
-                                            $albumDate = new DateTime($album->date);
-                                            if ($albumDate >= $datetime) {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
-                                            } else {
-                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
-                                            }
-                                        }
-                                    } else {
-                                        echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';
-                                    }
-                                    ?>
-                                </p>
-                            </div>
-                            <div class="col-md-2 col-xs-2" style="margin-top: 5px;">
-                                <a href="/wedstrijdverslagen"><i class="icon smallMajor fa-futbol-o link"></i></a>
-                            </div>
-                            <div class="col-md-10 col-xs-10" style="margin-top: 5px;">
-                                <a href="/wedstrijdverslagen"><h4>Laatste wedstrijdverslag</h4></a>
-                            </div>
-                            <div class="col-md-12 col-xs-12">
-                                <p>
-                                    <?php
-                                    $reports = $db->query("SELECT * FROM reports ORDER BY date DESC LIMIT 1");
+                                    $reports = $db->query("SELECT * FROM reports ORDER BY date DESC LIMIT 3");
                                     if ($reports->count()) {
                                         foreach ($reports->results() as $report) {
                                             $report_name = str_replace("XY","%",$report->name);
@@ -99,6 +73,32 @@
                                         }
                                     } else {
                                         echo '<p class="fotoLink">Er is geen wedstrijdverslag beschikbaar.</p>';
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="col-md-2 col-xs-2" style="margin-top: 5px;">
+                                <a href="/fotogalerij"><i class="icon smallMajor fa-camera link"></i></a>
+                            </div>
+                            <div class="col-md-10 col-xs-10" style="margin-top: 5px;">
+                                <a href="/fotogalerij"><h4>Laatste foto albums</h4></a>
+                            </div>
+                            <div class="col-md-12 col-xs-12">
+                                <p>
+                                    <?php
+                                    $albums = $db->query("SELECT * FROM albums WHERE id > 1 ORDER BY date DESC LIMIT 2");
+                                    if ($albums->count()) {
+                                        foreach ($albums->results() as $album) {
+                                            $album_name = str_replace("XY","%",$album->name);
+                                            $albumDate = new DateTime($album->date);
+                                            if ($albumDate >= $datetime) {
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="font-weight: bold; margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
+                                            } else {
+                                                ?> <div class="fotoLink artikleDiv row" onclick="window.location='/album/<?php echo escape($album->name) ?>'"><div class="dateDiv"><p style="margin: 0px; padding: 0px;"><?php echo escape(explode(" ", $album->date)[0]) ?></p></div><div class="titleDiv col-md-8 col-xs-8"><p style="margin: 0px; padding: 0px;"><?php echo escape(rawurldecode($album_name)) ?></p></div></div> <?php
+                                            }
+                                        }
+                                    } else {
+                                        echo '<p class="fotoLink">Er zijn nog geen albums beschikbaar.</p>';
                                     }
                                     ?>
                                 </p>

@@ -76,6 +76,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 if (!empty($_FILES['files']['name'][0])) {
                     $files = $_FILES['files'];
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'pjpeg', 'PJPEG', 'png', 'PNG');
+                    $count = 0;
 
                     foreach ($files['name'] as $position => $file_name) {
                         $file_tmp = $files['tmp_name'][$position];
@@ -124,6 +125,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                         }
                                     }
                                     if (move_uploaded_file($file_tmp, $file_path)) {
+                                        $count++;
                                         $wmax = 1024;
                                         $hmax = 1080;
                                         imgResize($file_path, $file_path_mobile, $wmax, $hmax, $file_ext);
@@ -140,17 +142,19 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                         ));
                                         echo "<b>" . $file_name . "</b> <font color='green'>>Uploaden voltooid.</font><br>";
 
-                                        $emails = $db->query("SELECT mail, name FROM users WHERE albums = '1'");
-                                        if ($emails->count()) {
-                                            $name = $_POST['name'];
-                                            $subject = "Nieuw album: " . $name;
-                                            $title = $name . ".";
+                                        if ($count <= 1) {
+                                            $emails = $db->query("SELECT mail, name FROM users WHERE albums = '1'");
+                                            if ($emails->count()) {
+                                                $name = $_POST['name'];
+                                                $subject = "Nieuw album: " . $name;
+                                                $title = $name . ".";
 
-                                            foreach ($emails->results() as $email) {
-                                                $userName = $email->name;
-                                                $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw album geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/album/' . $album_name . '">http://ekc2000.nl/album/' . $album_name . '</a><br>';
-                                                $to = $email->mail;
-                                                email($to, $subject, $title, $text);
+                                                foreach ($emails->results() as $email) {
+                                                    $userName = $email->name;
+                                                    $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw album geüpload: ' . $name . '.<br>' . 'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/album/' . $album_name . '">http://ekc2000.nl/album/' . $album_name . '</a><br>';
+                                                    $to = $email->mail;
+                                                    email($to, $subject, $title, $text);
+                                                }
                                             }
                                         }
 

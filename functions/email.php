@@ -274,7 +274,8 @@ function email($to, $subject, $title, $text){
     $headers .= "From:" . $from . "\r\n";
 
     mail($to, $subject, $message, $headers);
-    $subject2 = "*Kopie*" . $subject . "*Kopie*";
-    $message2 = "*Kopie*" . $message . "*Kopie*";
-    mail($from, $subject2, $message2, $headers);
+
+//    $subject2 = "*Kopie*" . $subject . "*Kopie*";
+//    $message2 = "*Kopie*" . $message . "*Kopie*";
+//    mail($from, $subject2, $message2, $headers);
 }
