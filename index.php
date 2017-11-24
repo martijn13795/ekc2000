@@ -13,8 +13,22 @@
                         }
                         echo escape($user->data()->surname);
                     }
-                ?></h1>
-                <hr>
+                ?>
+                <div style="float: right;">
+                    <i class="fa fa-lightbulb-o fa-1" aria-hidden="true"></i>
+                    <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>
+                        <label class="switch">
+                            <input type="checkbox" onclick="setCookie(); location.reload();">
+                            <span class="slider round" onclick="setCookie(); location.reload();"></span>
+                        </label>
+                    <?php } else { ?>
+                        <label class="switch">
+                            <input type="checkbox" onclick="document.cookie = 'darkTheme=false; expires=-1'; location.reload();" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    <?php } ?>
+                </div>
+                </h1><hr>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-12">
@@ -305,6 +319,13 @@
                 function (returnedData) {
                     $('#chatRefresh').html(returnedData);
                 });
+    }
+
+    function setCookie() {
+        var date = new Date();
+        date.setTime(date.getTime() + 2678400000);
+        expires = "; expires=" + date.toUTCString();
+        document.cookie = "darkTheme=true" + expires + "; path=/";
     }
 
     var logedin = localStorage.getItem("logedin");
