@@ -1,6 +1,24 @@
 <?php include 'includes/html.php';?>
 <script src="js/jquery.dotdotdot.min.js"></script>
-  <div class="visible-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
+  <div class="visible-xs" style="position: relative;">
+      <div class="hidden-md hidden-lg" style="position:absolute; top: 10px; left: 10px;">
+          <div >
+              <i class="fa fa-lightbulb-o fa-1 fa-lightbulb-o-mobile" aria-hidden="true"></i>
+              <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>
+                  <label class="switch">
+                      <input type="checkbox" onclick="setCookie(); location.reload();">
+                      <span class="slider round"></span>
+                  </label>
+              <?php } else { ?>
+                  <label class="switch">
+                      <input type="checkbox" onclick="document.cookie = 'darkTheme=false; expires=-1'; location.reload();" checked>
+                      <span class="slider round"></span>
+                  </label>
+              <?php } ?>
+          </div>
+      </div>
+      <img class="headerImage" src="images/banner.jpg" alt="club foto"/>
+  </div>
 	    <div class="container">
             <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
             <div class="col-xs-12 col-md-12">
@@ -14,12 +32,12 @@
                         echo escape($user->data()->surname);
                     }
                 ?>
-                <div style="float: right;">
+                <div class="hidden-xs" style="float: right;">
                     <i class="fa fa-lightbulb-o fa-1" aria-hidden="true"></i>
                     <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>
                         <label class="switch">
                             <input type="checkbox" onclick="setCookie(); location.reload();">
-                            <span class="slider round" onclick="setCookie(); location.reload();"></span>
+                            <span class="slider round"></span>
                         </label>
                     <?php } else { ?>
                         <label class="switch">

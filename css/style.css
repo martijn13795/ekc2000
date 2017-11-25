@@ -821,9 +821,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
 }
 
 /* Rounded sliders */
@@ -834,7 +834,18 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
-
 .fa-lightbulb-o {
-    font-size: 27px; display: inline-block; text-align: center; vertical-align: top; margin-top: 3px;
+    font-size: 27px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.fa-lightbulb-o-mobile {
+    font-size: 27px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-top: -4px;
 }
