@@ -17,10 +17,33 @@
               <?php } ?>
           </div>
       </div>
-      <img class="headerImage" src="images/banner.jpg" alt="club foto"/>
+      <?php
+      $scoreboard = $db->query("SELECT * FROM scoreboard WHERE id = 1");
+      if ($scoreboard->count()) {
+          foreach ($scoreboard->results() as $result) {
+              if ($result->scoreboard == 1) {
+                  ?><div style="position: relative;"><iframe src="https://score.ekc2000.nl/scoreboard-detail/<?php echo$result->scoreboardID;?>" scrolling="no" onload="resizeIframe(this)" style="border: none;" width="100%"></iframe><div class="overlay" style="top: 0; left: 0; width: 100%; height: 100%; position:absolute;"></div></div><?php
+              } else {
+                  ?><img class="headerImage" src="images/banner.jpg" alt="club foto"/><?php
+              }
+          }
+      }
+      ?>
   </div>
 	    <div class="container">
-            <div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div>
+            <?php
+            $scoreboard = $db->query("SELECT * FROM scoreboard WHERE id = 1");
+            if ($scoreboard->count()) {
+                foreach ($scoreboard->results() as $result) {
+                    if ($result->scoreboard == 1) {
+                        ?>
+                        <div class="hidden-xs" style="position: relative;  padding-top: 20px;"><iframe src="https://score.ekc2000.nl/scoreboard-detail/<?php echo$result->scoreboardID;?>" scrolling="no" onload="resizeIframe(this)" style="border: none;" width="100%" height="320px"></iframe><div class="overlay" style="top: 0; left: 0; width: 100%; height: 100%; position:absolute;"></div></div><?php
+                    } else {
+                        ?><div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div><?php
+                    }
+                }
+            }
+            ?>
             <div class="col-xs-12 col-md-12">
                 <h1>Welkom bij <strong>EKC 2000</strong><?php
                     $user = new User();
@@ -345,6 +368,12 @@
         expires = "; expires=" + date.toUTCString();
         document.cookie = "darkTheme=true" + expires + "; path=/";
     }
+
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+    }
+
+    $('.overlay').click(function(){window.open('https://score.ekc2000.nl', '_blank');});
 
     var logedin = localStorage.getItem("logedin");
     if(logedin == "ja"){
