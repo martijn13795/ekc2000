@@ -14,7 +14,7 @@ if (isset($_GET['scoreboard']) && !empty($_GET['scoreboard']) && isset($_GET['sc
     }
     if ($scoreboard === 0) {
         $scoreboardIdOld = $db->query("SELECT scoreboardID FROM scoreboard WHERE id = 1");
-        if ($scoreboardID === $scoreboardIdOld->first()) {
+        if ($scoreboardID === $scoreboardIdOld->first()->scoreboardID) {
             $db->query("UPDATE scoreboard SET scoreboard='$scoreboard', scoreboardID='$scoreboardID' WHERE id=1");
         }
         echo "<script>";
