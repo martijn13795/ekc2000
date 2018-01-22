@@ -1,5 +1,16 @@
 <?php include 'includes/html.php';?>
 <script src="js/jquery.dotdotdot.min.js"></script>
+<?php
+if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") {
+    ?>
+    <iframe src="https://score.ekc2000.nl/create-cookie?darkTheme=false" style="display: none;"></iframe>
+    <?php
+} else {
+    ?>
+    <iframe src="https://score.ekc2000.nl/create-cookie?darkTheme=true" style="display: none;"></iframe>
+    <?php
+}
+?>
   <div class="visible-xs" style="position: relative;">
       <div class="hidden-md hidden-lg" style="position:absolute; top: 10px; left: 10px;">
           <div >
