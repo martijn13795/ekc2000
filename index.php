@@ -37,7 +37,7 @@
                 foreach ($scoreboard->results() as $result) {
                     if ($result->scoreboard == 1) {
                         ?>
-                        <div class="hidden-xs" style="position: relative;  padding-top: 20px;"><iframe src="https://score.ekc2000.nl/scoreboard-detail/<?php echo$result->scoreboardID;?>" scrolling="no" onload="resizeIframe(this)" style="border: none;" width="100%" height="320px"></iframe><div class="overlay" style="top: 0; left: 0; width: 100%; height: 100%; position:absolute;"></div></div><?php
+                        <div class="hidden-xs" style="position: relative;  padding-top: 20px;"><iframe src="https://score.ekc2000.nl/scoreboard-detail/<?php echo$result->scoreboardID;?>" scrolling="no" onload="resizeIframe(this)" style="border: 1px solid <?php if(!isset($_COOKIE["darkTheme"]) || $_COOKIE["darkTheme"] === "false") { ?>#e3e3e3<?php } else { ?>#3D3D3D<?php } ?>; border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05); box-shadow: inset 0 1px 1px rgba(0,0,0,.05);" width="100%" height="320px"></iframe><div class="overlay" style="top: 0; left: 0; width: 100%; height: 100%; position:absolute;"></div></div><?php
                     } else {
                         ?><div class="hidden-xs"><img class="headerImage" src="images/banner.jpg" alt="club foto"/></div><?php
                     }
