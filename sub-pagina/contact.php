@@ -22,9 +22,13 @@
                     <h3><strong>Overig</strong></h3>
                     <p class="lead">
                         Bestuur: <a href="mailto:ekc2000.emmen@knkv.net">ekc2000.emmen@knkv.net</a><br><br>
-                        TC: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
-                        Wedstrijdsecretariaat:<br>
+                        Technische zaken: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
+                        Voorzitter Dagelijkse Korfbal zaken:<br>
+                        Mike Zuurman: 06-51541302&#42;<br><br>
+                        Wedstrijdsecretariaat B-jeugd t/m senioren:<br>
                         Ilse Schuttrups: 06-10433293&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
+                        Wedstrijdsecretariaat F- t/m C-jeugd:<br>
+                        Linda Kleine: 06-25381423&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Scheidsrechteraanwijzer:<br>
                         Michael Beekman: 06-49077377&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnet" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
