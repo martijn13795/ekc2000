@@ -1,5 +1,5 @@
 <?php include '../includes/html.php'; ?>
-<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
 <div class="container">
     <div class="col-md-12 col-xs-12"><br>
         <?php

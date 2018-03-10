@@ -1,5 +1,5 @@
 <?php include '../includes/html.php';?>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
 <style>
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {

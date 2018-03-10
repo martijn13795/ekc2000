@@ -13,7 +13,7 @@
 
             <p>Let op, het is alleen mogelijk om een gratis VOG aan te vragen als dit digitaal gebeurt.</p>
 
-            <p>Meer informatie is te vinden op <a href="http://www.nocnsf.nl/vog" target="_blank">www.nocnsf.nl/vog</a>.</p>
+            <p>Meer informatie is te vinden op <a href="https://www.nocnsf.nl/vog" target="_blank">www.nocnsf.nl/vog</a>.</p>
         </div>
     </div>
 </div>

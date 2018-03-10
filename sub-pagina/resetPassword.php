@@ -3,7 +3,7 @@ include '../includes/html.php';
 
 if ($user->isLoggedIn() && $user->hasPermission('dev')) {
     ?>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
     <div class="container">
         <h1>Wachtwoord resetten</h1>
         <hr>

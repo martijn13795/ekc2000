@@ -170,7 +170,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             </p>
                             <p>Kloppen de permissies niet neem dan contact op met de PR&#45; &amp; Communicatie&#45;commissie.</p>';
                     }
-                    $text .= '<p>Log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                    $text .= '<p>Log nu in op <a href="https://ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                     email($to, $subject, $title, $text);
                 } else {
                     echo "<h3>Er is wat mis gegaan bij de geboortedatum. Probeer het opnieuw.</h3><br>";

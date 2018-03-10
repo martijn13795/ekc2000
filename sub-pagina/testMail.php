@@ -7,8 +7,8 @@
 
     $from = "website@ekc2000.nl";
     $message = '
-            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-                <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                <html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
                     <head>
                         <title>EKC 2000</title>
                         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -136,7 +136,7 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="logo emb-logo-padding-box" style="padding: 0;vertical-align: top;mso-line-height-rule: at-least;width: 280px;padding-top: 24px;padding-bottom: 24px;">
-                                                                            <div class="logo-left" style="font-weight: 700;font-family: Avenir,sans-serif;color: #555555;font-size: 0px !important;line-height: 0 !important;" align="left" id="emb-email-header"><a style="text-decoration: none;transition: opacity 0.2s ease-in;color: #555555;" href="http://www.ekc2000.nl" target="_blank"><img style="border: 0;-ms-interpolation-mode: bicubic;display: block;max-width: 200px;" src="http://www.ekc2000.nl/images/logo.png" alt="EKC 2000" width="200" height="120"></a></div>
+                                                                            <div class="logo-left" style="font-weight: 700;font-family: Avenir,sans-serif;color: #555555;font-size: 0px !important;line-height: 0 !important;" align="left" id="emb-email-header"><a style="text-decoration: none;transition: opacity 0.2s ease-in;color: #555555;" href="https://ekc2000.nl" target="_blank"><img style="border: 0;-ms-interpolation-mode: bicubic;display: block;max-width: 200px;" src="https://ekc2000.nl/images/logo.png" alt="EKC 2000" width="200" height="120"></a></div>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>

@@ -4,7 +4,7 @@ $db = DB::getInstance();
 $user = new User();
 if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('teamedit'))) {
     ?>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
     <div class="container">
         <h1>Bewerk teams</h1>
         <hr>

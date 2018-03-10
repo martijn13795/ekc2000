@@ -34,7 +34,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
 
                                 foreach ($emails->results() as $email) {
                                     $userName = $email->name;
-                                    $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw wedstrijdverslag geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="http://ekc2000.nl/verslag/' . rawurlencode($name) . '">http://ekc2000.nl/verslag/' . rawurlencode($name) . '</a><br>';
+                                    $text = 'Hallo ' . $userName . ',<br><br>' . 'Er is een nieuw wedstrijdverslag geüpload: ' . $name . '.<br>'.'Bekijk hem nu: <a target="_blank" href="https://ekc2000.nl/verslag/' . rawurlencode($name) . '">https://ekc2000.nl/verslag/' . rawurlencode($name) . '</a><br>';
                                     $to = $email->mail;
                                     email($to, $subject, $title, $text);
                                 }

@@ -44,7 +44,7 @@ if($user->isLoggedIn()) {
                     $text = '<h3>Uw wachtwoord is gewijzigd.</h3>
                                             <p>Uw gebruikersnaam is: '. $user->data()->username .'</p>
                                             <p>Uw wachtwoord is: '. $_POST['new_password'] .'</p><br>
-                                            <p>log nu in op <a href="http://ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                                            <p>log nu in op <a href="https://ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                     email($to, $subject, $title, $text);
                 }
             } else {

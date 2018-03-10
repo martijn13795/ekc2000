@@ -1,8 +1,8 @@
 <?php include '../includes/html.php';
 $user = new User();
 ?>
-    <script src="http://<?php echo $_SERVER['SERVER_NAME']; ?>/ckeditor/ckeditor.js"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/ckeditor/ckeditor.js"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
     <div class="container">
         <?php
 

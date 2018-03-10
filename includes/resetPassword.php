@@ -27,7 +27,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev'))) {
                 $text = '<h3>Uw wachtwoord voor de website van EKC 2000 is gewijzigd.</h3>
                             <p>Uw gebruikersnaam is: ' . $userName . '</p>
                             <p>Uw wachtwoord is: ' . $password . '</p><br>
-                            <p>Log nu in op <a href="http://www.ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
+                            <p>Log nu in op <a href="https://ekc2000.nl/inloggen">ekc2000.nl</a>.</p>';
                 email($to, $subject, $title, $text);
 
                 echo "Het wachtwoord van <b>" . $userName . "</b> is gereset<br>";

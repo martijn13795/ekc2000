@@ -1,5 +1,5 @@
 <?php include '../includes/html.php'; ?>
-    <script src="http://malsup.github.com/jquery.form.js" xmlns="http://www.w3.org/1999/html"></script>
+    <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
     <script src="../ckeditor/ckeditor.js"></script>
 <?php
 $user = new User();
