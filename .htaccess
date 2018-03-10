@@ -7,6 +7,9 @@ php_value post_max_size 500M
 # Turn Rewrite Engine On
 RewriteEngine on
 
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
