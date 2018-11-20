@@ -11,8 +11,8 @@
         <div class="col-md-12 col-xs-12">
             <h1>De ‘Kangoeroe Klup’ gaat weer van start!<h1/><hr>
                 <img src="../images/Kangoeroeklup.png" alt="Kangoeroe klup" style="margin: 10px; float: right;" class="img-responsive"/>
-                <h3>Op zaterdag 1, 15 april en 13, 20 mei is iedereen weer welkom!</h3>
-                <p>Zaterdag 1 april van 10:00 tot ca. 11:30.<br>Zaterdag 15 april van 12:00 tot ca. 13:30.<br>Zaterdag 13 mei van 11:00 to ca. 12:30.<br>Zaterdag 20 mei van 10:00 tot ca. 11:30.<br><br>Op het korfbalveld te sportpark Zwanenveld (Zwanenveld 5) in de wijk Rietlanden.<br><br>
+                <h3>Vanaf zaterdag 14 april is de Kangoeroeklup weer terug bij EKC 2000.<br>Elke competitiezaterdag (op het veld) wordt van 10.00 tot 11.00 uur de Kangoeroeklup georganiseerd.<br>Voorlopig schema:</h3>
+                <p>14 april van 10.00 tot ca. 11.00 uur.<br>21 april van 10.00 tot ca. 11.00 uur.<br>28 april van 10.00 tot ca. 11.00 uur.<br>12 mei van 10.00 tot ca. 11.00 uur.<br>19 mei van 10.00 tot ca. 11.00 uur.<br>26 mei van 10.00 tot ca. 11.00 uur.<br>02 juni van 10.00 tot ca. 11.00 uur.<br><br>Op het korfbalveld te sportpark Zwanenveld (Zwanenveld 5) in de wijk Rietlanden.<br><br>
                     De Kangoeroe Klup is een gezellige club voor kinderen van 3 tot 7 jaar waarbij je lekker kunt sporten met leeftijdsgenootjes. Bij de korfbalvereniging EKC 2000 bereiden elke week speciaal hiervoor opgeleide leiders een training voor.<br><br>
                     De naam ‘Kangoeroe Klup’ is door het korfbalverbond (KNKV) gekozen daar de kangoeroe veel overeenkomsten heeft met vaardigheden die horen bij de korfbalsport, zoals snelheid, wendbaarheid en sprongkracht. Daarnaast heeft de kangoeroe een buidel die aan jonge kangoeroes bescherming en veiligheid biedt! Om de Kangoeroe Klup sprekend te maken, is door het KNKV een viertal jeugdige kangoeroes ontwikkeld. Deze figuurtjes, genaamd Scoro, Jumper, Funny en Spurt , vervullen een hoofdrol binnen de Kangoeroe Klup.
                 </p><br>

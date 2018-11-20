@@ -26,11 +26,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">Naam:</th>
-                    <td>Linda Kleine</td>
+                    <td>Nathalie ten Broeke </td>
                 </tr>
                 <tr>
                     <th scope="row">Telefoonnummer:</th>
-                    <td>06-25381423</td>
+                    <td>06-21986416</td>
                 </tr>
                 <tr>
                     <th scope="row">E-mail adres:</th>

@@ -21,12 +21,12 @@
                     </p><hr>
                     <h3><strong>Overig</strong></h3>
                     <p class="lead">
-                        Bestuur: <a href="mailto:ekc2000.emmen@knkv.net">ekc2000.emmen@knkv.net</a><br><br>
+                        Bestuur: <a href="mailto:bestuur@ekc2000.nl">bestuur@ekc2000.nl</a><br><br>
                         Technische zaken: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
                         Voorzitter Dagelijkse Korfbal zaken:<br>
                         Mike Zuurman: 06-51541302&#42;<br><br>
                         Wedstrijdsecretariaat B-jeugd t/m senioren:<br>
-                        Ilse Schuttrups: 06-10433293&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
+                        Linda Kleine: 06-25381423&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Wedstrijdsecretariaat F- t/m C-jeugd:<br>
                         Linda Kleine: 06-25381423&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Scheidsrechteraanwijzer:<br>
@@ -69,5 +69,5 @@
     }
 
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQfgfZkvB_beJBG6Gg_C7Mubnts5A7mOc&callback=initMap" async defer></script>
 <?php include '../includes/htmlUnder.php'; ?>

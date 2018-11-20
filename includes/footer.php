@@ -9,6 +9,6 @@
         <a href="https://nl.linkedin.com/in/martijnposthumainf" target="_blank" onClick="window.open('https://nl.linkedin.com/in/casvandinter')">
             <i class="fa fa-linkedin"></i>
         </a><br>
-        &copy; EKC 2000
+        &copy; EKC 2000 - <a href="/../documents/Privacy Policy EKC 2000.pdf" target="_blank">Privacy policy</a>
     </div>
 </footer>
