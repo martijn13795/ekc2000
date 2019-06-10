@@ -551,6 +551,24 @@ if ($user->isLoggedIn()) {
                         </div>
                     </div>
                     <br><br>
+                    <label>Email notificaties:</label><br>
+                    <div class="checkbox checkbox-primary">
+                        <input id="newsNotification" type="checkbox" value="1" name="notifications[newsNotification]">
+                        <label for="newsNotification" style="font-weight: normal;">Nieuws</label>
+                    </div>
+                    <div class="checkbox checkbox-primary">
+                        <input id="activitiesNotification" type="checkbox" value="1" name="notifications[activitiesNotification]">
+                        <label for="activitiesNotification" style="font-weight: normal;">Activiteiten</label>
+                    </div>
+                    <div class="checkbox checkbox-primary">
+                        <input id="albumsNotification" type="checkbox" value="1" name="notifications[albumsNotification]">
+                        <label for="albumsNotification" style="font-weight: normal;">Fotoalbums</label>
+                    </div>
+                    <div class="checkbox checkbox-primary">
+                        <input id="reportsNotification" type="checkbox" value="1" name="notifications[reportsNotification]">
+                        <label for="reportsNotification" style="font-weight: normal;">Wedstrijdverslagen</label>
+                    </div>
+                    <br><br>
                     <input class="btn btn-primary submit" id="submit" type="submit">
                 </form>
             </div>

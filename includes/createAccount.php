@@ -26,6 +26,27 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
             $hasicon = false;
         }
 
+        $news = 0;
+        $activities = 0;
+        $albums = 0;
+        $reports = 0;
+
+        if(isset($_POST['notifications'])) {
+            $notifications = $_POST['notifications'];
+            if ($notifications['newsNotification']) {
+                $news = 1;
+            }
+            if ($notifications['activitiesNotification']) {
+                $activities = 1;
+            }
+            if ($notifications['albumsNotification']) {
+                $albums = 1;
+            }
+            if ($notifications['reportsNotification']) {
+                $reports = 1;
+            }
+        }
+
         $username = $surname_prefix ? $name.'.'.$surname_prefix.'.'.$surname : $name.'.'.$surname;
         $username = strtolower($username);
 
@@ -63,7 +84,12 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                                             'IconPath' => $file_path,
                                             'gender' => $gender,
                                             'birthdate' => $birthday,
-                                            'group_id' => 2
+                                            'group_id' => 2,
+                                            'news' => $news,
+                                            'activities' => $activities,
+                                            'albums' => $albums,
+                                            'reports' => $reports
+
                                         ));
                                     } else {
                                         echo "<b>" . $file_name . "</b> <font color='red'>>Uploaden mislukt.</font><br>";
@@ -92,7 +118,11 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                             'IconPath' => '../images/icons/default.jpg',
                             'gender' => $gender,
                             'birthdate' => $birthday,
-                            'group_id' => 2
+                            'group_id' => 2,
+                            'news' => $news,
+                            'activities' => $activities,
+                            'albums' => $albums,
+                            'reports' => $reports
                         ));
                     }
 
