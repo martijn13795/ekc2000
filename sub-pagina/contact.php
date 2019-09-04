@@ -23,14 +23,12 @@
                     <p class="lead">
                         Bestuur: <a href="mailto:bestuur@ekc2000.nl">bestuur@ekc2000.nl</a><br><br>
                         Technische zaken: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
-                        Voorzitter Dagelijkse Korfbal zaken:<br>
-                        Mike Zuurman: 06-51541302&#42;<br><br>
-                        Wedstrijdsecretariaat B-jeugd t/m senioren:<br>
-                        Linda Kleine: 06-25381423&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
-                        Wedstrijdsecretariaat F- t/m C-jeugd:<br>
-                        Linda Kleine: 06-25381423&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
-                        Scheidsrechteraanwijzer:<br>
-                        Michael Beekman: 06-49077377&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
+                        Voorzitter TC:<br>
+                        Sven Kouwen: 06-31993445&#42;<br><br>
+                        Wedstrijdsecretariaat:<br>
+                        Nienke Kremer: 06-51207713&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
+                        Scheidsrechterscoordinator:<br>
+                        Linda Kleine: 06-25381423&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnet" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
                     <sub>&#42; Telefoonnummers mogen niet voor commerci&#235;le doeleinden gebruikt worden.</sub>
