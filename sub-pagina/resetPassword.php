@@ -1,7 +1,7 @@
 <?php
 include '../includes/html.php';
 
-if ($user->isLoggedIn() && $user->hasPermission('dev')) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('admin'))) {
     ?>
     <script src="https://<?php echo $_SERVER['SERVER_NAME']; ?>/js/jquery.form.js"></script>
     <div class="container">
