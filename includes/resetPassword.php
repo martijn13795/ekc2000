@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/core/init.php';
 $db = DB::getInstance();
 $user = new User();
-if ($user->isLoggedIn() && ($user->hasPermission('dev'))) {
+if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission('admin'))) {
         if ($_POST['name']) {
             $userName = $_POST['name'];
             $userNames = $db->query("SELECT * FROM users WHERE username='$userName'");
