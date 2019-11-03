@@ -19,47 +19,53 @@
             <ul class="nav navbar-nav navbar-left">
                 <li <?=activeClass("home"),activeClass("index"),activeClass("")?>><a href="/home">Home</a></li>
 
-                <li <?=activeClass("VOG"),activeClass("sponsoren"),activeClass("bestuur"),activeClass("commissies"),activeClass("kangoeroeklup"),activeClass("contact"),activeClass("ideeenbus"),activeClass("documenten")?> class="closed">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
+                <li <?php activeClass("nieuws"); $testGet = isset($_GET['artikelName']) ? activeClass($_GET['artikelName']) : ''; activeClass("activiteiten"); $testGet = isset($_GET['activiteitName']) ? activeClass($_GET['activiteitName']) : ''; activeClass("wedstrijdverslagen"); $testGet = isset($_GET['report']) ? activeClass($_GET['report']) : ''; ?> class="closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Actueel<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li <?=activeClass("VOG")?>><a href="/VOG">VOG</a></li>
-                        <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
-                        <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
-                        <li <?=activeClass("kangoeroeklup")?>><a href="/kangoeroeklup">Kangoeroeklup</a></li>
-                        <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("ideeenbus")?>><a href="/ideeenbus">Idee&euml;nbus</a></li><?php } ?>
-                        <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li><?php } ?>
-                        <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
+                        <li <?php activeClass("nieuws"); $testGet = isset($_GET['artikelName']) ? activeClass($_GET['artikelName']) : ''; ?>><a href="/nieuws">Nieuws</a></li>
+                        <li <?php activeClass("activiteiten"); $testGet = isset($_GET['activiteitName']) ? activeClass($_GET['activiteitName']) : ''; ?>><a href="/activiteiten">Activiteiten</a></li>
+                        <li <?php activeClass("wedstrijdverslagen"); $testGet = isset($_GET['report']) ? activeClass($_GET['report']) : ''; ?>><a href="/wedstrijdverslagen">Wedstrijdverslagen</a></li>
                     </ul>
                 </li>
 
-                <li <?=activeClass("lid-worden"),activeClass("contributie")?> class="closed">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lid worden<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
-                        <li <?=activeClass("contributie")?>><a href="/contributie">Contributie</a></li>
-                    </ul>
-                </li>
-
-                <li <?php activeClass("nieuws"); $testGet = isset($_GET['artikelName']) ? activeClass($_GET['artikelName']) : ''; ?>><a href="/nieuws">Nieuws</a></li>
-
-                <li <?php activeClass("fotogalerij"); $testGet = isset($_GET['name']) ? activeClass($_GET['name']) : ''; ?>><a href="/fotogalerij">Fotogalerij</a></li>
-
-                <li <?php activeClass("activiteiten"); $testGet = isset($_GET['activiteitName']) ? activeClass($_GET['activiteitName']) : ''; ?>><a href="/activiteiten">Activiteiten</a></li>
-
-                <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("standen"),activeClass("uitslagen"),activeClass("uitslag-invoeren"),activeClass("uitslag-poules"),activeClass("wedstrijdverslagen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
+                <li <?=activeClass("teams"),activeClass("wedstrijdschema"),activeClass("uitslagen"),activeClass("uitslag-poules"),activeClass("uitslag-invoeren"),activeClass("standen"),activeClass("trainingstijden"),activeClass("kantinedienst")?> class="closed">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Competitie<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li <?=activeClass("teams")?>><a href="/teams">Teams</a></li>
                         <li <?=activeClass("wedstrijdschema")?>><a href="/wedstrijdschema">Wedstrijdschema</a></li>
-                        <li <?=activeClass("standen")?>><a href="/standen">Standen</a></li>
                         <li <?=activeClass("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
                         <li <?=activeClass("uitslag-poules")?>><a href="/uitslag-poules">Uitslagen poules</a></li>
                         <li <?=activeClass("uitslag-invoeren")?>><a href="/uitslag-invoeren">Uitslagen invoeren</a></li>
-                        <li <?=activeClass("wedstrijdverslagen")?>><a href="/wedstrijdverslagen">Wedstrijdverslagen</a></li>
+                        <li <?=activeClass("standen")?>><a href="/standen">Standen</a></li>
                         <li <?=activeClass("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
                         <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Zaal-/kantinedienst</a></li>
                     </ul>
                 </li>
+
+                <li <?=activeClass("sponsoren"),activeClass("commissies"),activeClass("VOG"),activeClass("lid-worden"),activeClass("contributie"),activeClass("kangoeroeklup"),activeClass("contact")?> class="closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vereniging<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li <?=activeClass("sponsoren")?>><a href="/sponsoren">Sponsoren</a></li>
+                        <li <?=activeClass("commissies")?>><a href="/commissies">Commissies</a></li>
+                        <li <?=activeClass("VOG")?>><a href="/VOG">VOG</a></li>
+                        <li <?=activeClass("lid-worden")?>><a href="/lid-worden">Lid worden</a></li>
+                        <li <?=activeClass("contributie")?>><a href="/contributie">Contributie</a></li>
+                        <li <?=activeClass("kangoeroeklup")?>><a href="/kangoeroeklup">Kangoeroeklup</a></li>
+                        <li <?=activeClass("contact")?>><a href="/contact">Contact</a></li>
+                    </ul>
+                </li>
+
+                <?php if ($user->isLoggedIn()) { ?>
+                <li <?php activeClass("documenten"); activeClass("fotogalerij"); $testGet = isset($_GET['name']) ? activeClass($_GET['name']) : ''; activeClass("ideeenbus"); ?> class="closed">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Media<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("documenten")?>><a href="/documenten">Documenten</a></li><?php } ?>
+                        <li <?php activeClass("fotogalerij"); $testGet = isset($_GET['name']) ? activeClass($_GET['name']) : ''; ?>><a href="/fotogalerij">Fotogalerij</a></li>
+                        <?php if ($user->isLoggedIn()) { ?><li <?=activeClass("ideeenbus")?>><a href="/ideeenbus">Idee&euml;nbus</a></li><?php } ?>
+                    </ul>
+                </li>
+                <?php } ?>
+
                 <?php
                     $user = new User();
                     if ($user->isLoggedIn()) {

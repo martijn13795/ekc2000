@@ -1,4 +1,5 @@
-<?php include '../includes/html.php'; ?>
+<?php include '../includes/html.php';
+if ($user->isLoggedIn()) { ?>
 <div class="container">
     <div class="col-md-12 col-xs-12">
         <h1>Album - <?php $name = $_GET['name'];
@@ -123,4 +124,9 @@
         }, 100);
     }
 </script>
-<?php include '../includes/htmlUnder.php'; ?>
+<?php
+    }else{
+        include_once '403.php';
+    }
+    include '../includes/htmlUnder.php';
+?>
