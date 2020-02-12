@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-md-12 col-xs-12">
             <h1>Contributie</h1><hr>
-            <p>De contributie wordt bepaald op basis van de leeftijd (peildatum 1 oktober). Elk jaar dient in oktober bondscontributie te worden betaald.
+            <p>De contributie wordt bepaald op basis van de leeftijd (peildatum 1 januari). Elk jaar dient in oktober bondscontributie te worden betaald.
                 Wanneer je het lidmaatschap wilt opzeggen, dan dien je dit vóór 30 mei door te geven aan de ledenadministratie. De contributie loopt echter door tot het einde van het seizoen (30 juni).
             </p>
             </div>
@@ -101,9 +101,9 @@
         var today = new Date();
 
         if (changeDate.setHours(0,0,0,0) <= today.setHours(0,0,0,0)) {
-            referenceDate = "01-10-" + year;
+            referenceDate = "01-01-" + year;
         } else {
-            referenceDate = "01-10-" + (year - 1);
+            referenceDate = "01-01-" + (year - 1);
         }
         referenceDate = referenceDate.split("-").reverse().join("/");
         referenceDate = new Date(referenceDate);
