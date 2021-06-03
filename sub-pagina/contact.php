@@ -30,7 +30,7 @@
                         Scheidsrechters-coördinator:<br>
                         Linda Kleine: 06-25381423&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Ledenadministratie:<br>
-                        Nathalie ten Broeke: 06-21986416&#42; / <a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a><br><br>
+                        Aaltje Machiela: 06-48042904&#42; / <a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnet" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
                     </p>
                     <sub>&#42; Telefoonnummers mogen niet voor commerci&#235;le doeleinden gebruikt worden.</sub>
