@@ -26,11 +26,11 @@
                 <tbody>
                 <tr>
                     <th scope="row">Naam:</th>
-                    <td>Nathalie ten Broeke </td>
+                    <td>Aaltje Machiela</td>
                 </tr>
                 <tr>
                     <th scope="row">Telefoonnummer:</th>
-                    <td>06-21986416</td>
+                    <td>06-48042904</td>
                 </tr>
                 <tr>
                     <th scope="row">E-mail adres:</th>
