@@ -24,11 +24,11 @@
                         Bestuur: <a href="mailto:bestuur@ekc2000.nl">bestuur@ekc2000.nl</a><br><br>
                         Technische zaken: <a href="mailto:tc@ekc2000.nl">tc@ekc2000.nl</a><br><br>
                         Voorzitter TC:<br>
-                        Sven Kouwenberg: 06-31993445&#42;<br><br>
+                        Wim Bloeming: 06-50422677&#42;<br><br>
                         Wedstrijdsecretariaat:<br>
                         Nienke Kremer: 06-51207713&#42; / <a href="mailto:wedstrijdsecretariaat@ekc2000.nl">wedstrijdsecretariaat@ekc2000.nl</a><br><br>
                         Scheidsrechters-coördinator:<br>
-                        Linda Kleine: 06-25381423&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
+                        Nienke Kremer: 06-51207713&#42; / <a href="mailto:scheidsrechter.ekc2000@gmail.com">scheidsrechter.ekc2000@gmail.com</a><br><br>
                         Ledenadministratie:<br>
                         Aaltje Machiela: 06-48042904&#42; / <a href="mailto:ledenadministratie@ekc2000.nl">ledenadministratie@ekc2000.nl</a><br><br>
                         Developers: <a href="https://nl.linkedin.com/in/martijnet" target="_blank">Martijn Posthuma</a>, <a href="https://nl.linkedin.com/in/casvandinter" target="_blank">Cas van Dinter</a>
