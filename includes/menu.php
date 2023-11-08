@@ -35,7 +35,6 @@
                         <li <?=activeClass("wedstrijdschema")?>><a href="/wedstrijdschema">Wedstrijdschema</a></li>
                         <li <?=activeClass("uitslagen")?>><a href="/uitslagen">Uitslagen</a></li>
                         <li <?=activeClass("uitslag-poules")?>><a href="/uitslag-poules">Uitslagen poules</a></li>
-                        <li <?=activeClass("uitslag-invoeren")?>><a href="/uitslag-invoeren">Uitslagen invoeren</a></li>
                         <li <?=activeClass("standen")?>><a href="/standen">Standen</a></li>
                         <li <?=activeClass("trainingstijden")?>><a href="/trainingstijden">Trainingstijden</a></li>
                         <li <?=activeClass("kantinedienst")?>><a href="/kantinedienst">Zaal-/kantinedienst</a></li>

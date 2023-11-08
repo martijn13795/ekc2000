@@ -151,7 +151,7 @@ if (isset($_GET['id']) && !empty($_GET['id']) && is_numeric($_GET['id'])) {
                 $teamName = "4";
             }
             ?>
-            <iframe style="width: 100%; height: 320px;" border="0" frameborder="0" src="https://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=<?php echo $teamName; ?>"></iframe>
+<!--            <iframe style="width: 100%; height: 320px;" border="0" frameborder="0" src="https://www.antilopen.nl/competitie/standen.asp?ci=54&clubstyle=EKC2000&t=--><?php //echo $teamName; ?><!--"></iframe>-->
         </div>
 
         <?php

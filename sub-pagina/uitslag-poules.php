@@ -1,12 +1,8 @@
 <?php include '../includes/html.php';?>
 <div class="container">
-    <div><br>
-        <?php
-        $URL = "https://www.antilopen.nl/competitie/uitslagen.asp?h=f&cp=54&clubstyle=EKC2000&nolink=true";
-        $ch = curl_init( $URL );
-        curl_exec( $ch );
-        curl_close( $ch );
-        ?>
+    <h1>Uitslagen poules</h1>
+    <div>
+        Klik <a href="https://mijn.korfbal.nl/clubs/details/NCX10Y1/total-overview" target="_blank">hier</a> voor de poules uitslagen van EKC 2000
     </div>
 </div>
 <?php include '../includes/htmlUnder.php'; ?>
