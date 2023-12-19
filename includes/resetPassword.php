@@ -17,7 +17,7 @@ if ($user->isLoggedIn() && ($user->hasPermission('dev') || $user->hasPermission(
                 $surname = $userNames->first()->surname;
                 $password = randomPassword();
                 $salt = Hash::salt(32);
-                $hash = Hash::make($password, $salt);
+                $hash = Hash::make($password);
                 $db->query("update users set password='$hash' where id='$id'");
                 $db->query("update users set salt='$salt' where id='$id'");
 

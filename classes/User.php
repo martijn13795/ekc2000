@@ -3,10 +3,10 @@
 class User {
 
     private $_db,
-            $_data,
-            $_sessionName,
-            $_cookieName,
-            $_isLoggedIn;
+        $_data,
+        $_sessionName,
+        $_cookieName,
+        $_isLoggedIn;
 
     public function __construct($user = null) {
         $this->_db = DB::getInstance();
@@ -55,7 +55,9 @@ class User {
             $user = $this->find($username);
 
             if ($user) {
-                if ($this->data()->password === Hash::make($password, $this->_data->salt)) {
+
+                if (password_verify(trim($password), $this->data()->password)) {
+
                     Session::put($this->_sessionName, $this->data()->id);
 
                     if ($remember) {
@@ -106,9 +108,9 @@ class User {
     }
 
     public function logout() {
-        
+
         $this->_db->query("DELETE FROM users_session WHERE user_id = '{$this->data()->id}'");
-        
+
         Session::delete($this->_sessionName);
         Cookie::delete($this->_cookieName);
     }

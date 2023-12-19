@@ -51,7 +51,7 @@ class DB
             $salt = Hash::salt(32);
             $this->insert('users', array(
                 'username' => 'cassshh',
-                'password' => Hash::make('admin', $salt),
+                'password' => Hash::make('admin'),
                 'mail' => 'casvd@hotmail.com',
                 'salt' => $salt,
                 'name' => 'Cas',
@@ -66,7 +66,7 @@ class DB
             $salt = Hash::salt(32);
             $this->insert('users', array(
                 'username' => 'martijn13795',
-                'password' => Hash::make('admin', $salt),
+                'password' => Hash::make('admin'),
                 'mail' => 'martijn13795@hotmail.com',
                 'salt' => $salt,
                 'name' => 'Martijn',
@@ -80,7 +80,7 @@ class DB
             $salt = Hash::salt(32);
             $this->insert('users', array(
                 'username' => 'gast',
-                'password' => Hash::make('gast', $salt),
+                'password' => Hash::make('gast'),
                 'mail' => 'gast@hotmail.com',
                 'salt' => $salt,
                 'name' => 'Gast',

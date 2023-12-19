@@ -24,12 +24,12 @@ if($user->isLoggedIn()) {
 
             if($validation->passed()){
                 //change pass
-                if(Hash::make(Input::get('old_password'), $user->data()->salt) !== $user->data()->password){
+                if (!password_verify(trim(Input::get('old_password')), $user->data()->password)) {
                     echo 'Uw oude wachtwoord is verkeerd.';
                 } else {
                     $salt = Hash::salt(32);
                     $db->update('users', $user->data()->id, array(
-                        'password' => Hash::make(Input::get('new_password'), $salt),
+                        'password' => Hash::make(Input::get('new_password')),
                         'salt' => $salt
                     ));
                     ?>
